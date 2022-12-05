@@ -1,0 +1,113 @@
+@font-face {
+    font-family: "Alexandria";
+    src: url("../assets/fonts/Alexandria-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Alfa Slab One";
+    src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
+}
+
+:root {
+    --bg: rgb(250, 250, 250);
+    --bg-alt: rgb(230, 230, 230);
+    --fg-alt: rgb(180, 180, 180);
+    --accent-red: rgb(153, 0, 20);
+    --accent-red-2: rgb(205, 69, 59);
+    --accent-red-3: rgb(255, 118, 102);
+    --fg: rgb(20, 20, 20);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-size: 100%;
+    font-family: "Alexandria", sans-serif;
+    line-height: 1.5em;
+    margin: auto;
+}
+
+header {
+    background-color: var(--accent-red);
+    color: var(--bg);
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-family: "Alfa Slab One", sans-serif;
+}
+
+header p {
+    font-weight: 600;
+}
+
+section {
+    padding: 1em;
+}
+
+section h2 {
+    text-align: center;
+    color: var(--accent-red-2);
+}
+
+#search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#search-in {
+    border-radius: 30px;
+    height: 3em;
+    width: 100%;
+    padding: 2em;
+    border: solid 2px var(--fg-alt);
+}
+
+#buttons {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 2em;
+}
+
+#search-cat {
+    border-radius: 30px;
+    width: 70%;
+    height: 100%;
+    padding-left: 1em;
+    border: solid 2px var(--fg-alt);
+}
+
+.button {
+    border-radius: 30px;
+    width: 25%;
+    height: 100%;
+    border: solid 2px var(--fg-alt);
+}
+
+#info {
+    background-color: var(--bg-alt);
+}
+
+#cta a {
+    color: var(--accent-red-3);
+}
+
+footer {
+    background-color: var(--accent-red);
+    color: var(--bg);
+    padding: 0.1em;
+    text-align: center;
+}
+
+footer p {
+    font-family: "Alfa Slab One", sans-serif;
+}
