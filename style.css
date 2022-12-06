@@ -20,6 +20,8 @@
 
 * {
     box-sizing: border-box;
+    margin: unset;
+    padding: unset;
 }
 
 html,
@@ -30,29 +32,94 @@ body {
     margin: auto;
 }
 
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 header {
     background-color: var(--accent-red);
     color: var(--bg);
-    padding: 1em;
+    padding: 1.5em 1em 0 1em;
     text-align: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 
 header h1 {
     font-family: "Alfa Slab One", sans-serif;
+    margin-right: 0.5em;
+    font-weight: 500;
+    font-size: 4em;
 }
 
 header p {
     font-weight: 600;
 }
 
-section {
+nav {
+    background-color: var(--accent-red);
+    color: var(--bg);
     padding: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    margin: unset;
+    padding: unset;
+}
+
+nav li {
+    display: inline;
+    padding: 0.5em;
+    text-align: center;
+}
+
+nav a:visited {
+    color: var(--bg);
+}
+
+section {
+    padding: 1.5em 1em;
 }
 
 section h2 {
     text-align: center;
     color: var(--accent-red-2);
+    font-weight: 500;
+}
+
+#search {
+    background-image: url("./assets/imgs/studying.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+#search > div {
+    background-color: rgba(205, 69, 59, 0.9);
+    padding: 1em 0.75em;
+    border-radius: 15px;
+    margin: 0.5em 0.25em;
+}
+
+#search h2 {
+    color: var(--bg);
+    margin: unset;
+    text-align: start;
+    font-size: 1.75em;
+    line-height: 1.25;
 }
 
 #search-form {
@@ -63,10 +130,12 @@ section h2 {
 
 #search-in {
     border-radius: 30px;
-    height: 3em;
+    height: 2em;
     width: 100%;
     padding: 2em;
-    border: solid 2px var(--fg-alt);
+    /*border: solid 2px var(--fg-alt);*/
+    border: none;
+    font-size: 1em;
 }
 
 #buttons {
@@ -75,7 +144,7 @@ section h2 {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    height: 2em;
+    height: 2.5em;
 }
 
 #search-cat {
@@ -83,14 +152,18 @@ section h2 {
     width: 70%;
     height: 100%;
     padding-left: 1em;
-    border: solid 2px var(--fg-alt);
+    /*border: solid 2px var(--fg-alt);*/
+    border: none;
+    font-size: 1em;
 }
 
 .button {
     border-radius: 30px;
     width: 25%;
     height: 100%;
-    border: solid 2px var(--fg-alt);
+    /*border: solid 2px var(--fg-alt);*/
+    border: none;
+    font-size: 1em;
 }
 
 #info {
