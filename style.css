@@ -184,3 +184,65 @@ footer {
 footer p {
     font-family: "Alfa Slab One", sans-serif;
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #search {
+        align-items: center;
+    }
+
+    #search h2 {
+        text-align: center;
+    }
+
+    #info,
+    #cta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #search > div,
+    #info p,
+    #cta p {
+        width: 85%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #search {
+        align-items: center;
+    }
+
+    #search > div,
+    #info p,
+    #cta p {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #search {
+        align-items: center;
+    }
+
+    #search > div,
+    #info p,
+    #cta p {
+        width: 65%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #search {
+        align-items: center;
+    }
+
+    #search > div,
+    #info p,
+    #cta p {
+        width: 50%;
+    }
+}
