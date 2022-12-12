@@ -42,58 +42,90 @@ p {
 header {
     background-color: var(--accent-red);
     color: var(--bg);
-    padding: 1.5em 1em 0 1em;
+    padding: 1em 2em;
     text-align: center;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0px 4px 0 rgba(123, 123, 123, 0.2);
 }
 
 header h1 {
     font-family: "Alfa Slab One", sans-serif;
     margin-right: 0.5em;
     font-weight: 500;
-    font-size: 4em;
+    font-size: 2em;
 }
 
-header p {
-    font-weight: 600;
+header img {
+    width: 2em;
+    height: 2em;
 }
 
-nav {
-    background-color: var(--accent-red);
-    color: var(--bg);
-    padding: 1em;
-    text-align: center;
+header > div {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
 }
 
+#menu-btn {
+    padding: 0.3em 0.8em;
+    border: 3px solid var(--bg);
+    background-color: rgba(255, 0, 0, 0);
+    color: var(--bg);
+}
+
+nav {
+    padding: 0.75em 0 0 0;
+    display: none;
+    justify-content: end;
+    align-items: center;
+    font-size: 1.2em;
+}
+
 nav ul {
+    display: flex;
+    flex-direction: column;
     margin: unset;
     padding: unset;
 }
 
 nav li {
     display: inline;
-    padding: 0.5em;
-    text-align: center;
+    padding: 0.5em 0.25em;
+    text-align: right;
 }
 
 nav a:visited {
     color: var(--bg);
 }
 
+.show-menu {
+    display: flex;
+}
+
 section {
-    padding: 1.5em 1em;
+    padding: 1.5em 1.5em;
 }
 
 section h2 {
     text-align: center;
     color: var(--accent-red-2);
     font-weight: 500;
+    text-transform: uppercase;
 }
 
 #search {
@@ -103,23 +135,27 @@ section h2 {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding: 1.5em 1.1em;
+
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 #search > div {
     background-color: rgba(205, 69, 59, 0.9);
-    padding: 1em 0.75em;
+    padding: 1.25em 1em;
     border-radius: 15px;
-    margin: 0.5em 0.25em;
+    margin-top: 1em;
 }
 
 #search h2 {
     color: var(--bg);
     margin: unset;
-    text-align: start;
-    font-size: 1.75em;
+    text-align: center;
+    font-size: 2em;
     line-height: 1.25;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 #search-form {
@@ -157,9 +193,12 @@ section h2 {
     font-size: 1em;
 }
 
+#search-btn {
+    width: 25%;
+}
+
 .button {
     border-radius: 30px;
-    width: 25%;
     height: 100%;
     /*border: solid 2px var(--fg-alt);*/
     border: none;
@@ -211,6 +250,34 @@ footer p {
 }
 
 @media only screen and (min-width: 768px) {
+    #menu-btn {
+        display: none;
+    }
+
+    header {
+        flex-direction: row;
+        align-items: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
+
+    nav {
+        padding: unset;
+        display: flex;
+        font-size: 1.25em;
+    }
+
+    nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    nav li {
+        display: inline;
+        padding: unset;
+        margin-left: 1.25em;
+    }
+
     #search {
         align-items: center;
     }
@@ -223,6 +290,10 @@ footer p {
 }
 
 @media only screen and (min-width: 1024px) {
+    header {
+        padding: 1.75em 3em;
+    }
+
     #search {
         align-items: center;
     }
@@ -236,6 +307,10 @@ footer p {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
     #search {
         align-items: center;
     }
