@@ -142,7 +142,7 @@ section h2 {
 }
 
 #search > div {
-    background-color: rgba(205, 69, 59, 0.9);
+    background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
     border-radius: 15px;
     margin-top: 1em;
@@ -264,7 +264,6 @@ footer p {
     nav {
         padding: unset;
         display: flex;
-        font-size: 1.25em;
     }
 
     nav ul {
@@ -280,6 +279,10 @@ footer p {
 
     #search {
         align-items: center;
+        max-height: 650px;
+        background-image: url("./assets/imgs/hats.jpg");
+        justify-content: center;
+        padding-top: 7em;
     }
 
     #search > div,
@@ -295,13 +298,19 @@ footer p {
     }
 
     #search {
-        align-items: center;
+        align-items: flex-start;
+        padding: 2.5em 2.5em;
+    }
+
+    #search h2 {
+        text-align: left;
+        font-size: 2.5em;
     }
 
     #search > div,
     #info p,
     #cta p {
-        width: 65%;
+        width: 50%;
     }
 }
 
@@ -311,13 +320,31 @@ footer p {
         font-size: 2.5em;
     }
 
+    header img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    nav {
+        font-size: 1.25em;
+    }
+
     #search {
+        padding: 5em;
+        height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        height: calc(var(--vh, 1vh) * 100);
+        max-height: none;
         align-items: center;
+    }
+
+    #search h2 {
+        font-size: 3em;
+        text-align: center;
     }
 
     #search > div,
     #info p,
     #cta p {
-        width: 50%;
+        width: 45%;
     }
 }
