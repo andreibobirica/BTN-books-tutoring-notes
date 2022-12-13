@@ -277,10 +277,17 @@ footer p {
         align-items: center;
     }
 
-    #search > div,
-    #info p,
-    #cta p {
+    #search > div
+    {
         width: 85%;
+    }
+
+    .text {
+        padding: 1.5em 3em;
+    }
+
+    #cta a {
+        width: 100%;
     }
 }
 
