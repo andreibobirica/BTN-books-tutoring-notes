@@ -184,3 +184,38 @@ footer {
 footer p {
     font-family: "Alfa Slab One", sans-serif;
 }
+
+
+
+/* ==============  */
+
+.product{
+    border: 1px solid black;
+    width:90%;
+    display:flex;
+    flex-direction: row;
+    padding:1em;
+    margin:0.5em;
+}
+
+.product img{
+    width:40%;
+    margin-right:1em;
+}
+
+#productsList{
+    width:100%; 
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+}
+
+.product div{
+    display:flex;
+    flex-direction:column;
+}
+
+#sceltaCategoria li{
+    display:inline-block;
+    margin:1em;
+}
