@@ -81,6 +81,10 @@ header > div {
     justify-content: center;
 }
 
+#logo img{
+    object-position: center;
+}
+
 #menu-btn {
     padding: 0.3em 0.8em;
     border: 3px solid var(--bg);
@@ -124,8 +128,12 @@ section {
 section h2 {
     text-align: center;
     color: var(--accent-red-2);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
+}
+
+section p {
+    font-size: 1.1em;
 }
 
 #search {
@@ -154,7 +162,7 @@ section h2 {
     text-align: center;
     font-size: 2em;
     line-height: 1.25;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -206,11 +214,38 @@ section h2 {
 }
 
 #info {
-    background-color: var(--bg-alt);
+    background-image: url("./assets/imgs/studyoutside.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: unset
+}
+
+.text {
+    padding: 1.5em;
+}
+
+#info .text{
+    background-color: rgba(250, 250, 250, 0.85);
+}
+
+#cta {
+    background-image: url("./assets/imgs/studyingheadphones.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: unset
+}
+
+#cta .text{
+    background-color: rgba(230, 230, 230, 0.85);
 }
 
 #cta a {
     color: var(--accent-red-3);
+    display: block;
+    text-align: center;
+    background-color: var(--bg);
+    padding: 1.5em;
+    font-size: 1.25em;
 }
 
 footer {
