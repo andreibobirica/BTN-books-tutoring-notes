@@ -81,7 +81,7 @@ header > div {
     justify-content: center;
 }
 
-#logo img{
+#logo img {
     object-position: center;
 }
 
@@ -217,25 +217,25 @@ section p {
     background-image: url("./assets/imgs/studyoutside.jpg");
     background-size: cover;
     background-position: center;
-    padding: unset
+    padding: unset;
 }
 
 .text {
     padding: 1.5em;
 }
 
-#info .text{
+#info .text {
     background-color: rgba(250, 250, 250, 0.85);
 }
 
-#cta {
+#disclaimer {
     background-image: url("./assets/imgs/studyingheadphones.jpg");
     background-size: cover;
     background-position: center;
-    padding: unset
+    padding: unset;
 }
 
-#cta .text{
+#disclaimer .text {
     background-color: rgba(230, 230, 230, 0.85);
 }
 
@@ -270,15 +270,14 @@ footer p {
     }
 
     #info,
-    #cta {
+    #disclaimer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    #search > div
-    {
+    #search > div {
         width: 85%;
     }
 
@@ -327,9 +326,34 @@ footer p {
         padding-top: 7em;
     }
 
-    #search > div,
-    #info p,
-    #cta p {
+    #info,
+    #disclaimer {
+        background-repeat: no-repeat;
+        background-size: 40% 85%;
+        background-position-y: center;
+    }
+
+    #info {
+        align-items: flex-start;
+        background-position-x: right 5%;
+    }
+
+    #disclaimer {
+        align-items: flex-end;
+        background-position-x: left 5%;
+
+        background-color: var(--bg-alt);
+    }
+
+    #info .text,
+    #disclaimer .text {
+        background-color: rgba(230, 230, 230, 0);
+        width: 55%;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+
+    #search > div {
         width: 70%;
     }
 }
@@ -349,11 +373,16 @@ footer p {
         font-size: 2.5em;
     }
 
-    #search > div,
-    #info p,
-    #cta p {
+    #search > div{
         width: 50%;
     }
+
+    #info .text,
+    #disclaimer .text {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -371,6 +400,11 @@ footer p {
         font-size: 1.25em;
     }
 
+    #info, #disclaimer {
+        max-width: 65%;
+        margin: auto;
+    }
+
     #search {
         padding: 5em;
         height: 100vh; /* Fallback for browsers that do not support Custom Properties */
@@ -384,9 +418,7 @@ footer p {
         text-align: center;
     }
 
-    #search > div,
-    #info p,
-    #cta p {
+    #search > div{
         width: 45%;
     }
 }
