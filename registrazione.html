@@ -30,16 +30,25 @@
                 </ul>
             </nav>
         </header>
-        
-        <main id="loginMain">
-            <form action="login.html" id="loginForm" >
-                <label><strong>Nome utente</strong></label>
-                <input type="text" placeholder="Utente" name="utente" />
-                <label><strong>Password</strong></label>
-                <input type="password" placeholder="Password" name="password" />
-                <button type="submit" id="loginButton">Accedi</button>
 
-                <p>Prima volta su BTN?<a href="registrazione.html"> Registrati</a></p>
+        <main id="loginMain">
+            
+            <form action="registrazione.html" id="loginForm">
+                <label><strong>Nome</strong></label>
+                <input type="text" placeholder="Inserisci il tuo nome" name="nome" />
+                <label><strong>Cognome</strong></label>
+                <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" />
+                <label><strong>Password</strong></label>
+                <input type="password" placeholder="password" name="password" />
+                <label><strong>Conferma Password</strong></label>
+                <input type="password" placeholder="reinserici la tua password" name="confPassword" />
+                <label><strong>Data di nascita</strong></label>
+                <input type="date" placeholder="Data di nascita" name="dataNascita" />
+                <label><strong>Email</strong></label>
+                <input type="email" placeholder="inserisci la tua E-mail" name="email" />
+
+                <button type="submit" action="registrazione.html" id="loginButton">Registrati</button>
+                <p>Hai già un account?<a href="login.html"> Accedi</a></p>
             </form>
         </main>
         
