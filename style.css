@@ -444,7 +444,7 @@ footer p {
 #loginForm{
     display:flex;
     flex-direction:column;
-    border-radius: 0.5em; 
+    /* border-radius: 0.5em;  */
     width:90%;
 }
 
@@ -463,19 +463,72 @@ footer p {
     border:none;
 }
 
+#registrationForm{
+    display:flex;
+    flex-direction:column;
+    /* border-radius: 0.5em;  */
+    width:90%;
+}
+
+#listaVantaggi {
+    display:none;
+}
+#registrationContainer h2{
+    display:none;
+}
+
+
 
 /* ====================== pagina registrazione */
-
-
-
 @media only screen and (min-width: 600px) {
     #loginForm{
         width:30%;
         display:flex;
         flex-direction:column;
-        border:1px solid var(--fg-alt);
-        border-radius: 0.5em; 
         padding:2em;
+        float:left;                     /* vedere se va bene mischiare i flex con float */
+        border:1px solid var(--fg-alt); 
+        border-radius: 0.5em;
     }
+
+    #registrationForm{
+        width:50%;
+        display:flex;
+        flex-direction:column;
+        padding:2em;
+        background-color:white;
+        float:left;                     /* vedere se va bene mischiare i flex con float */
+    }
+
+    #registrationContainer{
+        width:50%;
+        background-color:#f7f8fb;
+    }
+
+    #registrationContainer h2{
+        display:block;
+        margin-left:55%;
+        margin-top:5%;
+    }
+
+    #listaVantaggi {
+        list-style:none;
+        display:block;
+        margin-top:4em;
+    }
+    
+    #listaVantaggi li{
+        padding:1em 0.5em 0.5em 1em;
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        /* background-color:red;  */
+    }
+    #listaVantaggi li img{
+        width:30%;
+        height:30%;
+        margin-right:1em;
+        padding:0.5em;
+    }   
     
 }

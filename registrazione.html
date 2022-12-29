@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
-        <title>BTN - Libri, appunti, ripetizioni</title>
+        <title>BTN - Registrazione</title>
     </head>
 
     <body>
@@ -32,24 +32,44 @@
         </header>
 
         <main id="loginMain">
-            
-            <form action="registrazione.html" id="loginForm">
-                <label><strong>Nome</strong></label>
-                <input type="text" placeholder="Inserisci il tuo nome" name="nome" />
-                <label><strong>Cognome</strong></label>
-                <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" />
-                <label><strong>Password</strong></label>
-                <input type="password" placeholder="password" name="password" />
-                <label><strong>Conferma Password</strong></label>
-                <input type="password" placeholder="reinserici la tua password" name="confPassword" />
-                <label><strong>Data di nascita</strong></label>
-                <input type="date" placeholder="Data di nascita" name="dataNascita" />
-                <label><strong>Email</strong></label>
-                <input type="email" placeholder="inserisci la tua E-mail" name="email" />
 
-                <button type="submit" action="registrazione.html" id="loginButton">Registrati</button>
-                <p>Hai già un account?<a href="login.html"> Accedi</a></p>
-            </form>
+            <div id="registrationContainer">
+                <form action="registrazione.html" id="registrationForm">
+                    <label><strong>Nome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo nome" name="nome" />
+                    <label><strong>Cognome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" />
+                    <label><strong>Password</strong></label>
+                    <input type="password" placeholder="password" name="password" />
+                    <label><strong>Conferma Password</strong></label>
+                    <input type="password" placeholder="reinserici la tua password" name="confPassword" />
+                    <label><strong>Data di nascita</strong></label>
+                    <input type="date" placeholder="Data di nascita" name="dataNascita" />
+                    <label><strong>Email</strong></label>
+                    <input type="email" placeholder="inserisci la tua E-mail" name="email" />
+    
+                    <button type="submit" action="registrazione.html" id="loginButton">Registrati</button>
+                    <p>Hai già un account?<a href="login.html"> Accedi</a></p>
+                </form>
+                <h2>I vantaggi di registrarsi</h2>
+                <ul id="listaVantaggi">
+                    <li>
+                        <img src="assets/imgs/iconaIngranaggi.png"/>
+                        <p>Ottieni la possibilità di aggiiungere annunci</p>
+                    </li>
+                    <li>
+                        <img src="assets/imgs/iconaIngranaggi.png"/>
+                       <p>Salva gli annunci che ti interessano con la possibilità di ritrovarli facilmente</p>
+                    </li>
+                    <li>
+                        <img src="assets/imgs/iconaIngranaggi.png"/>
+                        <p>Qualcos'altro adesso penso a cosa si può aggiungere</p>
+                    </li>
+                </ul>
+            </div>
+            
+
+            </div>
         </main>
         
         <footer>
