@@ -6,7 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="script.js" async></script>
+        <script src="assets/script/formManager.js" async></script>
         <title>BTN - Registrazione</title>
     </head>
 
@@ -35,18 +36,18 @@
 
             <div id="registrationContainer">
                 <form action="registrazione.html" id="registrationForm">
-                    <label><strong>Nome</strong></label>
-                    <input type="text" placeholder="Inserisci il tuo nome" name="nome" />
-                    <label><strong>Cognome</strong></label>
-                    <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" />
-                    <label><strong>Password</strong></label>
-                    <input type="password" placeholder="password" name="password" />
-                    <label><strong>Conferma Password</strong></label>
-                    <input type="password" placeholder="reinserici la tua password" name="confPassword" />
-                    <label><strong>Data di nascita</strong></label>
-                    <input type="date" placeholder="Data di nascita" name="dataNascita" />
-                    <label><strong>Email</strong></label>
-                    <input type="email" placeholder="inserisci la tua E-mail" name="email" />
+                    <label id="labelNome"><strong>Nome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo nome" name="nome" id="inputNome"/>
+                    <label id="labelCognome"><strong>Cognome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo cognome" name="cognome" id="inputCognome" />
+                    <label id="labelPassword"><strong>Password</strong></label>
+                    <input type="password" placeholder="Password" name="password" id="inputPassword" />
+                    <label id="labelConfPassword"><strong>Conferma Password</strong></label>
+                    <input type="password" placeholder="Reinserici la tua password" name="confPassword" id="inputConfPassword" />
+                    <label id="labelDataNascita"><strong>Data di nascita</strong></label>
+                    <input type="date" placeholder="Data di nascita" name="dataNascita" id="inputDataNascita" />
+                    <label id="labelEmail"><strong>Email</strong></label>
+                    <input type="email" placeholder="Inserisci la tua E-mail" name="email" id="inputEmail" />
     
                     <button type="submit" action="registrazione.html" id="loginButton">Registrati</button>
                     <p>Hai già un account?<a href="login.html"> Accedi</a></p>
@@ -54,16 +55,16 @@
                 <h2>I vantaggi di registrarsi</h2>
                 <ul id="listaVantaggi">
                     <li>
-                        <img src="assets/imgs/iconaIngranaggi.png"/>
-                        <p>Ottieni la possibilità di aggiiungere annunci</p>
+                        <img src="assets/imgs/vantaggiAddItem.png"/>
+                        <p>Ottieni la possibilità di aggiungere annunci</p>
                     </li>
                     <li>
-                        <img src="assets/imgs/iconaIngranaggi.png"/>
+                        <img src="assets/imgs/vantaggiSaveItem.png"/>
                        <p>Salva gli annunci che ti interessano con la possibilità di ritrovarli facilmente</p>
                     </li>
                     <li>
-                        <img src="assets/imgs/iconaIngranaggi.png"/>
-                        <p>Qualcos'altro adesso penso a cosa si può aggiungere</p>
+                        <img src="assets/imgs/vantaggiFeedback.png"/>
+                        <p>Ottieni la possiblità di lasciare un feedback sulla tua esperienza utente</p>
                     </li>
                 </ul>
             </div>

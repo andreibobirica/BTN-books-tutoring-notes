@@ -430,7 +430,7 @@ footer p {
 }
 
 
-/* ==================== pagina login*/
+/* ==================== pagina login e registrazione */
 
 #loginMain{
     width:100%;
@@ -477,27 +477,25 @@ footer p {
     display:none;
 }
 
-
-
-/* ====================== pagina registrazione */
 @media only screen and (min-width: 600px) {
     #loginForm{
         width:30%;
         display:flex;
         flex-direction:column;
         padding:2em;
-        float:left;                     /* vedere se va bene mischiare i flex con float */
+        float:left;
         border:1px solid var(--fg-alt); 
         border-radius: 0.5em;
     }
 
     #registrationForm{
         width:50%;
+        height: 100%;
         display:flex;
         flex-direction:column;
         padding:2em;
         background-color:white;
-        float:left;                     /* vedere se va bene mischiare i flex con float */
+        float:left;
     }
 
     #registrationContainer{
@@ -508,7 +506,7 @@ footer p {
     #registrationContainer h2{
         display:block;
         margin-left:55%;
-        margin-top:5%;
+        margin-top:1em;
     }
 
     #listaVantaggi {
@@ -525,8 +523,8 @@ footer p {
         /* background-color:red;  */
     }
     #listaVantaggi li img{
-        width:30%;
-        height:30%;
+        width:4em;
+        height:4em;
         margin-right:1em;
         padding:0.5em;
     }   
