@@ -15,6 +15,7 @@
     --accent-red: rgb(153, 0, 20);
     --accent-red-2: rgb(205, 69, 59);
     --accent-red-3: rgb(255, 118, 102);
+    --error-warning: rgba(255,42,81,.1);
     --fg: rgb(20, 20, 20);
 }
 
@@ -468,6 +469,12 @@ footer p {
     flex-direction:column;
     /* border-radius: 0.5em;  */
     width:90%;
+}
+
+label p {   /* errori client-side sugli input */
+    background-color:var(--error-warning);
+    padding:0.5em;
+    border-left:2px solid red;;
 }
 
 #listaVantaggi {
