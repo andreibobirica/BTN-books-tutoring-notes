@@ -15,6 +15,7 @@
     --accent-red: rgb(153, 0, 20);
     --accent-red-2: rgb(205, 69, 59);
     --accent-red-3: rgb(255, 118, 102);
+    --registration-advantages:rgb(247, 248, 251);
     --error-warning: rgba(255,42,81,.1);
     --fg: rgb(20, 20, 20);
 }
@@ -49,16 +50,16 @@ p {
 header {
     background-color: var(--accent-red);
     color: var(--bg);
+    /* position: fixed;    commentato momentaneamente per lasciare spazio al main */
+    /* overflow: hidden;    commentato da perchè mi da problemi con la pagina di registrazione*/ 
     padding: 1em 2em;
     text-align: center;
     width: 100%;
-    display: flex;
+    height:10%;
+    display:flex;
     flex-direction: column;
     justify-content: space-between;
-    /* position: fixed;   commentato momentaneamente per lasciare spazio al main */
-    overflow: hidden;
     top: 0;
-    width: 100%;
     box-shadow: 0 0px 4px 0 rgba(123, 123, 123, 0.2);
 }
 
@@ -464,11 +465,25 @@ footer p {
     border:none;
 }
 
+
 #registrationForm{
     display:flex;
     flex-direction:column;
     /* border-radius: 0.5em;  */
     width:90%;
+    height:100%;
+    overflow:scroll;
+}
+
+#registrationContainer{
+    width:60%;
+    display:flex;
+    justify-content:center;
+    overflow:scroll;
+}
+
+#registrationContainer h2{
+    display:none;
 }
 
 label p {   /* errori client-side sugli input */
@@ -480,9 +495,7 @@ label p {   /* errori client-side sugli input */
 #listaVantaggi {
     display:none;
 }
-#registrationContainer h2{
-    display:none;
-}
+
 
 @media only screen and (min-width: 600px) {
     #loginForm{
@@ -494,10 +507,11 @@ label p {   /* errori client-side sugli input */
         border:1px solid var(--fg-alt); 
         border-radius: 0.5em;
     }
+}
 
+@media only screen and (min-width: 768px) {
     #registrationForm{
         width:50%;
-        height: 100%;
         display:flex;
         flex-direction:column;
         padding:2em;
@@ -506,14 +520,9 @@ label p {   /* errori client-side sugli input */
     }
 
     #registrationContainer{
-        width:50%;
-        background-color:#f7f8fb;
-    }
-
-    #registrationContainer h2{
-        display:block;
-        margin-left:55%;
-        margin-top:1em;
+        width:100%;
+        background-color:var(--registration-advantages);
+        display:initial;
     }
 
     #listaVantaggi {
@@ -521,7 +530,7 @@ label p {   /* errori client-side sugli input */
         display:block;
         margin-top:4em;
     }
-    
+
     #listaVantaggi li{
         padding:1em 0.5em 0.5em 1em;
         display:flex;
@@ -535,5 +544,30 @@ label p {   /* errori client-side sugli input */
         margin-right:1em;
         padding:0.5em;
     }   
+    #registrationContainer h2{
+        display:block;
+        margin-left:60%;
+        margin-top:2em;
+    }
     
+}
+
+@media only screen and (min-width: 1024px) {
+    #registrationContainer{
+        width:70%;
+    }
+    #registrationContainer h2{
+        margin-left:55%;
+        margin-top:1em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #registrationContainer{
+        width:70%;
+    }
+    #registrationContainer h2{
+        margin-left:60%;
+        margin-top:1em;
+    }
 }
