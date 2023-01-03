@@ -26,13 +26,14 @@ function removeErrorMesage(labelId, errorClass){
 
 // prende in input: l'input su cui deve fare il controllo, il nome della label dove mettere il messaggio e la lunghezza minima che deve avere il campo
 function checkLength(elementCheck,labelId, minLength){
+    const fieldLength = elementCheck.value.trim().length;
 
-    if(elementCheck.value.length == 0){
+    if(fieldLength == 0){
         appendErrorMesage(labelId, createErrorMessage("Questo campo non può essere lasciato vuoto", "emptyErrorMessage"), "emptyErrorMessage");
         removeErrorMesage(labelId,"noLongEnough"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
     } 
     else{
-        if(minLength && elementCheck.value.length < minLength){
+        if(minLength && fieldLength < minLength){
             appendErrorMesage(labelId, createErrorMessage("Questo campo deve essere lungo almeno " + minLength + " caratteri", "noLongEnough"), "noLongEnough");
             removeErrorMesage(labelId,"emptyErrorMessage"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
         }
@@ -77,7 +78,7 @@ function checkPasswordFormat(elementCheck,labelId){
 function checkEmail(elementCheck,labelId){
     const email = /^[a-z0-9]+s[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
 
-    if(!email.test(elementCheck.value))
+    if(!email.test(elementCheck.value)) // non c'è il trim perchè il formato html email ce lo ha di default
         appendErrorMesage(labelId, createErrorMessage("Inserire un email valida", "emailFormatErrorMessage"), "emailFormatErrorMessage");
     else
         removeErrorMesage(labelId,"emailFormatErrorMessage");
@@ -86,16 +87,26 @@ function checkEmail(elementCheck,labelId){
 function checkName(elementCheck,labelId){
     const nameCharacters = /[^A-Za-z]+/;
 
-    if(nameCharacters.test(elementCheck.value))
+    if(nameCharacters.test(elementCheck.value.trim()))
         appendErrorMesage(labelId, createErrorMessage("Inserire un nome valido", "nameFormatErrorMessage"), "nameFormatErrorMessage");
     else
         removeErrorMesage(labelId,"nameFormatErrorMessage");
 }
 
+function checkSurname(elementCheck,labelId){
+    const nameCharacters = /[^A-Za-z]+/;
+
+    if(nameCharacters.test(elementCheck.value.trim()))
+        appendErrorMesage(labelId, createErrorMessage("Inserire un cognome valido", "surnameFormatErrorMessage"), "surnameFormatErrorMessage");
+    else
+        removeErrorMesage(labelId,"surnameFormatErrorMessage");
+}
+
+
 function checkUsername(elementCheck,labelId){
     const userCharacters = /[^\w_-]+/;  
 
-    if(userCharacters.test(elementCheck.value))
+    if(userCharacters.test(elementCheck.value.trim()))
         appendErrorMesage(labelId, createErrorMessage("Inserire un username valido", "userFormatErrorMessage"), "userFormatErrorMessage");
     else
         removeErrorMesage(labelId,"userFormatErrorMessage");
@@ -130,7 +141,7 @@ function addEventListener(){
 
     cognome.addEventListener("blur", function(){
         checkLength(cognome,"labelCognome",2);
-        checkName(cognome,"labelNome");
+        checkSurname(cognome,"labelCognome");
     });
 
     username.addEventListener("blur", function(){
