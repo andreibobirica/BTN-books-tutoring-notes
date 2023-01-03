@@ -55,7 +55,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* position: fixed;   commentato momentaneamente per lasciare spazio al main*/
+    /* position: fixed;   commentato momentaneamente per lasciare spazio al main */
     overflow: hidden;
     top: 0;
     width: 100%;
