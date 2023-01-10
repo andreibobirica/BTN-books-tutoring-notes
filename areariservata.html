@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>BTN - Libri, appunti, ripetizioni</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div id="logo">
+                <h1>BTN</h1>
+                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            </div>
+
+            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="">Cerca</a></li>
+                <li><a href="">Info</a></li>
+                <li><a href="">Chi siamo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="welcome-message" style="margin-left:30px ;">
+        <h1>Benvenuto, Drilon!</h1>
+        <img src="./assets/imgs/icona.png"alt="" width="150" height="150" style="margin-top: 10px;">
+      </div>
+      <div id="user-info">
+        <p>Nome: Drilon</p>
+        <p>Cognome: Klinaku</p>
+        <p>Email: drilonklinaku01@gmail.com</p>
+        <p>Numero di cellulare: 3476522493</p>
+    </div>
+
+    <div id="annunci-container" >
+        <div id="annunci-pubblicati">
+          <!-- tabella annunci pubblicati -->
+          <h3>Annunci pubblicati</h3>
+          <table>
+            <tr>
+              <th>Titolo</th>
+              <th>Materia Scolastica</th>
+              <th>Prezzo</th>
+            </tr>
+            <tr>
+              <td>Libro di Matematica</td>
+              <td>Matematica</td>
+              <td>10$</td>
+            </tr>
+            <tr>
+              <td>Libro di Storia</td>
+              <td>Storia</td>
+              <td>12$</td>
+            </tr>
+            <tr>
+              <td>Libro di Inglese</td>
+              <td>Inglese</td>
+              <td>8$</td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="annunci-salvati">
+          <!-- tabella annunci salvati -->
+          <h3>Annunci salvati</h3>
+          <table style="   margin-top: 10px;
+          border: 2px solid rgb(255, 0, 0);">
+            <tr>
+              <th>Titolo</th>
+              <th>Prezzo</th>
+            </tr>
+            <tr>
+              <td>Tutor privato</td>
+              <td>€30/ora</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+    
+</body>
