@@ -129,6 +129,7 @@ nav a:visited {
 
 section {
     padding: 1.5em 1.5em;
+    width: 100%;
 }
 
 section h2 {
@@ -219,11 +220,15 @@ section p {
     font-size: 1em;
 }
 
+#info > img,
+#disclaimer > img {
+    display: none;
+}
+
 #info {
     background-image: url("./assets/imgs/studyoutside.jpg");
     background-size: cover;
     background-position: center;
-    padding: unset;
 }
 
 .text {
@@ -238,7 +243,6 @@ section p {
     background-image: url("./assets/imgs/studyingheadphones.jpg");
     background-size: cover;
     background-position: center;
-    padding: unset;
 }
 
 #disclaimer .text {
@@ -276,12 +280,8 @@ footer p {
         text-align: center;
     }
 
-    #info,
-    #disclaimer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    #info {
+        flex-direction: row-reverse;
     }
 
     #search > div {
@@ -335,29 +335,36 @@ footer p {
 
     #info,
     #disclaimer {
-        background-repeat: no-repeat;
-        background-size: 40% 85%;
-        background-position-y: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
     }
 
-    #info {
-        align-items: flex-start;
-        background-position-x: right 5%;
+    #info > img,
+    #disclaimer > img {
+        display: inline;
+        border-radius: 25px;
+        margin: 1.5em;
+        height: 350px;
+    }
+
+    #info,
+    #disclaimer {
+        background-image: none;
     }
 
     #disclaimer {
-        align-items: flex-end;
-        background-position-x: left 5%;
-
         background-color: var(--bg-alt);
     }
 
     #info .text,
     #disclaimer .text {
         background-color: rgba(230, 230, 230, 0);
-        width: 55%;
         padding-left: 1.5em;
         padding-right: 1.5em;
+        max-width: 50%;
     }
 
     #search > div {
@@ -371,25 +378,23 @@ footer p {
     }
 
     #search {
-        align-items: flex-start;
+        /*align-items: flex-start;*/
         padding: 2.5em 2.5em;
     }
 
     #search h2 {
-        text-align: left;
+        /*text-align: left;*/
         font-size: 2.5em;
     }
 
-    #search > div{
+    #search > div {
         width: 50%;
     }
 
     #info .text,
     #disclaimer .text {
-        padding-left: 3em;
-        padding-right: 3em;
+        font-size: 1.1em;
     }
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -403,12 +408,16 @@ footer p {
         height: 2.5em;
     }
 
+    #disclaimer, #info {
+        padding: 1.5em 10em;
+    }
+
     nav {
         font-size: 1.25em;
     }
 
-    #info, #disclaimer {
-        max-width: 65%;
+    #info,
+    #disclaimer {
         margin: auto;
     }
 
@@ -422,10 +431,9 @@ footer p {
 
     #search h2 {
         font-size: 3em;
-        text-align: center;
     }
 
-    #search > div{
+    #search > div {
         width: 45%;
     }
 }
