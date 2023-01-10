@@ -496,17 +496,11 @@ footer p {
         border-radius: 0em 0em 1em 1em;
     }
 
-    /*     #searchSection{
-        display:flex;
-        justify-content:center;
-        padding: 0em 0em 1em 0em;
-    } */
-
     #searchSection {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1.5em 1.1em;
+        padding: 0em 0em 1em 0em;
     }
 
     .product a:hover {
