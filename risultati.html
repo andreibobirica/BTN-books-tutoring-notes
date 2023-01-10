@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Questa pagina è dedicata alla ricerca di libri, appunti e ripetizioni in ambito universitario. E' possibile selezionarli singolarmente per controllarne i dettagli">
+    <meta name="description"
+        content="Questa pagina è dedicata alla ricerca di libri, appunti e ripetizioni in ambito universitario. E' possibile selezionarli singolarmente per controllarne i dettagli">
     <meta name="keywords" content="libri, appunti, ripetizioni, università, didattica, bacheca, annunci">
     <link rel="stylesheet" href="style.css">
     <title>BTN - Libri, appunti, ripetizioni</title>
 </head>
+
 <body>
     <header>
         <div>
-            <div id="logo">
-                <h1>BTN</h1>
-                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            <div id="logo"><a href="./index.html">
+                    <h1>BTN</h1>
+                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+                </a>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
@@ -22,15 +25,15 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="">Cerca</a></li>
-                <li><a href="">Info</a></li>
-                <li><a href="">Chi siamo</a></li>
-                <li><a href="">Area riservata</a></li>
+                <li><a href="./index.html">Cerca</a></li>
+                <li><a href="./info.html">Info</a></li>
+                <li><a href="./login.html">Accedi</a></li>
+                <li><a href="./registrazione.html">Registrati</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>  
+    <main>
         <!-- <section id="searchSection">
             <div id="searchBox">
                 <form action="" id="search-form">
@@ -63,35 +66,43 @@
                 </form>
             </div>
         </section>
-        
+
         <!-- vedere se tenerlo -->
         <form id="orderForm">
             <label for="cars">Ordina per: </label>
             <select name="filtro_ordinamento" id="scelteOrdinamento">
-                <option >più recente</option>
-                <option >più vecchio</option>
-                <option >ordine alfabetico (A-Z)</option>
-                <option >ordine alfabetico (Z-A)</option>
+                <option>più recente</option>
+                <option>più vecchio</option>
+                <option>ordine alfabetico (A-Z)</option>
+                <option>ordine alfabetico (Z-A)</option>
             </select>
         </form>
 
         <ul id="productsList">
             <li class="product">
-                    <h2>Alpha Test Ingegneria</h2>
-                    <p class="briefDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus quis nibh ut commodo. Duis pretium sapien a blandit varius. Phasellus posuere mollis ultrices. Sed nec turpis augue. Donec id velit tristique, pulvinar augue ut, tincidunt lectus. Proin aliquet gravida ex in condimentum. Morbi vestibulum accumsan metus, id ultricies leo posuere eu. Nulla eu dictum neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam molestie elit leo, pharetra dictum tellus dapibus sed. Nullam lorem augue, ultrices a maximus accumsan, convallis et lorem. Vestibulum velit lectus, mattis at ultrices vel, hendrerit vitae augue. Pellentesque ex nulla, mollis quis risus vitae, scelerisque dictum quam.</p>
-                    <a href ="da-definire1">Vedi annuncio</a>
+                <h2>Alpha Test Ingegneria</h2>
+                <p class="briefDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus quis
+                    nibh ut commodo. Duis pretium sapien a blandit varius. Phasellus posuere mollis ultrices. Sed nec
+                    turpis augue. Donec id velit tristique, pulvinar augue ut, tincidunt lectus. Proin aliquet gravida
+                    ex in condimentum. Morbi vestibulum accumsan metus, id ultricies leo posuere eu. Nulla eu dictum
+                    neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                    Aliquam molestie elit leo, pharetra dictum tellus dapibus sed. Nullam lorem augue, ultrices a
+                    maximus accumsan, convallis et lorem. Vestibulum velit lectus, mattis at ultrices vel, hendrerit
+                    vitae augue. Pellentesque ex nulla, mollis quis risus vitae, scelerisque dictum quam.</p>
+                <a href="da-definire1">Vedi annuncio</a>
             </li>
-            
+
             <li class="product">
                 <h2>Alpha Test Ingegneria</h2>
                 <p class="briefDescription">Lorem ipsum dolor sit amet</p>
-                <a href ="da-definire2">Vedi annuncio</a>
+                <a href="da-definire2">Vedi annuncio</a>
             </li>
-                
+
             <li class="product">
                 <h2>Alpha Test Ingegneria</h2>
-                <p class="briefDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus quis nibh ut commodo. Duis pretium sapien a blandit varius.</p>
-                <a href ="da-definire3">Vedi annuncio</a>
+                <p class="briefDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In finibus quis
+                    nibh ut commodo. Duis pretium sapien a blandit varius.</p>
+                <a href="da-definire3">Vedi annuncio</a>
             </li>
 
         </ul>

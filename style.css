@@ -52,15 +52,9 @@ p {
 header {
     background-color: var(--accent-red);
     color: var(--bg);
-    /* position: fixed;    commentato momentaneamente per lasciare spazio al main */
-    /* overflow: hidden;    commentato da perchè mi da problemi con la pagina di registrazione*/
+    position: fixed; /* commentato momentaneamente per lasciare spazio al main */
     padding: 1em 2em;
-    text-align: center;
     width: 100%;
-    height: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     top: 0;
     box-shadow: 0 0px 4px 0 rgba(123, 123, 123, 0.2);
 }
@@ -91,6 +85,15 @@ header > div {
     justify-content: center;
 }
 
+#logo > a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--bg);
+}
+
 #logo img {
     object-position: center;
 }
@@ -100,6 +103,10 @@ header > div {
     border: 3px solid var(--bg);
     background-color: rgba(255, 0, 0, 0);
     color: var(--bg);
+}
+
+menu {
+    display: none;
 }
 
 nav {
@@ -532,7 +539,9 @@ footer p {
     }
 
     header {
+        display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         padding-top: 1.5em;
         padding-bottom: 1.5em;
