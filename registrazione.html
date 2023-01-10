@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" async></script>
+        <script src="assets/script/formManager.js" async></script>
+        <title>BTN - Registrazione</title>
+    </head>
+
+    <body>
+        <header>
+            <div>
+                <div id="logo">
+                    <h1>BTN</h1>
+                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+                </div>
+
+                <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+            </div>
+
+            <nav id="menu">
+                <ul>
+                    <li><a href="">Cerca</a></li>
+                    <li><a href="">Info</a></li>
+                    <li><a href="">Chi siamo</a></li>
+                    <li><a href="">Area riservata</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="loginMain">
+            <div id="registrationContainer">
+                <form action="registrazione.html" id="registrationForm">
+                    <label id="labelNome"><strong>Nome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome"/>
+                    <label id="labelCognome"><strong>Cognome</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo cognome" maxlength="25" name="cognome" id="inputCognome" />
+                    <label id="labelUsername"><strong>Username</strong></label>
+                    <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="usernmae" id="inputUsername" />
+                    <label id="labelPassword"><strong>Password</strong></label>
+                    <input type="password" placeholder="Password" maxlength="50" name="password" id="inputPassword" />
+                    <label id="labelConfPassword"><strong>Conferma Password</strong></label>
+                    <input type="password" placeholder="Reinserici la tua password" maxlength="50" name="confPassword" id="inputConfPassword" />
+                    <label id="labelDataNascita"><strong>Data di nascita</strong></label>
+                    <input type="date" placeholder="Data di nascita" name="dataNascita" id="inputDataNascita" />
+                    <label id="labelEmail"><strong>Email</strong></label>
+                    <input type="email" placeholder="Inserisci la tua E-mail" maxlength="70" name="email" id="inputEmail" />
+    
+                    <button type="submit" action="registrazione.html" id="loginButton">Registrati</button>
+                    <p>Hai già un account?<a href="login.html"> Accedi</a></p>
+                </form>
+
+                <h2>I vantaggi di registrarsi</h2>
+                <ul id="listaVantaggi">
+                    <li>
+                        <span id="addAnnuncioImg"></span>
+                        <p>Ottieni la possibilità di aggiungere annunci</p>
+                    </li>
+                    <li>
+                        <span id="salvaAnnuncioImg"></span>
+                        <p>Salva gli annunci che ti interessano con la possibilità di ritrovarli facilmente</p>
+                    </li>
+                    <li>
+                        <span id="feedbackImg"></span>
+                        <p>Ottieni la possiblità di lasciare un feedback sulla tua esperienza utente</p>
+                    </li>
+                </ul>
+            </div>
+            
+
+            </div>
+        </main>
+        
+        <footer>
+            <p>BTN</p>
+        </footer>
+    </body>
+</html>

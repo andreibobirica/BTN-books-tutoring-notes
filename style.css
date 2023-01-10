@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Alexandria";
-    src: url("../assets/fonts/Alexandria-VariableFont_wght.ttf");
+    src: url("./assets/fonts/Alexandria-VariableFont_wght.ttf");
 }
 
 @font-face {
     font-family: "Alfa Slab One";
-    src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
+    src: url("./assets/fonts/AlfaSlabOne-Regular.ttf");
 }
 
 :root {
@@ -15,6 +15,8 @@
     --accent-red: rgb(153, 0, 20);
     --accent-red-2: rgb(205, 69, 59);
     --accent-red-3: rgb(255, 118, 102);
+    --registration-advantages:rgb(247, 248, 251);
+    --error-warning: rgba(255,42,81,.1);
     --active-visited-link:rgb(252, 181, 15);
     --fg: rgb(20, 20, 20);
 }
@@ -29,6 +31,9 @@ html,
 body {
     height:100%;
     width:100%;
+    min-height:100vh;/* questo e il footer con marigin-top:auto mi permettono di avere il footer in fondo alla pagina anche quanod non ho molti elementi mostrati*/
+    height:100%;
+    width:100%;
     display:flex;
     flex-direction:column;
     min-height:100vh;/* questo e il footer con marigin-auto mi permettono di avere il footer in fondo alla pagina anche quanod non ho molti elementi mostrati*/
@@ -36,6 +41,9 @@ body {
     font-family: "Alexandria", sans-serif;
     line-height: 1.5em;
     margin: auto;
+    display:flex;
+    flex-direction:column;
+
 }
 
 p {
@@ -48,16 +56,16 @@ p {
 header {
     background-color: var(--accent-red);
     color: var(--bg);
+    /* position: fixed;    commentato momentaneamente per lasciare spazio al main */
+    /* overflow: hidden;    commentato da perchè mi da problemi con la pagina di registrazione*/ 
     padding: 1em 2em;
     text-align: center;
     width:100%;
-    display: flex;
+    height:10%;
+    display:flex;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
-    overflow: hidden;
     top: 0;
-    width: 100%;
     box-shadow: 0 0px 4px 0 rgba(123, 123, 123, 0.2);
 }
 
@@ -151,7 +159,6 @@ section p {
     flex-direction: column;
     justify-content: end;
     padding: 1.5em 1.1em;
-
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
 }
@@ -593,3 +600,326 @@ footer p {
 
 
 
+
+
+
+/* ==============  */
+
+/* stile alternativo per le liste  */
+
+/* .product{
+    border-bottom: 1px solid lightgrey;
+    width:90%;
+    display:flex;
+    flex-direction: column;
+    padding:1em;
+}
+.product:hover{
+    background-color: #f5f5f5;
+} */
+
+.product{
+    background-color:#f5f5f5;
+    border: 1px solid #d3d3d3;
+    border-radius:0.5em;
+    list-style-type: none;  
+    width:90%;
+    padding:1em;
+    margin:0.5em 0.5em 0.5em 0.5em;
+}
+
+.product h2{
+    margin-bottom:0.5em;
+}
+
+#productsList{
+    width:100%; 
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    margin-bottom:0.5em;
+}
+
+#sceltaCategoria li{
+    display:inline-block;
+    margin:1em 0.5em 1em 0.5em;
+}
+
+#sceltaCategoria li a{
+    border:1px solid var(--accent-red);
+    text-decoration:none;
+    border-radius:1.5em;
+    padding:0.5em;
+}
+
+#selectedCategory{
+    color:white;
+    background-color:var(--accent-red);
+}
+
+#searchBox{
+    background-color: var(--accent-red-2);
+    padding:1em;
+    width:100%;
+    border-radius:1em;
+}
+.briefDescription{
+    height:3em;
+    overflow: hidden;
+    display:-webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.productImageContainer{ 
+    width:200px;
+    height:100px;
+    background-color: #c2c0c0;
+    border-radius:0.5em;
+    display:flex;
+    margin-right:1em;
+    align-items:center;
+    justify-content: center;
+}
+
+.productImageContainer img{
+    max-width:100%;
+    max-height: 100%;
+}
+#orderForm{
+    margin-left:10%;
+}
+
+.product a {
+    padding:0.5em;
+    color:white;
+    text-decoration:none;
+    background-color:var(--accent-red-2);
+    border-radius:0.5em;
+    text-align:center;
+    display:block;
+} 
+
+#scelteOrdinamento{
+    padding:0.2em;
+    
+}
+
+.product a:active {
+    background-color:var(--active-visited-link);
+}
+
+.product a:visited {
+    background-color:var(--active-visited-link);
+}
+
+@media only screen and (min-width: 600px) {
+    .product{
+        width:70%;
+    }
+
+    #searchBox{
+        background-color: var(--accent-red-2);
+        padding:1em;
+        width:60%;
+        border-radius:0em 0em 1em 1em;
+    }
+
+    #searchSection{
+        display:flex;
+        justify-content:center;
+        padding: 0em 0em 1em 0em;
+    }
+    .product a:hover{
+        text-decoration:none;
+    }
+
+    .product a {
+        color:var(--accent-red);
+        text-decoration:underline;
+        background-color:initial;
+        border-radius:0em;
+        text-align:initial;
+        display:inline;
+    } 
+    
+    .product a:active {
+        background-color:initial;
+        color:var(--active-visited-link);
+    }
+    .product a:visited {
+        background-color:initial;
+        color:var(--active-visited-link);
+    }
+}
+
+
+
+
+
+
+/* ==================== pagina login e registrazione */
+
+#loginMain{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginTitle{
+    margin:1em;
+}
+
+#loginForm{
+    display:flex;
+    flex-direction:column;
+    width:90%;
+}
+
+#loginMain input{
+    padding:1em;
+    border:1px solid var(--fg-alt);
+    border-radius:0.3em;
+}
+
+#loginButton{
+    margin-top:1em;
+    background-color: var(--accent-red);
+    color:white;
+    padding:1em;
+    border-radius:0.5em;
+    border:none;
+}
+
+#registrationForm{
+    display:flex;
+    flex-direction:column;
+    /* border-radius: 0.5em;  */
+    width:90%;
+    height:100%;
+    overflow:scroll;
+}
+
+#registrationContainer{
+    width:60%;
+    display:flex;
+    justify-content:center;
+    overflow:scroll;
+}
+
+#registrationContainer h2{
+    display:none;
+}
+
+label p {   /* errori client-side sugli input */
+    background-color:var(--error-warning);
+    padding:0.5em;
+    border-left:2px solid red;;
+}
+
+#listaVantaggi {
+    display:none;
+}
+
+
+@media only screen and (min-width: 600px) {
+    #loginForm{
+        width:65%;
+        display:flex;
+        flex-direction:column;
+        padding:2em;
+        float:left;
+        border:1px solid var(--fg-alt); 
+        border-radius: 0.5em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #loginForm{
+        width:50%;
+    }
+
+    #registrationForm{
+        width:50%;
+        display:flex;
+        flex-direction:column;
+        padding:2em;
+        background-color:white;
+        float:left;
+    }
+
+    #registrationContainer{
+        width:100%;
+        background-color:var(--registration-advantages);
+        display:initial;
+    }
+
+    #listaVantaggi {
+        list-style:none;
+        display:block;
+        margin-top:4em;
+    }
+
+    #listaVantaggi li{
+        padding:1em 0.5em 0.5em 1em;
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        /* background-color:red;  */
+    }
+
+    #listaVantaggi span{   
+        width:4.5em;
+        height:4.5em;
+        padding:0.5em;
+        margin-right:1em;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #listaVantaggi p{   
+        width:80%;
+    }
+    #addAnnuncioImg{
+        background-image:url('assets/imgs/vantaggiAddItem.png');
+    }
+    #salvaAnnuncioImg{
+        background-image:url('assets/imgs/vantaggiSaveItem.png');
+    }
+    #feedbackImg{
+        background-image:url('assets/imgs/vantaggiFeedback.png');
+    }
+
+    #registrationContainer h2{
+        display:block;
+        margin-left:60%;
+        margin-top:2em;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px) {
+    #loginForm{
+        width:30%;
+    }
+
+    #registrationContainer{
+        width:70%;
+    }
+    #registrationContainer h2{
+        margin-left:55%;
+        margin-top:1em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #registrationContainer{
+        width:70%;
+    }
+    #registrationContainer h2{
+        margin-left:60%;
+        margin-top:1em;
+    }
+}
