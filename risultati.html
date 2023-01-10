@@ -11,21 +11,27 @@
 </head>
 <body>
     <header>
-        <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-        <h1>BTN</h1>
-        <!-- controllare se basta mettere il titolo nascosto-->
+        <div>
+            <div id="logo">
+                <h1>BTN</h1>
+                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            </div>
+
+            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="">Cerca</a></li>
+                <li><a href="">Info</a></li>
+                <li><a href="">Chi siamo</a></li>
+                <li><a href="">Area riservata</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li>Cerca</li>
-            <li><a href="">Info</a></li>
-            <li><a href="">Chi siamo</a></li>
-            <li><a href="">Area riservata</a></li>
-        </ul>
-    </nav>
 
     <main>  
-        <section id="searchSection">
+        <!-- <section id="searchSection">
             <div id="searchBox">
                 <form action="" id="search-form">
                     <input type="text" placeholder="Titolo, corso..." name="search" id="search-in">
@@ -35,6 +41,23 @@
                             <option value="ripetizioni">Ripetizioni</option>
                             <option value="appunti">Appunti</option>
                         </select>
+                        <button type="submit" id="search-btn" class="button">Cerca</button>
+                    </div>
+                </form>
+            </div>
+        </section> -->
+
+        <section id="searchSection">
+            <div id="searchBox">
+                <form action="" id="search-form">
+                    <input type="text" placeholder="Titolo, corso..." name="search" id="search-in">
+                    <div id="search-buttons">
+                        <select name="categoria" id="search-cat-select">
+                            <option value="libri">Libri</option>
+                            <option value="ripetizioni">Ripetizioni</option>
+                            <option value="appunti">Appunti</option>
+                        </select>
+
                         <button type="submit" id="search-btn" class="button">Cerca</button>
                     </div>
                 </form>
