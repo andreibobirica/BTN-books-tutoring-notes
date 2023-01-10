@@ -755,4 +755,39 @@ footer p {
         margin-left: 60%;
         margin-top: 1em;
     }
+    #user-info p {
+    margin-left: 30px;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  #annunci-container{
+    display: flex;
+    align-items: flex-start;
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #annunci-pubblicati {
+    padding:1em;
+    margin-left: 30px;
+    float: left;
+    width: 45%;
+    border: 2px solid rgb(156, 153, 153);
+  }
+  #annunci-salvati {
+    padding:1em;
+    border-radius: 0.3px;
+    margin-left: 30px;
+    float: left;
+    width: 45%;
+    border: 2px solid rgb(156, 153, 153);
+  }
+  
+
+  table {
+    margin-top: 10px;
+    border: 2px solid rgb(255, 0, 0);
+  }
 }
