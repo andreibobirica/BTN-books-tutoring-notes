@@ -565,10 +565,13 @@ footer p {
 
     #search {
         align-items: center;
-        max-height: 650px;
+        /* max-height: 650px; */
         background-image: url("./assets/imgs/hats.jpg");
         justify-content: center;
-        padding-top: 7em;
+    }
+
+    main {
+        margin-top: 5em;
     }
 
     #info,
