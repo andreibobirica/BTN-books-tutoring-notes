@@ -58,21 +58,19 @@ function checkPasswordFormat(elementCheck,labelId){
     const specialCharacter = /[\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
 
     if(!numero.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("La password deve contenere almeno un numero", "numberErrorMessage"), "numberErrorMessage");
+        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno un numero", "numberErrorMessage"), "numberErrorMessage");
     else
         removeErrorMesage(labelId,"numberErrorMessage");
 
     if (!upperCaseLetter.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("La password deve contenere almeno una lettera maiuscola", "upperCaseErrorMessage"), "upperCaseErrorMessage");
+        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno una lettera maiuscola", "upperCaseErrorMessage"), "upperCaseErrorMessage");
     else
         removeErrorMesage(labelId,"upperCaseErrorMessage");
 
     if(!specialCharacter.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("La password deve contenere almeno un carattere speciale", "specCharactErrorMessage"), "specCharactErrorMessage");
+        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno un carattere speciale", "specCharactErrorMessage"), "specCharactErrorMessage");
     else
         removeErrorMesage(labelId,"specCharactErrorMessage");
-
-    listPassword.setAttribute("class", errorClass);
 }
 
 function checkEmail(elementCheck,labelId){
