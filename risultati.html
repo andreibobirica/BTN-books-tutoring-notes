@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Questa pagina è dedicata alla ricerca di libri, appunti e ripetizioni in ambito universitario. E' possibile selezionarli singolarmente per controllarne i dettagli">
-    <meta name="keywords" content="libri, appunti, ripetizioni, università, didattica, bacheca, annunci">
     <link rel="stylesheet" href="style.css">
-    <title>BTN - Libri, appunti, ripetizioni</title>
+    <title>BTN - Risultati</title>
 </head>
+
 <body>
     <header>
         <div>
-            <div id="logo">
-                <h1>BTN</h1>
-                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            <div id="logo"><a href="./index.html">
+                    <h1>BTN</h1>
+                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+                </a>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
@@ -22,13 +23,16 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="">Cerca</a></li>
-                <li><a href="">Info</a></li>
-                <li><a href="">Chi siamo</a></li>
-                <li><a href="">Area riservata</a></li>
+                <li><a href="./index.html">Cerca</a></li>
+                <li><a href="./info.html">Info</a></li>
+                <li><a href="./login.html">Accedi</a></li>
+                <li><a href="./registrazione.html">Registrati</a></li>
             </ul>
         </nav>
     </header>
+    <nav id="breadcrumb">
+        <p><a href="./index.html" lang="en">Home</a> / Risultati</p>
+    </nav>
 
     <main id="mainRisultati">  
         <section id="searchSection">
@@ -47,15 +51,15 @@
                 </form>
             </div>
         </section>
-        
+
         <!-- vedere se tenerlo -->
         <form id="orderForm">
             <label for="cars">Ordina per: </label>
             <select name="filtro_ordinamento" id="scelteOrdinamento">
-                <option >più recente</option>
-                <option >più vecchio</option>
-                <option >ordine alfabetico (A-Z)</option>
-                <option >ordine alfabetico (Z-A)</option>
+                <option>più recente</option>
+                <option>più vecchio</option>
+                <option>ordine alfabetico (A-Z)</option>
+                <option>ordine alfabetico (Z-A)</option>
             </select>
         </form>
 
@@ -67,7 +71,7 @@
                     <a href ="da-definire1">Vedi annuncio</a>
 
             </li>
-            
+
             <li class="product">
                 <h2>Alpha Test Ingegneria</h2>
                 <img src="https://images.unsplash.com/photo-1592085198739-ffcad7f36b54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class ="listingImage" alt =""/>
@@ -83,7 +87,7 @@
                 <a href ="da-definire1">Vedi annuncio</a>
 
             </li>
-                
+
             <li class="product">
                 <h2>Alpha Test Ingegneria</h2>
                 <img src="https://wips.plug.it/cips/initalia.virgilio.it/cms/2020/08/libri-volanti.jpg" class ="listingImage" alt =""/>
