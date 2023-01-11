@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cerca libri, appunti e ripetizioni e mettiti in contatto direttamente con i venditori">
+    <meta name="keywords" content="BTN, informazioni">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>BTN - Libri, appunti, ripetizioni</title>
+    <title>BTN - Informazioni</title>
 </head>
 
 <body>
     <header>
         <div>
-            <div id="logo">
-                <h1>BTN</h1>
-                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            <div id="logo"><a href="./index.html">
+                    <h1>BTN</h1>
+                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+                </a>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
@@ -30,6 +34,9 @@
             </ul>
         </nav>
     </header>
+    <nav id="breadcrumb">
+        <p><a href="./index.html" lang="en">Home</a> / Info</p>
+    </nav>
     <main>
         <section id="info">
             <img src="./assets/imgs/studyoutside_square.jpg" class="sectionimg" />
