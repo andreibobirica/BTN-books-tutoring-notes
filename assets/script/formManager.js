@@ -76,7 +76,7 @@ function checkPasswordFormat(elementCheck,labelId){
 }
 
 function checkEmail(elementCheck,labelId){
-    const email = /^[a-z0-9]+s[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
+    const email = /^[a-z0-9]+[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
 
     if(!email.test(elementCheck.value)) // non c'è il trim perchè il formato html email ce lo ha di default
         appendErrorMesage(labelId, createErrorMessage("Inserire un email valida", "emailFormatErrorMessage"), "emailFormatErrorMessage");
