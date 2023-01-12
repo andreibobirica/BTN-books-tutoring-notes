@@ -50,7 +50,6 @@ p {
 header {
     background-color: var(--accent-red);
     color: var(--bg);
-    position: fixed; /* commentato momentaneamente per lasciare spazio al main */
     padding: 1em 2em;
     width: 100%;
     top: 0;
@@ -133,7 +132,6 @@ nav a:visited {
 }
 
 #breadcrumb {
-    margin-top: 5em;
     font-size: 0.8em;
     background-color: var(--accent-red-2);
     color: var(--bg);
@@ -253,6 +251,7 @@ section p {
 
 .text {
     padding: 1.5em;
+    border-radius: 10px;
 }
 
 #info .text {
@@ -353,7 +352,7 @@ section p {
 
 .listing a {
     padding: 0.5em;
-    margin: 0.5em 0.5em .75em 0.5em;
+    margin: 0.5em 0.5em 0.75em 0.5em;
     color: white;
     text-decoration: none;
     background-color: var(--accent-red-2);
@@ -396,38 +395,51 @@ section p {
 
 /* ==================== pagina login e registrazione */
 
-#loginMain {
+#login-main {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url(./assets/imgs/login.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
-#loginTitle {
-    margin: 1em;
-}
-
-#loginForm {
+#login-form {
     display: flex;
     flex-direction: column;
     width: 90%;
+    justify-content: center;
+    background-color: var(--bg);
+
 }
 
-#loginMain input {
-    padding: 1em;
-    border: 1px solid var(--fg-alt);
-    border-radius: 0.3em;
+#login-title {
+    margin-bottom: 1em;
+    color: var(--accent-red);
+    text-align: center;
 }
 
-#loginButton {
-    margin-top: 1em;
-    background-color: var(--accent-red);
+#login-button {
+    margin: 1em 0;
+    background-color: var(--accent-red-2);
     color: white;
-    padding: 1em;
-    border-radius: 0.5em;
+    padding: .75em 4.1em;
+    border-radius: 10px;
     border: none;
+    font-size: 1em;
+}
+
+#login-main input {
+    padding: 1em;
+    border: 2px solid var(--fg-alt);
+    border-radius: 10px;
+}
+
+#login-form p {
+    margin-top: .5em;
 }
 
 #registrationForm {
@@ -502,10 +514,14 @@ label p {
     color: var(--accent-red);
 }
 
+abbr {
+    text-decoration: none;
+}
+
 footer {
     background-color: var(--accent-red);
     color: var(--bg);
-    padding: 0.1em;
+    padding: 1em;
     text-align: center;
     margin-top: auto;
 }
@@ -516,15 +532,15 @@ footer p {
 
 @media only screen and (min-width: 500px) {
     .listing {
-        margin-left: .25em;
-        margin-right: .25em;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
         width: 47%;
     }
-    
+
     .listing-title {
         font-size: 1.4em;
     }
-    
+
     .listing-author {
         font-size: 1.2em;
     }
@@ -535,14 +551,14 @@ footer p {
         text-align: center;
         font-size: 1em;
     }
-    
+
     .listing-price {
         font-size: 1.2em;
     }
 
     .listing a {
         padding: 0.5em;
-        margin: 0.5em 0.5em .75em 0.5em;
+        margin: 0.5em 0.5em 0.75em 0.5em;
         color: white;
         text-decoration: none;
         background-color: var(--accent-red-2);
@@ -580,7 +596,7 @@ footer p {
         width: 100%;
     }
 
-    #loginForm {
+    #login-form {
         width: 65%;
         display: flex;
         flex-direction: column;
@@ -638,10 +654,6 @@ footer p {
         margin-left: 1.25em;
     }
 
-    #breadcrumb {
-        margin-top: 6em;
-    }
-
     #search {
         align-items: center;
         /* max-height: 650px; */
@@ -692,7 +704,7 @@ footer p {
         width: 70%;
     }
 
-    #loginForm {
+    #login-form {
         width: 50%;
     }
 
@@ -758,10 +770,6 @@ footer p {
         padding: 1.75em 3em;
     }
 
-    #breadcrumb {
-        margin-top: 6.5em;
-    }
-
     #search {
         /*align-items: flex-start;*/
         /* padding: 2.5em 2.5em; */
@@ -781,7 +789,7 @@ footer p {
         font-size: 1.1em;
     }
 
-    #loginForm {
+    #login-form {
         width: 30%;
     }
 
@@ -803,10 +811,6 @@ footer p {
     header img {
         width: 2.5em;
         height: 2.5em;
-    }
-
-    #breadcrumb {
-        margin-top: 7.5em;
     }
 
     .listing {
