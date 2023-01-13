@@ -448,14 +448,14 @@ section p {
     /* border-radius: 0.5em;  */
     width: 90%;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #registrationContainer {
     width: 90%;
     display: flex;
     justify-content: center;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #registrationContainer h2 {
