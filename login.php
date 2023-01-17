@@ -1,3 +1,34 @@
+<?php
+//Start Session
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+require_once 'Authentification.php';
+$auth = new Authentification();
+
+if (isset($_POST['utente']) && !empty($_POST['utente'])) {
+    require_once 'Sanitizer.php';
+    $san = new Sanitizer();
+    $username = $san->sanitizeString($_POST["utente"]);
+    $password = $san->sanitizeString($_POST["password"]);
+
+    $retResponse = $auth->login($username,$password);
+    print_r($retResponse);
+    if ($retResponse === TRUE) {
+        print("
+        <script>
+        alert('Login Avvenuta con successo');
+        window.location = './areariservata.php';
+        </script>
+        ");
+    } else {
+        print("
+        <script>alert('Errore: Login ');</script>
+        ");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -26,10 +57,15 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="./index.html">Cerca</a></li>
-                <li><a href="./info.html">Info</a></li>
-                <li>Accedi</li>
-                <li><a href="./registrazione.html">Registrati</a></li>
+                <li><a href="./index.php">Cerca</a></li>
+                <li><a href="./info.php">Info</a></li>
+                <?php if(!$auth->getIfLogin()) : ?>
+                    <li>Accedi</li>
+                    <li><a href="./registrazione.php">Registrati</a></li>
+                <?php else :?>
+                    <li><a href="./areariservata.php">Area Riservata</a></li>
+                    <li><a href="./areariservata.php?logout">Log Out</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -38,7 +74,7 @@
     </nav>
 
     <main id="login-main">
-        <form action="login.html" id="login-form">
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="login-form" method="POST">
             <h2 id="login-title" lang ="en">Login</h2>
             <label lang="en"><strong>Username</strong></label>
             <input type="text" placeholder="Utente" name="utente" />
