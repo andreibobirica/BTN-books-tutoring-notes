@@ -9,7 +9,7 @@ $auth = new Authentification();
 //LogOut
 if (isset($_GET["logout"])) {
   session_destroy(); //destroy the session
-  header("location:/ProgettoTecWeb/index.php"); //to redirect back to "index.php" after logging out
+  header("location:/progetto-tecweb/index.php"); //to redirect back to "index.php" after logging out
   exit();
 }
 ?>
@@ -75,20 +75,26 @@ if (isset($_GET["logout"])) {
       <div id="annunci-container" >
         <div id="annunci-pubblicati">
           <!-- tabella annunci pubblicati -->
+          <p>Aggiungi Un Annuncio<a href="annuncio.php?nuovo">Nuovo</a></p>
+        </div>
+        <div id="annunci-pubblicati">
+          <!-- tabella annunci pubblicati -->
           <h3>Annunci pubblicati</h3>
           <table>
             <tr>
               <th>Titolo</th>
               <th>Materia Scolastica</th>
               <th>Prezzo</th>
+              <th></th>
             </tr>
             <tr>
               <td>Libro di Matematica</td>
               <td>Matematica</td>
               <td>10$</td>
+              <td><a href="annuncio.php?modifica=id">Modifica</a></td>
             </tr>
-
           </table>
+          
         </div>
 
         <div id="annunci-salvati">

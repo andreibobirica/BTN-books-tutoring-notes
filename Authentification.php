@@ -12,7 +12,8 @@ require_once "Database.php";
  */
 class Authentification
 {
-    private $db = null;
+    public $db = null;
+
     public function __CONSTRUCT() {
         $this->db = new Database();
     }
