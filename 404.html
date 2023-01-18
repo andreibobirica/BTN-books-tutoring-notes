@@ -14,10 +14,9 @@
 <body>
     <header>
         <div>
-            <div id="logo"><a href="./index.html">
-                    <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-                </a>
+            <div>
+                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
@@ -32,8 +31,8 @@
             </ul>
         </nav>
     </header>
-    <main id="main404">
-        <div id="container404">
+    <main id="error-main">
+        <div id="error-container">
             <h2>404 - Pagina non trovata</h2>
             <p>La pagina che stai cercando non esiste o è stata rimossa.</p>
             <p><a href="./index.html">Fai una nuova ricerca</a></p>

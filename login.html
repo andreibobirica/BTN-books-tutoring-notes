@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Effettua il login su BTN per vendere libri, annunci e ripetizioni o vedere gli elementi salvati.">
+    <meta name="description"
+        content="Effettua il login su BTN per vendere libri, annunci e ripetizioni o vedere gli elementi salvati.">
     <meta name="keywords" content="BTN, login">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -15,12 +16,7 @@
 <body>
     <header>
         <div>
-            <div id="logo"><a href="./index.html">
-                    <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-                </a>
-            </div>
-
+            <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
@@ -39,14 +35,15 @@
 
     <main id="login-main">
         <form action="login.html" id="login-form">
-            <h2 id="login-title" lang ="en">Login</h2>
+            <h2 id="login-title" lang="en">Login</h2>
             <label lang="en"><strong>Username</strong></label>
             <input type="text" placeholder="Utente" name="utente" />
             <label><strong><span lang="en">Password</span></strong></label>
             <input type="password" placeholder="Password" name="password" />
             <button type="submit" id="login-button">Accedi</button>
 
-            <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a></p>
+            <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a>
+            </p>
         </form>
     </main>
 

@@ -16,10 +16,9 @@
 <body>
     <header>
         <div>
-            <div id="logo"><a href="./index.html">
-                    <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-                </a>
+            <div>
+                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
@@ -39,8 +38,8 @@
     </nav>
 
     <main id="login-main">
-        <div id="registrationContainer">
-            <form action="registrazione.html" id="registrationForm">
+        <div id="registration-container">
+            <form action="registrazione.html" id="registration-form">
                 <label id="labelNome"><strong>Nome</strong></label>
                 <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome" />
                 <label id="labelCognome"><strong>Cognome</strong></label>

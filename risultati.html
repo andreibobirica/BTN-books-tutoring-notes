@@ -12,10 +12,9 @@
 <body>
     <header>
         <div>
-            <div id="logo"><a href="./index.html">
-                    <h1>BTN</h1>
-                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-                </a>
+            <div>
+                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
             </div>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
@@ -34,25 +33,7 @@
         <p><a href="./index.html" lang="en">Home</a> / Risultati</p>
     </nav>
 
-    <main id="mainRisultati">
-        <section id="searchSection">
-            <div id="searchBox">
-                <form action="" id="search-form">
-                    <input type="text" placeholder="Titolo, corso..." name="search" id="search-in">
-                    <div id="search-buttons">
-                        <select name="categoria" id="search-cat-select">
-                            <option value="libri">Libri</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                            <option value="appunti">Appunti</option>
-                        </select>
-
-                        <button type="submit" id="search-btn" class="button">Cerca</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <!-- vedere se tenerlo -->
+    <main id="risultati-main">
         <form id="orderForm">
             <label for="cars">Ordina per: </label>
             <select name="filtro_ordinamento" id="scelteOrdinamento">

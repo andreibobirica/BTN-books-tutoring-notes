@@ -1,3 +1,4 @@
+/* Importazione font */
 @font-face {
     font-family: "Alexandria";
     src: url("./assets/fonts/Alexandria-VariableFont_wght.ttf");
@@ -8,6 +9,7 @@
     src: url("./assets/fonts/AlfaSlabOne-Regular.ttf");
 }
 
+/* Variabili colori */
 :root {
     --bg: rgb(250, 250, 250);
     --bg-alt: rgb(230, 230, 230);
@@ -21,6 +23,8 @@
     --fg: rgb(20, 20, 20);
 }
 
+/* Regole generali, da applicare a tutte le pagine */
+/* Mobile-first, quindi si applicano a tutti gli schermi con dimensioni minori del primo breakpoint */
 * {
     box-sizing: border-box;
     margin: unset;
@@ -31,15 +35,15 @@ html,
 body {
     height: 100%;
     width: 100%;
+
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* questo e il footer con margin-auto mi permettono di avere il footer in fondo alla pagina anche quanod non ho molti elementi mostrati*/
+
     font-size: 100%;
     font-family: "Alexandria", sans-serif;
     line-height: 1.5em;
+
     margin: auto;
-    display: flex;
-    flex-direction: column;
 }
 
 p {
@@ -75,24 +79,13 @@ header > div {
     justify-content: space-between;
 }
 
-#logo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-#logo > a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+.logo {
     color: var(--bg);
+    text-decoration: none;
 }
 
-#logo img {
-    object-position: center;
+.logo:hover {
+    text-decoration: underline;
 }
 
 #menu-btn {
@@ -142,10 +135,6 @@ nav a:visited {
     margin: unset;
 }
 
-main {
-    /* margin-top: 4em;*/
-}
-
 section {
     padding: 1.5em 1.5em;
     width: 100%;
@@ -162,6 +151,38 @@ section p {
     font-size: 1.1em;
 }
 
+input {
+    margin-bottom: 1em;
+}
+
+label {
+    margin-bottom: 0.25em;
+}
+
+label p {
+    /* errori client-side sugli input */
+    background-color: var(--error-warning);
+    padding: 0.5em;
+    border-left: 2px solid red;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+footer {
+    background-color: var(--accent-red);
+    color: var(--bg);
+    padding: 1em;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    font-family: "Alfa Slab One", sans-serif;
+}
+
+/* HOME */
 #search {
     background-image: url("./assets/imgs/studying.jpg");
     background-size: cover;
@@ -233,11 +254,11 @@ section p {
 .button {
     border-radius: 30px;
     height: 100%;
-    /*border: solid 2px var(--fg-alt);*/
     border: none;
     font-size: 1em;
 }
 
+/* INFO */
 #info > img,
 #disclaimer > img {
     display: none;
@@ -268,31 +289,8 @@ section p {
     background-color: rgba(230, 230, 230, 0.85);
 }
 
-#cta a {
-    color: var(--accent-red-3);
-    display: block;
-    text-align: center;
-    background-color: var(--bg);
-    padding: 1.5em;
-    font-size: 1.25em;
-}
-
-/* ==============  */
-
-/* stile alternativo per le liste  */
-
-/* .listing{
-    border-bottom: 1px solid lightgrey;
-    width:90%;
-    display:flex;
-    flex-direction: column;
-    padding:1em;
-}
-.listing:hover{
-    background-color: #f5f5f5;
-} */
-
-#mainRisultati {
+/* RISULTATI */
+#risultati-main {
     display: flex;
     flex-direction: column;
 }
@@ -361,30 +359,6 @@ section p {
     display: block;
 }
 
-#sceltaCategoria li {
-    display: inline-block;
-    margin: 1em 0.5em 1em 0.5em;
-}
-
-#sceltaCategoria li a {
-    border: 1px solid var(--accent-red);
-    text-decoration: none;
-    border-radius: 1.5em;
-    padding: 0.5em;
-}
-
-#selectedCategory {
-    color: white;
-    background-color: var(--accent-red);
-}
-
-#searchBox {
-    background-color: var(--accent-red-2);
-    padding: 1em;
-    width: 100%;
-    border-radius: 1em;
-}
-
 #orderForm {
     margin-left: 10%;
 }
@@ -393,7 +367,7 @@ section p {
     padding: 0.2em;
 }
 
-/* ==================== pagina login e registrazione */
+/* LOGIN E REGISTRAZIONE */
 
 #login-main {
     width: 100%;
@@ -413,7 +387,9 @@ section p {
     width: 90%;
     justify-content: center;
     background-color: var(--bg);
-
+    padding: 1.5em 1em;
+    border-radius: 10px;
+    border: none;
 }
 
 #login-title {
@@ -426,7 +402,7 @@ section p {
     margin: 1em 0;
     background-color: var(--accent-red-2);
     color: white;
-    padding: .75em 4.1em;
+    padding: 0.75em 4.1em;
     border-radius: 10px;
     border: none;
     font-size: 1em;
@@ -439,49 +415,34 @@ section p {
 }
 
 #login-form p {
-    margin-top: .5em;
+    margin-top: 0.5em;
 }
 
-#registrationForm {
+#registration-form {
     display: flex;
     flex-direction: column;
-    /* border-radius: 0.5em;  */
     width: 90%;
     height: 100%;
     overflow: scroll;
 }
 
-#registrationContainer {
+#registration-container {
     width: 90%;
     display: flex;
     justify-content: center;
     overflow: scroll;
 }
 
-#registrationContainer h2 {
+#registration-container h2 {
     display: none;
-}
-
-input {
-    margin-bottom: 1em;
-}
-
-label {
-    margin-bottom: 0.25em;
-}
-
-label p {
-    /* errori client-side sugli input */
-    background-color: var(--error-warning);
-    padding: 0.5em;
-    border-left: 2px solid red;
 }
 
 #listaVantaggi {
     display: none;
 }
 
-#main404 {
+/* PAGINE ERRORI 404 E 500 */
+#error-main {
     width: 100%;
     height: 100%;
     display: flex;
@@ -494,43 +455,28 @@ label p {
     padding: 1.5em;
 }
 
-#container404 {
+#error-container {
     background-color: rgba(230, 230, 230, 0.8);
     border-radius: 25px;
     padding: 1.5em;
     text-align: center;
 }
 
-#container404 h2 {
+#error-container h2 {
     color: var(--accent-red-2);
     font-size: 1.6em;
 }
 
-#container404 p {
+#error-container p {
     font-size: 1.2em;
 }
 
-#container404 a {
+#error-container a {
     color: var(--accent-red);
 }
 
-abbr {
-    text-decoration: none;
-}
-
-footer {
-    background-color: var(--accent-red);
-    color: var(--bg);
-    padding: 1em;
-    text-align: center;
-    margin-top: auto;
-}
-
-footer p {
-    font-family: "Alfa Slab One", sans-serif;
-}
-
 @media only screen and (min-width: 500px) {
+    /* RISULTATI */
     .listing {
         margin-left: 0.25em;
         margin-right: 0.25em;
@@ -568,8 +514,8 @@ footer p {
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+    /* HOME */
     #search {
         align-items: center;
         padding: unset;
@@ -580,47 +526,22 @@ footer p {
         text-align: center;
     }
 
-    #info {
-        flex-direction: row-reverse;
-    }
-
     #search > div {
         width: 85%;
+    }
+
+    /* INFO */
+    #info {
+        flex-direction: row-reverse;
     }
 
     .text {
         padding: 1.5em 3em;
     }
 
-    #cta a {
-        width: 100%;
-    }
-
+    /* LOGIN */
     #login-form {
         width: 65%;
-        display: flex;
-        flex-direction: column;
-        padding: 2em;
-        float: left;
-        border: 1px solid var(--fg-alt);
-        border-radius: 0.5em;
-    }
-
-    .listing {
-    }
-
-    #searchBox {
-        background-color: var(--accent-red-2);
-        padding: 1em;
-        width: 60%;
-        border-radius: 0em 0em 1em 1em;
-    }
-
-    #searchSection {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0em 0em 1em 0em;
     }
 }
 
@@ -654,18 +575,15 @@ footer p {
         margin-left: 1.25em;
     }
 
+    /* HOME */
     #search {
         align-items: center;
-        /* max-height: 650px; */
         background-image: url("./assets/imgs/hats.jpg");
         justify-content: center;
         padding: unset;
     }
 
-    .listing {
-        width: 30%;
-    }
-
+    /* INFO */
     #info,
     #disclaimer {
         display: flex;
@@ -700,15 +618,21 @@ footer p {
         max-width: 50%;
     }
 
+    /* RISULTATI */
+    .listing {
+        width: 30%;
+    }
+
     #search > div {
         width: 70%;
     }
 
+    /* LOGIN E REGISTRAZIONE */
     #login-form {
         width: 50%;
     }
 
-    #registrationForm {
+    #registration-form {
         width: 50%;
         display: flex;
         flex-direction: column;
@@ -717,7 +641,7 @@ footer p {
         float: left;
     }
 
-    #registrationContainer {
+    #registration-container {
         width: 100%;
         background-color: var(--registration-advantages);
         display: initial;
@@ -758,7 +682,7 @@ footer p {
         background-image: url("assets/imgs/vantaggiFeedback.png");
     }
 
-    #registrationContainer h2 {
+    #registration-container h2 {
         display: block;
         margin-left: 60%;
         margin-top: 2em;
@@ -770,13 +694,8 @@ footer p {
         padding: 1.75em 3em;
     }
 
-    #search {
-        /*align-items: flex-start;*/
-        /* padding: 2.5em 2.5em; */
-    }
-
+    /* HOME */
     #search h2 {
-        /*text-align: left;*/
         font-size: 2.5em;
     }
 
@@ -784,19 +703,21 @@ footer p {
         width: 50%;
     }
 
+    /* INFO */
     #info .text,
     #disclaimer .text {
         font-size: 1.1em;
     }
 
+    /* LOGIN E REGISTRAZIONE */
     #login-form {
         width: 30%;
     }
 
-    #registrationContainer {
+    #registration-container {
         width: 70%;
     }
-    #registrationContainer h2 {
+    #registration-container h2 {
         margin-left: 55%;
         margin-top: 1em;
     }
@@ -808,31 +729,11 @@ footer p {
         font-size: 2.5em;
     }
 
-    header img {
-        width: 2.5em;
-        height: 2.5em;
-    }
-
-    .listing {
-        width: 21%;
-        margin-left: 0.75em;
-        margin-right: 0.75em;
-    }
-
-    #disclaimer,
-    #info {
-        padding: 1.5em 10em;
-    }
-
     nav {
         font-size: 1.25em;
     }
 
-    #info,
-    #disclaimer {
-        margin: auto;
-    }
-
+    /* HOME */
     #search {
         padding: 5em;
         height: 100vh; /* Fallback for browsers that do not support Custom Properties */
@@ -849,15 +750,30 @@ footer p {
         width: 45%;
     }
 
-    #registrationContainer {
+    /* RISULTATI */
+    .listing {
+        width: 21%;
+        margin-left: 0.75em;
+        margin-right: 0.75em;
+    }
+
+    /* INFO */
+    #disclaimer,
+    #info {
+        padding: 1.5em 10em;
+        margin: auto;
+    }
+
+    /* LOGIN E REGISTRAZIONE */
+    #registration-container {
         width: 70%;
     }
-    #registrationContainer h2 {
+    #registration-container h2 {
         margin-left: 60%;
         margin-top: 1em;
     }
 
-    /*================= area riservata*/
+    /* AREA RISERVATA */
     .container {
         display: flex;
         flex-wrap: wrap;
@@ -891,6 +807,7 @@ footer p {
         width: 45%;
         border: 2px solid rgb(156, 153, 153);
     }
+
     #annunci-salvati {
         flex: 1;
         padding: 1em;
