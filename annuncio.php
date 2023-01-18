@@ -10,21 +10,24 @@ $rich = new RichiesteAnnunci();
 
 //Script Inserimento Annuncio
 if (isset($_POST["inserisciAnnuncio"])) {
-    //'$annuncio[titolo]', '$annuncio[descrizione]', '$annuncio[prezzo]', '$annuncio[username]', '$annuncio[mediapath]', '$annuncio[materia]');
     $result = $rich->inserisciAnnuncio(
-        array("tipo" => $_POST['tipo'],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_POST['mediapath'], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
+        array("tipo" => $_POST['tipo'],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
-    if($result != 0)
-    header("location:./annuncio.php?annuncio=$result");
+    if($result["lastid"] != 0)
+        header("location:./annuncio.php?annuncio=$result[lastid]");
+    else
+        print($result['upload']['errore']);
 
 }
 //Script Modifica Annuncio
 if (isset($_POST["modificaAnnuncio"])) {
     $result = $rich->modificaAnnuncio(
-        array("id"=>$_POST["modificaAnnuncio"],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_POST['mediapath'], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
+        array("id"=>$_POST["modificaAnnuncio"],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
-    if($result != 0)
-    header("location:./annuncio.php?annuncio=$result");
+    if($result["lastid"] != 0)
+        header("location:./annuncio.php?annuncio=$result[lastid]");
+    else
+        print($result['upload']['errore']);
 }
 
 
@@ -94,36 +97,36 @@ if($auth->getIfLogin()){
         </nav>
     </header>
     <?php if($tipoPagina == "nuovo") : ?>
-        <div class="container">
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="newAnnuncioForm" method="POST">
-                <label id="labelNome"><strong>Tipo Annuncio</strong></label>
-                <select name="tipo" id="cars">
-                    <option value="appunti">Appunti</option>
-                    <option value="libri">Libri</option>
-                    <option value="ripetizioni">Ripetizioni</option>
-                </select>
-                <label id="labelTitolo"><strong>Titolo</strong></label>
-                <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="titolo" id="inputTitolo" />
-                <label id="labelDescrizione"><strong>Descrizione</strong></label>
-                <input type="text" placeholder="Inserisci Descrizione" maxlength="255" name="descrizione" id="inputDescrizione" />
-                <label id="labelPrezzo"><strong>Prezzo</strong></label>
-                <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="prezzo" id="inputPrezzo" />
-                <label id="labelMediapath"><strong>MediaPath</strong></label>
-                <input type="text" placeholder="Inserisci la path del File" maxlength="25" name="mediapath" id="inputMedipath" />
-                <label id="labelMateria"><strong>Materia</strong></label>
-                <input type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
-                <label id="labelAutore"><strong>Autore</strong></label>
-                <input type="text" placeholder="Inserisci Autore" maxlength="25" name="autore" id="inputAutore" />
-                <label id="labelEdizione"><strong>Edizione</strong></label>
-                <input type="text" placeholder="Inserisci la Edizione" maxlength="25" name="edizione" id="inputEdizione" />
-                <label id="labelISBN"><strong>ISBN</strong></label>
-                <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
-                <button type="submit" name="inserisciAnnuncio" id="inserisciAnnuncio">Inserisci</button>
-            </form>
-        </div>       
+    <div class="container">
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="newAnnuncioForm" method="POST" enctype="multipart/form-data">
+            <label id="labelNome"><strong>Tipo Annuncio</strong></label>
+            <select name="tipo" id="cars">
+                <option value="appunti">Appunti</option>
+                <option value="libri">Libri</option>
+                <option value="ripetizioni">Ripetizioni</option>
+            </select>
+            <label id="labelTitolo"><strong>Titolo</strong></label>
+            <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="titolo" id="inputTitolo" />
+            <label id="labelDescrizione"><strong>Descrizione</strong></label>
+            <input type="text" placeholder="Inserisci Descrizione" maxlength="255" name="descrizione" id="inputDescrizione" />
+            <label id="labelPrezzo"><strong>Prezzo</strong></label>
+            <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="prezzo" id="inputPrezzo" />
+            <label id="labelMediapath"><strong>MediaPath</strong></label>
+            <input type="file" name="mediapath" id="mediapath">
+            <label id="labelMateria"><strong>Materia</strong></label>
+            <input type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
+            <label id="labelAutore"><strong>Autore</strong></label>
+            <input type="text" placeholder="Inserisci Autore" maxlength="25" name="autore" id="inputAutore" />
+            <label id="labelEdizione"><strong>Edizione</strong></label>
+            <input type="text" placeholder="Inserisci la Edizione" maxlength="25" name="edizione" id="inputEdizione" />
+            <label id="labelISBN"><strong>ISBN</strong></label>
+            <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
+            <button type="submit" name="inserisciAnnuncio" id="inserisciAnnuncio">Inserisci</button>
+        </form>
+    </div>       
     <?php elseif($tipoPagina == "modifica") : ?>
     <div class="container">
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="modAnnuncioForm" method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="modAnnuncioForm" method="POST" enctype="multipart/form-data">
             <label id="labelNome"><strong>Tipo Annuncio</strong></label>
             <select disabled name="tipo" id="cars">
                 <option <?php if($arrayAnnuncio['tipo']=="appunti") print("selected")?> value="appunti">Appunti</option>
@@ -137,7 +140,8 @@ if($auth->getIfLogin()){
             <label id="labelPrezzo"><strong>Prezzo</strong></label>
             <input value="<?php print($arrayAnnuncio['prezzo'])?>" type="text" placeholder="Inserisci il titolo" maxlength="25" name="prezzo" id="inputPrezzo" />
             <label id="labelMediapath"><strong>MediaPath</strong></label>
-            <input value="<?php print($arrayAnnuncio['mediapath'])?>" type="text" placeholder="Inserisci la path del File" maxlength="25" name="mediapath" id="inputMedipath" />
+            <input type="file" name="mediapath" id="mediapath">
+            <img width="500" height="600" src="<?php print($arrayAnnuncio["mediapath"])?>">
             <label id="labelMateria"><strong>Materia</strong></label>
             <input value="<?php print($arrayAnnuncio['materia'])?>" type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
             <label id="labelAutore"><strong>Autore</strong></label>
@@ -165,6 +169,7 @@ if($auth->getIfLogin()){
             <label id="labelEdizione"><strong>Edizione</strong></label>
             <label id="labelISBN"><strong>ISBN</strong></label>
             <?php print_r($arrayAnnuncio); ?>
+            <img width="500" height="600" src="<?php print($arrayAnnuncio["mediapath"])?>">
         </div> 
     <?php endif; ?>
 
