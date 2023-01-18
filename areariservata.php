@@ -11,7 +11,7 @@ $rich = new RichiesteAnnunci();
 //LogOut
 if (isset($_GET["logout"])) {
   session_destroy(); //destroy the session
-  header("location:/progetto-tecweb/index.php"); //to redirect back to "index.php" after logging out
+  header("location:./index.php"); //to redirect back to "index.php" after logging out
   exit();
 }
 ?>

@@ -15,7 +15,7 @@ if (isset($_POST["inserisciAnnuncio"])) {
         array("tipo" => $_POST['tipo'],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_POST['mediapath'], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
     if($result != 0)
-    header("location:/progetto-tecweb/annuncio.php?annuncio=$result");
+    header("location:./annuncio.php?annuncio=$result");
 
 }
 //Script Modifica Annuncio
@@ -24,7 +24,7 @@ if (isset($_POST["modificaAnnuncio"])) {
         array("id"=>$_POST["modificaAnnuncio"],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_POST['mediapath'], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
     if($result != 0)
-    header("location:/progetto-tecweb/annuncio.php?annuncio=$result");
+    header("location:./annuncio.php?annuncio=$result");
 }
 
 
