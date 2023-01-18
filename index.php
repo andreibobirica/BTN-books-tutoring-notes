@@ -1,3 +1,12 @@
+<?php
+//Start Session
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+require_once 'Authentification.php';
+$auth = new Authentification();
+
+?>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -23,9 +32,14 @@
         <nav id="menu">
             <ul>
                 <li>Cerca</li>
-                <li><a href="./info.html">Info</a></li>
-                <li><a href="./login.html">Accedi</a></li>
-                <li><a href="./registrazione.html">Registrati</a></li>
+                <li><a href="./info.php">Info</a></li>
+                <?php if(!$auth->getIfLogin()) : ?>
+                  <li><a href="./login.php">Accedi</a></li>
+                  <li><a href="./registrazione.php">Registrati</a></li>
+                <?php else :?>
+                    <li><a href="./areariservata.php">Area Riservata</a></li>
+                    <li><a href="./areariservata.php?logout">Log Out</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

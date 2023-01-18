@@ -1,3 +1,49 @@
+<?php
+//Start Session
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+require_once 'Authentification.php';
+$auth = new Authentification();
+
+if(isset($_POST['username']) && !empty($_POST['username'])){
+
+    require_once 'Sanitizer.php';
+    $san = new Sanitizer();
+    
+    $username = $san->sanitizeString($_POST["username"]);
+    $email = $san->sanitizeString($_POST["email"]);
+    $password = $san->sanitizeString($_POST["password"]);
+    $confPassword = $san->sanitizeString($_POST["confPassword"]);
+    $nome = $san->sanitizeString($_POST["nome"]);
+    $cognome = $san->sanitizeString($_POST["cognome"]);
+    $dataNascita = $san->sanitizeString($_POST["dataNascita"]);
+
+    //Responso corretto
+    $retResponse = array(
+        "return" => true,
+        "error" => ""
+    );
+    //Procedura di registrazione
+    $retResponse = $auth->register($username, $email, $password, $confPassword, $nome, $cognome, $dataNascita);
+    if ($retResponse["return"] === TRUE) {
+        print("
+        <script>
+        alert('Registrazione Avvenuta con successo');
+        window.location = './areariservata.php';
+        </script>
+        ");
+    } else {
+        //messaggio di conferma non visibile dato che viene reindirizzato da php l'header
+        print("
+        <script>alert('Errore:". $retResponse['error']. " ');</script>
+        ");
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="it">
 
@@ -26,27 +72,31 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="./index.html">Cerca</a></li>
-                <li><a href="./info.html">Info</a></li>
-                <li><a href="./login.html">Accedi</a></li>
-                <li>Registrati</li>
+                <li><a href="./index.php">Cerca</a></li>
+                <li><a href="./info.php">Info</a></li>
+                <?php if(!$auth->getIfLogin()) : ?>
+                    <li><a href="./login.php">Accedi</a></li>
+                    <li>Registrati</li>
+                <?php else :?>
+                    <li><a href="./areariservata.php">Area Riservata</a></li>
+                    <li><a href="./areariservata.php?logout">Log Out</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
     <nav id="breadcrumb">
         <p><a href="./index.html" lang="en">Home</a> / Registrazione</p>
     </nav>
-
     <main id="login-main">
         <div id="registration-container">
-            <form action="registrazione.html" id="registration-form">
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="registration-form" method="POST">
                 <label id="labelNome"><strong>Nome</strong></label>
                 <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome" />
                 <label id="labelCognome"><strong>Cognome</strong></label>
                 <input type="text" placeholder="Inserisci il tuo cognome" maxlength="25" name="cognome"
                     id="inputCognome" />
                 <label id="labelUsername" lang="en"><strong>Username</strong></label>
-                <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="usernmae"
+                <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="username"
                     id="inputUsername" />
                 <label id="labelPassword" lang="en"><strong>Password</strong></label>
                 <input type="password" placeholder="Password" maxlength="50" name="password" id="inputPassword" />
@@ -58,8 +108,8 @@
                 <label id="labelEmail" lang="en"><strong>Email</strong></label>
                 <input type="email" placeholder="Inserisci la tua E-mail" maxlength="70" name="email" id="inputEmail" />
 
-                <button type="submit" action="registrazione.html" id="login-button">Registrati</button>
-                <p>Hai già un <span lang ="en">account</span>?<a href="login.html"> Accedi</a></p>
+                <button type="submit" id="login-button">Registrati</button>
+                <p>Hai già un <span lang ="en">account</span>?<a href="login.php"> Accedi</a></p>
             </form>
 
             <h2>I vantaggi di registrarsi</h2>
