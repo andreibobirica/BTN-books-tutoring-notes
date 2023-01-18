@@ -12,7 +12,17 @@ class RichiesteAnnunci{
     //Ritorna un array con tutti gli annunci di un certo user $username
     function getAnnunciOfUser($username): array{
         //ritorna un array con tutti gli annunci, con solo i dettagli principali
-        return array();
+        //ID TITOLO MATERIA PREZZO
+        $sql = "SELECT id, titolo, materia, prezzo FROM annunci WHERE username = '$username'";
+        $result = $this->auth->db->query($sql);
+        $arrayRet = array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                //	id	titolo	descrizione	prezzo	username	mediapath	materia
+                array_push($arrayRet, array("id"=> $row['id'], "titolo" => $row['titolo'],"materia" => $row['materia'], "prezzo" => $row['prezzo']));
+            }
+        }
+        return $arrayRet;
     }
     //Ritorna un bool con l'esito della verifica
     //se l'annuncio appartiene al utente $user true, false il contrario
@@ -102,12 +112,13 @@ class RichiesteAnnunci{
     //altrimenti 0
     function modificaAnnuncio($annuncio){
         $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
-        if ($this->auth->db->query($sql) === TRUE) {
-            
+        if ($this->auth->db->query($sql) === TRUE) {            
+            $tipoAnnuncio =
+                $this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN appunti WHERE annunci.id = $annuncio[id] AND appunti.id = $annuncio[id];")->num_rows == 1 ? "appunti" :
+                ($this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN libri WHERE annunci.id = $annuncio[id] AND libri.id = $annuncio[id];")->num_rows == 1 ? "libri" : "ripetizioni");
             $sqlTipo = "";
-            //TODO
-            //controllo del tipo di annuncio da modifica non in base al form , ma in base a cosa era preesistente in database
-            switch ($annuncio['tipo']) {
+            //SELECT annunci.id FROM annunci JOIN appunti WHERE annunci.id = 30;
+            switch ($tipoAnnuncio) {
                 case "libri":
                     $sqlTipo = "UPDATE libri SET mediapath='$annuncio[mediapath]', autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
                     if ($this->auth->db->query($sqlTipo) === TRUE)

@@ -5,6 +5,8 @@ if(session_status() == PHP_SESSION_NONE){
 }
 require_once 'Authentification.php';
 $auth = new Authentification();
+require_once 'RichiesteAnnunci.php';
+$rich = new RichiesteAnnunci();
 
 //LogOut
 if (isset($_GET["logout"])) {
@@ -74,13 +76,11 @@ if (isset($_GET["logout"])) {
       </div>
       <div id="annunci-container" >
         <div id="annunci-nuovo">
-          <!-- tabella annunci pubblicati -->
           <p>Aggiungi Un Annuncio<a href="annuncio.php?nuovo">Nuovo</a></p>
         </div>
         <div id="annunci-pubblicati">
           <!-- tabella annunci pubblicati -->
           <h3>Annunci pubblicati</h3>
-          <?php $rich->getAnnunciOfUser($_SESSION["loginAccount"])?>
           <table>
             <tr>
               <th>Titolo</th>
@@ -89,14 +89,19 @@ if (isset($_GET["logout"])) {
               <th></th>
               <th></th>
             </tr>
-            <tr>
-              <td>Libro di Matematica</td>
-              <td>Matematica</td>
-              <td>10$</td>
-              <td><a href="annuncio.php?annuncio=id">Visualizza</a></td>
-              <td><a href="annuncio.php?modifica=id">Modifica</a></td>
-              <td><a href="annuncio.php?elimina=id">Modifica</a></td>
-            </tr>
+            <?php
+            $annunci = $rich->getAnnunciOfUser($_SESSION["loginAccount"]);
+            foreach($annunci as $annuncio): ?>
+              <tr>
+                <td><?php print($annuncio['titolo'])?></td>
+                <td><?php print($annuncio['materia'])?></td>
+                <td><?php print($annuncio['prezzo'])?> €</td>
+                <td><a href="annuncio.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
+                <td><a href="annuncio.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
+                <td><a href="annuncio.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
+              </tr>
+            <?php endforeach;
+            ?>
           </table>         
         </div>
         <div id="annunci-salvati">
