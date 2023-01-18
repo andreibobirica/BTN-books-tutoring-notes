@@ -93,5 +93,28 @@ class RichiesteAnnunci{
         }
         return 0;
     }
+    //Modifica di un Annuncio
+    //parametro $annuncio array formatato di conseguenza
+    //return id of the annuncio just modifiye
+    //altrimenti 0
+    function modificaAnnuncio($annuncio){
+        $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',mediapath='$annuncio[mediapath]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
+        if ($this->auth->db->query($sql) === TRUE) {
+            
+            $sqlTipo = "";
+            switch ($annuncio['tipo']) {
+                case "libri":
+                    $sqlTipo = "UPDATE libri SET autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
+                    if ($this->auth->db->query($sqlTipo) === TRUE)
+                        return $annuncio['id'];
+                    break;
+                case "appunti":
+                    return $annuncio['id'];
+                case "ripetizioni":
+                    return $annuncio['id'];
+            }
+        }
+        return 0;
+    }
 }
 ?>
