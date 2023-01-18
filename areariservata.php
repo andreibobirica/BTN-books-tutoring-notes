@@ -25,18 +25,15 @@ if (isset($_GET["logout"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Libri, appunti, ripetizioni</title>
+    <title>BTN - Libri, appunti, ripetizioni</title>
 </head>
 
 <body>
     <header>
         <div>
-          <div>
-            <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-            <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-        </div>
+            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
 
-            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+            <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
         <nav id="menu">

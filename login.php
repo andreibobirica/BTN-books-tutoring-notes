@@ -47,7 +47,7 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
 <body>
     <header>
         <div>
-            <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
@@ -66,15 +66,15 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
         </nav>
     </header>
     <nav id="breadcrumb">
-        <p><a href="./index.html" lang="en">Home</a> / <span lang="en">Login</span></p>
+        <p><a href="./index.php" lang="en">Home</a> / <span lang="en">Login</span></p>
     </nav>
 
     <main id="login-main">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="login-form" method="POST">
             <h2 id="login-title" lang ="en">Login</h2>
-            <label lang="en"><strong>Username</strong></label>
+            <label lang="en">Username</label>
             <input type="text" placeholder="Utente" name="utente" />
-            <label><strong><span lang="en">Password</span></strong></label>
+            <label><span lang="en">Password</span></label>
             <input type="password" placeholder="Password" name="password" />
             <button type="submit" id="login-button">Accedi</button>
 

@@ -1,16 +1,16 @@
 <?php
 //Start Session
-if(session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once 'Authentification.php';
 $auth = new Authentification();
 
-if(isset($_POST['username']) && !empty($_POST['username'])){
+if (isset($_POST['username']) && !empty($_POST['username'])) {
 
     require_once 'Sanitizer.php';
     $san = new Sanitizer();
-    
+
     $username = $san->sanitizeString($_POST["username"]);
     $email = $san->sanitizeString($_POST["email"]);
     $password = $san->sanitizeString($_POST["password"]);
@@ -36,7 +36,7 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
     } else {
         //messaggio di conferma non visibile dato che viene reindirizzato da php l'header
         print("
-        <script>alert('Errore:". $retResponse['error']. " ');</script>
+        <script>alert('Errore:" . $retResponse['error'] . " ');</script>
         ");
     }
 }
@@ -51,21 +51,19 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse.">
+    <meta name="description"
+        content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse.">
     <meta name="keywords" content="BTN, registrazione">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" async></script>
     <script src="assets/script/formManager.js" async></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Registrazione</title>
+    <title>BTN - Registrazione</title>
 </head>
 
 <body>
     <header>
         <div>
-            <div>
-                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-            </div>
+            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
 
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
@@ -74,10 +72,10 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
             <ul>
                 <li><a href="./index.php">Cerca</a></li>
                 <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
+                <?php if (!$auth->getIfLogin()): ?>
                     <li><a href="./login.php">Accedi</a></li>
                     <li>Registrati</li>
-                <?php else :?>
+                <?php else: ?>
                     <li><a href="./areariservata.php">Area Riservata</a></li>
                     <li><a href="./areariservata.php?logout">Log Out</a></li>
                 <?php endif; ?>
@@ -85,31 +83,31 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
         </nav>
     </header>
     <nav id="breadcrumb">
-        <p><a href="./index.html" lang="en">Home</a> / Registrazione</p>
+        <p><a href="./index.php" lang="en">Home</a> / Registrazione</p>
     </nav>
     <main id="login-main">
         <div id="registration-container">
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="registration-form" method="POST">
-                <label id="labelNome"><strong>Nome</strong></label>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" id="registration-form" method="POST">
+                <label id="labelNome">Nome</label>
                 <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome" />
-                <label id="labelCognome"><strong>Cognome</strong></label>
+                <label id="labelCognome">Cognome</label>
                 <input type="text" placeholder="Inserisci il tuo cognome" maxlength="25" name="cognome"
                     id="inputCognome" />
-                <label id="labelUsername" lang="en"><strong>Username</strong></label>
+                <label id="labelUsername" lang="en">Username</label>
                 <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="username"
                     id="inputUsername" />
-                <label id="labelPassword" lang="en"><strong>Password</strong></label>
+                <label id="labelPassword" lang="en">Password</label>
                 <input type="password" placeholder="Password" maxlength="50" name="password" id="inputPassword" />
-                <label id="labelConfPassword"><strong>Conferma <span lang="en">Password</span></strong></label>
+                <label id="labelConfPassword">Conferma <span lang="en">Password</span></label>
                 <input type="password" placeholder="Reinserici la tua password" maxlength="50" name="confPassword"
                     id="inputConfPassword" />
-                <label id="labelDataNascita"><strong>Data di nascita</strong></label>
+                <label id="labelDataNascita">Data di nascita</label>
                 <input type="date" placeholder="Data di nascita" name="dataNascita" id="inputDataNascita" />
-                <label id="labelEmail" lang="en"><strong>Email</strong></label>
+                <label id="labelEmail" lang="en">Email</label>
                 <input type="email" placeholder="Inserisci la tua E-mail" maxlength="70" name="email" id="inputEmail" />
 
                 <button type="submit" id="login-button">Registrati</button>
-                <p>Hai già un <span lang ="en">account</span>?<a href="login.php"> Accedi</a></p>
+                <p>Hai già un <span lang="en">account</span>?<a href="login.php"> Accedi</a></p>
             </form>
 
             <h2>I vantaggi di registrarsi</h2>

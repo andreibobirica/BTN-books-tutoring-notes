@@ -1,6 +1,6 @@
 <?php
 //Start Session
-if(session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once 'Authentification.php';
@@ -20,17 +20,13 @@ $auth = new Authentification();
     <meta name="keywords" content="BTN, informazioni">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Informazioni</title>
+    <title>BTN - Informazioni</title>
 </head>
 
 <body>
     <header>
         <div>
-            <div>
-                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-            </div>
-
+            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
@@ -38,10 +34,10 @@ $auth = new Authentification();
             <ul>
                 <li><a href="./index.php">Cerca</a></li>
                 <li>Info</li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                  <li><a href="./login.php">Accedi</a></li>
-                  <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
+                <?php if (!$auth->getIfLogin()): ?>
+                    <li><a href="./login.php">Accedi</a></li>
+                    <li><a href="./registrazione.php">Registrati</a></li>
+                <?php else: ?>
                     <li><a href="./areariservata.php">Area Riservata</a></li>
                     <li><a href="./areariservata.php?logout">Log Out</a></li>
                 <?php endif; ?>
@@ -49,13 +45,14 @@ $auth = new Authentification();
         </nav>
     </header>
     <nav id="breadcrumb">
-        <p><a href="./index.html" lang="en">Home</a> / Info</p>
+        <p><a href="./index.php" lang="en">Home</a> / Info</p>
     </nav>
     <main>
         <section id="info">
             <img src="./assets/imgs/studyoutside_square.jpg" class="sectionimg" />
             <div class="text">
-                <p><abbr title="Book Tutoring Notes">BTN</abbr> è un sito per la compravendita di libri, appunti e ripetizioni tra studenti
+                <p><abbr title="Book Tutoring Notes">BTN</abbr> è un sito per la compravendita di libri, appunti e
+                    ripetizioni tra studenti
                     universitari.</p>
                 <p>Il nostro obiettivo è semplificare la vita agli studenti universitari, offrendo loro una piattaforma
                     dove poter trovare facilmente i libri e gli appunti di cui hanno bisogno per seguire i propri corsi
