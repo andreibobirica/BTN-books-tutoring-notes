@@ -2,9 +2,10 @@
 class Database
 {
     private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "btn";
+    private $username = "eitalian";
+    private $password = "Uru6oaz3EeGhieje";
+    private $dbname = "eitalian";
+    //database modificato con credenziali di tecweb server
 
     private $conn = null;
 
