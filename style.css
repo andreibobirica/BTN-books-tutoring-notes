@@ -423,14 +423,14 @@ footer p {
     flex-direction: column;
     width: 90%;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #registration-container {
     width: 90%;
     display: flex;
     justify-content: center;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #registration-container h2 {
