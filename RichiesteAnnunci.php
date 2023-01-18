@@ -11,12 +11,12 @@ class RichiesteAnnunci{
 
     //Ritorna un array con tutti gli annunci di un certo user $username
     function getAnnunciOfUser($username): array{
+        //ritorna un array con tutti gli annunci, con solo i dettagli principali
         return array();
     }
     //Ritorna un bool con l'esito della verifica
     //se l'annuncio appartiene al utente $user true, false il contrario
-    function verifyAnnuncioUser($username,$annuncio): bool
-    {
+    function verifyAnnuncioUser($username,$annuncio): bool{
         $result = $this->auth->db->query("SELECT id FROM annunci WHERE username='$username' and id='$annuncio'");
         return ($result->num_rows == 1);
     }
@@ -33,7 +33,7 @@ class RichiesteAnnunci{
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             //	id	titolo	descrizione	prezzo	username	mediapath	materia
-            $arrayRet = array("tipo" => "","titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => $row['mediapath'], "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "");
+            $arrayRet = array("tipo" => "","titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "");
             $idAnnuncio = $row['id'];
             //Libri
             $sqlTipo = "SELECT * FROM libri WHERE id = $idAnnuncio";
@@ -44,6 +44,7 @@ class RichiesteAnnunci{
                 $arrayRet['autore']=$row['autore'];
                 $arrayRet['edizione']=$row['edizione'];
                 $arrayRet['isbn']=$row['ISBN'];
+                $arrayRet['mediapath']=$row['mediapath'];
                 return $arrayRet;
             }
             
@@ -53,6 +54,7 @@ class RichiesteAnnunci{
             if ($result->num_rows == 1){
                 $row = $result->fetch_assoc();
                 $arrayRet['tipo']="appunti";
+                $arrayRet['mediapath']=$row['mediapath'];
                 return $arrayRet;
             }
 
@@ -73,21 +75,22 @@ class RichiesteAnnunci{
     //return id of the annuncio just inserted
     //altrimenti 0
     function inserisciAnnuncio($annuncio){
-        $sql = "INSERT INTO annunci (titolo,descrizione,prezzo,username,mediapath,materia) VALUES ('$annuncio[titolo]', '$annuncio[descrizione]', '$annuncio[prezzo]', '$annuncio[username]', '$annuncio[mediapath]', '$annuncio[materia]');";
+        $sql = "INSERT INTO annunci (titolo,descrizione,prezzo,username,materia) VALUES ('$annuncio[titolo]', '$annuncio[descrizione]', '$annuncio[prezzo]', '$annuncio[username]', '$annuncio[materia]');";
         if ($this->auth->db->query($sql) === TRUE) {
             $last_id = $this->auth->db->getConn()->insert_id;
             $sqlTipo = "";
             switch ($annuncio['tipo']) {
                 case "libri":
-                    $sqlTipo = "INSERT INTO libri (id, autore, edizione, ISBN) VALUES ( '$last_id', '$annuncio[autore]', '$annuncio[edizione]', '$annuncio[isbn]');";
+                    $sqlTipo = "INSERT INTO libri (mediapath, id, autore, edizione, ISBN) VALUES ( '$annuncio[mediapath]', '$last_id', '$annuncio[autore]', '$annuncio[edizione]', '$annuncio[isbn]');";
                     break;
                 case "appunti":
-                    $sqlTipo = "INSERT INTO appunti (id) VALUES ('$last_id')";
+                    $sqlTipo = "INSERT INTO appunti (id, mediapath) VALUES ('$last_id','$annuncio[mediapath]')";
                     break;
                 case "ripetizioni":
                     $sqlTipo = "INSERT INTO ripetizioni (id) VALUES ('$last_id')";
                     break;
             }
+            print($sqlTipo);
             if ($this->auth->db->query($sqlTipo) === TRUE)
                 return $last_id;
         }
@@ -98,18 +101,22 @@ class RichiesteAnnunci{
     //return id of the annuncio just modifiye
     //altrimenti 0
     function modificaAnnuncio($annuncio){
-        $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',mediapath='$annuncio[mediapath]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
+        $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
         if ($this->auth->db->query($sql) === TRUE) {
             
             $sqlTipo = "";
+            //TODO
+            //controllo del tipo di annuncio da modifica non in base al form , ma in base a cosa era preesistente in database
             switch ($annuncio['tipo']) {
                 case "libri":
-                    $sqlTipo = "UPDATE libri SET autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
+                    $sqlTipo = "UPDATE libri SET mediapath='$annuncio[mediapath]', autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
                     if ($this->auth->db->query($sqlTipo) === TRUE)
                         return $annuncio['id'];
                     break;
                 case "appunti":
-                    return $annuncio['id'];
+                    $sqlTipo = "UPDATE appunti SET mediapath='$annuncio[mediapath]' WHERE id='$annuncio[id]';";
+                    if ($this->auth->db->query($sqlTipo) === TRUE)
+                        return $annuncio['id'];
                 case "ripetizioni":
                     return $annuncio['id'];
             }

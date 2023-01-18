@@ -53,12 +53,12 @@ if (isset($_GET["logout"])) {
     </header>
     <?php if(!$auth->getIfLogin()) : ?>
       <div class="container">
-      <div id="welcome-message">
-        <h2>Utente Non Loggato</h2><span>Si prega di effetuare il Login Prima<span>
-        <p>Hai già un <span lang ="en">account</span>?<a href="login.php"> Accedi</a></p>
-        <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a></p>
-      </div>
-    </div>       
+        <div id="welcome-message">
+          <h2>Utente Non Loggato</h2><span>Si prega di effetuare il Login Prima<span>
+          <p>Hai già un <span lang ="en">account</span>?<a href="login.php"> Accedi</a></p>
+          <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a></p>
+        </div>
+      </div>       
     <?php else :?>
       <div class="container">
         <div id="welcome-message">
@@ -73,30 +73,32 @@ if (isset($_GET["logout"])) {
         </div>
       </div>
       <div id="annunci-container" >
-        <div id="annunci-pubblicati">
+        <div id="annunci-nuovo">
           <!-- tabella annunci pubblicati -->
           <p>Aggiungi Un Annuncio<a href="annuncio.php?nuovo">Nuovo</a></p>
         </div>
         <div id="annunci-pubblicati">
           <!-- tabella annunci pubblicati -->
           <h3>Annunci pubblicati</h3>
+          <?php $rich->getAnnunciOfUser($_SESSION["loginAccount"])?>
           <table>
             <tr>
               <th>Titolo</th>
               <th>Materia Scolastica</th>
               <th>Prezzo</th>
               <th></th>
+              <th></th>
             </tr>
             <tr>
               <td>Libro di Matematica</td>
               <td>Matematica</td>
               <td>10$</td>
+              <td><a href="annuncio.php?annuncio=id">Visualizza</a></td>
               <td><a href="annuncio.php?modifica=id">Modifica</a></td>
+              <td><a href="annuncio.php?elimina=id">Modifica</a></td>
             </tr>
-          </table>
-          
+          </table>         
         </div>
-
         <div id="annunci-salvati">
           <!-- tabella annunci salvati -->
           <h3>Annunci salvati</h3>
