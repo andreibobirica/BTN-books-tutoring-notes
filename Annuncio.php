@@ -1,17 +1,5 @@
 <?php
-//Start Session
-if(session_status() == PHP_SESSION_NONE){
-    session_start();
-}
-require_once 'Authentification.php';
-$auth = new Authentification();
-require_once 'RichiesteAnnunci.php';
-$rich = new RichiesteAnnunci();
-
-if (isset($_GET["annuncio"]) && !empty($_GET["annuncio"])){
-    $arrayAnnuncio = $rich->getAnnuncio($_GET["annuncio"]);
-}
-
+require_once 'core/AnnuncioCtrl.php';
 ?>
 
 <!DOCTYPE html>

@@ -6,7 +6,7 @@
  *$emailSanitized = filter_var($email, FILTER_SANITIZE_EMAIL);
  */
 
-require_once "Database.php";
+require_once "./core/Database.php";
 /**
  * Class Authentification that serves server side request to confirm login and registration process
  */

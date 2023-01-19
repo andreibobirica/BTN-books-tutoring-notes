@@ -1,5 +1,5 @@
 <?php
-require_once 'Authentification.php';
+require_once './core/Authentification.php';
 
 
 class RichiesteAnnunci{

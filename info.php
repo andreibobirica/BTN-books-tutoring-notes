@@ -3,7 +3,7 @@
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
-require_once 'Authentification.php';
+require_once './core/Authentification.php';
 $auth = new Authentification();
 
 ?>

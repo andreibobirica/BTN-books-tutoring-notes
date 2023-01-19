@@ -3,12 +3,12 @@
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
-require_once 'Authentification.php';
+require_once './core/Authentification.php';
 $auth = new Authentification();
 
 if(isset($_POST['username']) && !empty($_POST['username'])){
 
-    require_once 'Sanitizer.php';
+    require_once './core/Sanitizer.php';
     $san = new Sanitizer();
     
     $username = $san->sanitizeString($_POST["username"]);
