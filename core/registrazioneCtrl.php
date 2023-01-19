@@ -4,8 +4,8 @@ if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-require_once './core/Authentification.php';
-$auth = new Authentification();
+require_once './core/Authentication.php';
+$auth = new Authentication();
 require_once './core/itemNavMenu.php';
 require_once "./core/itemBreadcrumb.php";
 
@@ -33,7 +33,7 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
         print("
         <script>
         alert('Registrazione Avvenuta con successo');
-        window.location = './areariservata.php';
+        window.location = './area_riservata.php';
         </script>
         ");
     } else {

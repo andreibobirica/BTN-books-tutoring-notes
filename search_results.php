@@ -17,7 +17,7 @@ require_once "./core/risultatiCtrl.php";
     <header>
         <div>
             <div>
-                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+                <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
                 <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
             </div>
 
@@ -26,7 +26,7 @@ require_once "./core/risultatiCtrl.php";
 
         <nav id="menu">
             <ul>
-                <li><a href="./index.html">Cerca</a></li>
+                <li><a href="./index.php">Cerca</a></li>
                 <li><a href="./info.html">Info</a></li>
                 <li><a href="./login.html">Accedi</a></li>
                 <li><a href="./registrazione.html">Registrati</a></li>

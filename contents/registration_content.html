@@ -1,7 +1,3 @@
-<?php
-require_once './core/registrazioneCtrl.php';
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -12,45 +8,32 @@ require_once './core/registrazioneCtrl.php';
     <meta name="description" content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse.">
     <meta name="keywords" content="BTN, registrazione">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" async></script>
-    <script src="assets/script/formManager.js" async></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Registrazione</title>
+    <script src="../scripts/main_script.js" async></script>
+    <script src="../scripts/form_manager.js" async></script>
+    <title>BTN - Registrazione</title>
 </head>
 
 <body>
-    <header>
-        <div>
-            <div>
-                <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-            </div>
-
-            <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-        </div>
-
-        <?php printItemNavMenu("registrazione",$auth->getIfLogin());?>
-
-    </header>
-    <?php printItemBreadcrumb("registrati"); ?>
+    <php-header/>
     <main id="login-main">
         <div id="registration-container">
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="registration-form" method="POST">
-                <label id="labelNome"><strong>Nome</strong></label>
+                <label id="labelNome">Nome</label>
                 <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome" />
-                <label id="labelCognome"><strong>Cognome</strong></label>
+                <label id="labelCognome">Cognome</label>
                 <input type="text" placeholder="Inserisci il tuo cognome" maxlength="25" name="cognome"
                     id="inputCognome" />
-                <label id="labelUsername" lang="en"><strong>Username</strong></label>
+                <label id="labelUsername" lang="en">Username</label>
                 <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="username"
                     id="inputUsername" />
-                <label id="labelPassword" lang="en"><strong>Password</strong></label>
+                <label id="labelPassword" lang="en">Password</label>
                 <input type="password" placeholder="Password" maxlength="50" name="password" id="inputPassword" />
-                <label id="labelConfPassword"><strong>Conferma <span lang="en">Password</span></strong></label>
+                <label id="labelConfPassword">Conferma <span lang="en">Password</span></label>
                 <input type="password" placeholder="Reinserici la tua password" maxlength="50" name="confPassword"
                     id="inputConfPassword" />
-                <label id="labelDataNascita"><strong>Data di nascita</strong></label>
+                <label id="labelDataNascita">Data di nascita</label>
                 <input type="date" placeholder="Data di nascita" name="dataNascita" id="inputDataNascita" />
-                <label id="labelEmail" lang="en"><strong>Email</strong></label>
+                <label id="labelEmail" lang="en">Email</label>
                 <input type="email" placeholder="Inserisci la tua E-mail" maxlength="70" name="email" id="inputEmail" />
 
                 <button type="submit" id="login-button">Registrati</button>
@@ -78,9 +61,7 @@ require_once './core/registrazioneCtrl.php';
         </div>
     </main>
 
-    <footer>
-        <p><abbr title="Book Tutoring Notes">BTN</abbr></p>
-    </footer>
+    <php-footer/>
 </body>
 
 </html>

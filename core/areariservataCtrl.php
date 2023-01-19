@@ -4,8 +4,8 @@ if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-require_once './core/Authentification.php';
-$auth = new Authentification();
+require_once './core/Authentication.php';
+$auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $rich = new RichiesteAnnunci();
 require_once './core/itemNavMenu.php';

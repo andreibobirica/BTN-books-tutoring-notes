@@ -4,13 +4,13 @@ if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-require_once './core/Authentification.php';
-$auth = new Authentification();
-require_once './core/itemNavMenu.php';
-require_once "./core/itemBreadcrumb.php";
+require_once 'Authentication.php';
+$auth = new Authentication();
+require_once 'itemNavMenu.php';
+require_once "itemBreadcrumb.php";
 
 if (isset($_POST['utente']) && !empty($_POST['utente'])) {
-    require_once './core/Sanitizer.php';
+    require_once 'Sanitizer.php';
     $san = new Sanitizer();
     $username = $san->sanitizeString($_POST["utente"]);
     $password = $san->sanitizeString($_POST["password"]);
@@ -21,7 +21,7 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
         print("
         <script>
         alert('Login Avvenuta con successo');
-        window.location = './areariservata.php';
+        window.location = '../area_riservata.php';
         </script>
         ");
     } else {

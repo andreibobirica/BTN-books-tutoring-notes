@@ -1,58 +1,18 @@
 <?php
 require_once "./core/indexCtrl.php";
+
+// Prendo l'HTML della pagina, dell'header e del footer
+$home = file_get_contents("./contents/home_content.html");
+$header = file_get_contents("./contents/header.html");
+$footer = file_get_contents("./contents/footer.html");
+// Prendo il contenuto corretto della navbar
+$navbar = printItemNavMenu("cerca", $auth->getIfLogin());
+
+// Rimpiazzo i segnaposti coi contenuti HTML
+$header = str_replace('<navbar/>', $navbar, $header);
+$home = str_replace('<php-header/>', $header, $home);
+$home = str_replace('<php-footer/>', $footer, $home);
+
+// Mostro la pagina
+echo $home;
 ?>
-
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Cerca libri, appunti e ripetizioni e mettiti in contatto direttamente con i venditori. Cerca ora su BTN!">
-    <meta name="keywords" content="BTN, libri, appunti, ripetizioni, università, books, tutoring, notes">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>BTN - Cerca libri, appunti, ripetizioni</title>
-</head>
-
-<body>
-    <header>
-        <div>
-            <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-            <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-        </div>
-
-        <?php printItemNavMenu("cerca",$auth->getIfLogin());?>
-
-    </header>
-    <?php printItemBreadcrumb("cerca"); ?>
-    <main>
-        <section id="search">
-            <div>
-                <h2>Cerca libri, appunti e ripetizioni</h2>
-            </div>
-            <div>
-                <form action="" id="search-form">
-                    <input type="text" placeholder="Titolo, corso..." name="search" id="search-in">
-                    <div id="search-buttons">
-                        <select name="categoria" id="search-cat-select">
-                            <option value="libri">Libri</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                            <option value="appunti">Appunti</option>
-                        </select>
-
-                        <button type="submit" id="search-btn" class="button">Cerca</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2023 <abbr lang="en" title="Book Tutoring Notes">BTN</abbr></p>
-    </footer>
-</body>
-
-</html>

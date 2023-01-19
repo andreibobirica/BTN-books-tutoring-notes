@@ -9,28 +9,28 @@ function printItemBreadcrumb($pagina,$annuncio=0){
     </nav>
     <?php
     //fine lettura html
-    $nav = ob_get_clean();
+    $breadcrumb = ob_get_clean();
 
 
     if($pagina=="cerca"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Cerca</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Cerca</p>',$breadcrumb);
     }elseif($pagina=="info"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Info</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Info</p>',$breadcrumb);
     }elseif($pagina=="accedi"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Login</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Login</p>',$breadcrumb);
     }elseif($pagina=="registrati"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Registrati</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Registrati</p>',$breadcrumb);
     }elseif($pagina=="areariservata"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Area Riservata</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / Area Riservata</p>',$breadcrumb);
     }elseif($pagina=="annuncio"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./areariservata.php" lang="en">Area Riservata</a> / Annuncio '.$annuncio.'</p>',$nav);
-    }elseif($pagina=="inserisciannuncio"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./areariservata.php" lang="en">Area Riservata</a> / Inserimento Annuncio </p>',$nav);
-    }elseif($pagina=="modificaannuncio"){
-        $nav = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./areariservata.php" lang="en">Area Riservata</a> / Modifica Annuncio '.$annuncio.'</p>',$nav);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Annuncio '.$annuncio.'</p>',$breadcrumb);
+    }elseif($pagina=="new_listing"){
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Inserimento Annuncio </p>',$breadcrumb);
+    }elseif($pagina=="edit_listing"){
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Modifica Annuncio '.$annuncio.'</p>',$breadcrumb);
     }
 
-    print($nav);
+    return $breadcrumb;
 }
 
 

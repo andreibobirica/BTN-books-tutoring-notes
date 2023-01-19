@@ -10,15 +10,15 @@ require_once './core/areariservataCtrl.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Libri, appunti, ripetizioni</title>
+    <script src="./scripts/main_script.js"></script>
+    <title>BTN - Libri, appunti, ripetizioni</title>
 </head>
 
 <body>
     <header>
         <div>
           <div>
-            <h1><a href="./index.html" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
+            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
@@ -51,7 +51,7 @@ require_once './core/areariservataCtrl.php';
       </div>
       <div id="annunci-container" >
         <div id="annunci-nuovo">
-          <p>Aggiungi Un Annuncio<a href="inserisciAnnuncio.php?nuovo">Nuovo</a></p>
+          <p>Aggiungi Un Annuncio<a href="new_listing.php?nuovo">Nuovo</a></p>
         </div>
         <div id="annunci-pubblicati">
           <!-- tabella annunci pubblicati -->
@@ -71,9 +71,9 @@ require_once './core/areariservataCtrl.php';
                 <td><?php print($annuncio['titolo'])?></td>
                 <td><?php print($annuncio['materia'])?></td>
                 <td><?php print($annuncio['prezzo'])?> €</td>
-                <td><a href="Annuncio.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
-                <td><a href="modificaAnnuncio.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
-                <td><a href="modificaAnnuncio.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
+                <td><a href="listing.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
+                <td><a href="edit_listing.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
+                <td><a href="edit_listing.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
               </tr>
             <?php endforeach;
             ?>

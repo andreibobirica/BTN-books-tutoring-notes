@@ -6,15 +6,16 @@
  *$emailSanitized = filter_var($email, FILTER_SANITIZE_EMAIL);
  */
 
-require_once "./core/Database.php";
+require_once "Database.php";
 /**
- * Class Authentification that serves server side request to confirm login and registration process
+ * Class Authentication that serves server side request to confirm login and registration process
  */
-class Authentification
+class Authentication
 {
     public $db = null;
 
-    public function __CONSTRUCT() {
+    public function __CONSTRUCT()
+    {
         $this->db = new Database();
     }
 
@@ -25,17 +26,17 @@ class Authentification
      * @return boolean , if with that function from that moment we are loged in, Returns true if we estabilished a new log in connection, or false if we not do so
      * if we return false the motivation could be a validation of character not correct, or esentialy we are not be able to log in cause the incorect email or pass
      */
-    
+
     function login($username, $pass)
     {
         //Controll if we are not already loged in
         if (!isset($_SESSION["loginAccount"]) || empty($_SESSION["loginAccount"])) {
             //Traditional login with email and pass to the DB
-            
+
             //Execute query to DB to solve login request
             $query = "SELECT username FROM utenti WHERE username='" . $username . "' AND password = '" . $pass . "'";
             $result = $this->db->query($query);
-            
+
             //Control on the result of DB to enstablish or not the login
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
@@ -44,9 +45,9 @@ class Authentification
                 $_SESSION["nameAccount"] = "";
                 $_SESSION["surnameAccount"] = "";
                 $_SESSION["birthdateAccount"] = "";
-                $queryUser="SELECT email,nome,cognome,datanascita FROM `utenti` WHERE username = '$row[username]'";
+                $queryUser = "SELECT email,nome,cognome,datanascita FROM `utenti` WHERE username = '$row[username]'";
                 //Applaying query user
-                $result =  $this->db->query($queryUser);
+                $result = $this->db->query($queryUser);
                 if ($result->num_rows == 1) {
                     $row = $result->fetch_assoc();
                     $_SESSION["emailAccount"] = $row["email"];
@@ -70,7 +71,7 @@ class Authentification
     {
         //Control of session time
         $this->sessionTimeExpire();
-        
+
         //Return the information about the login
         if (!isset($_SESSION["loginAccount"]) || empty($_SESSION["loginAccount"]))
             return false;
@@ -88,13 +89,13 @@ class Authentification
         //Control of session time
         if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
             // last request was more than 30 minutes ago
-            session_unset();     // unset $_SESSION variable for the run-time
-            session_destroy();   // destroy session data in storage
+            session_unset(); // unset $_SESSION variable for the run-time
+            session_destroy(); // destroy session data in storage
         }
         $_SESSION['LAST_ACTIVITY'] = time();
     }
 
-    function register($username,$email,$pass1,$pass2,$fName,$lName,$bDate) : array
+    function register($username, $email, $pass1, $pass2, $fName, $lName, $bDate): array
     {
         //Messaggio di conferma nel caso registrazione positiva
         $retResponse = array(
@@ -103,15 +104,15 @@ class Authentification
         );
 
         //Verifico se già loggato
-        if($this->getIfLogin() === TRUE)
-        return array(
-            "return" => false,
-            "error" => "Utente Già Loggato, disconettersi prima di creare un nuovo account"
-        );
+        if ($this->getIfLogin() === TRUE)
+            return array(
+                "return" => false,
+                "error" => "Utente Già Loggato, disconettersi prima di creare un nuovo account"
+            );
 
         //verifico se username già esistente 
         $result = $this->db->query("SELECT username FROM utenti WHERE username='$username'");
-        if ($result->num_rows != 0){
+        if ($result->num_rows != 0) {
             return array(
                 "return" => false,
                 "error" => "Username già esistente, riprovare con altro."
@@ -119,10 +120,10 @@ class Authentification
         }
 
         //Applying query account on db
-        $queryAccount="INSERT INTO utenti (nome, cognome, username, email, password, datanascita ) VALUES ('$fName', '$lName', '$username', '$email', '$pass1', '$bDate');";
+        $queryAccount = "INSERT INTO utenti (nome, cognome, username, email, password, datanascita ) VALUES ('$fName', '$lName', '$username', '$email', '$pass1', '$bDate');";
         $res = $this->db->query($queryAccount);
         //se registrazione avvenuta correttamente , login , altrimenti messaggio di errore
-        if(($res === TRUE)){
+        if (($res === TRUE)) {
             //login
             $this->login($username, $pass1);
             return $retResponse;
@@ -132,7 +133,7 @@ class Authentification
                 "error" => "Errore Generico"
             );
         }
-        
+
     }
 }
 

@@ -1,8 +1,7 @@
-
 <?php
 
 //Funzione che stampa l'item di Nav Menu
-function printItemNavMenu($pagina,$login){
+function printItemNavMenu($pagina,$login) {
     //inizio lettura html
     ob_start(); ?>
     <nav id="menu">
@@ -10,9 +9,9 @@ function printItemNavMenu($pagina,$login){
             <li><a href="./index.php">Cerca</a></li>
             <li><a href="./info.php">Info</a></li>
             <li><a href="./login.php">Accedi</a></li>
-            <li><a href="./registrazione.php">Registrati</a></li>
-            <li><a href="./areariservata.php">Area Riservata</a></li>
-            <li><a href="./areariservata.php?logout">Log Out</a></li>
+            <li><a href="./registration.php">Registrati</a></li>
+            <li><a href="./area_riservata.php">Area Riservata</a></li>
+            <li><a href="./area_riservata.php?logout">Log Out</a></li>
         </ul>
     </nav>
 
@@ -23,10 +22,10 @@ function printItemNavMenu($pagina,$login){
     //Cosa mostrare se si è loggati o meno
     if($login){
         $nav = str_replace('<li><a href="./login.php">Accedi</a></li>',"",$nav);
-        $nav = str_replace('<li><a href="./registrazione.php">Registrati</a></li>',"",$nav);
+        $nav = str_replace('<li><a href="./registration.php">Registrati</a></li>',"",$nav);
     }else{
-        $nav = str_replace('<li><a href="./areariservata.php">Area Riservata</a></li>',"",$nav);
-        $nav = str_replace('<li><a href="./areariservata.php?logout">Log Out</a></li>',"",$nav);   
+        $nav = str_replace('<li><a href="./area_riservata.php">Area Riservata</a></li>',"",$nav);
+        $nav = str_replace('<li><a href="./area_riservata.php?logout">Log Out</a></li>',"",$nav);   
     }
 
     if($pagina=="cerca"){
@@ -36,12 +35,12 @@ function printItemNavMenu($pagina,$login){
     }elseif($pagina=="accedi"){
         $nav = str_replace('<li><a href="./login.php">Accedi</a></li>',"<li>Accedi</li>",$nav);
     }elseif($pagina=="registrazione"){
-        $nav = str_replace('<li><a href="./registrazione.php">Registrati</a></li>',"<li>Registrati</li>",$nav);
+        $nav = str_replace('<li><a href="./registration.php">Registrati</a></li>',"<li>Registrati</li>",$nav);
     }elseif($pagina=="areariservata"){
-        $nav = str_replace('<li><a href="./areariservata.php">Area Riservata</a></li>',"<li>Area Riservata</li>",$nav);
+        $nav = str_replace('<li><a href="./area_riservata.php">Area Riservata</a></li>',"<li>Area Riservata</li>",$nav);
     }
 
-    print($nav);
+    return $nav;
 }
 
 

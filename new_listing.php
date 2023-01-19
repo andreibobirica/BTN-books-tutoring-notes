@@ -1,5 +1,5 @@
 <?php
-require_once './core/inserisciAnnuncioCtrl.php';
+require_once './core/new_listingCtrl.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +10,8 @@ require_once './core/inserisciAnnuncioCtrl.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title><abbr title="Book Tutoring Notes">BTN</abbr> - Libri, appunti, ripetizioni</title>
+    <script src="./scripts/main_script.js"></script>
+    <title>BTN - Libri, appunti, ripetizioni</title>
 </head>
 
 <body>
@@ -27,32 +27,32 @@ require_once './core/inserisciAnnuncioCtrl.php';
 
         <?php printItemNavMenu("inserimentoannuncio",$auth->getIfLogin());?>
     </header>
-    <?php printItemBreadcrumb("inserisciannuncio"); ?>
+    <?php printItemBreadcrumb("new_listing"); ?>
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="newAnnuncioForm" method="POST" enctype="multipart/form-data">
-            <label id="labelNome"><strong>Tipo Annuncio</strong></label>
+            <label id="labelNome">Tipo Annuncio</label>
             <select name="tipo" id="cars">
                 <option value="appunti">Appunti</option>
                 <option value="libri">Libri</option>
                 <option value="ripetizioni">Ripetizioni</option>
             </select>
-            <label id="labelTitolo"><strong>Titolo</strong></label>
+            <label id="labelTitolo">Titolo</label>
             <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="titolo" id="inputTitolo" />
-            <label id="labelDescrizione"><strong>Descrizione</strong></label>
+            <label id="labelDescrizione">Descrizione</label>
             <input type="text" placeholder="Inserisci Descrizione" maxlength="255" name="descrizione" id="inputDescrizione" />
-            <label id="labelPrezzo"><strong>Prezzo</strong></label>
+            <label id="labelPrezzo">Prezzo</label>
             <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="prezzo" id="inputPrezzo" />
-            <label id="labelMediapath"><strong>MediaPath</strong></label>
+            <label id="labelMediapath">MediaPath</label>
             <input type="file" name="mediapath" id="mediapath">
-            <label id="labelMateria"><strong>Materia</strong></label>
+            <label id="labelMateria">Materia</label>
             <input type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
-            <label id="labelAutore"><strong>Autore</strong></label>
+            <label id="labelAutore">Autore</label>
             <input type="text" placeholder="Inserisci Autore" maxlength="25" name="autore" id="inputAutore" />
-            <label id="labelEdizione"><strong>Edizione</strong></label>
+            <label id="labelEdizione">Edizione</label>
             <input type="text" placeholder="Inserisci la Edizione" maxlength="25" name="edizione" id="inputEdizione" />
-            <label id="labelISBN"><strong>ISBN</strong></label>
+            <label id="labelISBN">ISBN</label>
             <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
-            <button type="submit" name="inserisciAnnuncio" id="inserisciAnnuncio">Inserisci</button>
+            <button type="submit" name="new_listing" id="new_listing">Inserisci</button>
         </form>
     </div>       
 </body>
