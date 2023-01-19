@@ -27,13 +27,11 @@ if (isset($_POST["modificaAnnuncio"])) {
 }
 
 
-if($auth->getIfLogin()){
-    if (isset($_GET["modifica"]) && !empty($_GET["modifica"])){
-        if ($rich->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["modifica"])) {
-            $arrayAnnuncio = $rich->getAnnuncio($_GET["modifica"]);
-            $tipoPagina = "modifica";
-        }   
-    }
+if($auth->getIfLogin() && isset($_GET["modifica"]) && !empty($_GET["modifica"]) && 
+($rich->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["modifica"]))) {
+        $arrayAnnuncio = $rich->getAnnuncio($_GET["modifica"]);  
+}else{
+    header("location:./areariservata.php");
 }
 
 ?>
@@ -101,7 +99,7 @@ if($auth->getIfLogin()){
             <input value="<?php print($arrayAnnuncio['edizione'])?>" type="text" placeholder="Inserisci la Edizione" maxlength="25" name="edizione" id="inputEdizione" />
             <label id="labelISBN"><strong>ISBN</strong></label>
             <input value="<?php print($arrayAnnuncio['isbn'])?>" type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
-            <button value="<?php print($_GET["modifica"])?>" type="submit" name="modificaAnnuncio" id="modificaAnnuncio">Inserisci</button>
+            <button value="<?php print($_GET["modifica"])?>" type="submit" name="modificaAnnuncio" id="modificaAnnuncio">Modifica</button>
         </form>
     </div>       
 

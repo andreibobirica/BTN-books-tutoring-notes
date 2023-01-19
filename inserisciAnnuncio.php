@@ -20,11 +20,8 @@ if (isset($_POST["inserisciAnnuncio"])) {
 
 }
 
-if($auth->getIfLogin()){
-    if (isset($_GET["nuovo"]) ){
-        $tipoPagina = "nuovo";
-    }
-}
+if(!$auth->getIfLogin() || !isset($_GET["nuovo"]) || empty($_GET["nuovo"])){
+    header("location:./areariservata.php");
 
 ?>
 

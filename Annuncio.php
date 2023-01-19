@@ -8,13 +8,8 @@ $auth = new Authentification();
 require_once 'RichiesteAnnunci.php';
 $rich = new RichiesteAnnunci();
 
-//Pagina nuovo Annnuncio
-$tipoPagina = "None";
-if($auth->getIfLogin()){
-    if (isset($_GET["annuncio"]) && !empty($_GET["annuncio"])){
-        $arrayAnnuncio = $rich->getAnnuncio($_GET["annuncio"]);
-        $tipoPagina = "annuncio";
-    }
+if (isset($_GET["annuncio"]) && !empty($_GET["annuncio"])){
+    $arrayAnnuncio = $rich->getAnnuncio($_GET["annuncio"]);
 }
 
 ?>
