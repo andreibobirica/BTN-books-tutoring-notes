@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BTN - Risultati</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div id="logo">
+                    <h1>BTN</h1>
+                    <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+                </a>
+            </div>
+            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="./areariservata.html">Torna Indietro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Pubblica Annuncio</h1>
+        <form action="submit-annuncio.php" method="post" enctype="multipart/form-data">
+            <label for="tipo-annuncio">Tipo di Annuncio:</label>
+            <select id="tipo-annuncio" name="tipo-annuncio">
+                <option value="libro">Libro</option>
+                <option value="appunti">Appunti</option>
+                <option value="ripetizione">Ripetizione</option>
+            </select>
+            <br>
+            <label for="corso-universitario">Corso universitario:</label>
+            <input type="text" id="corso-universitario" name="corso-universitario" placeholder="Ingegneria Informatica">
+            <br>
+            <label for="immagine-libro">Immagine del libro:</label>
+            <input type="file" id="immagine-libro" name="immagine-libro" accept="image/*">
+            <br>
+            <label for="file-appunti">File degli appunti:</label>
+            <input type="file" id="file-appunti" name="file-appunti" accept="application/pdf">
+            <br>
+            <button type="submit" action="pubblica.html" id="pubblica-btn">Pubblica</button>
+        </form>
+    </div>
+
+
+</body>
+
