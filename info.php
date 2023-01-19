@@ -6,6 +6,7 @@ if(session_status() == PHP_SESSION_NONE){
 require_once './core/Authentification.php';
 $auth = new Authentification();
 require_once './core/itemNavMenu.php';
+require_once "./core/itemBreadcrumb.php";
 
 ?>
 
@@ -38,9 +39,7 @@ require_once './core/itemNavMenu.php';
         <?php printItemNavMenu("info",$auth->getIfLogin());?>
 
     </header>
-    <nav id="breadcrumb">
-        <p><a href="./index.html" lang="en">Home</a> / Info</p>
-    </nav>
+    <?php printBreadcrumb("info"); ?>
     <main>
         <section id="info">
             <img src="./assets/imgs/studyoutside_square.jpg" class="sectionimg" />

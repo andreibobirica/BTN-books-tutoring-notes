@@ -1,3 +1,7 @@
+<?php
+require_once "./core/itemBreadcrumb.php";
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -29,9 +33,8 @@
             </ul>
         </nav>
     </header>
-    <nav id="breadcrumb">
-        <p><a href="./index.html" lang="en">Home</a> / Risultati</p>
-    </nav>
+
+    <?php printBreadcrumb("risultati"); ?>
 
     <main id="risultati-main">
         <form id="orderForm">

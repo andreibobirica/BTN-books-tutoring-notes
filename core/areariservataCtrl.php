@@ -9,6 +9,7 @@ $auth = new Authentification();
 require_once './core/RichiesteAnnunci.php';
 $rich = new RichiesteAnnunci();
 require_once './core/itemNavMenu.php';
+require_once "./core/itemBreadcrumb.php";
 
 //LogOut
 if (isset($_GET["logout"])) {

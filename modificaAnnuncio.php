@@ -24,22 +24,9 @@ require_once './core/modificaAnnuncioCtrl.php';
 
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
         </div>
-
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                  <li><a href="./login.php">Accedi</a></li>
-                  <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
-                    <li><a href="./areariservata.php">Area Riservata</a></li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("modificaannuncio",$auth->getIfLogin());?>
     </header>
-
+    <?php printBreadcrumb("modificaannuncio", $arrayAnnuncio['id'] ); ?>
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="modAnnuncioForm" method="POST" enctype="multipart/form-data">
             <label id="labelNome"><strong>Tipo Annuncio</strong></label>

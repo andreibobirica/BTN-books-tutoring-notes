@@ -25,20 +25,9 @@ require_once './core/areariservataCtrl.php';
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
         </div>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                  <li><a href="./login.php">Accedi</a></li>
-                  <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
-                    <li>Area Riservata</li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("areariservata",$auth->getIfLogin());?>
     </header>
+    <?php printBreadcrumb("areariservata"); ?>
     <?php if(!$auth->getIfLogin()) : ?>
       <div class="container">
         <div id="welcome-message">

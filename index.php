@@ -6,6 +6,8 @@ if(session_status() == PHP_SESSION_NONE){
 require_once './core/Authentification.php';
 $auth = new Authentification();
 require_once './core/itemNavMenu.php';
+require_once "./core/itemBreadcrumb.php";
+
 
 ?>
 <!DOCTYPE html>
@@ -33,6 +35,7 @@ require_once './core/itemNavMenu.php';
         <?php printItemNavMenu("cerca",$auth->getIfLogin());?>
 
     </header>
+    <?php printBreadcrumb("cerca"); ?>
     <main>
         <section id="search">
             <div>

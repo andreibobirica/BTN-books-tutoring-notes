@@ -26,8 +26,8 @@ require_once './core/AnnuncioCtrl.php';
         </div>
 
         <?php printItemNavMenu("annuncio",$auth->getIfLogin());?>
-
     </header>
+    <?php printBreadcrumb("annuncio",$arrayAnnuncio['id']); ?>
     <div class="container">
         <label id="labelTipo"><strong>Tipo Annuncio</strong></label>
         <label id="labelTitolo"><strong>Titolo</strong></label>
