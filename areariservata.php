@@ -76,7 +76,7 @@ if (isset($_GET["logout"])) {
       </div>
       <div id="annunci-container" >
         <div id="annunci-nuovo">
-          <p>Aggiungi Un Annuncio<a href="annuncio.php?nuovo">Nuovo</a></p>
+          <p>Aggiungi Un Annuncio<a href="inserisciAnnuncio.php?nuovo">Nuovo</a></p>
         </div>
         <div id="annunci-pubblicati">
           <!-- tabella annunci pubblicati -->
@@ -96,9 +96,9 @@ if (isset($_GET["logout"])) {
                 <td><?php print($annuncio['titolo'])?></td>
                 <td><?php print($annuncio['materia'])?></td>
                 <td><?php print($annuncio['prezzo'])?> €</td>
-                <td><a href="annuncio.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
-                <td><a href="annuncio.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
-                <td><a href="annuncio.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
+                <td><a href="Annuncio.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
+                <td><a href="modificaAnnuncio.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
+                <td><a href="modificaAnnuncio.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
               </tr>
             <?php endforeach;
             ?>
