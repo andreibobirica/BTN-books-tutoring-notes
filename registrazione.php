@@ -31,7 +31,7 @@ require_once './core/registrazioneCtrl.php';
         <?php printItemNavMenu("registrazione",$auth->getIfLogin());?>
 
     </header>
-    <?php printBreadcrumb("registrati"); ?>
+    <?php printItemBreadcrumb("registrati"); ?>
     <main id="login-main">
         <div id="registration-container">
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="registration-form" method="POST">

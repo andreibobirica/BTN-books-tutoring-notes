@@ -1,5 +1,5 @@
 <?php
-require_once "./core/itemBreadcrumb.php";
+require_once "./core/risultatiCtrl.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ require_once "./core/itemBreadcrumb.php";
         </nav>
     </header>
 
-    <?php printBreadcrumb("risultati"); ?>
+    <?php printItemBreadcrumb("risultati"); ?>
 
     <main id="risultati-main">
         <form id="orderForm">

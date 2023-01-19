@@ -1,13 +1,5 @@
 <?php
-//Start Session
-if(session_status() == PHP_SESSION_NONE){
-    session_start();
-}
-require_once './core/Authentification.php';
-$auth = new Authentification();
-require_once './core/itemNavMenu.php';
-require_once "./core/itemBreadcrumb.php";
-
+require_once "./core/infoCtrl.php";
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +31,7 @@ require_once "./core/itemBreadcrumb.php";
         <?php printItemNavMenu("info",$auth->getIfLogin());?>
 
     </header>
-    <?php printBreadcrumb("info"); ?>
+    <?php printItemBreadcrumb("info"); ?>
     <main>
         <section id="info">
             <img src="./assets/imgs/studyoutside_square.jpg" class="sectionimg" />

@@ -26,7 +26,7 @@ require_once './core/modificaAnnuncioCtrl.php';
         </div>
         <?php printItemNavMenu("modificaannuncio",$auth->getIfLogin());?>
     </header>
-    <?php printBreadcrumb("modificaannuncio", $arrayAnnuncio['id'] ); ?>
+    <?php printItemBreadcrumb("modificaannuncio", $arrayAnnuncio['id'] ); ?>
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="modAnnuncioForm" method="POST" enctype="multipart/form-data">
             <label id="labelNome"><strong>Tipo Annuncio</strong></label>

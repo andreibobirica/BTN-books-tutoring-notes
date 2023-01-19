@@ -1,7 +1,15 @@
 <?php
-require_once "./core/indexCtrl.php";
-?>
+//Start Session
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+require_once './core/Authentification.php';
+$auth = new Authentification();
+require_once './core/itemNavMenu.php';
+require_once "./core/itemBreadcrumb.php";
 
+
+?>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -27,7 +35,7 @@ require_once "./core/indexCtrl.php";
         <?php printItemNavMenu("cerca",$auth->getIfLogin());?>
 
     </header>
-    <?php printItemBreadcrumb("cerca"); ?>
+    <?php printBreadcrumb("cerca"); ?>
     <main>
         <section id="search">
             <div>

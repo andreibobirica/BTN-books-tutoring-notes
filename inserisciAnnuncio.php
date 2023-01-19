@@ -27,7 +27,7 @@ require_once './core/inserisciAnnuncioCtrl.php';
 
         <?php printItemNavMenu("inserimentoannuncio",$auth->getIfLogin());?>
     </header>
-    <?php printBreadcrumb("inserisciannuncio"); ?>
+    <?php printItemBreadcrumb("inserisciannuncio"); ?>
     <div class="container">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="newAnnuncioForm" method="POST" enctype="multipart/form-data">
             <label id="labelNome"><strong>Tipo Annuncio</strong></label>

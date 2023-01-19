@@ -27,7 +27,7 @@ require_once './core/loginCtrl.php';
         <?php printItemNavMenu("accedi",$auth->getIfLogin());?>
 
     </header>
-    <?php printBreadcrumb("accedi"); ?>
+    <?php printItemBreadcrumb("accedi"); ?>
     <main id="login-main">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="login-form" method="POST">
             <h2 id="login-title" lang ="en">Login</h2>

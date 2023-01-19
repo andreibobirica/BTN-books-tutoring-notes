@@ -27,7 +27,7 @@ require_once './core/areariservataCtrl.php';
 
         <?php printItemNavMenu("areariservata",$auth->getIfLogin());?>
     </header>
-    <?php printBreadcrumb("areariservata"); ?>
+    <?php printItemBreadcrumb("areariservata"); ?>
     <?php if(!$auth->getIfLogin()) : ?>
       <div class="container">
         <div id="welcome-message">
