@@ -3,8 +3,10 @@
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
+
 require_once './core/Authentification.php';
 $auth = new Authentification();
+require_once './core/itemNavMenu.php';
 
 if(isset($_POST['username']) && !empty($_POST['username'])){
 

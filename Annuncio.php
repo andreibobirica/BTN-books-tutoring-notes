@@ -1,5 +1,5 @@
 <?php
-require_once 'core/AnnuncioCtrl.php';
+require_once './core/AnnuncioCtrl.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,19 +25,8 @@ require_once 'core/AnnuncioCtrl.php';
             <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
         </div>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                  <li><a href="./login.php">Accedi</a></li>
-                  <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
-                    <li><a href="./areariservata.php">Area Riservata</a></li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("annuncio",$auth->getIfLogin());?>
+
     </header>
     <div class="container">
         <label id="labelTipo"><strong>Tipo Annuncio</strong></label>

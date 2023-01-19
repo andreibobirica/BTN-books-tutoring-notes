@@ -5,6 +5,7 @@ if(session_status() == PHP_SESSION_NONE){
 }
 require_once './core/Authentification.php';
 $auth = new Authentification();
+require_once './core/itemNavMenu.php';
 
 ?>
 
@@ -34,19 +35,8 @@ $auth = new Authentification();
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li>Info</li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                  <li><a href="./login.php">Accedi</a></li>
-                  <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
-                    <li><a href="./areariservata.php">Area Riservata</a></li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("info",$auth->getIfLogin());?>
+
     </header>
     <nav id="breadcrumb">
         <p><a href="./index.html" lang="en">Home</a> / Info</p>

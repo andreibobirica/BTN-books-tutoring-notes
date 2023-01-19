@@ -28,19 +28,8 @@ require_once './core/registrazioneCtrl.php';
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                    <li><a href="./login.php">Accedi</a></li>
-                    <li>Registrati</li>
-                <?php else :?>
-                    <li><a href="./areariservata.php">Area Riservata</a></li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("registrazione",$auth->getIfLogin());?>
+
     </header>
     <nav id="breadcrumb">
         <p><a href="./index.html" lang="en">Home</a> / Registrazione</p>

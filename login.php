@@ -24,19 +24,8 @@ require_once './core/loginCtrl.php';
             <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
         </div>
 
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.php">Info</a></li>
-                <?php if(!$auth->getIfLogin()) : ?>
-                    <li>Accedi</li>
-                    <li><a href="./registrazione.php">Registrati</a></li>
-                <?php else :?>
-                    <li><a href="./areariservata.php">Area Riservata</a></li>
-                    <li><a href="./areariservata.php?logout">Log Out</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+        <?php printItemNavMenu("accedi",$auth->getIfLogin());?>
+
     </header>
     <nav id="breadcrumb">
         <p><a href="./index.html" lang="en">Home</a> / <span lang="en">Login</span></p>
