@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Libri, appunti, ripetizioni</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div id="logo">
+                <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
+                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
+            </div>
+
+            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
+        </div>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="">Cerca</a></li>
+                <li><a href="">Info</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+      <div id="welcome-message">
+        <h1>Benvenuto, Drilon!</h1>
+        <img src="./assets/imgs/icona.png"alt="" width="150" height="150" style="margin-top: 10px;">
+      </div>
+      <div id="user-info">
+        <label class="labellinemod" id="labelUsernameI">Username</label>
+        <label class="labellinemod " id="labelUsernameU">Drailon</label>
+        <label class="labellinemod" id="labelNomeL">Nome</label>
+        <label class="labellinemod" id="labelNomeU">Drilon</label>
+        <label class="labellinemod" id="labelCognomeL">Cognome</label>
+        <label class="labellinemod" id="labelCognomeU">Klinaku</label>
+        <label class="labellinemod" id="labelDataNascitaL">Data Di Nascita</label>
+        <label class="labellinemod" id="labelDataNascitaU">07/03/2001</label>
+        <label class="labellinemod" id="labelEmailL">Email</label>
+        <label class="labellinemod" id="labelEmailU">drilonklinaku01@gmail.com</label>
+        <button id="modify-btn" onclick="location.href='modifica-dati.html'">Modifica dati</button>
+      </div>
+    </div>
+    
+    <div id="annunci-container">
+      <div id="annunci-pubblicati">
+        <h3>Annunci pubblicati</h3>
+        <button id="publish-btn" onclick="location.href='pubblica.html'">Pubblica annuncio</button>
+        <p>Non hai pubblicato annunci</p>
+      </div>
+    
+      <div id="annunci-salvati">
+        <h3>Annunci salvati</h3>
+        <p>Non hai salvato nessun annuncio</p>
+      </div>
+    </div>
+    
+
+
+    
+</body>
