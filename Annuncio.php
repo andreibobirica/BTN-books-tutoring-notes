@@ -63,5 +63,9 @@ if (isset($_GET["annuncio"]) && !empty($_GET["annuncio"])){
         <label id="labelISBN"><strong>ISBN</strong></label>
         <?php print_r($arrayAnnuncio); ?>
         <img width="500" height="600" src="<?php print($arrayAnnuncio["mediapath"])?>">
+        <?php if($auth->getIfLogin()) : ?>
+        <a href="modificaAnnuncio.php?modifica=<?php print($arrayAnnuncio['id'])?>">Modifica</a>
+        <a href="modificaAnnuncio.php?elimina=<?php print($arrayAnnuncio['id'])?>">Elimina</a>
+        <?php endif; ?>
     </div> 
 </body>

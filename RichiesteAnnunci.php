@@ -32,6 +32,7 @@ class RichiesteAnnunci{
     }
     //Elimina annuncio of user
     function deleteAnnuncio($annuncio){
+        $this->deleteOldMediapath($annuncio);
         return $this->auth->db->query("DELETE FROM annunci WHERE id = '$annuncio'") === TRUE;
     }
 
@@ -43,7 +44,7 @@ class RichiesteAnnunci{
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             //	id	titolo	descrizione	prezzo	username	mediapath	materia
-            $arrayRet = array("tipo" => "","titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "");
+            $arrayRet = array("id"=>$row['id'],"tipo" => "","titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "");
             $idAnnuncio = $row['id'];
             //Libri
             $sqlTipo = "SELECT * FROM libri WHERE id = $idAnnuncio";
@@ -126,13 +127,14 @@ class RichiesteAnnunci{
             //aggiorno la porzione di query del mediapath solo se cambiato
             $queryMediaPath = "";
             if($tipoAnnuncio=="libri" || $tipoAnnuncio=="appunti"){
-                if(!empty($annuncio['mediapath'])){
+                print_r($annuncio['mediapath']['name']);
+                if(!empty($annuncio['mediapath']['name'])){
                     $upload = $this->uploadFile($annuncio['mediapath']);
                     if(!$upload["esito"])
                         return array("lastid"=>0,"upload"=>$upload);
                     else{
                         $this->deleteOldMediapath($annuncio["id"]);
-                        $queryMediaPath = " mediapath='$upload[path]' ";
+                        $queryMediaPath = " mediapath='$upload[path]' ,";
                     }
                 }
             }
@@ -140,12 +142,13 @@ class RichiesteAnnunci{
             //Aggiorno il database in base a cosa è l'annuncio
             switch ($tipoAnnuncio) {
                 case "libri":
-                    $sqlTipo = "UPDATE libri SET ".$queryMediaPath.", autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
+                    $sqlTipo = "UPDATE libri SET ".$queryMediaPath." autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
+                    print($sqlTipo);
                     if ($this->auth->db->query($sqlTipo) === TRUE)
                         return array("lastid"=>$annuncio['id'],"upload"=>$upload);
                     break;
                 case "appunti":
-                    $sqlTipo = "UPDATE appunti SET ".$queryMediaPath.", id='$annuncio[id]' WHERE id='$annuncio[id]';";
+                    $sqlTipo = "UPDATE appunti SET ".$queryMediaPath." id='$annuncio[id]' WHERE id='$annuncio[id]';";
                     if ($this->auth->db->query($sqlTipo) === TRUE)
                         return array("lastid"=>$annuncio['id'],"upload"=>$upload);
                     break;
@@ -162,12 +165,14 @@ class RichiesteAnnunci{
         $result = $this->auth->db->query("SELECT mediapath FROM appunti WHERE id=$id;");
         if ($result->num_rows == 1){
             $row = $result->fetch_assoc();
+            if(!empty($row["mediapath"]))
             unlink($row["mediapath"]);
             return true;
         }
         $result = $this->auth->db->query("SELECT mediapath FROM libri WHERE id=$id;");
         if ($result->num_rows == 1){
             $row = $result->fetch_assoc();
+            if(!empty($row["mediapath"]))
             unlink($row["mediapath"]);
             return true;
         }
@@ -183,6 +188,9 @@ class RichiesteAnnunci{
     //prova a fare l'upload
     //ritorna esito ed eventualmente un messaggio di errore attraverso un array()
     function uploadFile($file){
+        print_r($file);
+        if(empty($file['name']))
+        return array("esito"=>true, "errore"=>"Nessun File Inserito", "path"=>"");;
         $target_dir = "uploads/";
         $target_file_origin = $target_dir . basename($file["name"]);
         $imageFileType = strtolower(pathinfo($target_file_origin,PATHINFO_EXTENSION));

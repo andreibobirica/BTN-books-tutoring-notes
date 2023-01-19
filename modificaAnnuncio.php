@@ -27,9 +27,14 @@ if (isset($_POST["modificaAnnuncio"])) {
 }
 
 
-if($auth->getIfLogin() && isset($_GET["modifica"]) && !empty($_GET["modifica"]) && 
-($rich->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["modifica"]))) {
-        $arrayAnnuncio = $rich->getAnnuncio($_GET["modifica"]);  
+if($auth->getIfLogin()){
+    if (isset($_GET["modifica"]) && !empty($_GET["modifica"])){
+        if ($rich->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["modifica"])) {
+            $arrayAnnuncio = $rich->getAnnuncio($_GET["modifica"]);
+        }else{
+            header("location:./areariservata.php");
+        } 
+    }
 }else{
     header("location:./areariservata.php");
 }
