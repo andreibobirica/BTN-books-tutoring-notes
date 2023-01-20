@@ -7,7 +7,7 @@ if(session_status() == PHP_SESSION_NONE){
 require_once './core/Authentication.php';
 $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
-$rich = new RichiesteAnnunci();
+$request = new RichiesteAnnunci();
 require_once './core/itemNavMenu.php';
 require_once "./core/itemBreadcrumb.php";
 

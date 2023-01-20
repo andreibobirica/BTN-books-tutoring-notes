@@ -1,102 +1,73 @@
 <?php
 require_once './core/areariservataCtrl.php';
+
+// Prendo l'HTML della pagina, dell'header e del footer
+$area_riservata = file_get_contents("./contents/area_riservata_content.html");
+$header = file_get_contents("./contents/header.html");
+$footer = file_get_contents("./contents/footer.html");
+// Prendo il contenuto corretto della navbar
+$navbar = printItemNavMenu("areariservata", $auth->getIfLogin());
+$breadcrumb = printItemBreadcrumb("areariservata");
+$new_listing = '<p>Aggiungi Un Annuncio<a href="new_listing.php?nuovo">Nuovo</a></p>';
+
+// Controllo il login e mostro il corretto messaggio di benvenuto
+if ($auth->getIfLogin()) {
+    $welcome_message_login =
+        '<h1>Benvenuto, ' . $_SESSION["loginAccount"] . '</h1>
+    <img src="./assets/imgs/icona.png" alt="" width="150" height="150" style="margin-top: 10px;">
+    </div>';
+    $user_info = '<p>Nome: ' . $_SESSION["nameAccount"] . '</p>
+    <p>Cognome: ' . $_SESSION["surnameAccount"] . '</p>
+    <p>Email: ' . $_SESSION["emailAccount"] . '</p>
+    <p>Data Di Nascita: ' . $_SESSION["birthdateAccount"] . '</p>';
+
+    // Preparo l'elenco degli annunci
+    $listings_list = '<h3>Annunci pubblicati</h3><table>
+    <tr>
+        <th>Titolo</th>
+        <th>Materia Scolastica</th>
+        <th>Prezzo</th>
+        <th></th>
+        <th></th
+    </tr>';
+
+    $listings = $request->getAnnunciOfUser($_SESSION["loginAccount"]);
+
+    foreach ($listings as $listing) {
+        $listings_list .= '<tr>';
+        $listings_list .= '<td>' . $listing['titolo'] . '</td>';
+        $listings_list .= '<td>' . $listing['materia'] . '</td>';
+        $listings_list .= '<td>' . $listing['prezzo'] . '€</td>';
+        $listings_list .= '<td><a href="listing.php?annuncio=' . $listing['id'] . '">Visualizza</a></td>';
+        $listings_list .= '<td><a href="edit_listing.php?modifica=' . $listing['id'] . '">Modifica</a></td>';
+        $listings_list .= '<td><a href="edit_listing.php?elimina=' . $listing['id'] . '">Elimina</a></td>';
+        $listings_list .= '</tr>';
+    }
+
+    $listings_list .= '</table>';
+
+    $area_riservata = str_replace('<php-welcome-message/>', $welcome_message_login, $area_riservata);
+    $area_riservata = str_replace('<php-user-info/>', $user_info, $area_riservata);
+    $area_riservata = str_replace('<php-listings-list/>', $listings_list, $area_riservata);
+    $area_riservata = str_replace('<php-new-listing/>', $new_listing, $area_riservata);
+} else {
+    // Se non loggato non dovrei finire su questa pagina, ma in caso mi rimanda al login
+    header("Location: login.php");
+    exit();
+    /*$welcome_message = '<h2>Utente Non Loggato</h2>
+    <p>Si prega di effetuare il Login Prima<p>
+    <p>Hai già un <span lang="en">account</span>?<a href="login.php"> Accedi</a></p>
+    <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registration.php">Registrati</a></p>';
+
+    $area_riservata = str_replace('<php-welcome-message/>', $welcome_message, $area_riservata);*/
+}
+
+// Rimpiazzo i segnaposti coi contenuti HTML
+$header = str_replace('<navbar/>', $navbar, $header);
+$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$area_riservata = str_replace('<php-header/>', $header, $area_riservata);
+$area_riservata = str_replace('<php-footer/>', $footer, $area_riservata);
+
+// Mostro la pagina
+echo $area_riservata;
 ?>
-
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="./scripts/main_script.js"></script>
-    <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
-
-<body>
-    <header>
-        <div>
-          <div>
-            <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-            <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-        </div>
-
-            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
-        </div>
-
-        <?php printItemNavMenu("areariservata",$auth->getIfLogin());?>
-    </header>
-    <?php printItemBreadcrumb("areariservata"); ?>
-    <?php if(!$auth->getIfLogin()) : ?>
-      <div class="container">
-        <div id="welcome-message">
-          <h2>Utente Non Loggato</h2><span>Si prega di effetuare il Login Prima<span>
-          <p>Hai già un <span lang ="en">account</span>?<a href="login.php"> Accedi</a></p>
-          <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a></p>
-        </div>
-      </div>       
-    <?php else :?>
-      <div class="container">
-        <div id="welcome-message">
-          <h1>Benvenuto, <?php echo $_SESSION["loginAccount"]?></h1>
-          <img src="./assets/imgs/icona.png"alt="" width="150" height="150" style="margin-top: 10px;">
-        </div>
-        <div id="user-info">
-          <p>Nome: <?php echo $_SESSION["nameAccount"]?></p>
-          <p>Cognome: <?php echo $_SESSION["surnameAccount"]?></p>
-          <p>Email: <?php echo $_SESSION["emailAccount"]?></p>
-          <p>Data Di Nascita: <?php echo $_SESSION["birthdateAccount"]?></p>
-        </div>
-      </div>
-      <div id="annunci-container" >
-        <div id="annunci-nuovo">
-          <p>Aggiungi Un Annuncio<a href="new_listing.php?nuovo">Nuovo</a></p>
-        </div>
-        <div id="annunci-pubblicati">
-          <!-- tabella annunci pubblicati -->
-          <h3>Annunci pubblicati</h3>
-          <table>
-            <tr>
-              <th>Titolo</th>
-              <th>Materia Scolastica</th>
-              <th>Prezzo</th>
-              <th></th>
-              <th></th>
-            </tr>
-            <?php
-            $annunci = $rich->getAnnunciOfUser($_SESSION["loginAccount"]);
-            foreach($annunci as $annuncio): ?>
-              <tr>
-                <td><?php print($annuncio['titolo'])?></td>
-                <td><?php print($annuncio['materia'])?></td>
-                <td><?php print($annuncio['prezzo'])?> €</td>
-                <td><a href="listing.php?annuncio=<?php print($annuncio['id'])?>">Visualizza</a></td>
-                <td><a href="edit_listing.php?modifica=<?php print($annuncio['id'])?>">Modifica</a></td>
-                <td><a href="edit_listing.php?elimina=<?php print($annuncio['id'])?>">Elimina</a></td>
-              </tr>
-            <?php endforeach;
-            ?>
-          </table>         
-        </div>
-        <div id="annunci-salvati">
-          <!-- tabella annunci salvati -->
-          <h3>Annunci salvati</h3>
-          <table>
-            <tr>
-              <th>Titolo</th>
-              <th>Materia Scolastica</th>
-              <th>Prezzo</th>
-            </tr>
-            <tr>
-              <td>Tutor privato</td>
-              <td>Inglese</td>
-              <td>€30/ora</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    <?php endif; ?>
-
-    
-</body>

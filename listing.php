@@ -9,15 +9,11 @@ $footer = file_get_contents("./contents/footer.html");
 $navbar = printItemNavMenu("annuncio", $auth->getIfLogin());
 $breadcrumb = printItemBreadcrumb("annuncio");
 // Prendo il percorso e inserisco l'immagine
-$php_img = '<img width="500" height="600" src="path">';
-$php_img = str_replace('path', $arrayAnnuncio["mediapath"], $php_img);
+$php_img = '<img width="500" height="600" src='.$arrayAnnuncio["mediapath"].'>';
 
 // Controllo il login ed in caso mostro i bottoni per modificare e eliminare l'annuncio
-$button_edit = '<a href="edit_listing.php?modifica=id-annuncio>">Modifica</a>';
-$button_delete = '<a href="edit_listing.php?elimina=id-annuncio">Elimina</a>';
-$id_annuncio = $arrayAnnuncio['id'];
-$button_edit = str_replace('id-annuncio', $id_annuncio, $button_edit);
-$button_delete = str_replace('id-annuncio', $id_annuncio, $button_delete);
+$button_edit = '<a href="edit_listing.php?modifica="'.$arrayAnnuncio['id'].'">Modifica</a>';
+$button_delete = '<a href="edit_listing.php?elimina="'.$arrayAnnuncio['id'].'">Elimina</a>';
 
 if($auth->getIfLogin()) {
     $listing = str_replace('<php-buttons/>', $button_edit.$button_delete, $listing);
