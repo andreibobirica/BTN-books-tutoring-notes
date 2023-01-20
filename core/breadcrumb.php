@@ -1,7 +1,7 @@
 <?php
 
 //Funzione che stampa l'item di Nav Menu
-function printItemBreadcrumb($pagina,$annuncio=0){
+function printBreadcrumb($pagina, $annuncio=0){
     //inizio lettura html
     ob_start(); ?>
     <nav id="breadcrumb">

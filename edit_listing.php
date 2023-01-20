@@ -1,59 +1,35 @@
 <?php
-require_once './core/edit_listingCtrl.php';
+require_once './core/edit_listing_control.php';
+
+// Prendo l'HTML della pagina, dell'header e del footer
+$edit_listing = file_get_contents("./contents/edit_listing_content.html");
+$header = file_get_contents("./contents/header.html");
+$footer = file_get_contents("./contents/footer.html");
+// Prendo il contenuto corretto della navbar
+$navbar = printNavbar("editListing", $auth->getIfLogin());
+$breadcrumb = printBreadcrumb("edit_listing", $arrayAnnuncio['id'] );
+
+// Rimpiazzo i segnaposti coi contenuti HTML
+$header = str_replace('<navbar/>', $navbar, $header);
+$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$edit_listing = str_replace('<php-header />', $header, $edit_listing);
+
+$edit_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $edit_listing);
+$edit_listing = str_replace('php-listing-title', $arrayAnnuncio['titolo'], $edit_listing);
+$edit_listing = str_replace('php-listing-descr', $arrayAnnuncio['descrizione'], $edit_listing);
+$edit_listing = str_replace('php-listing-price', $arrayAnnuncio['prezzo'], $edit_listing);
+$edit_listing = str_replace('php-listing-media', $arrayAnnuncio['mediapath'], $edit_listing);
+$edit_listing = str_replace('php-listing-subject', $arrayAnnuncio['materia'], $edit_listing);
+$edit_listing = str_replace('php-listing-author', $arrayAnnuncio['autore'], $edit_listing);
+$edit_listing = str_replace('php-listing-edition', $arrayAnnuncio['edizione'], $edit_listing);
+$edit_listing = str_replace('php-listing-ISBN', $arrayAnnuncio['isbn'], $edit_listing);
+$edit_listing = str_replace('php-button-value', $_GET["modifica"], $edit_listing);
+
+// Non si può cambiare tipo di annuncio, ma viene mostrato il tipo corretto
+$edit_listing = str_replace('value="'.$arrayAnnuncio['tipo'].'"', 'value="'.$arrayAnnuncio['tipo'].'" selected', $edit_listing);
+
+$edit_listing = str_replace('<php-footer />', $footer, $edit_listing);
+
+// Mostro la pagina
+echo $edit_listing;
 ?>
-
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="./scripts/main_script.js"></script>
-    <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
-
-<body>
-    <header>
-        <div>
-            <div id="logo">
-                <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-                <img src="./assets/imgs/button.png" alt="" width="60" height="60">
-            </div>
-
-            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
-        </div>
-        <?php printItemNavMenu("edit_listing",$auth->getIfLogin());?>
-    </header>
-    <?php printItemBreadcrumb("edit_listing", $arrayAnnuncio['id'] ); ?>
-    <div class="container">
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" id="modAnnuncioForm" method="POST" enctype="multipart/form-data">
-            <label id="labelNome">Tipo Annuncio</label>
-            <select disabled name="tipo" id="cars">
-                <option <?php if($arrayAnnuncio['tipo']=="appunti") print("selected")?> value="appunti">Appunti</option>
-                <option <?php if($arrayAnnuncio['tipo']=="libri") print("selected")?> value="libri">Libri</option>
-                <option <?php if($arrayAnnuncio['tipo']=="ripetizioni") print("selected")?> value="ripetizioni">Ripetizioni</option>
-            </select>
-            <label id="labelTitolo">Titolo</label>
-            <input value="<?php print($arrayAnnuncio['titolo'])?>" type="text" placeholder="Inserisci il titolo" maxlength="25" name="titolo" id="inputTitolo" />
-            <label id="labelDescrizione">Descrizione</label>
-            <input value="<?php print($arrayAnnuncio['descrizione'])?>"type="text" placeholder="Inserisci Descrizione" maxlength="255" name="descrizione" id="inputDescrizione" />
-            <label id="labelPrezzo">Prezzo</label>
-            <input value="<?php print($arrayAnnuncio['prezzo'])?>" type="text" placeholder="Inserisci il titolo" maxlength="25" name="prezzo" id="inputPrezzo" />
-            <label id="labelMediapath">MediaPath</label>
-            <input type="file" name="mediapath" id="mediapath">
-            <img width="500" height="600" src="<?php print($arrayAnnuncio["mediapath"])?>">
-            <label id="labelMateria">Materia</label>
-            <input value="<?php print($arrayAnnuncio['materia'])?>" type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
-            <label id="labelAutore">Autore</label>
-            <input value="<?php print($arrayAnnuncio['autore'])?>" type="text" placeholder="Inserisci Autore" maxlength="25" name="autore" id="inputAutore" />
-            <label id="labelEdizione">Edizione</label>
-            <input value="<?php print($arrayAnnuncio['edizione'])?>" type="text" placeholder="Inserisci la Edizione" maxlength="25" name="edizione" id="inputEdizione" />
-            <label id="labelISBN">ISBN</label>
-            <input value="<?php print($arrayAnnuncio['isbn'])?>" type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
-            <button value="<?php print($_GET["modifica"])?>" type="submit" name="edit_listing" id="edit_listing">Modifica</button>
-        </form>
-    </div>       
-
-</body>

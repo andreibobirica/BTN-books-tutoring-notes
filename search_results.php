@@ -1,5 +1,5 @@
 <?php
-require_once "./core/risultatiCtrl.php";
+require_once "./core/search_results_control.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +34,11 @@ require_once "./core/risultatiCtrl.php";
         </nav>
     </header>
 
-    <?php printItemBreadcrumb("risultati"); ?>
+    <?php printBreadcrumb("risultati"); ?>
 
     <main id="risultati-main">
         <form id="orderForm">
-            <label for="cars">Ordina per: </label>
+            <label for="filtro_ordinamento">Ordina per: </label>
             <select name="filtro_ordinamento" id="scelteOrdinamento">
                 <option>più recente</option>
                 <option>più vecchio</option>

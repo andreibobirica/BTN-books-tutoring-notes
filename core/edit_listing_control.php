@@ -7,8 +7,8 @@ require_once './core/Authentication.php';
 $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
-require_once './core/itemNavMenu.php';
-require_once "./core/itemBreadcrumb.php";
+require_once './core/navbar.php';
+require_once "./core/breadcrumb.php";
 
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])){
