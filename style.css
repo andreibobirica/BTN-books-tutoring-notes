@@ -72,7 +72,7 @@ header img {
     height: 2em;
 }
 
-header > div {
+header>div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -135,6 +135,10 @@ nav a:visited {
     margin: unset;
 }
 
+main {
+    padding: 1.25em;
+}
+
 section {
     padding: 1.5em 1.5em;
     width: 100%;
@@ -191,11 +195,12 @@ footer p {
     flex-direction: column;
     justify-content: end;
     padding: 1.5em 1.1em;
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: 100vh;
+    /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
 }
 
-#search > div {
+#search>div {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
     border-radius: 15px;
@@ -259,8 +264,8 @@ footer p {
 }
 
 /* INFO */
-#info > img,
-#disclaimer > img {
+#info>img,
+#disclaimer>img {
     display: none;
 }
 
@@ -365,6 +370,78 @@ footer p {
 
 #scelteOrdinamento {
     padding: 0.2em;
+}
+
+/* SINGOLO ANNUNCIO */
+
+#listing-content main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--bg-alt);
+}
+
+#listing-content h2 {
+    color: var(--accent-red);
+    font-size: 2em;
+    line-height: 1.25em;
+    margin-bottom: .25em;
+}
+
+#listing-content img {
+    width: auto;
+    height: auto;
+    max-height: 50vh;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#listing-content #listing-price {
+    font-weight: bold;
+    font-size: 2em;
+    color: var(--accent-red-2);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#listing-content dt,
+#listing-content dd {
+    display: inline;
+}
+
+#listing-content dt {
+    font-weight: bold;
+}
+
+#listing-content dd {
+    text-align: end;
+}
+
+#listing-content .listing-property {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.75em;
+}
+
+#listing-content #listing-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5em;
+}
+
+#listing-content .listing-btn {
+    background-color: var(--accent-red-3);
+    padding: .5em;
+    border-radius: 10px;
+    width: 49%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
 }
 
 /* LOGIN E REGISTRAZIONE */
@@ -476,6 +553,7 @@ footer p {
 }
 
 @media only screen and (min-width: 500px) {
+
     /* RISULTATI */
     .listing {
         margin-left: 0.25em;
@@ -512,9 +590,18 @@ footer p {
         text-align: center;
         display: block;
     }
+
+    /* SINGOLO ANNUNCIO */
+
+    #listing-content #listing-descr,
+    #listing-content dt,
+    #listing-content dd {
+        font-size: 1.15em;
+    }
 }
 
 @media only screen and (min-width: 600px) {
+
     /* HOME */
     #search {
         align-items: center;
@@ -526,7 +613,7 @@ footer p {
         text-align: center;
     }
 
-    #search > div {
+    #search>div {
         width: 85%;
     }
 
@@ -537,6 +624,16 @@ footer p {
 
     .text {
         padding: 1.5em 3em;
+    }
+
+    /* SINGOLO ANNUNCIO */
+    #listing-content dl {
+        max-width: 49%;
+    }
+
+    #listing-content #listing-buttons {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
     }
 
     /* LOGIN */
@@ -593,8 +690,8 @@ footer p {
         padding-bottom: 1.5em;
     }
 
-    #info > img,
-    #disclaimer > img {
+    #info>img,
+    #disclaimer>img {
         display: inline;
         border-radius: 25px;
         margin: 1.5em;
@@ -623,7 +720,7 @@ footer p {
         width: 30%;
     }
 
-    #search > div {
+    #search>div {
         width: 70%;
     }
 
@@ -669,15 +766,19 @@ footer p {
         background-repeat: no-repeat;
         background-position: center;
     }
+
     #listaVantaggi p {
         width: 80%;
     }
+
     #addAnnuncioImg {
         background-image: url("assets/imgs/vantaggiAddItem.png");
     }
+
     #salvaAnnuncioImg {
         background-image: url("assets/imgs/vantaggiSaveItem.png");
     }
+
     #feedbackImg {
         background-image: url("assets/imgs/vantaggiFeedback.png");
     }
@@ -686,6 +787,28 @@ footer p {
         display: block;
         margin-left: 60%;
         margin-top: 2em;
+    }
+
+    /* SINGOLO ANNUNCIO */
+    #listing-content main {
+        padding: 3em;
+    }
+
+    #listing-content #listing-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: unset;
+        margin-right: unset;
+    }
+    
+    #listing-content .listing-btn {
+        background-color: rgba(255, 255, 255, 0);
+        text-decoration: underline;
+        color: var(--accent-red);
+        width: auto;
+        padding: unset;
+        margin-bottom: 1em;
+        font-weight: 600;
     }
 }
 
@@ -699,7 +822,7 @@ footer p {
         font-size: 2.5em;
     }
 
-    #search > div {
+    #search>div {
         width: 50%;
     }
 
@@ -717,6 +840,7 @@ footer p {
     #registration-container {
         width: 70%;
     }
+
     #registration-container h2 {
         margin-left: 55%;
         margin-top: 1em;
@@ -736,7 +860,8 @@ footer p {
     /* HOME */
     #search {
         padding: 5em;
-        height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        height: 100vh;
+        /* Fallback for browsers that do not support Custom Properties */
         height: calc(var(--vh, 1vh) * 100);
         max-height: none;
         align-items: center;
@@ -746,7 +871,7 @@ footer p {
         font-size: 3em;
     }
 
-    #search > div {
+    #search>div {
         width: 45%;
     }
 
@@ -768,6 +893,7 @@ footer p {
     #registration-container {
         width: 70%;
     }
+
     #registration-container h2 {
         margin-left: 60%;
         margin-top: 1em;
@@ -822,4 +948,11 @@ footer p {
         margin-top: 10px;
         border: 2px solid rgb(255, 0, 0);
     }
+
+    /* SINGOLO ANNUNCIO */
+    #listing-content main {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
 }

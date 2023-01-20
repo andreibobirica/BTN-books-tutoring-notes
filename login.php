@@ -9,7 +9,7 @@ $footer = file_get_contents("./contents/footer.html");
 $navbar = printNavbar("login", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("login");
 
-$login_form = '<form action="./core/loginCtrl.php" id="login-form" method="POST">';
+$login_form = '<form action="./core/login_control.php" id="login-form" method="POST">';
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
