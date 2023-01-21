@@ -13,23 +13,24 @@
 <body>
   <php-header />
   <main>
-  <div class="container">
-    <div id="welcome-message">
-      <php-welcome-message />
-      <div id="user-info">
-        <php-user-info />
+    <div class="container">
+      <div id="welcome-message">
+        <php-welcome-message />
+        <div id="user-info">
+          <php-user-info />
+        </div>
       </div>
-    </div>
 
-    <div id="annunci-container">
-      <div id="annunci-nuovo">
-        <php-new-listing />
+      <div id="annunci-container">
+        <div id="annunci-pubblicati">
+          <php-listings-list />
+          <php-new-listing />
+        </div>
+        <div id="annunci-salvati">
+          <h3>Annunci salvati</h3>
+          <p>Non hai salvato nessun annuncio</p>
+        </div>
       </div>
-      <div id="annunci-pubblicati">
-        <!-- tabella annunci pubblicati -->
-        <php-listings-list />
-      </div>
-    </div>
   </main>
   <php-footer />
 </body>

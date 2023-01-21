@@ -9,22 +9,63 @@ $footer = file_get_contents("./contents/footer.html");
 $navbar = printNavbar("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['id']);
 // Prendo il percorso e inserisco l'immagine
-$php_img = '<img width="300" height="400" src="'.$arrayAnnuncio["mediapath"].'">';
+$listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
 
-// Controllo il login ed in caso mostro i bottoni per modificare e eliminare l'annuncio
-$button_edit = '<a href="edit_listing.php?modifica="'.$arrayAnnuncio['id'].'" class="listing-btn">Modifica annuncio</a>';
-$button_delete = '<a href="edit_listing.php?elimina="'.$arrayAnnuncio['id'].'" class="listing-btn">Elimina annuncio</a>';
+// Controllo il login e mostro le parti corrette
+$listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '€</p>';
+$listing_title = '<dd>' . $arrayAnnuncio['titolo'] . '</dd>';
+$listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
+$listing_descr = '<p id="listing-descr">'.$arrayAnnuncio['descrizione'].'</p>';
 
-if($auth->getIfLogin()) {
-    $listing = str_replace('<php-buttons />', $button_edit.$button_delete, $listing);
+
+$button_save = '<a href="" class="listing-btn">Salva annuncio</a>';
+$button_edit = '<a href="edit_listing.php?modifica="' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
+$button_delete = '<a href="edit_listing.php?elimina="' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
+$user_email = '<a href="mailto:$mailVenditore" class="listing-btn">$mailVenditore</a>';
+
+if ($auth->getIfLogin()) {
+    if ($arrayAnnuncio['username'] == $_SESSION["loginAccount"]) {
+        $listing = str_replace('<php-buttons />', $button_edit . $button_delete, $listing);
+    } else {
+        $listing = str_replace('<php-buttons />', $button_save . $user_email, $listing);
+    }
+}
+
+if (!empty($arrayAnnuncio['autore'])) {
+    $book_author = '<div class="listing-property">
+    <dt>Autore</dt>
+    <dd>' . $arrayAnnuncio['autore'] . '</dd>
+</div>';
+}
+
+if (!empty($arrayAnnuncio['edizione'])) {
+    $book_edition = '<div class="listing-property">
+    <dt>Edizione</dt>
+    <dd>' . $arrayAnnuncio['edizione'] . '</dd>
+</div>';
+}
+
+if (!empty($arrayAnnuncio['isbn'])) {
+    $book_isbn = '<div class="listing-property">
+    <dt>ISBN</dt>
+    <dd>' . $arrayAnnuncio['isbn'] . '</dd>
+</div>';
 }
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
 $header = str_replace('<breadcrumb/>', $breadcrumb, $header);
 $listing = str_replace('<php-header />', $header, $listing);
-$listing = str_replace('<php-array/>', implode($arrayAnnuncio), $listing);
-$listing = str_replace('<php-img />', $php_img, $listing);
+
+$listing = str_replace('<php-img />', $listing_img, $listing);
+$listing = str_replace('<php-price />', $listing_price, $listing);
+$listing = str_replace('<php-title />', $listing_title, $listing);
+$listing = str_replace('<php-descr />', $listing_descr, $listing);
+$listing = str_replace('<php-subject />', $listing_subject, $listing);
+$listing = str_replace('<php-author />', $book_author, $listing);
+$listing = str_replace('<php-edition />', $book_edition, $listing);
+$listing = str_replace('<php-isbn />', $book_isbn, $listing);
+
 $listing = str_replace('<php-footer />', $footer, $listing);
 
 // Mostro la pagina

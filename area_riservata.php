@@ -11,26 +11,21 @@ $navbar = printNavbar("areariservata", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("areariservata");
 
 // Tasto nuovo annuncio
-$new_listing = '<p>Aggiungi Un Annuncio<a href="new_listing.php?nuovo">Nuovo</a></p>';
+$new_listing = '<button id="publish-btn">Pubblica annuncio</button>';
 
 // Controllo il login
 if ($auth->getIfLogin()) {
     // Messaggio di benvenuto e informazioni utente
     $welcome_message_login = '<h1>Benvenuto, ' . $_SESSION["loginAccount"] . '</h1>';
-    $user_info = '<p>Nome: ' . $_SESSION["nameAccount"] . '</p>
-    <p>Cognome: ' . $_SESSION["surnameAccount"] . '</p>
-    <p>Email: ' . $_SESSION["emailAccount"] . '</p>
-    <p>Data Di Nascita: ' . $_SESSION["birthdateAccount"] . '</p>';
+    $welcome_message_login .= '<img src="./assets/imgs/icona.png"alt="" width="150" height="150" style="margin-top: 10px;">';
+    
+    $user_info = '<dl>';
+    
+    $user_info .= '</dl>';
+    $user_info .= '<button id="modify-btn">Modifica dati</button>';
 
     // Elenco degli annunci
-    $listings_list = '<h3>Annunci pubblicati</h3><table>
-    <tr>
-        <th>Titolo</th>
-        <th>Materia Scolastica</th>
-        <th>Prezzo</th>
-        <th></th>
-        <th></th
-    </tr>';
+    $listings_list = '<h3>Annunci pubblicati</h3>';
 
     $listings = $request->getAnnunciOfUser($_SESSION["loginAccount"]);
 
