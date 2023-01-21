@@ -24,7 +24,7 @@ if ($auth->getIfLogin() && isset($_POST["new_listing"])) {
 
 }
 
-if(!$auth->getIfLogin() || !isset($_GET["nuovo"])){
+if(!$auth->getIfLogin()){
     header("location:./area_riservata.php");
 }
 ?>

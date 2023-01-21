@@ -10,39 +10,47 @@
     <title>BTN - Libri, appunti, ripetizioni</title>
 </head>
 
-<body>
+<body id="new-listing">
     <php-header />
     <main>
-        <div class="container">
-            <form action="php-action" id="newAnnuncioForm" method="POST"
-                enctype="multipart/form-data">
-                <label id="labelNome">Tipo Annuncio</label>
-                <select name="tipo">
-                    <option value="appunti">Appunti</option>
-                    <option value="libri">Libri</option>
-                    <option value="ripetizioni">Ripetizioni</option>
-                </select>
-                <label id="labelTitolo">Titolo</label>
-                <input type="text" placeholder="Inserisci il titolo" maxlength="25" name="titolo" id="inputTitolo" />
-                <label id="labelDescrizione">Descrizione</label>
-                <input type="text" placeholder="Inserisci Descrizione" maxlength="255" name="descrizione"
-                    id="inputDescrizione" />
-                <label id="labelPrezzo">Prezzo</label>
-                <input type="text" placeholder="Inserisci il prezzo" maxlength="25" name="prezzo" id="inputPrezzo" />
-                <label id="labelMediapath">MediaPath</label>
-                <input type="file" name="mediapath" id="mediapath">
-                <label id="labelMateria">Materia</label>
-                <input type="text" placeholder="Inserisci la materia" maxlength="25" name="materia" id="inputMateria" />
-                <label id="labelAutore">Autore</label>
-                <input type="text" placeholder="Inserisci autore" maxlength="25" name="autore" id="inputAutore" />
-                <label id="labelEdizione">Edizione</label>
-                <input type="text" placeholder="Inserisci la edizione" maxlength="25" name="edizione"
-                    id="inputEdizione" />
-                <label id="labelISBN">ISBN</label>
-                <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="inputMateria" />
-                <button type="submit" name="new_listing" id="new_listing">Inserisci</button>
-            </form>
-        </div>
+        <h2>Nuovo annuncio</h2>
+        <form action="php-action" class="multiple-fields-form" method="POST" enctype="multipart/form-data">
+
+            <label for="new-listing-type">Tipo</label>
+            <select name="tipo" id="new-listing-type">
+                <option value="libri">Libri</option>
+                <option value="appunti">Appunti</option>
+                <option value="ripetizioni">Ripetizioni</option>
+            </select>
+
+            <label for="new-listing-title">Titolo</label>
+            <input type="text" placeholder="Inserisci titolo" maxlength="25" name="titolo" id="new-listing-title" />
+
+            <label for="new-listing-descr">Descrizione</label>
+            <input type="text" placeholder="Inserisci descrizione" maxlength="255" name="descrizione"
+                id="new-listing-descr" />
+
+            <label for="new-listing-price">Prezzo</label>
+            <input type="text" placeholder="Inserisci prezzo" maxlength="25" name="prezzo" id="new-listing-price" />
+
+            <label for="new-listing-file">Carica una foto</label>
+            <input type="file" name="mediapath" id="new-listing-file">
+
+            <label id="labelMateria">Materia</label>
+            <input type="text" placeholder="Inserisci materia" maxlength="25" name="materia" id="inputMateria" />
+
+            <label for="new-listing-author">Autore</label>
+            <input type="text" placeholder="Inserisci autore" maxlength="25" name="autore" id="new-listing-author" />
+
+            <label for="new-listing-edition">Edizione</label>
+            <input type="text" placeholder="Inserisci edizione" maxlength="25" name="edizione"
+                id="new-listing-edition" />
+
+            <label for="new-listing-isbn">ISBN</label>
+            <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />
+
+            <button type="submit" name="new_listing" id="new_listing">Carica</button>
+        </form>
     </main>
     <php-footer />
 </body>

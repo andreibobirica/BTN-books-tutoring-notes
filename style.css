@@ -443,16 +443,17 @@ footer p {
 
 /* LOGIN E REGISTRAZIONE */
 
-#login-main {
-    width: 100%;
+#login main,
+#registration main {
+    /*width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-image: url(./assets/imgs/login.jpg);
+    justify-content: center;*/
+    /*background-image: url(./assets/imgs/login.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center;*/
 }
 
 #login-form {
@@ -472,46 +473,57 @@ footer p {
     text-align: center;
 }
 
-#login-button {
-    margin: 1em 0;
-    background-color: var(--accent-red-2);
-    color: white;
-    padding: 0.75em 4.1em;
-    border-radius: 10px;
-    border: none;
-    font-size: 1em;
+.multiple-fields-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
-#login-main input {
+.multiple-fields-form select {
+    padding: 1em;
+    border: 2px solid var(--fg-alt);
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.multiple-fields-form input {
     padding: 1em;
     border: 2px solid var(--fg-alt);
     border-radius: 10px;
 }
 
-#login-form p {
+.multiple-fields-form p {
     margin-top: 0.5em;
 }
 
-#registration-form {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    height: 100%;
-    overflow: auto;
+.multiple-fields-form button {
+    margin: 1em 0;
+    background-color: var(--accent-red-2);
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.5em;
 }
 
-#registration-container {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    overflow: auto;
+#registration main,
+#new-listing main {
+    padding: 2em;
+    background-color: var(--bg);
 }
 
-#registration-container h2 {
-    display: none;
+#registration h2,
+#new-listing h2 {
+    margin-top: unset;
+    margin-bottom: .75em;
+    font-weight: 500;
+    font-size: 2em;
+    color: var(--accent-red);
 }
 
-#listaVantaggi {
+#registration-perks {
     display: none;
 }
 
@@ -637,6 +649,13 @@ footer p {
     #login-form {
         width: 65%;
     }
+
+    /* REGISTRAZIONE */
+    #registration main,
+    #new-listing main {
+        width: 85%;
+        align-self: center;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -726,36 +745,47 @@ footer p {
         width: 50%;
     }
 
-    #registration-form {
-        width: 50%;
+    #registration .multiple-fields-form {
+        max-width: 85%;
+    }
+
+    #registration main {
         display: flex;
-        flex-direction: column;
-        padding: 2em;
-        background-color: white;
-        float: left;
+        justify-content: center;
+        align-items: flex-start;
     }
 
-    #registration-container {
-        width: 100%;
-        background-color: var(--registration-advantages);
-        display: initial;
+    #registration h2 {
+        display: none;
     }
 
-    #listaVantaggi {
+    #registration .multiple-fields-form {
+        width: 50%;
+    }
+
+    #registration-perks {
+        background-color: var(--bg-alt);
         list-style: none;
         display: block;
-        margin-top: 4em;
+        border-radius: 30px;
+        margin-left: 3em;
+        padding: 2em;
+        width: 50%;
     }
 
-    #listaVantaggi li {
-        padding: 1em 0.5em 0.5em 1em;
+    #registration-perks h2 {
+        display: block;
+    }
+
+    #registration-perks li {
+        padding: 1em 0 0.5em 0;
         display: flex;
         flex-direction: row;
         align-items: center;
         /* background-color:red;  */
     }
 
-    #listaVantaggi span {
+    #registration-perks .icon {
         width: 4.5em;
         height: 4.5em;
         padding: 0.5em;
@@ -764,7 +794,7 @@ footer p {
         background-position: center;
     }
 
-    #listaVantaggi p {
+    #registration-perks p {
         width: 80%;
     }
 
@@ -780,10 +810,9 @@ footer p {
         background-image: url("assets/imgs/vantaggiFeedback.png");
     }
 
-    #registration-container h2 {
-        display: block;
-        margin-left: 60%;
-        margin-top: 2em;
+    /* NUOVO ANNUNCIO */
+    #new-listing main {
+        width: 60%;
     }
 
     /* SINGOLO ANNUNCIO */
@@ -839,13 +868,27 @@ footer p {
         width: 30%;
     }
 
-    #registration-container {
-        width: 70%;
+    #registration {
+        background-image: url(./assets/imgs/login.jpg);
+        background-size: cover;
+        background-position: center;
     }
 
-    #registration-container h2 {
-        margin-left: 55%;
-        margin-top: 1em;
+    #registration main {
+        width: 80%;
+    }
+
+    #registration .multiple-fields-form {
+        max-width: 40%;
+    }
+
+    #registration-perks li {
+        font-size: 1.15em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main {
+        width: 40%;
     }
 }
 
@@ -891,14 +934,14 @@ footer p {
         margin: auto;
     }
 
-    /* LOGIN E REGISTRAZIONE */
-    #registration-container {
-        width: 70%;
+    /* REGISTRAZIONE */
+    #registration main {
+        width: 60%;
     }
 
-    #registration-container h2 {
-        margin-left: 60%;
-        margin-top: 1em;
+    /* NUOVO ANNUNCIO */
+    #new-listing main {
+        width: 35%;
     }
 
     /* AREA RISERVATA */

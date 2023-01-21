@@ -11,7 +11,7 @@ $navbar = printNavbar("areariservata", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("areariservata");
 
 // Tasto nuovo annuncio
-$new_listing = '<button id="publish-btn">Pubblica annuncio</button>';
+$new_listing = '<a href="new_listing.php">Nuovo annuncio</a>';
 
 // Controllo il login
 if ($auth->getIfLogin()) {
@@ -22,7 +22,7 @@ if ($auth->getIfLogin()) {
     $user_info = '<dl>';
     
     $user_info .= '</dl>';
-    $user_info .= '<button id="modify-btn">Modifica dati</button>';
+    $user_info .= '<a href="">Modifica dati</a>';
 
     // Elenco degli annunci
     $listings_list = '<h3>Annunci pubblicati</h3>';

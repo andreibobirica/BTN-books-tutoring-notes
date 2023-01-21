@@ -13,6 +13,7 @@ $breadcrumb = printBreadcrumb("registrati");
 $header = str_replace('<navbar/>', $navbar, $header);
 $header = str_replace('<breadcrumb/>', $breadcrumb, $header);
 $registration = str_replace('<php-header />', $header, $registration);
+$registration = str_replace('php-action', $_SERVER['PHP_SELF'], $registration);
 $registration = str_replace('<php-footer />', $footer, $registration);
 
 // Mostro la pagina

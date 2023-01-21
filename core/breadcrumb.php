@@ -25,7 +25,7 @@ function printBreadcrumb($pagina, $annuncio=0){
     }elseif($pagina=="annuncio"){
         $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Annuncio '.$annuncio.'</p>',$breadcrumb);
     }elseif($pagina=="new_listing"){
-        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Inserimento Annuncio </p>',$breadcrumb);
+        $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Nuovo annuncio </p>',$breadcrumb);
     }elseif($pagina=="edit_listing"){
         $breadcrumb = str_replace('<bread/>','<p><a href="./index.php" lang="en">Home</a> / <a href="./area_riservata.php" lang="en">Area Riservata</a> / Modifica Annuncio '.$annuncio.'</p>',$breadcrumb);
     }
