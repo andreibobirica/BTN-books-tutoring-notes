@@ -13,15 +13,8 @@
 <body id="new-listing">
     <php-header />
     <main>
-        <h2>Nuovo annuncio</h2>
+        <h2>Nuovo annuncio php-type</h2>
         <form action="php-action" class="multiple-fields-form" method="POST" enctype="multipart/form-data">
-
-            <label for="new-listing-type">Tipo</label>
-            <select name="tipo" id="new-listing-type">
-                <option value="libri">Libri</option>
-                <option value="appunti">Appunti</option>
-                <option value="ripetizioni">Ripetizioni</option>
-            </select>
 
             <label for="new-listing-title">Titolo</label>
             <input type="text" placeholder="Inserisci titolo" maxlength="25" name="titolo" id="new-listing-title" />
@@ -33,21 +26,16 @@
             <label for="new-listing-price">Prezzo</label>
             <input type="text" placeholder="Inserisci prezzo" maxlength="25" name="prezzo" id="new-listing-price" />
 
-            <label for="new-listing-file">Carica una foto</label>
-            <input type="file" name="mediapath" id="new-listing-file">
-
             <label id="labelMateria">Materia</label>
             <input type="text" placeholder="Inserisci materia" maxlength="25" name="materia" id="inputMateria" />
 
-            <label for="new-listing-author">Autore</label>
-            <input type="text" placeholder="Inserisci autore" maxlength="25" name="autore" id="new-listing-author" />
+            <php-file />
 
-            <label for="new-listing-edition">Edizione</label>
-            <input type="text" placeholder="Inserisci edizione" maxlength="25" name="edizione"
-                id="new-listing-edition" />
+            <php-author />
+            
+            <php-edition />
 
-            <label for="new-listing-isbn">ISBN</label>
-            <input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />
+            <php-isbn />
 
             <button type="submit" name="new_listing" id="new_listing">Carica</button>
         </form>

@@ -16,17 +16,17 @@
 <body id="login">
     <php-header />
     <main>
-        <php-form>
-            <h2 id="login-title" lang ="en">Login</h2>
-            <label lang="en">Username</label>
-            <input type="text" placeholder="Utente" name="utente" />
-            <label><span lang="en">Password</span></label>
-            <input type="password" placeholder="Password" name="password" />
-            <button type="submit" id="login-button">Accedi</button>
+        <h2>Login</h2>
+        <form form action="./core/login_control.php" class="multiple-fields-form" method="POST">
+            <label lang="en" for="login-user">Username</label>
+            <input type="text" placeholder="Utente" name="utente" id="login-user" />
+            <label for="login-password"><span lang="en">Password</span></label>
+            <input type="password" placeholder="Password" name="password" id="login-password" />
 
-            <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registrazione.html">Registrati</a>
+            <button type="submit">Accedi</button>
+            <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registration.php">Registrati</a>
             </p>
-        </php-form>
+        </form>
     </main>
     <php-footer />
 </body>
