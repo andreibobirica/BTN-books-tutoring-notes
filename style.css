@@ -46,6 +46,7 @@ body {
     margin: auto;
 }
 
+/* HEADER */
 header {
     background-color: var(--accent-red);
     color: var(--bg);
@@ -67,31 +68,31 @@ header img {
     height: 2em;
 }
 
-header > div {
+header div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.logo,
-.logo:visited {
+header .logo,
+header .logo:visited {
     color: var(--bg);
     text-decoration: none;
 }
 
-.logo:hover {
+header .logo:hover {
     text-decoration: underline;
 }
 
-#menu-btn {
+header #menu-btn {
     padding: 0.3em 0.8em;
     border: 3px solid var(--bg);
     background-color: rgba(255, 0, 0, 0);
     color: var(--bg);
 }
 
-#menu {
+header #menu {
     display: none;
     padding: 0.75em 0 0 0;
     justify-content: end;
@@ -99,24 +100,24 @@ header > div {
     font-size: 1.2em;
 }
 
-nav ul {
+header nav ul {
     display: flex;
     flex-direction: column;
     margin: unset;
     padding: unset;
 }
 
-nav li {
+header nav li {
     display: inline;
     padding: 0.5em 0.25em;
     text-align: right;
 }
 
-nav a:visited {
+header nav a:visited {
     color: var(--bg);
 }
 
-#menu.show-menu {
+header #menu.show-menu {
     display: flex;
 }
 
@@ -132,6 +133,7 @@ nav a:visited {
 }
 
 #breadcrumb li {
+    display: inline;
     padding: unset;
     margin-left: 0.5em;
 }
@@ -140,19 +142,19 @@ nav a:visited {
     content: "/ ";
 }
 
-#home section {
+section {
     padding: 1.5em 1.5em;
     width: 100%;
 }
 
-#home section h2 {
+section h2 {
     text-align: center;
     color: var(--accent-red-2);
     font-weight: 600;
     text-transform: uppercase;
 }
 
-#home section p {
+section p {
     font-size: 1.1em;
 }
 
@@ -713,7 +715,7 @@ dd {
 }
 
 @media only screen and (min-width: 768px) {
-    #menu-btn {
+    header #menu-btn {
         display: none;
     }
 
@@ -726,17 +728,17 @@ dd {
         padding-bottom: 1.5em;
     }
 
-    #menu {
+    header #menu {
         padding: unset;
         display: flex;
     }
 
-    nav ul {
+    header nav ul {
         flex-direction: row;
         align-items: center;
     }
 
-    nav li {
+    header nav li {
         display: inline;
         padding: unset;
         margin-left: 1.25em;
