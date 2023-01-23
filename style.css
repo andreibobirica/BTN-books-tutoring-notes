@@ -292,12 +292,12 @@ footer p {
 }
 
 /* RISULTATI */
-#risultati-main {
+#search-results main {
     display: flex;
     flex-direction: column;
 }
 
-#listings-list {
+.listings-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -312,20 +312,22 @@ footer p {
     align-items: stretch;
     background-color: var(--bg-alt);
     border-radius: 10px;
-    width: 95%;
+    width: 47%;
+    margin-left: .25em;
+    margin-right: .25em;
 }
 
 .listing-title {
-    padding: 1em 0em 0em 1em;
-    font-weight: bold;
-    font-size: 1.6em;
+    padding: .5em 0em 0em 1em;
+    font-weight: 600;
+    font-size: 1.2em;
     color: var(--accent-red-2);
 }
 
 .listing-author {
-    padding: 0.5em 0em 1em 1.3em;
+    padding: 0 0 .5em 1.3em;
     font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--accent-red-3);
 }
 
@@ -335,23 +337,21 @@ footer p {
     max-width: 100%;
 }
 
-.listing p {
-    padding: 0.75em 0em 0.5em 1.3em;
-    font-size: 1em;
-}
-
-.listing-price {
-    font-weight: bold;
-    font-size: 1.3em;
-}
-
 .listing-user {
+    padding: 0.5em 0 0 1.1em;
     font-weight: normal;
+    font-size: 1em;
     color: var(--fg);
 }
 
+.listing-price {
+    padding: 0 0 0 1em;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
 .listing a {
-    padding: 0.5em;
+    padding: 0.25em;
     margin: 0.5em 0.5em 0.75em 0.5em;
     color: white;
     text-decoration: none;
@@ -359,6 +359,7 @@ footer p {
     border-radius: 10px;
     text-align: center;
     display: block;
+    font-size: 1em;
 }
 
 #orderForm {
@@ -590,11 +591,11 @@ dd {
         width: 47%;
     }
 
-    .listing-title {
+    .listing h3 {
         font-size: 1.4em;
     }
 
-    .listing-author {
+    .listing h4 {
         font-size: 1.2em;
     }
 
