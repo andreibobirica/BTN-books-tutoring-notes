@@ -317,15 +317,21 @@ footer p {
     margin-right: 0.25em;
 }
 
+.listing-title,
+.listing-author {
+    padding-left: 1em;
+    padding-right: unset;
+}
+
 .listing-title {
-    padding: 0.5em 0em 0em 1em;
+    padding-top: .5em;
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--accent-red-2);
 }
 
 .listing-author {
-    padding: 0 0 0.5em 1.3em;
+    padding-bottom: .5em;
     font-weight: normal;
     font-size: 1em;
     color: var(--accent-red-3);
@@ -518,6 +524,8 @@ dd {
 
 #area-riservata #user-info dl {
     margin-top: 1.5em;
+    margin-bottom: 1.5em;
+
 }
 
 #area-riservata #user-info {
@@ -547,6 +555,11 @@ dd {
     display: flex;
     justify-content: flex-start;
     line-height: 1.75em;
+}
+
+#area-riservata .custom-link {
+    color: var(--accent-red-2);
+    font-size: 1.2em;
 }
 
 #area-riservata h3 {
@@ -596,12 +609,12 @@ dd {
         width: 47%;
     }
 
-    .listing h3 {
-        font-size: 1.4em;
+    .listing-title {
+        font-size: 1.2em;
     }
 
-    .listing h4 {
-        font-size: 1.2em;
+    .listing-author {
+        font-size: 1.1em;
     }
 
     .listing p {
@@ -926,6 +939,16 @@ dd {
 
     #area-riservata #user-info dl {
         font-size: 1.2em;
+    }
+
+    .listing-title {
+        font-size: 1.3em;
+        padding-top: .75em;
+    }
+
+    .listing-author {
+        padding-bottom: .75em;
+        padding-top: .25em;
     }
 
     /* NUOVO ANNUNCIO */
