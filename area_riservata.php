@@ -2,7 +2,9 @@
 require_once './core/area_riservata_control.php';
 
 // HTML di pagina, header e footer
-$area_riservata = file_get_contents("./contents/area_riservata_content.html");
+$area_riservata_content = file_get_contents("./contents/area_riservata_content.html");
+$area_riservata = boilerplate($area_riservata_content);
+
 $footer = file_get_contents("./contents/footer.html");
 
 // Contenuto corretto di navbar e breadcrumb

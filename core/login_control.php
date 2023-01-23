@@ -7,6 +7,7 @@ if(session_status() == PHP_SESSION_NONE){
 require_once 'Authentication.php';
 $auth = new Authentication();
 require_once 'header.php';
+require_once "./core/imports.php";
 
 if (isset($_POST['utente']) && !empty($_POST['utente'])) {
     require_once 'Sanitizer.php';

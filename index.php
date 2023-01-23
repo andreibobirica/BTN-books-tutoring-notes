@@ -1,8 +1,11 @@
 <?php
 require_once "./core/index_control.php";
+require_once "./core/imports.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$home = file_get_contents("./contents/home_content.html");
+$home_content = file_get_contents("./contents/home_content.html");
+$home = boilerplate($home_content);
+
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto dell'header
 $header = printHeader("cerca", $auth->getIfLogin());

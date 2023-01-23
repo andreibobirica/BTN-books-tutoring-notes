@@ -2,7 +2,9 @@
 require_once './core/new_listing_control.php';
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$new_listing = file_get_contents("./contents/new_listing_content.html");
+$new_listing_content = file_get_contents("./contents/new_listing_content.html");
+$new_listing = boilerplate($new_listing_content);
+
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
 $header = printHeader("inserimentoAnnuncio", $auth->getIfLogin());

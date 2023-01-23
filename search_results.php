@@ -2,7 +2,9 @@
 require_once "./core/search_results_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$search_results = file_get_contents("./contents/search_results_content.html");
+$search_results_content = file_get_contents("./contents/search_results_content.html");
+$search_results = boilerplate($search_results_content);
+
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar

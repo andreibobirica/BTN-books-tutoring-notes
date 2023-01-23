@@ -9,7 +9,7 @@ $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
 require_once './core/header.php';
-
+require_once "./core/imports.php";
 
 //LogOut
 if (isset($_GET["logout"])) {

@@ -2,7 +2,9 @@
 require_once "./core/registration_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$registration = file_get_contents("./contents/registration_content.html");
+$registration_content = file_get_contents("./contents/registration_content.html");
+$registration = boilerplate($registration_content);
+
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto dell'header
 $header = printHeader("registrazione", $auth->getIfLogin());

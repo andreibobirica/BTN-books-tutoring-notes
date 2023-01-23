@@ -2,7 +2,9 @@
 require_once "./core/login_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$login = file_get_contents("./contents/login_content.html");
+$login_content = file_get_contents("./contents/login_content.html");
+$login = boilerplate($login_content);
+
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto dell'header
 $header = printHeader("accedi", $auth->getIfLogin());

@@ -2,10 +2,12 @@
 require_once "./core/header.php";
 require_once "./core/Authentication.php";
 $auth = new Authentication();
-
+require_once "./core/imports.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$server_error = file_get_contents("./contents/500_content.html");
+$server_error_content = file_get_contents("./contents/500_content.html");
+$server_error = boilerplate($server_error_content);
+
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto dell'header
 $header = printHeader("err", $auth->getIfLogin());

@@ -8,7 +8,7 @@ $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
 require_once './core/header.php';
-
+require_once "./core/imports.php";
 
 //Script Inserimento Annuncio
 if ($auth->getIfLogin() && isset($_POST["new_listing"])) {

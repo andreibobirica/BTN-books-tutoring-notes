@@ -2,7 +2,9 @@
 require_once "./core/listing_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$listing = file_get_contents("./contents/listing_content.html");
+$listing_content = file_get_contents("./contents/listing_content.html");
+$listing = boilerplate($listing_content);
+
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
