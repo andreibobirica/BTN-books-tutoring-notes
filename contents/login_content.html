@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Effettua il login su BTN per vendere libri, annunci e ripetizioni o vedere gli elementi salvati."
+        />
+        <meta name="keywords" content="BTN, login" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="./scripts/main_script.js"></script>
+        <title>BTN - Login</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Effettua il login su BTN per vendere libri, annunci e ripetizioni o vedere gli elementi salvati.">
-    <meta name="keywords" content="BTN, login">
-    <link rel="stylesheet" href="style.css">
-    <script src="./scripts/main_script.js"></script>
-    <title>BTN - Login</title>
-</head>
+    <body id="login">
+        <php-header />
+        <main>
+            <h2>Login</h2>
+            <form
+                form
+                action="./core/login_control.php"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label lang="en" for="login-user">Username</label>
+                <input
+                    type="text"
+                    placeholder="Utente"
+                    name="utente"
+                    id="login-user"
+                />
+                <label for="login-password"
+                    ><span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="login-password"
+                />
 
-<body id="login">
-    <php-header />
-    <main>
-        <h2>Login</h2>
-        <form form action="./core/login_control.php" class="multiple-fields-form" method="POST">
-            <label lang="en" for="login-user">Username</label>
-            <input type="text" placeholder="Utente" name="utente" id="login-user" />
-            <label for="login-password"><span lang="en">Password</span></label>
-            <input type="password" placeholder="Password" name="password" id="login-password" />
-
-            <button type="submit">Accedi</button>
-            <p>Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>? <a href="registration.php">Registrati</a>
-            </p>
-        </form>
-    </main>
-    <php-footer />
-</body>
-
+                <button type="submit">Accedi</button>
+                <p>
+                    Prima volta su <abbr title="Book Tutoring Notes">BTN</abbr>?
+                    <a href="registration.php">Registrati</a>
+                </p>
+            </form>
+        </main>
+        <php-footer />
+    </body>
 </html>

@@ -79,7 +79,8 @@ header > div {
     justify-content: space-between;
 }
 
-.logo {
+.logo,
+.logo:visited {
     color: var(--bg);
     text-decoration: none;
 }
@@ -125,14 +126,23 @@ nav a:visited {
 }
 
 #breadcrumb {
-    font-size: 0.8em;
+    font-size: 1em;
     background-color: var(--accent-red-2);
     color: var(--bg);
+    padding: .5em;
 }
 
-#breadcrumb p {
-    padding: 1em;
-    margin: unset;
+#breadcrumb ol {
+    margin-left: 1em;
+}
+
+#breadcrumb li {
+    padding: unset;
+    margin-left: .5em;
+}
+
+#breadcrumb li::before {
+    content: '/ ';
 }
 
 #home section {
@@ -490,6 +500,7 @@ dd {
 #login main {
     padding: 2em;
     background-color: var(--bg);
+    height: 100%;
 }
 
 #login .multiple-fields-form {
@@ -901,6 +912,10 @@ dd {
 @media only screen and (min-width: 1024px) {
     header {
         padding: 1.75em 3em;
+    }
+
+    #breadcrumb ol {
+        margin-left: 2em;
     }
 
     /* HOME */

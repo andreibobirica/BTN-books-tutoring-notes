@@ -6,7 +6,7 @@ $search_results = file_get_contents("./contents/search_results_content.html");
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
-$navbar = printNavbar("risultati", $auth->getIfLogin());
+$navbar = printHeader("risultati", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("risultati");
 /*
 // Prendo il percorso e inserisco l'immagine
@@ -23,7 +23,7 @@ $button_save = '<a href="" class="listing-btn">Salva annuncio</a>';*/
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
-$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $search_results = str_replace('<php-header />', $header, $search_results);
 
 /*$search_results = str_replace('<php-img />', $listing_img, $search_results);

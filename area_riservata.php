@@ -3,11 +3,10 @@ require_once './core/area_riservata_control.php';
 
 // HTML di pagina, header e footer
 $area_riservata = file_get_contents("./contents/area_riservata_content.html");
-$header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 
 // Contenuto corretto di navbar e breadcrumb
-$navbar = printNavbar("areariservata", $auth->getIfLogin());
+$header = printHeader("areariservata", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("areariservata");
 
 // Controllo il login
@@ -64,8 +63,7 @@ if ($auth->getIfLogin()) {
 }
 
 // Sostituisco i segnaposti
-$header = str_replace('<navbar/>', $navbar, $header);
-$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $area_riservata = str_replace('<php-header />', $header, $area_riservata);
 $area_riservata = str_replace('<php-footer />', $footer, $area_riservata);
 

@@ -1,9 +1,21 @@
 <header>
     <div>
-        <h1><abbr title="Book Tutoring Notes">BTN</abbr></h1>
-        
-        <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
+        <h1>
+            <a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a>
+        </h1>
+        <button id="menu-btn" class="button" onclick="menuOnClick()">
+            <span lang="en">MENU</span>
+        </button>
     </div>
-    <navbar/>
+    <nav id="menu">
+        <ul>
+            <li><a href="./index.php">Cerca</a></li>
+            <li><a href="./info.php">Info</a></li>
+            <li><a href="./login.php">Accedi</a></li>
+            <li><a href="./registration.php">Registrati</a></li>
+            <li><a href="./area_riservata.php">Area Riservata</a></li>
+            <li><a href="./area_riservata.php?logout">Log Out</a></li>
+        </ul>
+    </nav>
 </header>
-<breadcrumb/>
+<breadcrumb />

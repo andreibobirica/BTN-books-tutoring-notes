@@ -6,7 +6,7 @@ $listing = file_get_contents("./contents/listing_content.html");
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
-$navbar = printNavbar("annuncio", $auth->getIfLogin());
+$navbar = printHeader("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['id']);
 // Prendo il percorso e inserisco l'immagine
 $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
@@ -54,7 +54,7 @@ if (!empty($arrayAnnuncio['isbn'])) {
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
-$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $listing = str_replace('<php-header />', $header, $listing);
 
 $listing = str_replace('<php-img />', $listing_img, $listing);

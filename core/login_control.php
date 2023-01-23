@@ -6,8 +6,7 @@ if(session_status() == PHP_SESSION_NONE){
 
 require_once 'Authentication.php';
 $auth = new Authentication();
-require_once 'navbar.php';
-require_once "breadcrumb.php";
+require_once 'header.php';
 
 if (isset($_POST['utente']) && !empty($_POST['utente'])) {
     require_once 'Sanitizer.php';

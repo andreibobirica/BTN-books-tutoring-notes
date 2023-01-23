@@ -6,12 +6,12 @@ $edit_listing = file_get_contents("./contents/edit_listing_content.html");
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
-$navbar = printNavbar("editListing", $auth->getIfLogin());
+$navbar = printHeader("editListing", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("edit_listing", $arrayAnnuncio['id'] );
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
-$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $edit_listing = str_replace('<php-header />', $header, $edit_listing);
 
 $edit_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $edit_listing);

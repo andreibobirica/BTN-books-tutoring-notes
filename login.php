@@ -3,15 +3,13 @@ require_once "./core/login_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $login = file_get_contents("./contents/login_content.html");
-$header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
-// Prendo il contenuto corretto della navbar
-$navbar = printNavbar("login", $auth->getIfLogin());
+// Prendo il contenuto corretto dell'header
+$header = printHeader("accedi", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("accedi");
 
 // Rimpiazzo i segnaposti coi contenuti HTML
-$header = str_replace('<navbar/>', $navbar, $header);
-$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $login = str_replace('<php-header />', $header, $login);
 $login = str_replace('<php-footer />', $footer, $login);
 
