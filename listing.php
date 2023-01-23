@@ -32,21 +32,21 @@ if ($auth->getIfLogin()) {
 }
 
 if (!empty($arrayAnnuncio['autore'])) {
-    $book_author = '<div class="listing-property">
+    $book_author = '<div class="definition">
     <dt>Autore</dt>
     <dd>' . $arrayAnnuncio['autore'] . '</dd>
 </div>';
 }
 
 if (!empty($arrayAnnuncio['edizione'])) {
-    $book_edition = '<div class="listing-property">
+    $book_edition = '<div class="definition">
     <dt>Edizione</dt>
     <dd>' . $arrayAnnuncio['edizione'] . '</dd>
 </div>';
 }
 
 if (!empty($arrayAnnuncio['isbn'])) {
-    $book_isbn = '<div class="listing-property">
+    $book_isbn = '<div class="definition">
     <dt>ISBN</dt>
     <dd>' . $arrayAnnuncio['isbn'] . '</dd>
 </div>';

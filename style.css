@@ -72,7 +72,7 @@ header img {
     height: 2em;
 }
 
-header>div {
+header > div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -135,19 +135,19 @@ nav a:visited {
     margin: unset;
 }
 
-section {
+#home section {
     padding: 1.5em 1.5em;
     width: 100%;
 }
 
-section h2 {
+#home section h2 {
     text-align: center;
     color: var(--accent-red-2);
     font-weight: 600;
     text-transform: uppercase;
 }
 
-section p {
+#home section p {
     font-size: 1.1em;
 }
 
@@ -184,7 +184,7 @@ footer p {
 
 /* HOME */
 
-#home main{
+#home main {
     background-image: url("./assets/imgs/studying.jpg");
     background-size: cover;
     background-position: center;
@@ -197,7 +197,7 @@ footer p {
     height: calc(var(--vh, 1vh) * 93);
 }
 
-#home main>div {
+#home main > div {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
     border-radius: 15px;
@@ -261,8 +261,8 @@ footer p {
 }
 
 /* INFO */
-#info>img,
-#disclaimer>img {
+#info > img,
+#disclaimer > img {
     display: none;
 }
 
@@ -382,7 +382,7 @@ footer p {
     color: var(--accent-red);
     font-size: 2em;
     line-height: 1.25em;
-    margin-bottom: .25em;
+    margin-bottom: 0.25em;
 }
 
 #listing-content img {
@@ -403,21 +403,21 @@ footer p {
     margin-bottom: 1em;
 }
 
-#listing-content dt,
-#listing-content dd {
+dt,
+dd {
     display: inline;
 }
 
-#listing-content dt {
+dt {
     font-weight: bold;
 }
 
-#listing-content dd {
+dd {
     text-align: end;
     margin-left: 1em;
 }
 
-#listing-content .listing-property {
+.definition {
     display: flex;
     justify-content: space-between;
     line-height: 1.75em;
@@ -432,7 +432,7 @@ footer p {
 
 #listing-content .listing-btn {
     background-color: var(--accent-red-3);
-    padding: .5em;
+    padding: 0.5em;
     border-radius: 10px;
     width: 49%;
     text-align: center;
@@ -493,7 +493,7 @@ footer p {
 #new-listing h2,
 #login h2 {
     margin-top: unset;
-    margin-bottom: .75em;
+    margin-bottom: 0.75em;
     font-weight: 500;
     font-size: 2em;
     color: var(--accent-red);
@@ -501,6 +501,51 @@ footer p {
 
 #registration-perks {
     display: none;
+}
+
+/* AREA RISERVATA */
+#area-riservata main {
+    padding: 1.5em;
+}
+
+#area-riservata #user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+#area-riservata #user-header h2 {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+#area-riservata #user-info {
+    margin-bottom: 1.5em;
+}
+
+#area-riservata .icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    background-image: url("assets/imgs/user-solid.svg");
+}
+
+#area-riservata #user-info dt::after {
+    content: ":";
+}
+
+#area-riservata #user-info dd {
+    text-align: start;
+    margin-left: 1em;
+}
+
+#area-riservata #user-info .definition {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 1.75em;
 }
 
 /* PAGINE ERRORI 404 E 500 */
@@ -538,7 +583,6 @@ footer p {
 }
 
 @media only screen and (min-width: 500px) {
-
     /* RISULTATI */
     .listing {
         margin-left: 0.25em;
@@ -586,7 +630,6 @@ footer p {
 }
 
 @media only screen and (min-width: 600px) {
-
     /* HOME */
     #home main {
         align-items: center;
@@ -598,7 +641,7 @@ footer p {
         text-align: center;
     }
 
-    #home main>div {
+    #home main > div {
         width: 85%;
     }
 
@@ -677,8 +720,8 @@ footer p {
         padding-bottom: 1.5em;
     }
 
-    #info>img,
-    #disclaimer>img {
+    #info > img,
+    #disclaimer > img {
         display: inline;
         border-radius: 25px;
         margin: 1.5em;
@@ -707,7 +750,7 @@ footer p {
         width: 30%;
     }
 
-    #home main>div {
+    #home main > div {
         width: 70%;
     }
 
@@ -829,7 +872,7 @@ footer p {
         font-size: 2.5em;
     }
 
-    #home main>div {
+    #home main > div {
         width: 50%;
     }
 
@@ -894,7 +937,7 @@ footer p {
         font-size: 3em;
     }
 
-    #home main>div {
+    #home main > div {
         width: 45%;
     }
 

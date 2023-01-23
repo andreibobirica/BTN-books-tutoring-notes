@@ -14,10 +14,9 @@ $breadcrumb = printBreadcrumb("areariservata");
 $new_listing = '<a href="new_listing.php">Nuovo annuncio</a>';
 
 // Controllo il login
-if ($auth->getIfLogin()) {
+/*if ($auth->getIfLogin()) {
     // Messaggio di benvenuto e informazioni utente
-    $welcome_message_login = '<h1>Benvenuto, ' . $_SESSION["loginAccount"] . '</h1>';
-    $welcome_message_login .= '<img src="./assets/imgs/icona.png"alt="" width="150" height="150" style="margin-top: 10px;">';
+     $welcome_message_login = '<h1>Benvenuto, ' . $_SESSION["loginAccount"] . '</h1>';
     
     $user_info = '<dl>';
     
@@ -51,7 +50,7 @@ if ($auth->getIfLogin()) {
     // Se non loggato non dovrei mai finire su questa pagina, ma in caso mi rimanda al login
     header("Location: login.php");
     exit();
-}
+}*/
 
 // Sostituisco i segnaposti
 $header = str_replace('<navbar/>', $navbar, $header);

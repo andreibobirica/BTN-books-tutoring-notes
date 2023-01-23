@@ -1,65 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse."
+        />
+        <meta name="keywords" content="BTN, registrazione" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="./scripts/main_script.js" async></script>
+        <script src="./scripts/form_manager.js" async></script>
+        <title>BTN - Registrazione</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse.">
-    <meta name="keywords" content="BTN, registrazione">
-    <link rel="stylesheet" href="style.css">
-    <script src="./scripts/main_script.js" async></script>
-    <script src="./scripts/form_manager.js" async></script>
-    <title>BTN - Registrazione</title>
-</head>
-
-<body id="registration">
-    <php-header />
-    <main>
-        <h2>Registrati</h2>
-        <form action="php-action" class="multiple-fields-form" method="POST">
-            <label id="labelNome">Nome</label>
-            <input type="text" placeholder="Inserisci il tuo nome" maxlength="25" name="nome" id="inputNome" />
-            <label id="labelCognome">Cognome</label>
-            <input type="text" placeholder="Inserisci il tuo cognome" maxlength="25" name="cognome" id="inputCognome" />
-            <label id="labelUsername" lang="en">Username</label>
-            <input type="text" placeholder="Inserisci il tuo username" maxlength="30" name="username"
-                id="inputUsername" />
-            <label id="labelPassword" lang="en">Password</label>
-            <input type="password" placeholder="Password" maxlength="50" name="password" id="inputPassword" />
-            <label id="labelConfPassword">Conferma <span lang="en">Password</span></label>
-            <input type="password" placeholder="Reinserici la tua password" maxlength="50" name="confPassword"
-                id="inputConfPassword" />
-            <label id="labelDataNascita">Data di nascita</label>
-            <input type="date" placeholder="Data di nascita" name="dataNascita" id="inputDataNascita" />
-            <label id="labelEmail" lang="en">Email</label>
-            <input type="email" placeholder="Inserisci la tua e-mail" maxlength="70" name="email" id="inputEmail" />
-
-            <button type="submit">Registrati</button>
-            <p>Hai già un <span lang="en">account</span>? <a href="login.php">Accedi</a></p>
-        </form>
-
-        <div id="registration-perks">
+    <body id="registration">
+        <php-header />
+        <main>
             <h2>Registrati</h2>
-            <ul id="listaVantaggi">
-                <li>
-                    <span class="icon" id="addAnnuncioImg"></span>
-                    <p>Ottieni la possibilità di aggiungere annunci</p>
-                </li>
-                <li>
-                    <span class="icon" id="salvaAnnuncioImg"></span>
-                    <p>Salva gli annunci che ti interessano con la possibilità di ritrovarli facilmente</p>
-                </li>
-                <li>
-                    <span class="icon" id="feedbackImg"></span>
-                    <p>Ottieni la possiblità di lasciare un feedback sulla tua esperienza utente</p>
-                </li>
-            </ul>
-        </div>
-    </main>
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label id="labelNome">Nome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo nome"
+                    maxlength="25"
+                    name="nome"
+                    id="inputNome"
+                />
 
-    <php-footer />
-</body>
+                <label id="labelCognome">Cognome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo cognome"
+                    maxlength="25"
+                    name="cognome"
+                    id="inputCognome"
+                />
 
+                <label id="labelUsername" lang="en">Username</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo username"
+                    maxlength="30"
+                    name="username"
+                    id="inputUsername"
+                />
+
+                <label id="labelPassword" lang="en">Password</label>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    maxlength="50"
+                    name="password"
+                    id="inputPassword"
+                />
+
+                <label id="labelConfPassword"
+                    >Conferma <span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Reinserici la tua password"
+                    maxlength="50"
+                    name="confPassword"
+                    id="inputConfPassword"
+                />
+
+                <label id="labelDataNascita">Data di nascita</label>
+                <input
+                    type="date"
+                    placeholder="Data di nascita"
+                    name="dataNascita"
+                    id="inputDataNascita"
+                />
+
+                <label id="labelEmail" lang="en">Email</label>
+                <input
+                    type="email"
+                    placeholder="Inserisci la tua e-mail"
+                    maxlength="70"
+                    name="email"
+                    id="inputEmail"
+                />
+
+                <button type="submit">Registrati</button>
+                <p>
+                    Hai già un <span lang="en">account</span>?
+                    <a href="login.php">Accedi</a>
+                </p>
+            </form>
+
+            <div id="registration-perks">
+                <h2>Registrati</h2>
+                <ul id="listaVantaggi">
+                    <li>
+                        <span class="icon" id="addAnnuncioImg"></span>
+                        <p>Ottieni la possibilità di aggiungere annunci</p>
+                    </li>
+                    <li>
+                        <span class="icon" id="salvaAnnuncioImg"></span>
+                        <p>
+                            Salva gli annunci che ti interessano con la
+                            possibilità di ritrovarli facilmente
+                        </p>
+                    </li>
+                    <li>
+                        <span class="icon" id="feedbackImg"></span>
+                        <p>
+                            Ottieni la possiblità di lasciare un feedback sulla
+                            tua esperienza utente
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <php-footer />
+    </body>
 </html>

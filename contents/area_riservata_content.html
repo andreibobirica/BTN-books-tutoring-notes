@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="./scripts/main_script.js"></script>
+        <title>BTN - Libri, appunti, ripetizioni</title>
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script src="./scripts/main_script.js"></script>
-  <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
-
-<body>
-  <php-header />
-  <main>
-    <div class="container">
-      <div id="welcome-message">
-        <php-welcome-message />
-        <div id="user-info">
-          <php-user-info />
-        </div>
-      </div>
-
-      <div id="annunci-container">
-        <div id="annunci-pubblicati">
-          <php-listings-list />
-          <php-new-listing />
-        </div>
-        <div id="annunci-salvati">
-          <h3>Annunci salvati</h3>
-          <p>Non hai salvato nessun annuncio</p>
-        </div>
-      </div>
-  </main>
-  <php-footer />
-</body>
+    <body id="area-riservata">
+        <php-header />
+        <main>
+            <!-- <php-welcome-message />
+            <php-user-info />
+            <php-listings-list />
+            <php-new-listing /> -->
+            <section id="user-header">
+                <span class="icon" id="user-icon"></span>
+                <h2>Ennio Italiano</h2>
+            </section>
+            <section id="user-info">
+                <dl>
+                    <div class="definition">
+                        <dt>Username</dt>
+                        <dd>ennioitaliano</dd>
+                    </div>
+                    <div class="definition">
+                        <dt>E-mail</dt>
+                        <dd>ennio.italiano@studenti.unipd.it</dd>
+                    </div>
+                    <div class="definition">
+                        <dt>Data di nascita</dt>
+                        <dd>2000-05-28</dd>
+                    </div>
+                </dl>
+            </section>
+            <section id="user-listings">
+              <h3>Annunci pubblicati</h3>
+            </section>
+        </main>
+        <php-footer />
+    </body>
+</html>
