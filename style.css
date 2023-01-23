@@ -534,6 +534,10 @@ dd {
     margin-left: 1.5em;
 }
 
+#area-riservata .no-listings {
+    margin-bottom: 2em;
+}
+
 #area-riservata .icon {
     width: 2em;
     height: 2em;
