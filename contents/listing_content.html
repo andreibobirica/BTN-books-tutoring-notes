@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="./scripts/main_script.js"></script>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <title>BTN - Libri, appunti, ripetizioni</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="./scripts/main_script.js"></script>
-    <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
+    <body id="listing-content">
+        <php-header />
+        <main>
+            <h2>Programmazione Consapevole</h2>
+            <p>Gilberto Filè</p>
+            <p>Caricato da Ennio Italiano</p>
+            <php-img />
 
-<body id="listing-content">
-    <php-header />
-    <main>
-        <h2>Programmazione Consapevole</h2>
-        <p>Gilberto Filè</p>
-        <p>Caricato da Ennio Italiano</p>
-        <php-img />
+            <php-descr />
 
-        <php-descr />
+            <php-price />
 
-        <php-price />
+            <dl>
+                <div class="definition">
+                    <dt>Titolo</dt>
+                    <php-title />
+                </div>
 
-        <dl>
-            <div class="definition">
-                <dt>Titolo</dt>
-                <php-title />
+                <php-author />
+
+                <div class="definition">
+                    <dt>Materia</dt>
+                    <php-subject />
+                </div>
+
+                <php-edition />
+
+                <php-isbn />
+            </dl>
+
+            <div id="listing-buttons">
+                <php-buttons />
             </div>
+        </main>
 
-            <php-author />
-
-            <div class="definition">
-                <dt>Materia</dt>
-                <php-subject />
-            </div>
-
-            <php-edition />
-
-            <php-isbn />
-        </dl>
-
-        <div id="listing-buttons">
-            <php-buttons />
-        </div>
-    </main>
-
-    <php-footer />
-</body>
+        <php-footer />
+    </body>
+</html>
