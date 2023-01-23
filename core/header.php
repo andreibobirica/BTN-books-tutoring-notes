@@ -29,6 +29,7 @@ function printHeader($pagina, $login)
         case "areariservata":
             $header = str_replace('<li><a href="./area_riservata.php">Area Riservata</a></li>', "<li>Area Riservata</li>", $header);
             break;
+        default:
     }
 
     return $header;
@@ -71,6 +72,15 @@ function printBreadcrumb($pagina, $annuncio = 0)
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
             $breadcrumb .= '<li>Modifica annuncio ' . $annuncio . '</li>';
             break;
+        case "404":
+            $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
+            $breadcrumb .= '<li>Pagina non trovata</li>';
+            break;
+        case "500":
+            $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
+            $breadcrumb .= '<li>Errore del server</li>';
+            break;
+        default: $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
     }
 
     $breadcrumb .= '</ol></nav>';

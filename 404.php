@@ -5,17 +5,17 @@ $auth = new Authentication();
 
 
 // Prendo l'HTML della pagina, dell'header e del footer
-$info = file_get_contents("./contents/info_content.html");
+$not_found = file_get_contents("./contents/404_content.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto dell'header
-$header = printHeader("info", $auth->getIfLogin());
-$breadcrumb = printBreadcrumb("info");
+$header = printHeader("err", $auth->getIfLogin());
+$breadcrumb = printBreadcrumb("404");
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<breadcrumb />', $breadcrumb, $header);
-$info = str_replace('<php-header />', $header, $info);
-$info = str_replace('<php-footer />', $footer, $info);
+$not_found = str_replace('<php-header />', $header, $not_found);
+$not_found = str_replace('<php-footer />', $footer, $not_found);
 
 // Mostro la pagina
-echo $info;
+echo $not_found;
 ?>
