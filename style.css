@@ -46,11 +46,6 @@ body {
     margin: auto;
 }
 
-p {
-    font-size: 1em;
-    line-height: 1.5em;
-}
-
 header {
     background-color: var(--accent-red);
     color: var(--bg);
@@ -541,12 +536,12 @@ dd {
     font-weight: 500;
 }
 
-#area-riservata #user-description dl {
+#area-riservata #user-info dl {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
 
-#area-riservata #user-description,
+#area-riservata #user-info,
 #area-riservata #links,
 #area-riservata .no-listings,
 #area-riservata h3 {
@@ -567,16 +562,16 @@ dd {
     background-image: url("assets/imgs/user-solid.svg");
 }
 
-#area-riservata #user-description dt::after {
+#area-riservata #user-info dt::after {
     content: ":";
 }
 
-#area-riservata #user-description dd {
+#area-riservata #user-info dd {
     text-align: start;
     margin-left: 1em;
 }
 
-#area-riservata #user-description .definition {
+#area-riservata #user-info .definition {
     display: flex;
     justify-content: flex-start;
     line-height: 1.75em;
@@ -879,7 +874,7 @@ dd {
 
     /* AREA RISERVATA */
     #area-riservata h3,
-    #area-riservata #user-description,
+    #area-riservata #user-info,
     #area-riservata #links,
     #area-riservata .no-listings {
         margin-left: 3em;
@@ -967,18 +962,18 @@ dd {
     }
 
     /* AREA RISERVATA */
-    #area-riservata #user-description,
+    #area-riservata #user-info,
     #area-riservata #links,
     #area-riservata .no-listings,
     #area-riservata h3 {
         margin-left: 4em;
     }
 
-    #area-riservata #user-description {
+    #area-riservata #user-info {
         margin-top: 2em;
     }
 
-    #area-riservata #user-description dl {
+    #area-riservata #user-info dl {
         font-size: 1.2em;
     }
 
@@ -1050,7 +1045,7 @@ dd {
     }
 
     /* AREA RISERVATA */
-    #area-riservata #user-description,
+    #area-riservata #user-info,
     #area-riservata h3,
     #area-riservata #links,
     #area-riservata .no-listings {
