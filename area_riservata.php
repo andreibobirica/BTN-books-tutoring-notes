@@ -10,47 +10,58 @@ $footer = file_get_contents("./contents/footer.html");
 $navbar = printNavbar("areariservata", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("areariservata");
 
-// Tasto nuovo annuncio
-$new_listing = '<a href="new_listing.php">Nuovo annuncio</a>';
-
 // Controllo il login
-/*if ($auth->getIfLogin()) {
+if ($auth->getIfLogin()) {
     // Messaggio di benvenuto e informazioni utente
-     $welcome_message_login = '<h1>Benvenuto, ' . $_SESSION["loginAccount"] . '</h1>';
-    
-    $user_info = '<dl>';
-    
-    $user_info .= '</dl>';
-    $user_info .= '<a href="">Modifica dati</a>';
+    $user_name = $_SESSION["nameAccount"] . " " . $_SESSION["surnameAccount"];
+    $user_username = $_SESSION["loginAccount"];
+    $user_email = $_SESSION["emailAccount"];
+    $user_birth = $_SESSION["birthdateAccount"];
 
-    // Elenco degli annunci
-    $listings_list = '<h3>Annunci pubblicati</h3>';
+    // Elenco degli annunci pubblicati
+    $user_listings = $request->getAnnunciOfUser($_SESSION["loginAccount"]);
 
-    $listings = $request->getAnnunciOfUser($_SESSION["loginAccount"]);
-
-    foreach ($listings as $listing) {
-        $listings_list .= '<tr>';
-        $listings_list .= '<td>' . $listing['titolo'] . '</td>';
-        $listings_list .= '<td>' . $listing['materia'] . '</td>';
-        $listings_list .= '<td>' . $listing['prezzo'] . '€</td>';
-        $listings_list .= '<td><a href="listing.php?annuncio=' . $listing['id'] . '">Visualizza</a></td>';
-        $listings_list .= '<td><a href="edit_listing.php?modifica=' . $listing['id'] . '">Modifica</a></td>';
-        $listings_list .= '<td><a href="edit_listing.php?elimina=' . $listing['id'] . '">Elimina</a></td>';
-        $listings_list .= '</tr>';
+    if (empty($user_listings)) {
+        $user_listings_list = '<p class="no-listings">Non ci sono annunci pubblicati</p>';
+    } else {
+        $user_listings_list = '<ul class="listings-list">';
+        foreach ($user_listings as $listing) {
+            $user_listings_list .= '<li class="listing">';
+            $user_listings_list .= '<h4 class="listing-title">' . $listing['titolo'] . '</h4>';
+            // AUTORE E IMMAGINI NON LI HANNO TUTTI MA SOLO I LIBRI
+            $user_listings_list .= '<h5 class="listing-author">Autore Libro</h5>';
+            $user_listings_list .= '<img
+            src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            class="listing-img"
+            alt="" />';
+            $user_listings_list .= '<p class="listing-user">' . $listing['username'] . '<p>';
+            $user_listings_list .= '<p class="listing-price">' . $listing['prezzo'] . '€<p>';
+            $user_listings_list .= '<a href="">Vedi annuncio</a>';
+            $user_listings_list .= '</li>';
+        }
+        $user_listings_list .= '</ul>';
     }
 
-    $listings_list .= '</table>';
+    // Elenco degli annunci salvati
+    $saved_listings = '';
+
+    if (empty($saved_listings)) {
+        $saved_listings_list = '<p class="no-listings">Non ci sono annunci salvati</p>';
+    } else {
+    }
 
     // Sostituisco i segnaposti
-    $area_riservata = str_replace('<php-welcome-message />', $welcome_message_login, $area_riservata);
-    $area_riservata = str_replace('<php-user-info />', $user_info, $area_riservata);
-    $area_riservata = str_replace('<php-listings-list />', $listings_list, $area_riservata);
-    $area_riservata = str_replace('<php-new-listing />', $new_listing, $area_riservata);
+    $area_riservata = str_replace('<php-user-name />', $user_name, $area_riservata);
+    $area_riservata = str_replace('<php-user-username />', $user_username, $area_riservata);
+    $area_riservata = str_replace('<php-user-email />', $user_email, $area_riservata);
+    $area_riservata = str_replace('<php-user-birth />', $user_birth, $area_riservata);
+    $area_riservata = str_replace('<php-user-listings />', $user_listings_list, $area_riservata);
+    $area_riservata = str_replace('<php-saved-listings />', $saved_listings_list, $area_riservata);
 } else {
     // Se non loggato non dovrei mai finire su questa pagina, ma in caso mi rimanda al login
     header("Location: login.php");
     exit();
-}*/
+}
 
 // Sostituisco i segnaposti
 $header = str_replace('<navbar/>', $navbar, $header);

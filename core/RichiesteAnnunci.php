@@ -15,13 +15,13 @@ class RichiesteAnnunci
     {
         //ritorna un array con tutti gli annunci, con solo i dettagli principali
         //ID TITOLO MATERIA PREZZO
-        $sql = "SELECT id, titolo, materia, prezzo FROM annunci WHERE username = '$username'";
+        $sql = "SELECT id, titolo, materia, prezzo, username FROM annunci WHERE username = '$username'";
         $result = $this->auth->db->query($sql);
         $arrayRet = array();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 //	id	titolo	descrizione	prezzo	username	mediapath	materia
-                array_push($arrayRet, array("id" => $row['id'], "titolo" => $row['titolo'], "materia" => $row['materia'], "prezzo" => $row['prezzo']));
+                array_push($arrayRet, array("id" => $row['id'], "titolo" => $row['titolo'], "materia" => $row['materia'], "prezzo" => $row['prezzo'], "username" => $row['username']));
             }
         }
         return $arrayRet;
