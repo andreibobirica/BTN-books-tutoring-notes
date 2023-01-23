@@ -13,29 +13,27 @@
     <title>BTN - Cerca libri, appunti, ripetizioni</title>
 </head>
 
-<body>
+<body id="home">
     <php-header />
 
     <main>
-        <section id="search">
-            <div>
-                <h2>Cerca libri, appunti e ripetizioni</h2>
-            </div>
-            <div>
-                <form action="" id="search-form">
-                    <input type="text" placeholder="Titolo, corso..." name="search" id="search-in">
-                    <div id="search-buttons">
-                        <select name="categoria" id="search-cat-select">
-                            <option value="libri">Libri</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                            <option value="appunti">Appunti</option>
-                        </select>
+        <div>
+            <h2>Cerca libri, appunti e ripetizioni</h2>
+        </div>
+        <div>
+            <form action="">
+                <input type="text" placeholder="Titolo, corso..." name="search">
+                <div id="search-buttons">
+                    <select name="categoria">
+                        <option value="libri">Libri</option>
+                        <option value="ripetizioni">Ripetizioni</option>
+                        <option value="appunti">Appunti</option>
+                    </select>
 
-                        <button type="submit" id="search-btn" class="button">Cerca</button>
-                    </div>
-                </form>
-            </div>
-        </section>
+                    <button type="submit" class="button">Cerca</button>
+                </div>
+            </form>
+        </div>
     </main>
 
     <php-footer />

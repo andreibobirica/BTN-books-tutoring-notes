@@ -183,27 +183,28 @@ footer p {
 }
 
 /* HOME */
-#search {
+
+#home main{
     background-image: url("./assets/imgs/studying.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding: 1.5em 1.1em;
-    height: 100vh;
+    padding: 0 1.1em 1.5em 1.1em;
+    height: 93vh;
     /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 93);
 }
 
-#search>div {
+#home main>div {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
     border-radius: 15px;
     margin-top: 1em;
 }
 
-#search h2 {
+#home h2 {
     color: var(--bg);
     margin: unset;
     text-align: center;
@@ -213,13 +214,13 @@ footer p {
     text-transform: uppercase;
 }
 
-#search-form {
+#home form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-#search-in {
+#home input {
     border-radius: 30px;
     height: 2em;
     width: 100%;
@@ -229,7 +230,7 @@ footer p {
     font-size: 1em;
 }
 
-#search-buttons {
+#home #search-buttons {
     margin-top: 1em;
     display: flex;
     flex-direction: row;
@@ -238,7 +239,7 @@ footer p {
     height: 2.5em;
 }
 
-#search-cat-select {
+#home select {
     border-radius: 30px;
     width: 70%;
     height: 100%;
@@ -248,7 +249,7 @@ footer p {
     font-size: 1em;
 }
 
-#search-btn {
+#home button {
     width: 25%;
 }
 
@@ -587,17 +588,17 @@ footer p {
 @media only screen and (min-width: 600px) {
 
     /* HOME */
-    #search {
+    #home main {
         align-items: center;
         padding: unset;
         padding-bottom: 3em;
     }
 
-    #search h2 {
+    #home main h2 {
         text-align: center;
     }
 
-    #search>div {
+    #home main>div {
         width: 85%;
     }
 
@@ -659,7 +660,7 @@ footer p {
     }
 
     /* HOME */
-    #search {
+    #home main {
         align-items: center;
         background-image: url("./assets/imgs/hats.jpg");
         justify-content: center;
@@ -706,7 +707,7 @@ footer p {
         width: 30%;
     }
 
-    #search>div {
+    #home main>div {
         width: 70%;
     }
 
@@ -824,11 +825,11 @@ footer p {
     }
 
     /* HOME */
-    #search h2 {
+    #home main h2 {
         font-size: 2.5em;
     }
 
-    #search>div {
+    #home main>div {
         width: 50%;
     }
 
@@ -880,7 +881,7 @@ footer p {
     }
 
     /* HOME */
-    #search {
+    #home main {
         padding: 5em;
         height: 100vh;
         /* Fallback for browsers that do not support Custom Properties */
@@ -889,11 +890,11 @@ footer p {
         align-items: center;
     }
 
-    #search h2 {
+    #home main h2 {
         font-size: 3em;
     }
 
-    #search>div {
+    #home main>div {
         width: 45%;
     }
 
