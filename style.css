@@ -129,7 +129,7 @@ nav a:visited {
     font-size: 1em;
     background-color: var(--accent-red-2);
     color: var(--bg);
-    padding: .5em;
+    padding: 0.5em;
 }
 
 #breadcrumb ol {
@@ -138,11 +138,11 @@ nav a:visited {
 
 #breadcrumb li {
     padding: unset;
-    margin-left: .5em;
+    margin-left: 0.5em;
 }
 
 #breadcrumb li::before {
-    content: '/ ';
+    content: "/ ";
 }
 
 #home section {
@@ -271,34 +271,42 @@ footer p {
 }
 
 /* INFO */
-#info > img,
-#disclaimer > img {
+#info img {
     display: none;
 }
 
-#info {
-    background-image: url("./assets/imgs/studyoutside.jpg");
+#info main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#info section {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
     background-size: cover;
     background-position: center;
 }
 
-.text {
-    padding: 1.5em;
-    border-radius: 10px;
+#info .text {
+    line-height: 1.75em;
+    background-color: rgba(230, 230, 230, 0.85);
+    padding: 1em;
+    margin: unset;
+    border-radius: 20px;
+    font-size: 1.1em;
 }
 
-#info .text {
-    background-color: rgba(250, 250, 250, 0.85);
+#description {
+    background-image: url("./assets/imgs/studyoutside.jpg");
 }
 
 #disclaimer {
     background-image: url("./assets/imgs/studyingheadphones.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-#disclaimer .text {
-    background-color: rgba(230, 230, 230, 0.85);
 }
 
 /* RISULTATI */
@@ -533,12 +541,12 @@ dd {
     font-weight: 500;
 }
 
-#area-riservata #user-info dl {
+#area-riservata #user-description dl {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
 
-#area-riservata #user-info,
+#area-riservata #user-description,
 #area-riservata #links,
 #area-riservata .no-listings,
 #area-riservata h3 {
@@ -559,16 +567,16 @@ dd {
     background-image: url("assets/imgs/user-solid.svg");
 }
 
-#area-riservata #user-info dt::after {
+#area-riservata #user-description dt::after {
     content: ":";
 }
 
-#area-riservata #user-info dd {
+#area-riservata #user-description dd {
     text-align: start;
     margin-left: 1em;
 }
 
-#area-riservata #user-info .definition {
+#area-riservata #user-description .definition {
     display: flex;
     justify-content: flex-start;
     line-height: 1.75em;
@@ -685,12 +693,8 @@ dd {
     }
 
     /* INFO */
-    #info {
-        flex-direction: row-reverse;
-    }
-
-    .text {
-        padding: 1.5em 3em;
+    #info .text {
+        width: 60%;
     }
 
     /* SINGOLO ANNUNCIO */
@@ -750,25 +754,28 @@ dd {
     }
 
     /* INFO */
-    #info,
+    #description {
+        flex-direction: row-reverse;
+    }
+
+    .text {
+        padding: 1.5em 3em;
+    }
+
+    #description,
     #disclaimer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         padding-top: 1.5em;
         padding-bottom: 1.5em;
     }
 
-    #info > img,
-    #disclaimer > img {
+    #info img {
         display: inline;
         border-radius: 25px;
         margin: 1.5em;
         height: 350px;
     }
 
-    #info,
-    #disclaimer {
+    #info section {
         background-image: none;
     }
 
@@ -776,7 +783,7 @@ dd {
         background-color: var(--bg-alt);
     }
 
-    #info .text,
+    #description .text,
     #disclaimer .text {
         background-color: rgba(230, 230, 230, 0);
         padding-left: 1.5em;
@@ -870,7 +877,7 @@ dd {
 
     /* AREA RISERVATA */
     #area-riservata h3,
-    #area-riservata #user-info,
+    #area-riservata #user-description,
     #area-riservata #links,
     #area-riservata .no-listings {
         margin-left: 3em;
@@ -928,7 +935,7 @@ dd {
     }
 
     /* INFO */
-    #info .text,
+    #description .text,
     #disclaimer .text {
         font-size: 1.1em;
     }
@@ -958,18 +965,18 @@ dd {
     }
 
     /* AREA RISERVATA */
-    #area-riservata #user-info,
+    #area-riservata #user-description,
     #area-riservata #links,
     #area-riservata .no-listings,
     #area-riservata h3 {
         margin-left: 4em;
     }
 
-    #area-riservata #user-info {
+    #area-riservata #user-description {
         margin-top: 2em;
     }
 
-    #area-riservata #user-info dl {
+    #area-riservata #user-description dl {
         font-size: 1.2em;
     }
 
@@ -1026,7 +1033,7 @@ dd {
 
     /* INFO */
     #disclaimer,
-    #info {
+    #description {
         padding: 1.5em 10em;
         margin: auto;
     }
@@ -1041,7 +1048,7 @@ dd {
     }
 
     /* AREA RISERVATA */
-    #area-riservata #user-info,
+    #area-riservata #user-description,
     #area-riservata h3,
     #area-riservata #links,
     #area-riservata .no-listings {
