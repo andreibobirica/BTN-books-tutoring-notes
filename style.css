@@ -313,19 +313,19 @@ footer p {
     background-color: var(--bg-alt);
     border-radius: 10px;
     width: 47%;
-    margin-left: .25em;
-    margin-right: .25em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
 }
 
 .listing-title {
-    padding: .5em 0em 0em 1em;
+    padding: 0.5em 0em 0em 1em;
     font-weight: 600;
     font-size: 1.2em;
     color: var(--accent-red-2);
 }
 
 .listing-author {
-    padding: 0 0 .5em 1.3em;
+    padding: 0 0 0.5em 1.3em;
     font-weight: normal;
     font-size: 1em;
     color: var(--accent-red-3);
@@ -505,14 +505,10 @@ dd {
 }
 
 /* AREA RISERVATA */
-#area-riservata main {
-    padding: 1.5em;
-}
-
 #area-riservata #user-header {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5em;
+    margin-top: 1.5em;
 }
 
 #area-riservata #user-header h2 {
@@ -520,8 +516,12 @@ dd {
     font-weight: 500;
 }
 
+#area-riservata #user-info dl {
+    margin-top: 1.5em;
+}
+
 #area-riservata #user-info {
-    margin-bottom: 1.5em;
+    margin-left: 1.5em;
 }
 
 #area-riservata .icon {
@@ -547,6 +547,11 @@ dd {
     display: flex;
     justify-content: flex-start;
     line-height: 1.75em;
+}
+
+#area-riservata h3 {
+    margin: 1.5em 1.5em 0 1.5em;
+    color: var(--accent-red);
 }
 
 /* PAGINE ERRORI 404 E 500 */
@@ -830,6 +835,12 @@ dd {
         background-image: url("assets/imgs/vantaggiFeedback.png");
     }
 
+    /* AREA RISERVATA */
+    #area-riservata h3,
+    #area-riservata #user-info {
+        margin-left: 3em;
+    }
+
     /* NUOVO ANNUNCIO */
     #new-listing main {
         width: 60%;
@@ -884,7 +895,6 @@ dd {
     }
 
     /* LOGIN E REGISTRAZIONE */
-
     #registration,
     #login {
         background-image: url(./assets/imgs/login.jpg);
@@ -906,6 +916,16 @@ dd {
 
     #registration-perks li {
         font-size: 1.15em;
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata #user-info {
+        margin-left: 4em;
+        margin-top: 2em;
+    }
+
+    #area-riservata #user-info dl {
+        font-size: 1.2em;
     }
 
     /* NUOVO ANNUNCIO */
@@ -963,6 +983,12 @@ dd {
 
     #registration main {
         width: 60%;
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata #user-info,
+    #area-riservata h3 {
+        margin-left: 7em;
     }
 
     /* NUOVO ANNUNCIO */
