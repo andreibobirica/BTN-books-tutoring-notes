@@ -1,105 +1,42 @@
 <?php
 require_once "./core/search_results_control.php";
+
+// Prendo l'HTML della pagina, dell'header e del footer
+$search_results = file_get_contents("./contents/search_results_content.html");
+$header = file_get_contents("./contents/header.html");
+$footer = file_get_contents("./contents/footer.html");
+// Prendo il contenuto corretto della navbar
+$navbar = printNavbar("risultati", $auth->getIfLogin());
+$breadcrumb = printBreadcrumb("risultati");
+/*
+// Prendo il percorso e inserisco l'immagine
+$listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
+
+// Controllo il login e mostro le parti corrette
+$listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '€</p>';
+$listing_title = '<dd>' . $arrayAnnuncio['titolo'] . '</dd>';
+$listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
+$listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p>';
+
+
+$button_save = '<a href="" class="listing-btn">Salva annuncio</a>';*/
+
+// Rimpiazzo i segnaposti coi contenuti HTML
+$header = str_replace('<navbar/>', $navbar, $header);
+$header = str_replace('<breadcrumb/>', $breadcrumb, $header);
+$search_results = str_replace('<php-header />', $header, $search_results);
+
+/*$search_results = str_replace('<php-img />', $listing_img, $search_results);
+$search_results = str_replace('<php-price />', $listing_price, $search_results);
+$search_results = str_replace('<php-title />', $listing_title, $search_results);
+$search_results = str_replace('<php-descr />', $listing_descr, $search_results);
+$search_results = str_replace('<php-subject />', $listing_subject, $search_results);
+$search_results = str_replace('<php-author />', $book_author, $search_results);
+$search_results = str_replace('<php-edition />', $book_edition, $search_results);
+$search_results = str_replace('<php-isbn />', $book_isbn, $search_results);*/
+
+$search_results = str_replace('<php-footer />', $footer, $search_results);
+
+// Mostro la pagina
+echo $search_results;
 ?>
-
-<!DOCTYPE html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="noindex">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>BTN - Risultati</title>
-</head>
-
-<body>
-    <header>
-        <div>
-            <div>
-                <h1><a href="./index.php" class="logo"><abbr title="Book Tutoring Notes">BTN</abbr></a></h1>
-                <button id="menu-btn" class="button" onclick="menuOnClick()"><span lang="en">MENU</span></button>
-            </div>
-
-            <button id="menu-btn" class="button" onclick="menuOnClick()">MENU</button>
-        </div>
-
-        <nav id="menu">
-            <ul>
-                <li><a href="./index.php">Cerca</a></li>
-                <li><a href="./info.html">Info</a></li>
-                <li><a href="./login.html">Accedi</a></li>
-                <li><a href="./registrazione.html">Registrati</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <?php printBreadcrumb("risultati"); ?>
-
-    <main id="risultati-main">
-        <form id="orderForm">
-            <label for="filtro_ordinamento">Ordina per: </label>
-            <select name="filtro_ordinamento" id="scelteOrdinamento">
-                <option>più recente</option>
-                <option>più vecchio</option>
-                <option>ordine alfabetico (A-Z)</option>
-                <option>ordine alfabetico (Z-A)</option>
-            </select>
-        </form>
-
-        <ul id="listings-list">
-            <li class="listing">
-                <h3 class="listing-title">Titolo Libro</h3>
-                <h4 class="listing-author">Autore Libro</h4>
-                <img src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                    class="listing-img" alt="" />
-                <p><span class="listing-user">Utente Venditore</span> - <span class="listing-price">10€</span></p>
-                <a href="">Vedi annuncio</a>
-            </li>
-
-            <li class="listing">
-                <h3 class="listing-title">Titolo Libro</h3>
-                <h4 class="listing-author">Autore Libro</h4>
-                <img src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                    class="listing-img" alt="" />
-                <p><span class="listing-user">Utente Venditore</span> - <span class="listing-price">10€</span></p>
-                <a href="">Vedi annuncio</a>
-            </li>
-
-            <li class="listing">
-                <h3 class="listing-title">Titolo Libro</h3>
-                <h4 class="listing-author">Autore Libro</h4>
-                <img src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                    class="listing-img" alt="" />
-                <p><span class="listing-user">Utente Venditore</span> - <span class="listing-price">10€</span></p>
-                <a href="">Vedi annuncio</a>
-            </li>
-
-            <li class="listing">
-                <h3 class="listing-title">Titolo Libro</h3>
-                <h4 class="listing-author">Autore Libro</h4>
-                <img src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                    class="listing-img" alt="" />
-                <p><span class="listing-user">Utente Venditore</span> - <span class="listing-price">10€</span></p>
-                <a href="">Vedi annuncio</a>
-            </li>
-
-            <li class="listing">
-                <h3 class="listing-title">Titolo Libro</h3>
-                <h4 class="listing-author">Autore Libro</h4>
-                <img src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-                    class="listing-img" alt="" />
-                <p><span class="listing-user">Utente Venditore</span> - <span class="listing-price">10€</span></p>
-                <a href="">Vedi annuncio</a>
-            </li>
-        </ul>
-
-    </main>
-    <footer>
-        <p>BTN</p>
-    </footer>
-</body>
-
-
-
-</html>
