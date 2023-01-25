@@ -21,10 +21,16 @@ $listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
 $listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p>';
 
 
-$button_save = '<a href="" class="listing-btn">Salva annuncio</a>';
+$button_insert_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&insertsave" class="listing-btn">Salva annuncio</a>';
+$button_remove_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&removesave" class="listing-btn">Rimuovi annuncio dai Salvati</a>';
 $button_edit = '<a href="edit_listing.php?modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
 $button_delete = '<a href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
 $user_email = '<a href="mailto:$mailVenditore" class="listing-btn">$mailVenditore</a>';
+
+$button_save = $button_insert_save;
+if($request->verifySaveAnnuncioUser($_SESSION["loginAccount"],$arrayAnnuncio['id'])){
+    $button_save = $button_remove_save;
+}
 
 if ($auth->getIfLogin()) {
     if ($arrayAnnuncio['username'] == $_SESSION["loginAccount"]) {

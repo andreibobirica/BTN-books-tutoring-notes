@@ -83,6 +83,28 @@ class RichiesteAnnunci
         return $this->auth->db->query("DELETE FROM annunci WHERE id = '$annuncio'") === TRUE;
     }
 
+     //Elimina Saved annuncio of user
+     function deleteSavedAnnuncio($annuncio,$username)
+     {
+        return $this->auth->db->query("DELETE FROM salvati WHERE annuncio = '$annuncio' AND utente = '$username'") === TRUE;
+     }
+
+     //Insert Saved annuncio of user
+     function insertSavedAnnuncio($annuncio,$username)
+     {
+        return $this->auth->db->query("INSERT INTO salvati (annuncio, utente) VALUES ('$annuncio', '$username');") === TRUE;
+     }
+
+     //Ritorna un bool con l'esito della verifica
+    //se l'annuncio appartiene al utente $user true, false il contrario
+    function verifySaveAnnuncioUser($username, $annuncio): bool
+    {
+        $result = $this->auth->db->query("SELECT annuncio FROM salvati WHERE utente='$username' and annuncio='$annuncio'");
+        return ($result->num_rows == 1);
+    }
+
+
+
     //getAnnuncio
     function getAnnuncio($annuncio)
     {
