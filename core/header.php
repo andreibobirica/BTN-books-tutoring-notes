@@ -36,7 +36,7 @@ function printHeader($pagina = 'default', $login)
     return $header;
 }
 
-function printBreadcrumb($pagina, $annuncio = 0)
+function printBreadcrumb($pagina, $annuncio = '')
 {
     $breadcrumb = '<nav id="breadcrumb">';
     $breadcrumb .= '<ol>';
@@ -61,7 +61,7 @@ function printBreadcrumb($pagina, $annuncio = 0)
         case "annuncio":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Annuncio ' . $annuncio . '</li>';
+            $breadcrumb .= '<li>' . $annuncio . '</li>';
             break;
         case "new_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';

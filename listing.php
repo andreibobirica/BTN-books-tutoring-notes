@@ -3,13 +3,13 @@ require_once "./core/listing_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $listing_content = file_get_contents("./contents/listing_content.html");
-$listing = boilerplate($listing_content);
+$user_book = boilerplate($listing_content);
 
 $header = file_get_contents("./contents/header.html");
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
 $header = printHeader("annuncio", $auth->getIfLogin());
-$breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['id']);
+$breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['titolo']);
 // Prendo il percorso e inserisco l'immagine
 $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
 
@@ -28,9 +28,9 @@ $user_email = '<a href="mailto:$mailVenditore" class="listing-btn">$mailVenditor
 
 if ($auth->getIfLogin()) {
     if ($arrayAnnuncio['username'] == $_SESSION["loginAccount"]) {
-        $listing = str_replace('<php-buttons />', $button_edit . $button_delete, $listing);
+        $user_book = str_replace('<php-buttons />', $button_edit . $button_delete, $user_book);
     } else {
-        $listing = str_replace('<php-buttons />', $button_save . $user_email, $listing);
+        $user_book = str_replace('<php-buttons />', $button_save . $user_email, $user_book);
     }
 }
 
@@ -58,21 +58,21 @@ if (!empty($arrayAnnuncio['isbn'])) {
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<breadcrumb />', $breadcrumb, $header);
-$listing = str_replace('<php-header />', $header, $listing);
+$user_book = str_replace('<php-header />', $header, $user_book);
 
-$listing = str_replace('<php-img />', $listing_img, $listing);
-$listing = str_replace('<php-price />', $listing_price, $listing);
-$listing = str_replace('<php-title />', $listing_title, $listing);
-$listing = str_replace('<php-descr />', $listing_descr, $listing);
-$listing = str_replace('<php-subject />', $listing_subject, $listing);
-$listing = str_replace('<php-user />', $listing_user, $listing);
-$listing = str_replace('<php-author />', $book_author, $listing);
-$listing = str_replace('<php-author-def />', $book_author_def, $listing);
-$listing = str_replace('<php-edition-def />', $book_edition, $listing);
-$listing = str_replace('<php-isbn-def />', $book_isbn, $listing);
+$user_book = str_replace('<php-img />', $listing_img, $user_book);
+$user_book = str_replace('<php-price />', $listing_price, $user_book);
+$user_book = str_replace('<php-title />', $listing_title, $user_book);
+$user_book = str_replace('<php-descr />', $listing_descr, $user_book);
+$user_book = str_replace('<php-subject />', $listing_subject, $user_book);
+$user_book = str_replace('<php-user />', $listing_user, $user_book);
+$user_book = str_replace('<php-author />', $book_author, $user_book);
+$user_book = str_replace('<php-author-def />', $book_author_def, $user_book);
+$user_book = str_replace('<php-edition-def />', $book_edition, $user_book);
+$user_book = str_replace('<php-isbn-def />', $book_isbn, $user_book);
 
-$listing = str_replace('<php-footer />', $footer, $listing);
+$user_book = str_replace('<php-footer />', $footer, $user_book);
 
 // Mostro la pagina
-echo $listing;
+echo $user_book;
 ?>

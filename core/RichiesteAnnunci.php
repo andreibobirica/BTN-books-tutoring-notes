@@ -10,18 +10,28 @@ class RichiesteAnnunci
         $this->auth = new Authentication();
     }
 
-    //Ritorna un array con tutti gli annunci di un certo user $username
-    function getAnnunciOfUser($username): array
+    //Ritorna un array con tutti gli annunci di un certo user e del tipo specificato
+    function getAnnunciOfUser($username, $tipo): array
     {
-        //ritorna un array con tutti gli annunci, con solo i dettagli principali
-        //ID TITOLO MATERIA PREZZO
-        $sql = "SELECT id, titolo, materia, prezzo, username FROM annunci WHERE username = '$username'";
+        if ($tipo == 'libri') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, username, materia, libri.autore, edizione, ISBN, mediapath
+                    FROM annunci JOIN libri ON annunci.id=libri.id
+                    WHERE annunci.username= '$username'";
+        } else if ($tipo == 'appunti') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, username, materia, mediapath
+                    FROM annunci JOIN appunti ON annunci.id=appunti.id
+                    WHERE annunci.username= '$username'";
+        } else if ($tipo == 'ripetizioni') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, username, materia
+                    FROM annunci JOIN ripetizioni ON annunci.id=ripetizioni.id
+                    WHERE annunci.username= '$username'";
+        }
+
         $result = $this->auth->db->query($sql);
         $arrayRet = array();
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                //	id	titolo	descrizione	prezzo	username	mediapath	materia
-                array_push($arrayRet, array("id" => $row['id'], "titolo" => $row['titolo'], "materia" => $row['materia'], "prezzo" => $row['prezzo'], "username" => $row['username']));
+                array_push($arrayRet, $row);
             }
         }
         return $arrayRet;

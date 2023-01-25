@@ -20,27 +20,48 @@ if ($auth->getIfLogin()) {
     $user_birth = $_SESSION["birthdateAccount"];
 
     // Elenco degli annunci pubblicati
-    $user_listings = $request->getAnnunciOfUser($_SESSION["loginAccount"]);
+    $user_listings_books = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'libri');
+    $user_listings_tutoring = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'ripetizioni');
+    $user_listings_notes = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'appunti');
 
-    if (empty($user_listings)) {
+    $user_listings_list = "";
+
+    // Se non c'è nessun tipo di annuncio si mostra un messaggio che lo comunica
+    if (empty($user_listings_books) && empty($user_listings_tutoring) && empty($user_listings_notes)) {
         $user_listings_list = '<p class="no-listings">Non ci sono annunci pubblicati</p>';
     } else {
-        $user_listings_list = '<ul class="listings-list">';
-        foreach ($user_listings as $listing) {
-            $user_listings_list .= '<li class="listing">';
-            $user_listings_list .= '<h4 class="listing-title">' . $listing['titolo'] . '</h4>';
-            // AUTORE E IMMAGINI NON LI HANNO TUTTI MA SOLO I LIBRI
-            $user_listings_list .= '<h5 class="listing-author">Autore Libro</h5>';
-            $user_listings_list .= '<img
-            src="https://images.unsplash.com/photo-1564540400309-0745c2a66a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            class="listing-img"
-            alt="" />';
-            $user_listings_list .= '<p class="listing-user">' . $listing['username'] . '<p>';
-            $user_listings_list .= '<p class="listing-price">' . $listing['prezzo'] . '€<p>';
-            $user_listings_list .= '<a href="listing.php?annuncio=' . $listing['id'] . '">Vedi annuncio</a>';
-            $user_listings_list .= '</li>';
+        // Libri
+        if (!empty($user_listings_books)) {
+            $user_listings_list .= '<h4>Libri</h4>';
+            $user_listings_list .= '<ul class="listings-list">';
+            foreach ($user_listings_books as $user_book) {
+                $user_listings_list .= '<li class="listing">';
+                $user_listings_list .= '<p class="listing-title">' . $user_book['titolo'] . '</p>';
+                $user_listings_list .= '<p class="listing-author">' . $user_book['autore'] . '</p>';
+                $user_listings_list .= '<img src="' . $user_book['mediapath'] . '" class="listing-img" alt="" />';
+                $user_listings_list .= '<p class="listing-user">' . $user_book['username'] . '<p>';
+                $user_listings_list .= '<p class="listing-price">' . $user_book['prezzo'] . '€<p>';
+                $user_listings_list .= '<a href="listing.php?annuncio=' . $user_book['id'] . '">Vedi annuncio</a>';
+                $user_listings_list .= '</li>';
+            }
+            $user_listings_list .= '</ul>';
         }
-        $user_listings_list .= '</ul>';
+
+        // Appunti
+        if (!empty($user_listings_notes)) {
+            $user_listings_list .= '<h4>Appunti</h4>';
+            $user_listings_list .= '<ul class="listings-list">';
+            foreach ($user_listings_notes as $user_note) {
+                $user_listings_list .= '<li class="listing">';
+                $user_listings_list .= '<p class="listing-title">' . $user_note['titolo'] . '</p>';
+                $user_listings_list .= '<p class="listing-author">' . $user_note['username'] . '</p>';
+                $user_listings_list .= '<img src="' . $user_note['mediapath'] . '" class="listing-img" alt="" />';
+                $user_listings_list .= '<p class="listing-price">' . $user_note['prezzo'] . '€<p>';
+                $user_listings_list .= '<a href="listing.php?annuncio=' . $user_note['id'] . '">Vedi annuncio</a>';
+                $user_listings_list .= '</li>';
+            }
+            $user_listings_list .= '</ul>';
+        }
     }
 
     // Elenco degli annunci salvati
