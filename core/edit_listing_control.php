@@ -11,9 +11,10 @@ require_once './core/header.php';
 require_once "imports.php";
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])) {
+    print_r("elimina");
     if ($request->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["elimina"]))
         $request->deleteAnnuncio($_GET["elimina"]);
-    header("location:./area_riservata.php");
+    //header("location:./area_riservata.php");
 }
 
 //Script Modifica Annuncio

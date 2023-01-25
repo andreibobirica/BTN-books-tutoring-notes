@@ -10,13 +10,13 @@ require_once 'header.php';
 require_once "imports.php";
 
 if (isset($_POST['utente']) && !empty($_POST['utente'])) {
+    print_r($_POST['utente']);
     require_once 'Sanitizer.php';
     $san = new Sanitizer();
     $username = $san->sanitizeString($_POST["utente"]);
     $password = $san->sanitizeString($_POST["password"]);
 
     $retResponse = $auth->login($username,$password);
-    print_r($retResponse);
     if ($retResponse === TRUE) {
         print("
         <script>
@@ -26,7 +26,10 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
         ");
     } else {
         print("
-        <script>alert('Errore: Login ');</script>
+        <script>
+        alert('Errore nel Login');
+        window.location = '../login.php';
+        </script>
         ");
     }
 }

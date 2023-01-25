@@ -102,6 +102,7 @@ class RichiesteAnnunci
     //altrimenti 0
     function new_listing($annuncio)
     {
+        $upload = array("lastid" => 0, "upload" => array("esito" => false, "errore" => "Errore Generico", "path" => ""));
         if ($annuncio['tipo'] == "libri" || $annuncio['tipo'] == "appunti") {
             $upload = $this->uploadFile($annuncio['mediapath']);
             if (!$upload["esito"])
@@ -206,7 +207,6 @@ class RichiesteAnnunci
     //ritorna esito ed eventualmente un messaggio di errore attraverso un array()
     function uploadFile($file)
     {
-        print_r($file);
         if (empty($file['name']))
             return array("esito" => true, "errore" => "Nessun File Inserito", "path" => "");
         ;

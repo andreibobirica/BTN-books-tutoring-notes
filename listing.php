@@ -22,8 +22,8 @@ $listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p
 
 
 $button_save = '<a href="" class="listing-btn">Salva annuncio</a>';
-$button_edit = '<a href="edit_listing.php?modifica="' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
-$button_delete = '<a href="edit_listing.php?elimina="' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
+$button_edit = '<a href="edit_listing.php?modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
+$button_delete = '<a href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
 $user_email = '<a href="mailto:$mailVenditore" class="listing-btn">$mailVenditore</a>';
 
 if ($auth->getIfLogin()) {
