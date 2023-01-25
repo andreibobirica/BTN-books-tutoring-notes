@@ -8,7 +8,7 @@ $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
 require_once './core/header.php';
-require_once "./core/imports.php";
+require_once "imports.php";
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])) {
     if ($request->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["elimina"]))

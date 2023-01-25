@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Cerca libri, appunti e ripetizioni e mettiti in contatto direttamente con i venditori. Cerca ora su BTN!"
+        />
+        <meta
+            name="keywords"
+            content="BTN, libri, appunti, ripetizioni, università, books, tutoring, notes"
+        />
+        <title>BTN - Cerca libri, appunti, ripetizioni</title>
+    </head>
 
-<head>
-    <php-imports />
-    <meta name="description"
-        content="Cerca libri, appunti e ripetizioni e mettiti in contatto direttamente con i venditori. Cerca ora su BTN!">
-    <meta name="keywords" content="BTN, libri, appunti, ripetizioni, università, books, tutoring, notes">
-    <title>BTN - Cerca libri, appunti, ripetizioni</title>
-</head>
+    <body id="home">
+        <php-header />
 
-<body id="home">
-    <php-header />
+        <main>
+            <div>
+                <h2>Cerca libri, appunti e ripetizioni</h2>
+            </div>
+            <div>
+                <form action="">
+                    <input
+                        type="text"
+                        placeholder="Titolo, corso..."
+                        name="search"
+                    />
+                    <div id="search-buttons">
+                        <select name="categoria">
+                            <option value="libri">Libri</option>
+                            <option value="ripetizioni">Ripetizioni</option>
+                            <option value="appunti">Appunti</option>
+                        </select>
 
-    <main>
-        <div>
-            <h2>Cerca libri, appunti e ripetizioni</h2>
-        </div>
-        <div>
-            <form action="">
-                <input type="text" placeholder="Titolo, corso..." name="search">
-                <div id="search-buttons">
-                    <select name="categoria">
-                        <option value="libri">Libri</option>
-                        <option value="ripetizioni">Ripetizioni</option>
-                        <option value="appunti">Appunti</option>
-                    </select>
+                        <button type="submit" class="button">Cerca</button>
+                    </div>
+                </form>
+            </div>
+        </main>
 
-                    <button type="submit" class="button">Cerca</button>
-                </div>
-            </form>
-        </div>
-    </main>
-
-    <php-footer />
-</body>
-
+        <php-footer />
+    </body>
 </html>

@@ -1,40 +1,69 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <php-imports />
+        <title>BTN - Libri, appunti, ripetizioni</title>
+    </head>
 
-<head>
-    <php-imports />
-    <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
+    <body id="new-listing">
+        <php-header />
+        <main>
+            <h2>Nuovo annuncio php-type</h2>
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <label for="new-listing-title">Titolo</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci titolo"
+                    maxlength="25"
+                    name="titolo"
+                    id="new-listing-title"
+                />
 
-<body id="new-listing">
-    <php-header />
-    <main>
-        <h2>Nuovo annuncio php-type</h2>
-        <form action="php-action" class="multiple-fields-form" method="POST" enctype="multipart/form-data">
+                <label for="new-listing-descr">Descrizione</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci descrizione"
+                    maxlength="255"
+                    name="descrizione"
+                    id="new-listing-descr"
+                />
 
-            <label for="new-listing-title">Titolo</label>
-            <input type="text" placeholder="Inserisci titolo" maxlength="25" name="titolo" id="new-listing-title" />
+                <label for="new-listing-price">Prezzo</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci prezzo"
+                    maxlength="25"
+                    name="prezzo"
+                    id="new-listing-price"
+                />
 
-            <label for="new-listing-descr">Descrizione</label>
-            <input type="text" placeholder="Inserisci descrizione" maxlength="255" name="descrizione"
-                id="new-listing-descr" />
+                <label id="labelMateria">Materia</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci materia"
+                    maxlength="25"
+                    name="materia"
+                    id="inputMateria"
+                />
 
-            <label for="new-listing-price">Prezzo</label>
-            <input type="text" placeholder="Inserisci prezzo" maxlength="25" name="prezzo" id="new-listing-price" />
+                <php-file />
 
-            <label id="labelMateria">Materia</label>
-            <input type="text" placeholder="Inserisci materia" maxlength="25" name="materia" id="inputMateria" />
+                <php-author />
 
-            <php-file />
+                <php-edition />
 
-            <php-author />
-            
-            <php-edition />
+                <php-isbn />
 
-            <php-isbn />
-
-            <button type="submit" name="new_listing" id="new_listing">Carica</button>
-        </form>
-    </main>
-    <php-footer />
-</body>
+                <button type="submit" name="new_listing" id="new_listing">
+                    Carica
+                </button>
+            </form>
+        </main>
+        <php-footer />
+    </body>
+</html>
