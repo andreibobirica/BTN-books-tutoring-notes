@@ -15,9 +15,10 @@ $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath
 
 // Controllo il login e mostro le parti corrette
 $listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '€</p>';
-$listing_title = '<dd>' . $arrayAnnuncio['titolo'] . '</dd>';
+$listing_title = $arrayAnnuncio['titolo'];
+$listing_user = $arrayAnnuncio['username'];
 $listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
-$listing_descr = '<p id="listing-descr">'.$arrayAnnuncio['descrizione'].'</p>';
+$listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p>';
 
 
 $button_save = '<a href="" class="listing-btn">Salva annuncio</a>';
@@ -34,9 +35,10 @@ if ($auth->getIfLogin()) {
 }
 
 if (!empty($arrayAnnuncio['autore'])) {
-    $book_author = '<div class="definition">
+    $book_author = $arrayAnnuncio['autore'];
+    $book_author_def = '<div class="definition">
     <dt>Autore</dt>
-    <dd>' . $arrayAnnuncio['autore'] . '</dd>
+    <dd>' . $book_author . '</dd>
 </div>';
 }
 
@@ -63,9 +65,11 @@ $listing = str_replace('<php-price />', $listing_price, $listing);
 $listing = str_replace('<php-title />', $listing_title, $listing);
 $listing = str_replace('<php-descr />', $listing_descr, $listing);
 $listing = str_replace('<php-subject />', $listing_subject, $listing);
+$listing = str_replace('<php-user />', $listing_user, $listing);
 $listing = str_replace('<php-author />', $book_author, $listing);
-$listing = str_replace('<php-edition />', $book_edition, $listing);
-$listing = str_replace('<php-isbn />', $book_isbn, $listing);
+$listing = str_replace('<php-author-def />', $book_author_def, $listing);
+$listing = str_replace('<php-edition-def />', $book_edition, $listing);
+$listing = str_replace('<php-isbn-def />', $book_isbn, $listing);
 
 $listing = str_replace('<php-footer />', $footer, $listing);
 
