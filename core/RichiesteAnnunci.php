@@ -36,6 +36,39 @@ class RichiesteAnnunci
         }
         return $arrayRet;
     }
+
+    //Ritorna un array con tutti gli annunci di un certo user e del tipo specificato salvati
+    function getSavedAnnunciOfUser($username, $tipo): array
+    {
+        if ($tipo == 'libri') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, annunci.username, materia, libri.autore, edizione, ISBN, mediapath FROM salvati
+            JOIN annunci ON salvati.annuncio = annunci.id
+            JOIN utenti ON salvati.utente = utenti.username
+            JOIN libri ON libri.id = salvati.annuncio
+            WHERE salvati.utente = '$username';";
+        } else if ($tipo == 'appunti') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, annunci.username, materia, mediapath FROM salvati
+            JOIN annunci ON salvati.annuncio = annunci.id
+            JOIN utenti ON salvati.utente = utenti.username
+            JOIN appunti ON appunti.id = salvati.annuncio
+            WHERE salvati.utente = '$username';";
+        } else if ($tipo == 'ripetizioni') {
+            $sql = "SELECT annunci.id, titolo, descrizione, prezzo, annunci.username, materia FROM salvati
+            JOIN annunci ON salvati.annuncio = annunci.id
+            JOIN utenti ON salvati.utente = utenti.username
+            JOIN ripetizioni ON ripetizioni.id = salvati.annuncio
+            WHERE salvati.utente = '$username';";
+        }
+
+        $result = $this->auth->db->query($sql);
+        $arrayRet = array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($arrayRet, $row);
+            }
+        }
+        return $arrayRet;
+    }
     //Ritorna un bool con l'esito della verifica
     //se l'annuncio appartiene al utente $user true, false il contrario
     function verifyAnnuncioUser($username, $annuncio): bool
