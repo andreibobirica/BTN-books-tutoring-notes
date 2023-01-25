@@ -22,6 +22,11 @@ $new_listing_edition .= '<input type="text" placeholder="Inserisci edizione" max
 $new_listing_isbn = '<label for="new-listing-isbn">ISBN</label>';
 $new_listing_isbn .= '<input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />';
 
+$new_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="new-listing-categoria" />';
+$new_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="new-listing-categoria" />';
+$new_listing_cat_ripetizioni = '<input type="hidden" name="categoria" value="ripetizioni" id="new-listing-categoria" />';
+
+
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $new_listing = str_replace('<php-header />', $header, $new_listing);
@@ -29,10 +34,20 @@ $new_listing = str_replace('<php-header />', $header, $new_listing);
 $new_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $new_listing);
 
 // MOSTRARE O NASCONDERE IN BASE AL TIPO DI ANNUNCIO
-$new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
-$new_listing = str_replace('<php-author />', $new_listing_author, $new_listing);
-$new_listing = str_replace('<php-edition />', $new_listing_edition, $new_listing);
-$new_listing = str_replace('<php-isbn />', $new_listing_isbn, $new_listing);
+if($_GET["categoria"]=="libri"){
+    $new_listing = str_replace('<php-author />', $new_listing_author, $new_listing);
+    $new_listing = str_replace('<php-edition />', $new_listing_edition, $new_listing);
+    $new_listing = str_replace('<php-isbn />', $new_listing_isbn, $new_listing);
+    $new_listing = str_replace('<php-categoria />', $new_listing_cat_libri, $new_listing);
+    $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
+}
+if($_GET["categoria"]=="appunti"){
+    $new_listing = str_replace('<php-categoria />', $new_listing_cat_appunti, $new_listing);
+    $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
+}
+if($_GET["categoria"]=="ripetizioni"){
+    $new_listing = str_replace('<php-categoria />', $new_listing_cat_ripetizioni, $new_listing);
+}
 
 $new_listing = str_replace('<php-footer />', $footer, $new_listing);
 

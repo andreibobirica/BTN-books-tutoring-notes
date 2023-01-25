@@ -33,8 +33,12 @@ if ($auth->getIfLogin()) {
         $user_book = str_replace('<php-buttons />', $button_save . $user_email, $user_book);
     }
 }
-
-if (!empty($arrayAnnuncio['autore'])) {
+$book_isbn = "";
+$book_author= "";
+$book_author_def = "";
+$book_edition = "";
+$book_isbn = "";
+if (isset($arrayAnnuncio['autore']) && !empty($arrayAnnuncio['autore'])) {
     $book_author = $arrayAnnuncio['autore'];
     $book_author_def = '<div class="definition">
     <dt>Autore</dt>
@@ -42,14 +46,14 @@ if (!empty($arrayAnnuncio['autore'])) {
 </div>';
 }
 
-if (!empty($arrayAnnuncio['edizione'])) {
+if (isset($arrayAnnuncio['edizione']) && !empty($arrayAnnuncio['edizione'])) {
     $book_edition = '<div class="definition">
     <dt>Edizione</dt>
     <dd>' . $arrayAnnuncio['edizione'] . '</dd>
 </div>';
 }
 
-if (!empty($arrayAnnuncio['isbn'])) {
+if (isset($arrayAnnuncio['isbn']) && !empty($arrayAnnuncio['isbn'])) {
     $book_isbn = '<div class="definition">
     <dt>ISBN</dt>
     <dd>' . $arrayAnnuncio['isbn'] . '</dd>

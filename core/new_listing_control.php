@@ -10,12 +10,13 @@ $request = new RichiesteAnnunci();
 require_once './core/header.php';
 require_once "imports.php";
 
+print_r($_POST);
 //Script Inserimento Annuncio
 if ($auth->getIfLogin() && isset($_POST["new_listing"])) {
     $result = $request->new_listing(
         //TODO
         //mettere un parametro per il tipo
-        array("tipo" => "libri","titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
+        array("tipo" => $_POST['categoria'],"titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
     if($result["lastid"] != 0){
         header("location:./listing.php?annuncio=$result[lastid]");
