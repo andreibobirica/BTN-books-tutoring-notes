@@ -1,6 +1,6 @@
 <?php
 
-function printHeader($pagina, $login)
+function printHeader($pagina = 'default', $login)
 {
     $header = file_get_contents("./contents/header.html");
     //Cosa mostrare se si è loggati o meno
@@ -29,9 +29,10 @@ function printHeader($pagina, $login)
         case "areariservata":
             $header = str_replace('<li><a href="./area_riservata.php">Area Riservata</a></li>', "<li>Area Riservata</li>", $header);
             break;
+        case "default":
         default:
+            break;
     }
-
     return $header;
 }
 
@@ -80,7 +81,8 @@ function printBreadcrumb($pagina, $annuncio = 0)
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li>Errore del server</li>';
             break;
-        default: $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
+        default:
+            $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
     }
 
     $breadcrumb .= '</ol></nav>';

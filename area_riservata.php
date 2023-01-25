@@ -37,7 +37,7 @@ if ($auth->getIfLogin()) {
             alt="" />';
             $user_listings_list .= '<p class="listing-user">' . $listing['username'] . '<p>';
             $user_listings_list .= '<p class="listing-price">' . $listing['prezzo'] . '€<p>';
-            $user_listings_list .= '<a href="">Vedi annuncio</a>';
+            $user_listings_list .= '<a href="listing.php?annuncio=' . $listing['id'] . '">Vedi annuncio</a>';
             $user_listings_list .= '</li>';
         }
         $user_listings_list .= '</ul>';
