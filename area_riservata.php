@@ -20,123 +20,51 @@ if ($auth->getIfLogin()) {
     $user_birth = $_SESSION["birthdateAccount"];
 
     // Elenco degli annunci pubblicati
-    $user_listings_books = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'libri');
-    $user_listings_tutoring = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'ripetizioni');
-    $user_listings_notes = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'appunti');
+    $user_books = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'libri');
+    $user_tutorings = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'ripetizioni');
+    $user_notes = $request->getAnnunciOfUser($_SESSION["loginAccount"], 'appunti');
 
     $user_listings_list = "";
 
     // Se non c'è nessun tipo di annuncio si mostra un messaggio che lo comunica
-    if (empty($user_listings_books) && empty($user_listings_tutoring) && empty($user_listings_notes)) {
+    if (empty($user_books) && empty($user_tutorings) && empty($user_notes)) {
         $user_listings_list = '<p class="no-listings">Non ci sono annunci pubblicati</p>';
     } else {
         // Libri
-        if (!empty($user_listings_books)) {
-            $user_listings_list .= '<h4>Libri</h4>';
-            $user_listings_list .= '<ul class="listings-list">';
-            foreach ($user_listings_books as $user_book) {
-                $user_listings_list .= '<li class="listing">';
-                $user_listings_list .= '<p class="listing-title">' . $user_book['titolo'] . '</p>';
-                $user_listings_list .= '<p class="listing-author">' . $user_book['autore'] . '</p>';
-                $user_listings_list .= '<img src="' . $user_book['mediapath'] . '" class="listing-img" alt="" />';
-                $user_listings_list .= '<p class="listing-user">' . $user_book['username'] . '<p>';
-                $user_listings_list .= '<p class="listing-price">' . $user_book['prezzo'] . '€<p>';
-                $user_listings_list .= '<a href="listing.php?annuncio=' . $user_book['id'] . '">Vedi annuncio</a>';
-                $user_listings_list .= '</li>';
-            }
-            $user_listings_list .= '</ul>';
-        }
+        $user_listings_list .= '<h4>Libri</h4>';
+        $user_listings_list .= listingsList($user_books, 'libri');
 
         // Appunti
-        if (!empty($user_listings_notes)) {
-            $user_listings_list .= '<h4>Appunti</h4>';
-            $user_listings_list .= '<ul class="listings-list">';
-            foreach ($user_listings_notes as $user_note) {
-                $user_listings_list .= '<li class="listing">';
-                $user_listings_list .= '<p class="listing-title">' . $user_note['titolo'] . '</p>';
-                $user_listings_list .= '<p class="listing-author">' . $user_note['username'] . '</p>';
-                $user_listings_list .= '<img src="' . $user_note['mediapath'] . '" class="listing-img" alt="" />';
-                $user_listings_list .= '<p class="listing-price">' . $user_note['prezzo'] . '€<p>';
-                $user_listings_list .= '<a href="listing.php?annuncio=' . $user_note['id'] . '">Vedi annuncio</a>';
-                $user_listings_list .= '</li>';
-            }
-            $user_listings_list .= '</ul>';
-        }
+        $user_listings_list .= '<h4>Appunti</h4>';
+        $user_listings_list .= listingsList($user_notes, 'appunti');
 
         // Ripetizioni
-        if (!empty($user_listings_tutoring)) {
-            $user_listings_list .= '<h4>Ripetizioni</h4>';
-            $user_listings_list .= '<ul class="listings-list">';
-            foreach ($user_listings_tutoring as $user_tutoring) {
-                $user_listings_list .= '<li class="listing">';
-                $user_listings_list .= '<p class="listing-title">' . $user_tutoring['titolo'] . '</p>';
-                $user_listings_list .= '<p class="listing-author">' . $user_tutoring['username'] . '</p>';
-                $user_listings_list .= '<p class="listing-price">' . $user_tutoring['prezzo'] . '€<p>';
-                $user_listings_list .= '<a href="listing.php?annuncio=' . $user_tutoring['id'] . '">Vedi annuncio</a>';
-                $user_listings_list .= '</li>';
-            }
-            $user_listings_list .= '</ul>';
-        }
+        $user_listings_list .= '<h4>Ripetizioni</h4>';
+        $user_listings_list .= listingsList($user_tutorings, 'ripetizioni');
     }
 
     // Elenco degli annunci salvati
-    $save_listings_books = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'libri');
-    $save_listings_notes = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'appunti');
-    $save_listings_tutoring = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'ripetizioni');
+    $saved_books = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'libri');
+    $saved_notes = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'appunti');
+    $saved_tutorings = $request->getSavedAnnunciOfUser($_SESSION["loginAccount"], 'ripetizioni');
 
-    $save_listings_list = "";
+    $saved_listings_list = "";
 
     // Se non c'è nessun tipo di annuncio si mostra un messaggio che lo comunica
-    if (empty($save_listings_books) && empty($save_listings_notes) && empty($save_listings_tutoring)) {
-        $save_listings_list = '<p class="no-listings">Non ci sono annunci salvati</p>';
+    if (empty($saved_books) && empty($saved_notes) && empty($saved_tutorings)) {
+        $saved_listings_list = '<p class="no-listings">Non ci sono annunci salvati</p>';
     } else {
         // Libri
-        if (!empty($save_listings_books)) {
-            $save_listings_list .= '<h4>Libri</h4>';
-            $save_listings_list .= '<ul class="listings-list">';
-            foreach ($save_listings_books as $save_book) {
-                $save_listings_list .= '<li class="listing">';
-                $save_listings_list .= '<p class="listing-title">' . $save_book['titolo'] . '</p>';
-                $save_listings_list .= '<p class="listing-author">' . $save_book['autore'] . '</p>';
-                $save_listings_list .= '<img src="' . $save_book['mediapath'] . '" class="listing-img" alt="" />';
-                $save_listings_list .= '<p class="listing-save">' . $save_book['username'] . '<p>';
-                $save_listings_list .= '<p class="listing-price">' . $save_book['prezzo'] . '€<p>';
-                $save_listings_list .= '<a href="listing.php?annuncio=' . $save_book['id'] . '">Vedi annuncio</a>';
-                $save_listings_list .= '</li>';
-            }
-            $save_listings_list .= '</ul>';
-        }
+        $saved_listings_list .= '<h4>Libri</h4>';
+        $saved_listings_list .= listingsList($saved_books, 'libri');
 
         // Appunti
-        if (!empty($save_listings_notes)) {
-            $save_listings_list .= '<h4>Appunti</h4>';
-            $save_listings_list .= '<ul class="listings-list">';
-            foreach ($save_listings_notes as $save_note) {
-                $save_listings_list .= '<li class="listing">';
-                $save_listings_list .= '<p class="listing-title">' . $save_note['titolo'] . '</p>';
-                $save_listings_list .= '<p class="listing-author">' . $save_note['username'] . '</p>';
-                $save_listings_list .= '<img src="' . $save_note['mediapath'] . '" class="listing-img" alt="" />';
-                $save_listings_list .= '<p class="listing-price">' . $save_note['prezzo'] . '€<p>';
-                $save_listings_list .= '<a href="listing.php?annuncio=' . $save_note['id'] . '">Vedi annuncio</a>';
-                $save_listings_list .= '</li>';
-            }
-            $save_listings_list .= '</ul>';
-        }
+        $saved_listings_list .= '<h4>Appunti</h4>';
+        $saved_listings_list .= listingsList($saved_notes, 'appunti');
 
         // Ripetizioni
-        if (!empty($save_listings_tutoring)) {
-            $save_listings_list .= '<h4>Ripetizioni</h4>';
-            $save_listings_list .= '<ul class="listings-list">';
-            foreach ($save_listings_tutoring as $save_tutoring) {
-                $save_listings_list .= '<li class="listing">';
-                $save_listings_list .= '<p class="listing-title">' . $save_tutoring['titolo'] . '</p>';
-                $save_listings_list .= '<p class="listing-author">' . $save_tutoring['username'] . '</p>';
-                $save_listings_list .= '<p class="listing-price">' . $save_tutoring['prezzo'] . '€<p>';
-                $save_listings_list .= '<a href="listing.php?annuncio=' . $save_tutoring['id'] . '">Vedi annuncio</a>';
-                $save_listings_list .= '</li>';
-            }
-            $save_listings_list .= '</ul>';
-        }
+        $saved_listings_list .= '<h4>Ripetizioni</h4>';
+        $saved_listings_list .= listingsList($saved_tutorings, 'ripetizioni');
     }
 
     // Sostituisco i segnaposti
@@ -145,7 +73,7 @@ if ($auth->getIfLogin()) {
     $area_riservata = str_replace('<php-user-email />', $user_email, $area_riservata);
     $area_riservata = str_replace('<php-user-birth />', $user_birth, $area_riservata);
     $area_riservata = str_replace('<php-user-listings />', $user_listings_list, $area_riservata);
-    $area_riservata = str_replace('<php-saved-listings />', $save_listings_list, $area_riservata);
+    $area_riservata = str_replace('<php-saved-listings />', $saved_listings_list, $area_riservata);
 } else {
     // Se non loggato non dovrei mai finire su questa pagina, ma in caso mi rimanda al login
     header("Location: login.php");

@@ -1,7 +1,7 @@
 <?php
 //Start Session
-if(session_status() == PHP_SESSION_NONE){
-    session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
 }
 
 require_once './core/Authentication.php';
@@ -10,6 +10,7 @@ require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
 require_once './core/header.php';
 require_once "imports.php";
+require_once './core/listings_list.php';
 
 //LogOut
 if (isset($_GET["logout"])) {
