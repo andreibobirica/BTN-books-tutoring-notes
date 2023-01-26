@@ -36,7 +36,7 @@ function printHeader($pagina = 'default', $login)
     return $header;
 }
 
-function printBreadcrumb($pagina, $annuncio = '')
+function printBreadcrumb($pagina, $altro = '')
 {
     $breadcrumb = '<nav id="breadcrumb">';
     $breadcrumb .= '<ol>';
@@ -61,7 +61,7 @@ function printBreadcrumb($pagina, $annuncio = '')
         case "annuncio":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>' . $annuncio . '</li>';
+            $breadcrumb .= '<li>' . $altro . '</li>';
             break;
         case "new_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
@@ -71,7 +71,7 @@ function printBreadcrumb($pagina, $annuncio = '')
         case "edit_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Modifica annuncio ' . $annuncio . '</li>';
+            $breadcrumb .= '<li>Modifica annuncio ' . $altro . '</li>';
             break;
         case "404":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
@@ -80,6 +80,10 @@ function printBreadcrumb($pagina, $annuncio = '')
         case "500":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li>Errore del server</li>';
+            break;
+        case "risultati":
+            $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
+            $breadcrumb .= '<li>Ricerca "' . $altro . '"</li>';
             break;
         default:
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';

@@ -143,7 +143,6 @@ header #menu.show-menu {
 }
 
 section {
-    padding: 1.5em 1.5em;
     width: 100%;
 }
 
@@ -310,12 +309,18 @@ footer p {
 #search-results main {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    padding-top: 1em;
+}
+
+#search-results h2 {
+    margin-left: 1em;
 }
 
 .listings-list {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 1.5em;
 }
 
@@ -327,10 +332,15 @@ footer p {
     align-items: stretch;
     background-color: var(--bg-alt);
     border-radius: 10px;
-    width: 47%;
+    width: 80%;
     margin-left: 0.25em;
     margin-right: 0.25em;
 }
+
+.listing-descr {
+    padding: 1em;
+}
+
 
 .listing-title,
 .listing-author {
@@ -339,16 +349,16 @@ footer p {
 }
 
 .listing-title {
-    padding-top: 0.5em;
+    padding: .75em;
     font-weight: 600;
-    font-size: 1em;
+    font-size: 1.2em;
     color: var(--accent-red-2);
 }
 
 .listing-author {
-    padding-bottom: 0.5em;
+    padding-bottom: .75em;
     font-weight: normal;
-    font-size: 1em;
+    font-size: 1.1em;
     color: var(--accent-red-3);
 }
 
@@ -359,14 +369,14 @@ footer p {
 }
 
 .listing-user {
-    padding: 0.5em 0 0 1.1em;
+    padding: .75em 0 .75em 1em;
     font-weight: normal;
     font-size: 1em;
     color: var(--fg);
 }
 
 .listing-price {
-    padding: 0 0 0 1em;
+    padding: 0 0 .5em 1em;
     font-size: 1.3em;
     font-weight: 600;
 }
@@ -712,6 +722,11 @@ dd {
         width: 85%;
         align-self: center;
     }
+
+    /* LISTA ANNUNCI */
+    .listing {
+        width: 47%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -979,19 +994,32 @@ dd {
         font-size: 1.2em;
     }
 
+    .listings-list {
+        justify-content: flex-start;
+    }
+
     .listing-title {
         font-size: 1.3em;
         padding-top: 0.75em;
+        padding-bottom: 0.25em;
     }
 
     .listing-author {
         padding-bottom: 0.75em;
-        padding-top: 0.25em;
     }
 
     /* NUOVO ANNUNCIO */
     #new-listing main {
         width: 40%;
+    }
+
+    /* RISULTATI */
+    #search-results main {
+        padding: 2em;
+    }
+
+    #search-results h2 {
+        margin-bottom: 1em;
     }
 }
 
@@ -1062,5 +1090,10 @@ dd {
     /* SINGOLO ANNUNCIO */
     #listing-content main {
         align-self: center;
+    }
+
+    /* RISULTATI */
+    #search-results main {
+        padding: 3em 5em;
     }
 }

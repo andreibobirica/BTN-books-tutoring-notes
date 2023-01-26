@@ -140,7 +140,7 @@ if ($auth->getIfLogin()) {
     }
 
     // Sostituisco i segnaposti
-    $area_riservata = str_replace('<php-save-name />', $user_name, $area_riservata);
+    $area_riservata = str_replace('<php-user-name />', $user_name, $area_riservata);
     $area_riservata = str_replace('<php-user-username />', $user_username, $area_riservata);
     $area_riservata = str_replace('<php-user-email />', $user_email, $area_riservata);
     $area_riservata = str_replace('<php-user-birth />', $user_birth, $area_riservata);
