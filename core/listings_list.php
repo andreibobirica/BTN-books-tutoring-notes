@@ -2,7 +2,7 @@
 function listingsList($listings, $categoria)
 {
     if (empty($listings)) {
-        $list = '<p class="no-results">Nessun annuncio di ' . $categoria . '</p>';
+        $list = '<p class="no-listings">Nessun annuncio di ' . $categoria . '</p>';
     } else {
         $list = '<ul class="listings-list">';
 
