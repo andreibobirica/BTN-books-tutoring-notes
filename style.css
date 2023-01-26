@@ -657,13 +657,6 @@ dd {
         font-size: 1.1em;
     }
 
-    .listing p {
-        padding-left: unset;
-        padding-right: unset;
-        text-align: center;
-        font-size: 1em;
-    }
-
     .listing-price {
         font-size: 1.2em;
     }
@@ -1003,7 +996,6 @@ dd {
     .listing-title {
         font-size: 1.3em;
         padding-top: 0.75em;
-        padding-bottom: 0.25em;
     }
 
     .listing-author {
