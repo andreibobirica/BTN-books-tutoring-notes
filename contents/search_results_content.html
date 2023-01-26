@@ -11,7 +11,27 @@
         <php-header />
 
         <main>
-            <php-listings />
+            <section id="results-search">
+                <form form action="./search_results.php" method="POST">
+                    <input
+                        type="text"
+                        placeholder="Titolo, corso..."
+                        name="search"
+                    />
+                    <div id="search-buttons">
+                        <select name="categoria">
+                            <option value="libri">Libri</option>
+                            <option value="ripetizioni">Ripetizioni</option>
+                            <option value="appunti">Appunti</option>
+                        </select>
+
+                        <button type="submit" class="button">Cerca</button>
+                    </div>
+                </form>
+            </section>
+            <section id="results-listings">
+                <php-listings />
+            </section>
         </main>
         <php-footer />
     </body>

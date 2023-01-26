@@ -12,7 +12,7 @@ function listingsList($listings, $categoria)
                     $list .= '<li class="listing">';
                     $list .= '<p class="listing-title">' . $book['titolo'] . '</p>';
                     $list .= '<p class="listing-author">' . $book['autore'] . '</p>';
-                    $list .= '<img src="' . $book['mediapath'] . '" class="listing-img" alt="" />';
+                    $list .= '<img src="' . $book['mediapath'] . '" class="listing-img" alt="'.$book['descrizione'].'" />';
                     $list .= '<p class="listing-user">' . $book['username'] . '<p>';
                     $list .= '<p class="listing-price">' . $book['prezzo'] . '€<p>';
                     $list .= '<a href="listing.php?annuncio=' . $book['id'] . '">Vedi annuncio</a>';
@@ -24,7 +24,7 @@ function listingsList($listings, $categoria)
                 foreach ($listings as $note) {
                     $list .= '<li class="listing">';
                     $list .= '<p class="listing-title">' . $note['titolo'] . '</p>';
-                    $list .= '<img src="' . $note['mediapath'] . '" class="listing-img" alt="" />';
+                    $list .= '<img src="' . $note['mediapath'] . '" class="listing-img" alt="'.$note['descrizione'].'" />';
                     $list .= '<p class="listing-user">' . $note['username'] . '<p>';
                     $list .= '<p class="listing-price">' . $note['prezzo'] . '€<p>';
                     $list .= '<a href="listing.php?annuncio=' . $note['id'] . '">Vedi annuncio</a>';

@@ -11,16 +11,17 @@
 
 /* Variabili colori */
 :root {
-    --bg: rgb(250, 250, 250);
-    --bg-alt: rgb(230, 230, 230);
-    --fg-alt: rgb(180, 180, 180);
-    --accent-red: rgb(153, 0, 20);
-    --accent-red-2: rgb(205, 69, 59);
-    --accent-red-3: rgb(255, 118, 102);
-    --registration-advantages: rgb(247, 248, 251);
+    --bg: #fafafa;
+    --bg-alt: #e6e6e6;
+    --fg-alt: #808080;
+    --accent-red: #990014;
+    --accent-red-2: #cd453b;
+    --accent-red-3: #ff7666;
+    --registration-advantages: #f7f8fb;
     --error-warning: rgba(255, 42, 81, 0.1);
-    --active-visited-link: rgb(252, 181, 15);
-    --fg: rgb(20, 20, 20);
+    --visited-link-header: #f5f39e;
+    --visited-link: #611114;
+    --fg: #141414;
 }
 
 /* Regole generali, da applicare a tutte le pagine */
@@ -47,6 +48,30 @@ body {
 }
 
 /* HEADER */
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+header a {
+    color: white;
+}
+
+h1 a {
+    text-decoration: none;
+}
+
+header a {
+    color: white;
+}
+
+#breadcrumb a:visited {
+    color: var(--visited-link-header);
+}
+
+button {
+    cursor: pointer;
+}
 header {
     background-color: var(--accent-red);
     color: var(--bg);
@@ -114,7 +139,7 @@ header nav li {
 }
 
 header nav a:visited {
-    color: var(--bg);
+    color: var(--visited-link-header);
 }
 
 header #menu.show-menu {
@@ -123,7 +148,7 @@ header #menu.show-menu {
 
 #breadcrumb {
     font-size: 1em;
-    background-color: var(--accent-red-2);
+    background-color: #c42727;
     color: var(--bg);
     padding: 0.5em;
 }
@@ -203,11 +228,18 @@ footer p {
     height: calc(var(--vh, 1vh) * 93);
 }
 
-#home main > div {
+#home main > div,
+#results-search {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
     border-radius: 15px;
     margin-top: 1em;
+}
+
+#results-search {
+    margin-top: unset;
+    border-radius: 0;
+    margin-bottom: 1.5em;
 }
 
 #home h2 {
@@ -220,13 +252,15 @@ footer p {
     text-transform: uppercase;
 }
 
-#home form {
+#home form,
+#results-search form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-#home input {
+#home input,
+#results-search input {
     border-radius: 30px;
     height: 2em;
     width: 100%;
@@ -236,7 +270,8 @@ footer p {
     font-size: 1em;
 }
 
-#home #search-buttons {
+#home #search-buttons,
+#results-search #search-buttons {
     margin-top: 1em;
     display: flex;
     flex-direction: row;
@@ -245,7 +280,8 @@ footer p {
     height: 2.5em;
 }
 
-#home select {
+#home select,
+#results-search select {
     border-radius: 30px;
     width: 70%;
     height: 100%;
@@ -255,7 +291,8 @@ footer p {
     font-size: 1em;
 }
 
-#home button {
+#home button,
+#results-search button {
     width: 25%;
 }
 
@@ -310,7 +347,7 @@ footer p {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-top: 1em;
+    padding-top: unset;
 }
 
 #search-results h2 {
@@ -351,14 +388,14 @@ footer p {
     padding: 0.75em;
     font-weight: 600;
     font-size: 1.2em;
-    color: var(--accent-red-2);
+    color: var(--accent-red);
 }
 
 .listing-author {
     padding-bottom: 0.75em;
     font-weight: normal;
     font-size: 1.1em;
-    color: var(--accent-red-3);
+    color: black;
 }
 
 .listing-img {
@@ -390,6 +427,10 @@ footer p {
     text-align: center;
     display: block;
     font-size: 1em;
+}
+
+.listing a:visited {
+    background-color: var(--visited-link);
 }
 
 #orderForm {
@@ -602,7 +643,7 @@ dd {
 #area-riservata h4 {
     font-size: 1.2em;
     margin-top: 1.25em;
-    margin-bottom: .75em;
+    margin-bottom: 0.75em;
 }
 
 /* PAGINE ERRORI 404 E 500 */
@@ -643,6 +684,21 @@ dd {
 
 @media only screen and (min-width: 500px) {
     /* RISULTATI */
+    #search_results {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: unset;
+        /* background-color:red; */
+    }
+
+    #search-form-results {
+        background-color: rgba(205, 69, 59, 0.95);
+        width: 50%;
+        padding: 1.25em 1em;
+        border-radius: 0px 0px 15px 15px;
+        margin: 0em 0em 1em 0em;
+    }
     .listing {
         margin-left: 0.25em;
         margin-right: 0.25em;
@@ -728,7 +784,7 @@ dd {
     #area-riservata h3 {
         font-size: 1.8em;
     }
-    
+
     #area-riservata h4 {
         font-size: 1.5em;
     }

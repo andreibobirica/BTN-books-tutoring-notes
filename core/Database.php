@@ -9,15 +9,18 @@ class Database
 
     private $conn = null;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->connect();
     }
 
-    public function __destruct(){
-        $this->disconect();
+    public function __destruct()
+    {
+        $this->disconnect();
     }
 
-    public function connect(){
+    public function connect()
+    {
         // Create connection
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
         // Check connection
@@ -26,19 +29,22 @@ class Database
         }
     }
 
-    public function disconect(){
+    public function disconnect()
+    {
         if (isset($this->conn) && !is_null($this->conn))
             $this->conn->close();
     }
 
-    public function query($str){
+    public function query($str)
+    {
         if (isset($str) && !empty($str)) {
             $result = $this->conn->query($str);
             return $result;
         }
     }
 
-    public function getConn(){
+    public function getConn()
+    {
         return $this->conn;
     }
 }
