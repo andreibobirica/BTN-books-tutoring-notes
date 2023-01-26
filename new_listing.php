@@ -8,7 +8,7 @@ $new_listing = boilerplate($new_listing_content);
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
 $header = printHeader("inserimentoAnnuncio", $auth->getIfLogin());
-$breadcrumb = printBreadcrumb("new_listing");
+$breadcrumb = printBreadcrumb("new_listing", $_GET['categoria']);
 
 $new_listing_file = '<label for="new-listing-file" class="">Carica una foto</label>';
 $new_listing_file .= '<input type="file" name="mediapath" id="new-listing-file">';
@@ -42,14 +42,22 @@ if($_GET["categoria"]=="libri"){
     $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
 }
 if($_GET["categoria"]=="appunti"){
+    $new_listing = str_replace('<php-author />', '', $new_listing);
+    $new_listing = str_replace('<php-edition />', '', $new_listing);
+    $new_listing = str_replace('<php-isbn />', '', $new_listing);
     $new_listing = str_replace('<php-categoria />', $new_listing_cat_appunti, $new_listing);
     $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
 }
 if($_GET["categoria"]=="ripetizioni"){
+    $new_listing = str_replace('<php-author />', '', $new_listing);
+    $new_listing = str_replace('<php-edition />', '', $new_listing);
+    $new_listing = str_replace('<php-isbn />', '', $new_listing);
+    $new_listing = str_replace('<php-file />', '', $new_listing);
     $new_listing = str_replace('<php-categoria />', $new_listing_cat_ripetizioni, $new_listing);
 }
 
 $new_listing = str_replace('<php-footer />', $footer, $new_listing);
+$new_listing = str_replace('php-type', $_GET['categoria'], $new_listing);
 
 // Mostro la pagina
 echo $new_listing;

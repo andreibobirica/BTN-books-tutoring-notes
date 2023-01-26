@@ -66,7 +66,7 @@ function printBreadcrumb($pagina, $altro = '')
         case "new_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Nuovo annuncio</li>';
+            $breadcrumb .= '<li>Nuovo annuncio ' . $altro . '</li>';
             break;
         case "edit_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
