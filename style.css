@@ -55,6 +55,9 @@ p {
 
 button {
     cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    font-size: 1em;
 }
 
 /* HEADER */
@@ -223,6 +226,8 @@ footer p {
     text-transform: uppercase;
 }
 
+/* SEARCH FORM */
+
 #search-form {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 1.25em 1em;
@@ -257,12 +262,6 @@ footer p {
 #search-form button {
     width: 27%;
     float: right;
-}
-
-.button {
-    border-radius: 30px;
-    border: none;
-    font-size: 1em;
 }
 
 /* INFO */
