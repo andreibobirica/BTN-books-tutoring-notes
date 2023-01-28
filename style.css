@@ -201,8 +201,10 @@ footer p {
     justify-content: end;
     align-items: center;
     padding: 0 1.1em 1.5em 1.1em;
+    /* Altezza = 93% dell'altezza del viewport
+    Prima riga -> fallback per browser che non supportano le misure custom con JavaScript
+    Seconda riga -> applicate misure custom con JavaScript */
     height: 93vh;
-    /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 93);
 }
 
@@ -210,7 +212,6 @@ footer p {
     background-color: rgba(205, 69, 59, 0.95);
     padding: 0.5em 0.5em;
     border-radius: 15px;
-    margin-top: 1em;
     display: block;
     width: 100%;
     color: var(--bg);
@@ -233,20 +234,13 @@ footer p {
     width: 100%;
 }
 
-#results-search {
-    margin-top: unset;
-    border-radius: 0;
-    margin-bottom: 1.5em;
-}
-
 #search-form input {
     border-radius: 30px;
-    height: 2em;
     width: 100%;
-    padding: 2em;
-    /*border: solid 2px var(--fg-alt);*/
+    padding: 1em;
     border: none;
     font-size: 1em;
+    margin-bottom: .5em;
 }
 
 #search-form #search-buttons {
