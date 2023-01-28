@@ -236,6 +236,14 @@ footer p {
     width: 100%;
 }
 
+/* label presente per screen readers ma nascosta */
+#search-form label{
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    display: block;
+}
+
 #search-form input {
     border-radius: 30px;
     width: 100%;
