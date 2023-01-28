@@ -20,9 +20,16 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
     $nome = $san->sanitizeString($_POST["nome"]);
     $cognome = $san->sanitizeString($_POST["cognome"]);
     $dataNascita = $san->sanitizeString($_POST["dataNascita"]);
+    if (!$san->validateEmail($email))print("email");
+    if (!$san->validatePassword($password))print("password");
+    if (!$san->validatePassword($confPassword))print("2password");
+    if (!$san->validateName($nome))print("nome");
+    if (!$san->validateName($cognome))print("cognome");
+    if (!$san->validateDate($dataNascita))print("data");
     $verifica = $san->validateEmail($email) && $san->validatePassword($password)
         && $san->validatePassword($confPassword) && $san->validateName($nome) 
         && $san->validateName($cognome) && $san->validateDate($dataNascita);
+    $verifica = $verifica && $password == $confPassword;
 
     //Responso corretto
     $retResponse = array(

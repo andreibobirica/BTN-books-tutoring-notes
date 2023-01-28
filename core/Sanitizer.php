@@ -20,7 +20,7 @@ class Sanitizer{
     }
 
     function validateName($name) : bool{
-        return (!preg_match("/^[a-zA-Z-' ]*$/", $name));
+        return (preg_match("/^[a-zA-Z-' ]*$/", $name));
     }
 
     function validateNumber($number) : bool{
@@ -28,23 +28,24 @@ class Sanitizer{
     }
     
     function validatePassword($password):bool{
-        $ret = preg_match("/[0-9]/", $password) &&
-        preg_match("/[A-Z]/", $password) &&
-        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]/', $password);
+        $ret = preg_match("/[0-9]+/", $password) &&
+        preg_match("/[A-Z]+/", $password) &&
+        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password);
         return $ret;
     }
 
-    function validateDate($date, $format = 'd-m-'){
+    function validateDate($date, $format = 'Y-m-d'){
         $d = DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) === $date && $d->format('Y') > "1930" && $d->format('Y') < "2023";
     }
 
     function validateEmail($email) : bool{
-        return (!filter_var($email, FILTER_VALIDATE_EMAIL));
+        print($email);
+        return (filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 
     function validateURL($url) : bool{
-        return (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url));
+        return (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url));
     }
 
 }

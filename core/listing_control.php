@@ -8,6 +8,8 @@ require_once 'Authentication.php';
 $auth = new Authentication();
 require_once 'RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
+require_once './core/Sanitizer.php';
+$sanit = new Sanitizer();
 require_once 'header.php';
 require_once 'imports.php';
 
