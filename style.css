@@ -222,27 +222,20 @@ footer p {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    align-items: center;
     padding: 0 1.1em 1.5em 1.1em;
     height: 93vh;
     /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 93);
 }
 
-#home main > div,
-#results-search {
+#home h2 {
     background-color: rgba(205, 69, 59, 0.95);
-    padding: 1.25em 1em;
+    padding: 0.5em 0.5em;
     border-radius: 15px;
     margin-top: 1em;
-}
-
-#results-search {
-    margin-top: unset;
-    border-radius: 0;
-    margin-bottom: 1.5em;
-}
-
-#home h2 {
+    display: block;
+    width: 100%;
     color: var(--bg);
     margin: unset;
     text-align: center;
@@ -252,15 +245,24 @@ footer p {
     text-transform: uppercase;
 }
 
-#home form,
-#results-search form {
+#search-form {
+    background-color: rgba(205, 69, 59, 0.95);
+    padding: 1.25em 1em;
+    border-radius: 15px;
+    margin-top: 1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
 }
 
-#home input,
-#results-search input {
+#results-search {
+    margin-top: unset;
+    border-radius: 0;
+    margin-bottom: 1.5em;
+}
+
+#search-form input {
     border-radius: 30px;
     height: 2em;
     width: 100%;
@@ -270,8 +272,7 @@ footer p {
     font-size: 1em;
 }
 
-#home #search-buttons,
-#results-search #search-buttons {
+#search-form #search-buttons {
     margin-top: 1em;
     display: flex;
     flex-direction: row;
@@ -280,8 +281,7 @@ footer p {
     height: 2.5em;
 }
 
-#home select,
-#results-search select {
+#search-form select{
     border-radius: 30px;
     width: 70%;
     height: 100%;
@@ -291,8 +291,7 @@ footer p {
     font-size: 1em;
 }
 
-#home button,
-#results-search button {
+#search-form button {
     width: 25%;
 }
 
@@ -745,12 +744,8 @@ dd {
         padding-bottom: 3em;
     }
 
-    #home main h2 {
-        text-align: center;
-    }
-
-    #home main > div {
-        width: 85%;
+    #home h2, #search-form {
+        width: 80%;
     }
 
     /* INFO */
@@ -826,6 +821,10 @@ dd {
         background-image: url("./assets/imgs/hats.jpg");
         justify-content: center;
         padding: unset;
+    }
+
+    #home h2, #search-form {
+        width: 60%;
     }
 
     /* INFO */
@@ -998,11 +997,11 @@ dd {
     }
 
     /* HOME */
-    #home main h2 {
+    #home h2 {
         font-size: 2.5em;
     }
 
-    #home main > div {
+    #home h2, #search-form {
         width: 50%;
     }
 
@@ -1093,11 +1092,11 @@ dd {
         align-items: center;
     }
 
-    #home main h2 {
+    #home h2 {
         font-size: 3em;
     }
 
-    #home main > div {
+    #home h2, #search-form{
         width: 45%;
     }
 

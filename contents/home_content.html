@@ -17,31 +17,28 @@
         <php-header />
 
         <main>
-            <div>
-                <h2>Cerca libri, appunti e ripetizioni</h2>
-            </div>
-            <div>
-                <form
+            <h2>Cerca libri, appunti e ripetizioni</h2>
+            <form
                 form
                 action="./search_results.php"
                 method="POST"
-                >
-                    <input
-                        type="text"
-                        placeholder="Titolo, corso..."
-                        name="search"
-                    />
-                    <div id="search-buttons">
-                        <select name="categoria">
-                            <option value="libri">Libri</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                            <option value="appunti">Appunti</option>
-                        </select>
+                id="search-form"
+            >
+                <input
+                    type="text"
+                    placeholder="Titolo, corso..."
+                    name="search"
+                />
+                <div id="search-buttons">
+                    <select name="categoria">
+                        <option value="libri">Libri</option>
+                        <option value="ripetizioni">Ripetizioni</option>
+                        <option value="appunti">Appunti</option>
+                    </select>
 
-                        <button type="submit" class="button">Cerca</button>
-                    </div>
-                </form>
-            </div>
+                    <button type="submit" class="button">Cerca</button>
+                </div>
+            </form>
         </main>
 
         <php-footer />
