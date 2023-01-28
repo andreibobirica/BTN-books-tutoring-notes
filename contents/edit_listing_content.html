@@ -1,52 +1,77 @@
 <!DOCTYPE html>
 <html lang="it">
+    <head>
+        <php-imports />
+        <title>BTN - Libri, appunti, ripetizioni</title>
+    </head>
 
-<head>
-    <php-imports />
-    <meta name="robots" content="noindex" />
-    <title>BTN - Libri, appunti, ripetizioni</title>
-</head>
+    <body id="edit-listing">
+        <php-header />
+        <main>
+            <h2>Modifica annuncio php-type</h2>
+            <form
+                id="modAnnuncioForm"
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <label for="edit-listing-title">Titolo</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci titolo"
+                    maxlength="25"
+                    name="titolo"
+                    id="edit-listing-title"
+                    value="php-listing-title"
+                />
 
-<body>
-    <php-header />
-    <main>
-        <div class="container">
-            <form action="php-action" id="modAnnuncioForm" method="POST" enctype="multipart/form-data">
-                <label id="labelNome">Tipo Annuncio</label>
-                <select disabled name="tipo">
-                    <option value="appunti">Appunti
-                    </option>
-                    <option value="libri">Libri</option>
-                    <option value="ripetizioni">Ripetizioni</option>
-                </select>
-                <label id="labelTitolo">Titolo</label>
-                <input value="php-listing-title" type="text" placeholder="Inserisci il titolo" maxlength="25"
-                    name="titolo" id="inputTitolo" />
-                <label id="labelDescrizione">Descrizione</label>
-                <input value="php-listing-descr" type="text" placeholder="Inserisci Descrizione" maxlength="255"
-                    name="descrizione" id="inputDescrizione" />
-                <label id="labelPrezzo">Prezzo</label>
-                <input value="php-listing-price" type="text" placeholder="Inserisci il titolo" maxlength="25"
-                    name="prezzo" id="inputPrezzo" />
-                <label id="labelMediapath">MediaPath</label>
-                <input type="file" name="mediapath" id="mediapath">
-                <img width="500" height="600" src="php-listing-media">
+                <label for="new-listing-descr">Descrizione</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci descrizione"
+                    maxlength="255"
+                    name="descrizione"
+                    id="edit-listing-descr"
+                    value="php-listing-descr"
+                />
+
+                <label for="new-listing-price">Prezzo</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci prezzo"
+                    maxlength="25"
+                    name="prezzo"
+                    id="edit-listing-price"
+                    value="php-listing-price"
+                />
+
                 <label id="labelMateria">Materia</label>
-                <input value="php-listing-subject" type="text" placeholder="Inserisci la materia" maxlength="25"
-                    name="materia" id="inputMateria" />
-                <label id="labelAutore">Autore</label>
-                <input value="php-listing-author" type="text" placeholder="Inserisci Autore" maxlength="25"
-                    name="autore" id="inputAutore" />
-                <label id="labelEdizione">Edizione</label>
-                <input value="php-listing-edition" type="text" placeholder="Inserisci la Edizione" maxlength="25"
-                    name="edizione" id="inputEdizione" />
-                <label id="labelISBN">ISBN</label>
-                <input value="php-listing-ISBN" type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn"
-                    id="inputMateria" />
-                <button value="php-button-value" type="submit" name="edit_listing" id="edit_listing">Modifica</button>
-            </form>
-        </div>
-    </main>
-    <php-footer />
+                <input
+                    type="text"
+                    placeholder="Inserisci materia"
+                    maxlength="25"
+                    name="materia"
+                    id="inputMateria"
+                    value="php-listing-subject"
+                />
 
-</body>
+                <php-categoria />
+
+                <php-file />
+
+                <php-author />
+
+                <php-edition />
+
+                <php-isbn />
+
+                <button type="submit" name="edit_listing" php-annuncio-id id="edit_listing">
+                    Modifica
+                </button>
+            </form>
+        </main>
+        <php-footer />
+    </body>
+</html>
+                

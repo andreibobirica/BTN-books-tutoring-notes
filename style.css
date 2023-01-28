@@ -520,7 +520,7 @@ dd {
 }
 
 #registration main,
-#new-listing main,
+#new-listing #edit-listing main,
 #login main {
     padding: 2em;
     background-color: var(--bg);
@@ -532,7 +532,7 @@ dd {
 }
 
 #registration h2,
-#new-listing h2,
+#new-listing #edit-listing h2,
 #login h2 {
     margin-top: unset;
     margin-bottom: 0.75em;
@@ -736,7 +736,7 @@ dd {
 
     /* REGISTRAZIONE */
     #registration main,
-    #new-listing main {
+    #new-listing #edit-listing main {
         width: 85%;
         align-self: center;
     }
@@ -927,7 +927,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main {
+    #new-listing #edit-listing main {
         width: 60%;
     }
 
@@ -1031,7 +1031,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main {
+    #new-listing #edit-listing main {
         width: 40%;
     }
 
@@ -1102,7 +1102,7 @@ dd {
         padding: 4em 5em;
     }
     /* NUOVO ANNUNCIO */
-    #new-listing main {
+    #new-listing #edit-listing main {
         width: 35%;
     }
 

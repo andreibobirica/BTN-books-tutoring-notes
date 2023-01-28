@@ -28,7 +28,6 @@ if (isset($_POST["edit_listing"])) {
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
     $_POST['descrizione'] = $sanit->sanitizeString($_POST['descrizione']);
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
-    $_POST['mediapath'] = $sanit->sanitizeString($_POST['mediapath']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);

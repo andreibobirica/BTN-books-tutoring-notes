@@ -20,11 +20,11 @@ if(!$auth->getIfLogin()){
 
 //Script Inserimento Annuncio
 if (isset($_POST["new_listing"])) {
+    print_r($_POST);
     //Verifico Input e sanitize
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
     $_POST['descrizione'] = $sanit->sanitizeString($_POST['descrizione']);
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
-    $_POST['mediapath'] = $sanit->sanitizeString($_POST['mediapath']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);

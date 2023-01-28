@@ -20,12 +20,11 @@ $listing_user = $arrayAnnuncio['username'];
 $listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
 $listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p>';
 
-
 $button_insert_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&insertsave" class="listing-btn">Salva annuncio</a>';
 $button_remove_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&removesave" class="listing-btn">Rimuovi annuncio dai Salvati</a>';
-$button_edit = '<a href="edit_listing.php?modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
+$button_edit = '<a href="edit_listing.php?categoria='.$arrayAnnuncio['tipo'].'&modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
 $button_delete = '<a href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
-$user_email = '<a href="mailto:$mailVenditore" class="listing-btn">$mailVenditore</a>';
+$user_email = '<a href="mailto:'.$arrayAnnuncio['email'].'" class="listing-btn">'.$arrayAnnuncio['email'].'</a>';
 
 $button_save = $button_insert_save;
 if($request->verifySaveAnnuncioUser($_SESSION["loginAccount"],$arrayAnnuncio['id'])){

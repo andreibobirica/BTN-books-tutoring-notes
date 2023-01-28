@@ -114,10 +114,11 @@ class RichiesteAnnunci
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             //	id	titolo	descrizione	prezzo	username	mediapath	materia
-            $arrayRet = array("id" => $row['id'], "tipo" => "", "titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "");
+            $arrayRet = array("id" => $row['id'], "tipo" => "", "titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "", "email"=>"");
             $idAnnuncio = $row['id'];
+
             //Libri
-            $sqlTipo = "SELECT * FROM libri WHERE id = $idAnnuncio";
+            $sqlTipo = "SELECT * FROM libri JOIN annunci ON annunci.id = libri.id JOIN utenti ON annunci.username=utenti.username WHERE libri.id = $idAnnuncio;";
             $result = $this->auth->db->query($sqlTipo);
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
@@ -126,25 +127,28 @@ class RichiesteAnnunci
                 $arrayRet['edizione'] = $row['edizione'];
                 $arrayRet['isbn'] = $row['ISBN'];
                 $arrayRet['mediapath'] = $row['mediapath'];
+                $arrayRet['email'] = $row['email'];
                 return $arrayRet;
             }
 
             //Appunti
-            $sqlTipo = "SELECT * FROM appunti WHERE id = $idAnnuncio";
+            $sqlTipo = "SELECT * FROM appunti JOIN annunci ON annunci.id = appunti.id JOIN utenti ON annunci.username=utenti.username WHERE appunti.id = $idAnnuncio;";
             $result = $this->auth->db->query($sqlTipo);
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
                 $arrayRet['tipo'] = "appunti";
                 $arrayRet['mediapath'] = $row['mediapath'];
+                $arrayRet['email'] = $row['email'];
                 return $arrayRet;
             }
 
             //Ripetizioni
-            $sqlTipo = "SELECT * FROM ripetizioni WHERE id = $idAnnuncio";
+            $sqlTipo = "SELECT * FROM ripetizioni JOIN annunci ON annunci.id = ripetizioni.id JOIN utenti ON annunci.username=utenti.username WHERE ripetizioni.id = $idAnnuncio;";
             $result = $this->auth->db->query($sqlTipo);
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
                 $arrayRet['tipo'] = "ripetizioni";
+                $arrayRet['email'] = $row['email'];
                 return $arrayRet;
             }
         }
@@ -164,6 +168,7 @@ class RichiesteAnnunci
                 return array("lastid" => 0, "upload" => $upload);
         }
         $sql = "INSERT INTO annunci (titolo,descrizione,prezzo,username,materia) VALUES ('$annuncio[titolo]', '$annuncio[descrizione]', '$annuncio[prezzo]', '$annuncio[username]', '$annuncio[materia]');";
+        print($sql);
         if ($this->auth->db->query($sql) === TRUE) {
             $last_id = $this->auth->db->getConn()->insert_id;
             $sqlTipo = "";
@@ -178,6 +183,7 @@ class RichiesteAnnunci
                     $sqlTipo = "INSERT INTO ripetizioni (id) VALUES ('$last_id')";
                     break;
             }
+            print($sqlTipo);
             if ($this->auth->db->query($sqlTipo) === TRUE)
                 return array("lastid" => $last_id, "upload" => $upload);
         }
@@ -191,6 +197,8 @@ class RichiesteAnnunci
     {
         $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
         if ($this->auth->db->query($sql) === TRUE) {
+            print_r($annuncio);
+            print("SELECT DISTINCT annunci.id FROM annunci JOIN appunti WHERE annunci.id = $annuncio[id] AND appunti.id = $annuncio[id];");
             $tipoAnnuncio =
                 $this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN appunti WHERE annunci.id = $annuncio[id] AND appunti.id = $annuncio[id];")->num_rows == 1 ? "appunti" :
                 ($this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN libri WHERE annunci.id = $annuncio[id] AND libri.id = $annuncio[id];")->num_rows == 1 ? "libri" : "ripetizioni");
