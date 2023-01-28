@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse."
+        />
+        <meta name="keywords" content="BTN, modifica dati account" />
+        <script src="./scripts/form_manager.js" async></script>
+        <title>BTN - Modifica Dati Account</title>
+    </head>
+
+    <body id="modaccount">
+        <php-header />
+        <main>
+            <h2>Modifica Dati Account</h2>
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label id="labelNome">Nome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo nome"
+                    maxlength="25"
+                    name="nome"
+                    php-value-nome
+                    id="inputNome"
+                />
+
+                <label id="labelCognome">Cognome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo cognome"
+                    maxlength="25"
+                    name="cognome"
+                    php-value-cognome
+                    id="inputCognome"
+                />
+
+                <label id="labelUsername" lang="en">Username</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo username"
+                    maxlength="30"
+                    name="username"
+                    php-value-username
+                    id="inputUsername"
+                />
+
+                
+                <label id="labelPassword" lang="en">Password</label>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    maxlength="50"
+                    name="password"
+                    php-value-password
+                    id="inputPassword"
+                />
+
+                <label id="labelConfPassword"
+                    >Conferma <span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Reinserici la tua password"
+                    maxlength="50"
+                    name="confPassword"
+                    php-value-confPassword
+                    id="inputConfPassword"
+                />
+            
+                
+
+                <label id="labelDataNascita">Data di nascita</label>
+                <input
+                    type="date"
+                    placeholder="Data di nascita"
+                    name="dataNascita"
+                    php-value-data
+                    id="inputDataNascita"
+                />
+
+                <label id="labelEmail" lang="en">Email</label>
+                <input
+                    type="email"
+                    placeholder="Inserisci la tua e-mail"
+                    maxlength="70"
+                    name="email"
+                    php-value-email
+                    id="inputEmail"
+                />
+
+                <button type="submit" name="modifica" php-value-oldusername >Modifica</button>
+            </form>
+        </main>
+
+        <php-footer />
+    </body>
+</html>

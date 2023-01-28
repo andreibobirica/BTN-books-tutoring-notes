@@ -30,7 +30,7 @@ class Authentication
     function login($username, $pass)
     {
         //Controll if we are not already loged in
-        if (!isset($_SESSION["loginAccount"]) || empty($_SESSION["loginAccount"])) {
+        //if (!isset($_SESSION["loginAccount"]) || empty($_SESSION["loginAccount"])) {
             //Traditional login with email and pass to the DB
 
             //Execute query to DB to solve login request
@@ -57,8 +57,18 @@ class Authentication
                 }
                 return true;
             }
-        }
+       // }
         return false;
+    }
+
+    function getPassword($username){
+        $queryUser = "SELECT password FROM `utenti` WHERE username = '$username'";
+        $result = $this->db->query($queryUser);
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            return $row["password"];
+        }
+        return "";
     }
 
     /**
@@ -108,7 +118,14 @@ class Authentication
             return array(
                 "return" => false,
                 "error" => "Utente Già Loggato, disconettersi prima di creare un nuovo account"
-            );
+        );
+
+        //Password non coincidono
+        if ($pass1 != $pass2)
+            return array(
+                "return" => false,
+                "error" => "Le password non Coincidono"
+        );
 
         //verifico se username già esistente 
         $result = $this->db->query("SELECT username FROM utenti WHERE username='$username'");
@@ -126,6 +143,48 @@ class Authentication
         if (($res === TRUE)) {
             //login
             $this->login($username, $pass1);
+            return $retResponse;
+        } else {
+            return array(
+                "return" => false,
+                "error" => "Errore Generico"
+            );
+        }
+
+    }
+
+    function mod_account($vecchioUsername,$username, $email, $nome, $cognome, $data,$pass1, $pass2): array
+    {
+        //Messaggio di conferma nel caso registrazione positiva
+        $retResponse = array(
+            "return" => true,
+            "error" => ""
+        );
+
+        //Password non coincidono
+        if ($pass1 != $pass2)
+            return array(
+                "return" => false,
+                "error" => "Le password non Coincidono"
+        );
+
+        //verifico se username già esistente 
+        $result = $this->db->query("SELECT username FROM utenti WHERE username='$username'");
+        if ($result->num_rows != 0 && $username!=$vecchioUsername) {
+            return array(
+                "return" => false,
+                "error" => "Username già esistente, riprovare con altro."
+            );
+        }
+
+        //Applying query account on db
+        $queryAccount = "UPDATE utenti SET nome = '$nome', password = '$pass1' , cognome = '$cognome', username = '$username', email = '$email' WHERE utenti.username = '$vecchioUsername';";
+        $res = $this->db->query($queryAccount);
+        //se modifica avvenuta correttamente  , altrimenti messaggio di errore
+        if (($res === TRUE)) {
+            //login
+            if($this->login($username, $pass1))
+            print("login avvenuto");
             return $retResponse;
         } else {
             return array(
