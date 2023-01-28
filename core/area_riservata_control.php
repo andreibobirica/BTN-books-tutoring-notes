@@ -12,7 +12,7 @@ require_once './core/header.php';
 require_once "imports.php";
 require_once './core/listings_list.php';
 
-//LogOut
+//Logout
 if (isset($_GET["logout"])) {
   session_destroy(); //destroy the session
   header("location:./index.php"); //to redirect back to "index.php" after logging out

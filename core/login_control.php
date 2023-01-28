@@ -8,16 +8,17 @@ require_once 'Authentication.php';
 $auth = new Authentication();
 require_once 'header.php';
 require_once "imports.php";
+require_once 'Sanitizer.php';
+$san = new Sanitizer();
 
 if (isset($_POST['utente']) && !empty($_POST['utente'])) {
-    print_r($_POST['utente']);
-    require_once 'Sanitizer.php';
-    $san = new Sanitizer();
+    //Verifico Input
     $username = $san->sanitizeString($_POST["utente"]);
     $password = $san->sanitizeString($_POST["password"]);
-
+    $verifica = $san->validatePassword($password);
+    if($verifica)
     $retResponse = $auth->login($username,$password);
-    if ($retResponse === TRUE) {
+    if ($verifica && $retResponse === TRUE) {
         print("
         <script>
         alert('Login Avvenuta con successo');

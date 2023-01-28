@@ -7,33 +7,58 @@ require_once './core/Authentication.php';
 $auth = new Authentication();
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
+require_once './core/Sanitizer.php';
+$sanit = new Sanitizer();
 require_once './core/header.php';
 require_once "imports.php";
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])) {
-    print_r("elimina");
-    if ($request->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["elimina"]))
+    //Verifico Input
+    $_GET["elimina"] = $sanit->sanitizeString($_GET["elimina"]);
+    //verifico che l'annuncio sia del utente loggato
+    if ($auth->getIfLogin() && $request->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["elimina"])) {
         $request->deleteAnnuncio($_GET["elimina"]);
-    //header("location:./area_riservata.php");
+        header("location:./area_riservata.php");
+    }
 }
 
 //Script Modifica Annuncio
 if (isset($_POST["edit_listing"])) {
+    //Verifico Input e sanitize
+    $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
+    $_POST['descrizione'] = $sanit->sanitizeString($_POST['descrizione']);
+    $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
+    $_POST['mediapath'] = $sanit->sanitizeString($_POST['mediapath']);
+    $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
+    $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
+    $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
+    $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
+    $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
+    $verifica = $sanit->validateNumber($_POST['prezzo']) && $sanit->validateNumber($_POST['isbn']);
+    //Mando i dati da modificare del annuncio alla funzione edit_listing con una struttura dati array
+    if($verifica)
     $result = $request->edit_listing(
         array("id" => $_POST["edit_listing"], "titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
     );
-    if ($result["lastid"] != 0)
+    //Se nei risultati il campo lastid è valorizzato !=0 la modifica è avvenuta con successo
+    if (!$verifica) {
+        print("Errore nei dati Inseriti, Riprovare");
+    }else if ($result["lastid"] != 0){
         header("location:./listing.php?annuncio=$result[lastid]");
+        exit();
+    }
     else
         print($result['upload']['errore']);
 }
 
-
+//Prendo i dati dell'anuncio da modificare
 if ($auth->getIfLogin()) {
     if (isset($_GET["modifica"]) && !empty($_GET["modifica"])) {
+        //Verifico Input
+        $_GET["modifica"] = $sanit->sanitizeString($_GET["modifica"]);
         // Se l'utente è loggato si controlla la volontà di modificare l'annuncio e quale
         if ($request->verifyAnnuncioUser($_SESSION["loginAccount"], $_GET["modifica"])) {
-            // In caso affermativo si verifica la proprietà dell'annuncio e si procede alla modifica
+            // In caso affermativo si verifica la proprietà dell'annuncio e si procede alla sua visualizzazione per la modifica
             $arrayAnnuncio = $request->getAnnuncio($_GET["modifica"]);
         } else {
             // In caso negativo area riservata

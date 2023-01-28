@@ -8,12 +8,11 @@ require_once './core/Authentication.php';
 $auth = new Authentication();
 require_once './core/header.php';
 require_once "imports.php";
+require_once './core/Sanitizer.php';
+$san = new Sanitizer();
 
 if(isset($_POST['username']) && !empty($_POST['username'])){
-
-    require_once './core/Sanitizer.php';
-    $san = new Sanitizer();
-    
+    //Verifico input
     $username = $san->sanitizeString($_POST["username"]);
     $email = $san->sanitizeString($_POST["email"]);
     $password = $san->sanitizeString($_POST["password"]);
@@ -21,6 +20,9 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
     $nome = $san->sanitizeString($_POST["nome"]);
     $cognome = $san->sanitizeString($_POST["cognome"]);
     $dataNascita = $san->sanitizeString($_POST["dataNascita"]);
+    $verifica = $san->validateEmail($email) && $san->validatePassword($password)
+        && $san->validatePassword($confPassword) && $san->validateName($nome) 
+        && $san->validateName($cognome) && $san->validateDate($dataNascita);
 
     //Responso corretto
     $retResponse = array(
@@ -28,8 +30,11 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
         "error" => ""
     );
     //Procedura di registrazione
+    if($verifica)
     $retResponse = $auth->register($username, $email, $password, $confPassword, $nome, $cognome, $dataNascita);
-    if ($retResponse["return"] === TRUE) {
+    if (!$verifica) {
+        print("Errore nei dati inseriti, riprovare");
+    }else if ($retResponse["return"] === TRUE) {
         print("
         <script>
         alert('Registrazione Avvenuta con successo');
