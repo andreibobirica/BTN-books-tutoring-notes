@@ -24,8 +24,9 @@
     --fg: #141414;
 }
 
+/* Mobile-first, quindi le regole si applicano a tutti gli schermi con dimensioni minori del primo breakpoint */
+
 /* Regole generali, da applicare a tutte le pagine */
-/* Mobile-first, quindi si applicano a tutti gli schermi con dimensioni minori del primo breakpoint */
 * {
     box-sizing: border-box;
     margin: unset;
@@ -47,31 +48,21 @@ body {
     margin: auto;
 }
 
-/* HEADER */
 p {
     font-size: 1em;
     line-height: 1.5em;
 }
 
-header a {
-    color: white;
-}
-
-h1 a {
-    text-decoration: none;
-}
-
-header a {
-    color: white;
-}
-
-#breadcrumb a:visited {
-    color: var(--visited-link-header);
-}
-
 button {
     cursor: pointer;
 }
+
+/* HEADER */
+
+header a {
+    color: white;
+}
+
 header {
     background-color: var(--accent-red);
     color: var(--bg);
@@ -88,11 +79,6 @@ header h1 {
     font-size: 2em;
 }
 
-header img {
-    width: 2em;
-    height: 2em;
-}
-
 header div {
     display: flex;
     flex-direction: row;
@@ -100,13 +86,12 @@ header div {
     justify-content: space-between;
 }
 
-header .logo,
-header .logo:visited {
-    color: var(--bg);
+header #logo,
+header #logo:visited {
     text-decoration: none;
 }
 
-header .logo:hover {
+header #logo:hover {
     text-decoration: underline;
 }
 
@@ -138,12 +123,13 @@ header nav li {
     text-align: right;
 }
 
-header nav a:visited {
-    color: var(--visited-link-header);
-}
-
 header #menu.show-menu {
     display: flex;
+}
+
+header nav a:visited,
+#breadcrumb a:visited {
+    color: var(--visited-link-header);
 }
 
 #breadcrumb {
@@ -171,17 +157,6 @@ section {
     width: 100%;
 }
 
-section h2 {
-    text-align: center;
-    color: var(--accent-red-2);
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-section p {
-    font-size: 1.1em;
-}
-
 input {
     margin-bottom: 1em;
 }
@@ -200,6 +175,8 @@ label p {
 abbr {
     text-decoration: none;
 }
+
+/* FOOTER */
 
 footer {
     background-color: var(--accent-red);
@@ -281,7 +258,7 @@ footer p {
     height: 2.5em;
 }
 
-#search-form select{
+#search-form select {
     border-radius: 30px;
     width: 70%;
     height: 100%;
@@ -744,7 +721,8 @@ dd {
         padding-bottom: 3em;
     }
 
-    #home h2, #search-form {
+    #home h2,
+    #search-form {
         width: 80%;
     }
 
@@ -823,7 +801,8 @@ dd {
         padding: unset;
     }
 
-    #home h2, #search-form {
+    #home h2,
+    #search-form {
         width: 60%;
     }
 
@@ -1001,7 +980,8 @@ dd {
         font-size: 2.5em;
     }
 
-    #home h2, #search-form {
+    #home h2,
+    #search-form {
         width: 50%;
     }
 
@@ -1096,7 +1076,8 @@ dd {
         font-size: 3em;
     }
 
-    #home h2, #search-form{
+    #home h2,
+    #search-form {
         width: 45%;
     }
 
