@@ -634,7 +634,7 @@ dd {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(./assets/imgs/404.jpg);
+    background-image: url(./assets/imgs/404.webp);
     background-size: cover;
     background-position: center;
     padding: 1.5em;
@@ -846,6 +846,13 @@ dd {
     }
 
     /* LOGIN E REGISTRAZIONE */
+    #registration,
+    #login {
+        background-image: url(./assets/imgs/login.webp);
+        background-size: cover;
+        background-position: center;
+    }
+    
     #login main {
         width: 60%;
         align-self: center;
@@ -983,12 +990,6 @@ dd {
     }
 
     /* LOGIN E REGISTRAZIONE */
-    #registration,
-    #login {
-        background-image: url(./assets/imgs/login.jpg);
-        background-size: cover;
-        background-position: center;
-    }
 
     #login main {
         width: 50%;
