@@ -14,8 +14,8 @@ require_once './core/listings_list.php';
 
 //Logout
 if (isset($_GET["logout"])) {
-  session_destroy(); //destroy the session
-  header("location:./index.php"); //to redirect back to "index.php" after logging out
+  session_destroy();
+  header("location:./index.php");
   exit();
 }
 

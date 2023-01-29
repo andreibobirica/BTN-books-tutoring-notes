@@ -73,6 +73,11 @@ function printBreadcrumb($pagina, $altro = '')
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
             $breadcrumb .= '<li>Modifica annuncio ' . $altro . '</li>';
             break;
+        case "edit_account":
+            $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
+            $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
+            $breadcrumb .= '<li>Modifica dati account</li>';
+            break;
         case "404":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li>Pagina non trovata</li>';
