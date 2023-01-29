@@ -52,25 +52,25 @@ $edit_listing = str_replace('php-listing-ISBN', $arrayAnnuncio['isbn'], $edit_li
 $edit_listing = str_replace('php-button-value', $_GET["modifica"], $edit_listing);
 // MOSTRARE O NASCONDERE IN BASE AL TIPO DI ANNUNCIO
 if($_GET["categoria"]=="libri"){
-    $edit_listing = str_replace('<php-author />', $edit_listing_author, $edit_listing);
-    $edit_listing = str_replace('<php-edition />', $edit_listing_edition, $edit_listing);
-    $edit_listing = str_replace('<php-isbn />', $edit_listing_isbn, $edit_listing);
-    $edit_listing = str_replace('<php-categoria />', $edit_listing_cat_libri, $edit_listing);
-    $edit_listing = str_replace('<php-file />', $edit_listing_file, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-author /> -->', $edit_listing_author, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-edition /> -->', $edit_listing_edition, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-isbn /> -->', $edit_listing_isbn, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_libri, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
 if($_GET["categoria"]=="appunti"){
-    $edit_listing = str_replace('<php-author />', '', $edit_listing);
-    $edit_listing = str_replace('<php-edition />', '', $edit_listing);
-    $edit_listing = str_replace('<php-isbn />', '', $edit_listing);
-    $edit_listing = str_replace('<php-categoria />', $edit_listing_cat_appunti, $edit_listing);
-    $edit_listing = str_replace('<php-file />', $edit_listing_file, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_appunti, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
 if($_GET["categoria"]=="ripetizioni"){
-    $edit_listing = str_replace('<php-author />', '', $edit_listing);
-    $edit_listing = str_replace('<php-edition />', '', $edit_listing);
-    $edit_listing = str_replace('<php-isbn />', '', $edit_listing);
-    $edit_listing = str_replace('<php-file />', '', $edit_listing);
-    $edit_listing = str_replace('<php-categoria />', $edit_listing_cat_ripetizioni, $edit_listing);
+    $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-file /> -->', '', $edit_listing);
+    $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_ripetizioni, $edit_listing);
 }
 
 // Non si può cambiare tipo di annuncio, ma viene mostrato il tipo corretto

@@ -35,25 +35,25 @@ $new_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $new_listing);
 
 // MOSTRARE O NASCONDERE IN BASE AL TIPO DI ANNUNCIO
 if($_GET["categoria"]=="libri"){
-    $new_listing = str_replace('<php-author />', $new_listing_author, $new_listing);
-    $new_listing = str_replace('<php-edition />', $new_listing_edition, $new_listing);
-    $new_listing = str_replace('<php-isbn />', $new_listing_isbn, $new_listing);
-    $new_listing = str_replace('<php-categoria />', $new_listing_cat_libri, $new_listing);
-    $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
+    $new_listing = str_replace('<!-- <php-author /> -->', $new_listing_author, $new_listing);
+    $new_listing = str_replace('<!-- <php-edition /> -->', $new_listing_edition, $new_listing);
+    $new_listing = str_replace('<!-- <php-isbn /> -->', $new_listing_isbn, $new_listing);
+    $new_listing = str_replace('<!-- <php-categoria /> -->', $new_listing_cat_libri, $new_listing);
+    $new_listing = str_replace('<!-- <php-file /> -->', $new_listing_file, $new_listing);
 }
 if($_GET["categoria"]=="appunti"){
-    $new_listing = str_replace('<php-author />', '', $new_listing);
-    $new_listing = str_replace('<php-edition />', '', $new_listing);
-    $new_listing = str_replace('<php-isbn />', '', $new_listing);
-    $new_listing = str_replace('<php-categoria />', $new_listing_cat_appunti, $new_listing);
-    $new_listing = str_replace('<php-file />', $new_listing_file, $new_listing);
+    $new_listing = str_replace('<!-- <php-author /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-edition /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-isbn /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-categoria /> -->', $new_listing_cat_appunti, $new_listing);
+    $new_listing = str_replace('<!-- <php-file /> -->', $new_listing_file, $new_listing);
 }
 if($_GET["categoria"]=="ripetizioni"){
-    $new_listing = str_replace('<php-author />', '', $new_listing);
-    $new_listing = str_replace('<php-edition />', '', $new_listing);
-    $new_listing = str_replace('<php-isbn />', '', $new_listing);
-    $new_listing = str_replace('<php-file />', '', $new_listing);
-    $new_listing = str_replace('<php-categoria />', $new_listing_cat_ripetizioni, $new_listing);
+    $new_listing = str_replace('<!-- <php-author /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-edition /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-isbn /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-file /> -->', '', $new_listing);
+    $new_listing = str_replace('<!-- <php-categoria /> -->', $new_listing_cat_ripetizioni, $new_listing);
 }
 
 $new_listing = str_replace('<php-footer />', $footer, $new_listing);

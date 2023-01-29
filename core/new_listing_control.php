@@ -14,8 +14,8 @@ require_once "imports.php";
 
 //Verifica se loggato
 if(!$auth->getIfLogin()){
-    header("location:./area_riservata.php");
-    exit();
+    //header("location:./area_riservata.php");
+    //exit();
 }
 
 //Script Inserimento Annuncio

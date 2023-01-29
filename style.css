@@ -141,6 +141,7 @@ header nav a:visited,
     background-color: #c42727;
     color: var(--bg);
     padding: 0.5em;
+    width: 100%;
 }
 
 #breadcrumb ol {
@@ -494,7 +495,22 @@ dd {
     text-transform: uppercase;
 }
 
-/* LOGIN E REGISTRAZIONE */
+/* NUOVO ANNUNCIO */
+#new-listing {
+    align-items: center;
+}
+
+#new-listing main {
+    width: 90%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#new-listing h2 {
+    margin-bottom: .5em;
+}
+
+/* FORMS */
 .multiple-fields-form {
     display: flex;
     flex-direction: column;
@@ -520,7 +536,8 @@ dd {
 }
 
 .multiple-fields-form button {
-    margin: 1em 0;
+    margin: unset;
+    margin-top: 1em;
     background-color: var(--accent-red-2);
     color: white;
     padding-top: 0.5em;
@@ -530,6 +547,7 @@ dd {
     font-size: 1.5em;
 }
 
+/* LOGIN E REGISTRAZIONE */
 #registration main,
 #new-listing #edit-listing main,
 #login main {
@@ -715,6 +733,11 @@ dd {
     #listing-content dd {
         font-size: 1.15em;
     }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main{
+        width: 75%;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -779,6 +802,11 @@ dd {
 
     #area-riservata h4 {
         font-size: 1.5em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main{
+        width: 60%;
     }
 }
 
@@ -933,8 +961,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing #edit-listing main {
-        width: 60%;
+    #new-listing main{
+        width: 45%;
     }
 
     /* SINGOLO ANNUNCIO */
@@ -1030,8 +1058,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing #edit-listing main {
-        width: 40%;
+    #new-listing main {
+        width: 30%;
     }
 
     /* RISULTATI */

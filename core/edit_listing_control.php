@@ -69,6 +69,6 @@ if ($auth->getIfLogin()) {
     }
 } else {
     // Se l'utente non è loggato viene mandato alla pagina di login
-    header("location:./login.php");
+    //header("location:./login.php");
 }
 ?>
