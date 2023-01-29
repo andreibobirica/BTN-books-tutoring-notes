@@ -6,28 +6,29 @@ $edit_listing_content = file_get_contents("./contents/edit_listing_content.html"
 $edit_listing = boilerplate($edit_listing_content);
 
 // Prendo il contenuto corretto della navbar
-$header = printHeader("inserimentoAnnuncio", $auth->getIfLogin());
+$header = printHeader("modificaAnnuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("edit_listing", $_GET['categoria']);
 
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
 $navbar = printHeader("editListing", $auth->getIfLogin());
+
 //Contenuti in base alla categoria di annuncio
-$edit_listing_file = '<label for="new-listing-file" class="">Carica una foto</label>';
-$edit_listing_file .= '<input type="file" name="mediapath" id="new-listing-file">';
+$edit_listing_file = '<label for="edit-listing-file" class="">Modifica foto</label>';
+$edit_listing_file .= '<input type="file" name="mediapath" id="edit-listing-file">';
 
-$edit_listing_author = '<label for="new-listing-author">Autore</label>';
-$edit_listing_author .= '<input type="text" value="'.$arrayAnnuncio['autore'].'" placeholder="Inserisci autore" maxlength="25" name="autore" id="new-listing-author" />';
+$edit_listing_author = '<label for="edit-listing-author">Modifica autore</label>';
+$edit_listing_author .= '<input type="text" value="' . $arrayAnnuncio['autore'] . '" placeholder="Vecchio autore: php-old-author" maxlength="25" name="autore" id="edit-listing-author" />';
 
-$edit_listing_edition = '<label for="new-listing-edition">Edizione</label>';
-$edit_listing_edition .= '<input type="text" value="'.$arrayAnnuncio['edizione'].'" placeholder="Inserisci edizione" maxlength="25" name="edizione" id="new-listing-edition" />';
+$edit_listing_edition = '<label for="edit-listing-edition">Modifica edizione</label>';
+$edit_listing_edition .= '<input type="text" value="' . $arrayAnnuncio['edizione'] . '" placeholder="Vecchia edizione: php-old-edition" maxlength="25" name="edizione" id="edit-listing-edition" />';
 
-$edit_listing_isbn = '<label for="new-listing-isbn">ISBN</label>';
-$edit_listing_isbn .= '<input type="text" value="'.$arrayAnnuncio['isbn'].'" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />';
+$edit_listing_isbn = '<label for="edit-listing-isbn">Modifica ISBN</label>';
+$edit_listing_isbn .= '<input type="text" value="' . $arrayAnnuncio['isbn'] . '" placeholder="Vecchio ISBN: php-old-isbn" maxlength="25" name="isbn" id="edit-listing-isbn" />';
 
-$edit_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="new-listing-categoria" />';
-$edit_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="new-listing-categoria" />';
-$edit_listing_cat_ripetizioni = '<input type="hidden" name="categoria" value="ripetizioni" id="new-listing-categoria" />';
+$edit_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="edit-listing-categoria" />';
+$edit_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="edit-listing-categoria" />';
+$edit_listing_cat_ripetizioni = '<input type="hidden" name="categoria" value="ripetizioni" id="edit-listing-categoria" />';
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
@@ -51,21 +52,21 @@ $edit_listing = str_replace('php-listing-edition', $arrayAnnuncio['edizione'], $
 $edit_listing = str_replace('php-listing-ISBN', $arrayAnnuncio['isbn'], $edit_listing);
 $edit_listing = str_replace('php-button-value', $_GET["modifica"], $edit_listing);
 // MOSTRARE O NASCONDERE IN BASE AL TIPO DI ANNUNCIO
-if($_GET["categoria"]=="libri"){
+if ($_GET["categoria"] == "libri") {
     $edit_listing = str_replace('<!-- <php-author /> -->', $edit_listing_author, $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', $edit_listing_edition, $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', $edit_listing_isbn, $edit_listing);
     $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_libri, $edit_listing);
     $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
-if($_GET["categoria"]=="appunti"){
+if ($_GET["categoria"] == "appunti") {
     $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_appunti, $edit_listing);
     $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
-if($_GET["categoria"]=="ripetizioni"){
+if ($_GET["categoria"] == "ripetizioni") {
     $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);
@@ -74,7 +75,7 @@ if($_GET["categoria"]=="ripetizioni"){
 }
 
 // Non si può cambiare tipo di annuncio, ma viene mostrato il tipo corretto
-$edit_listing = str_replace('value="'.$arrayAnnuncio['tipo'].'"', 'value="'.$arrayAnnuncio['tipo'].'" selected', $edit_listing);
+$edit_listing = str_replace('value="' . $arrayAnnuncio['tipo'] . '"', 'value="' . $arrayAnnuncio['tipo'] . '" selected', $edit_listing);
 
 $edit_listing = str_replace('<php-footer />', $footer, $edit_listing);
 
