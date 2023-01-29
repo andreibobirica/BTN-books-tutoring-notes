@@ -11,7 +11,7 @@
         <title>BTN - Modifica Dati Account</title>
     </head>
 
-    <body id="modaccount">
+    <body id="edit-account">
         <php-header />
         <main>
             <h2>Modifica Dati Account</h2>
@@ -50,7 +50,6 @@
                     id="inputUsername"
                 />
 
-                
                 <label id="labelPassword" lang="en">Password</label>
                 <input
                     type="password"
@@ -66,14 +65,12 @@
                 >
                 <input
                     type="password"
-                    placeholder="Reinserici la tua password"
+                    placeholder="Reinserisci la tua password"
                     maxlength="50"
                     name="confPassword"
                     php-value-confPassword
                     id="inputConfPassword"
                 />
-            
-                
 
                 <label id="labelDataNascita">Data di nascita</label>
                 <input
@@ -94,7 +91,9 @@
                     id="inputEmail"
                 />
 
-                <button type="submit" name="modifica" php-value-oldusername >Modifica</button>
+                <button type="submit" name="modifica" php-value-oldusername>
+                    Modifica
+                </button>
             </form>
         </main>
 

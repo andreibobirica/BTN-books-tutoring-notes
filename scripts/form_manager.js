@@ -7,7 +7,7 @@ function createErrorMessage(message, errorClass){
 }
 
 // prende in input: l'id della label in cui deve apparire , il <p> con l'errore da mostrare , la classe del'errore in modo da controllare che non sia già presente
-function appendErrorMesage(labelId, errorMessage, errorClass){ 
+function appendErrorMessage(labelId, errorMessage, errorClass){
     const label = document.getElementById(labelId);
     let errorParagraph = label.querySelector('.' + errorClass);
 
@@ -15,9 +15,9 @@ function appendErrorMesage(labelId, errorMessage, errorClass){
         label.appendChild(errorMessage); 
 }
 
-function removeErrorMesage(labelId, errorClass){
+function removeErrorMessage(labelId, errorClass){
     const label = document.getElementById(labelId);
-    let errorParagraph = label.querySelector('.' + errorClass);   // chiamo querySelector perchè  è l'unico che può essere chiamato su un elemento e non solo su document come getElementById
+    let errorParagraph = label.querySelector('.' + errorClass);   // chiamo querySelector perché  è l'unico che può essere chiamato su un elemento e non solo su document come getElementById
     
     if(errorParagraph != null)
         errorParagraph.remove()
@@ -29,26 +29,26 @@ function checkLength(elementCheck,labelId, minLength){
     const fieldLength = elementCheck.value.trim().length;
 
     if(fieldLength == 0){
-        appendErrorMesage(labelId, createErrorMessage("Questo campo non può essere lasciato vuoto", "emptyErrorMessage"), "emptyErrorMessage");
-        removeErrorMesage(labelId,"noLongEnough"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
+        appendErrorMessage(labelId, createErrorMessage("Questo campo non può essere lasciato vuoto", "emptyErrorMessage"), "emptyErrorMessage");
+        removeErrorMessage(labelId,"noLongEnough"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
     } 
     else{
         if(minLength && fieldLength < minLength){
-            appendErrorMesage(labelId, createErrorMessage("Questo campo deve essere lungo almeno " + minLength + " caratteri", "noLongEnough"), "noLongEnough");
-            removeErrorMesage(labelId,"emptyErrorMessage"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
+            appendErrorMessage(labelId, createErrorMessage("Questo campo deve essere lungo almeno " + minLength + " caratteri", "noLongEnough"), "noLongEnough");
+            removeErrorMessage(labelId,"emptyErrorMessage"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
         }
         else{
-            removeErrorMesage(labelId,"emptyErrorMessage"); 
-            removeErrorMesage(labelId,"noLongEnough"); 
+            removeErrorMessage(labelId,"emptyErrorMessage");
+            removeErrorMessage(labelId,"noLongEnough");
         }
     }    
 }
 
 function confirmPassword(pass,confPass,labelId){
     if(pass.value !== confPass.value)
-        appendErrorMesage(labelId, createErrorMessage("La password non coincide", "confPassFail"), "confPassFail");
+        appendErrorMessage(labelId, createErrorMessage("La password non coincide", "confPassFail"), "confPassFail");
     else
-        removeErrorMesage(labelId,"confPassFail"); 
+        removeErrorMessage(labelId,"confPassFail");
 }
 
 // controlla che contenga un numero, una lettera maiuscola e un carattere speciale
@@ -58,46 +58,46 @@ function checkPasswordFormat(elementCheck,labelId){
     const specialCharacter = /[\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
 
     if(!numero.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno un numero", "numberErrorMessage"), "numberErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno un numero", "numberErrorMessage"), "numberErrorMessage");
     else
-        removeErrorMesage(labelId,"numberErrorMessage");
+        removeErrorMessage(labelId,"numberErrorMessage");
 
     if (!upperCaseLetter.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno una lettera maiuscola", "upperCaseErrorMessage"), "upperCaseErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno una lettera maiuscola", "upperCaseErrorMessage"), "upperCaseErrorMessage");
     else
-        removeErrorMesage(labelId,"upperCaseErrorMessage");
+        removeErrorMessage(labelId,"upperCaseErrorMessage");
 
     if(!specialCharacter.test(elementCheck.value))
-        appendErrorMesage(labelId, createErrorMessage("Questo campo deve contenere almeno un carattere speciale", "specCharactErrorMessage"), "specCharactErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno un carattere speciale", "specCharactErrorMessage"), "specCharactErrorMessage");
     else
-        removeErrorMesage(labelId,"specCharactErrorMessage");
+        removeErrorMessage(labelId,"specCharactErrorMessage");
 }
 
 function checkEmail(elementCheck,labelId){
     const email = /^[a-z0-9]+[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
 
-    if(!email.test(elementCheck.value)) // non c'è il trim perchè il formato html email ce lo ha di default
-        appendErrorMesage(labelId, createErrorMessage("Inserire un email valida", "emailFormatErrorMessage"), "emailFormatErrorMessage");
+    if(!email.test(elementCheck.value)) // non c'è il trim perché il formato html email ce lo ha di default
+        appendErrorMessage(labelId, createErrorMessage("Inserire un email valida", "emailFormatErrorMessage"), "emailFormatErrorMessage");
     else
-        removeErrorMesage(labelId,"emailFormatErrorMessage");
+        removeErrorMessage(labelId,"emailFormatErrorMessage");
 }
 
 function checkName(elementCheck,labelId){
     const nameCharacters = /[^A-Za-z]+/;
 
     if(nameCharacters.test(elementCheck.value.trim()))
-        appendErrorMesage(labelId, createErrorMessage("Inserire un nome valido", "nameFormatErrorMessage"), "nameFormatErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Inserire un nome valido", "nameFormatErrorMessage"), "nameFormatErrorMessage");
     else
-        removeErrorMesage(labelId,"nameFormatErrorMessage");
+        removeErrorMessage(labelId,"nameFormatErrorMessage");
 }
 
 function checkSurname(elementCheck,labelId){
     const nameCharacters = /[^A-Za-z]+/;
 
     if(nameCharacters.test(elementCheck.value.trim()))
-        appendErrorMesage(labelId, createErrorMessage("Inserire un cognome valido", "surnameFormatErrorMessage"), "surnameFormatErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Inserire un cognome valido", "surnameFormatErrorMessage"), "surnameFormatErrorMessage");
     else
-        removeErrorMesage(labelId,"surnameFormatErrorMessage");
+        removeErrorMessage(labelId,"surnameFormatErrorMessage");
 }
 
 
@@ -105,9 +105,9 @@ function checkUsername(elementCheck,labelId){
     const userCharacters = /[^\w_-]+/;  
 
     if(userCharacters.test(elementCheck.value.trim()))
-        appendErrorMesage(labelId, createErrorMessage("Inserire un username valido", "userFormatErrorMessage"), "userFormatErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Inserire un username valido", "userFormatErrorMessage"), "userFormatErrorMessage");
     else
-        removeErrorMesage(labelId,"userFormatErrorMessage");
+        removeErrorMessage(labelId,"userFormatErrorMessage");
 
 }
 
@@ -115,9 +115,9 @@ function checkDate(elementCheck,labelId){
     const date = new Date(elementCheck.value);
 
     if(date.getFullYear() > 2023 || date.getFullYear() <= 1930) 
-        appendErrorMesage(labelId, createErrorMessage("Inserire una data valida", "userDateErrorMessage"), "userDateErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Inserire una data valida", "userDateErrorMessage"), "userDateErrorMessage");
     else
-        removeErrorMesage(labelId,"userDateErrorMessage");
+        removeErrorMessage(labelId,"userDateErrorMessage");
 }
 
 
