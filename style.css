@@ -497,19 +497,22 @@ dd {
 
 /* NUOVO ANNUNCIO */
 #new-listing,
-#edit-listing {
+#edit-listing,
+#edit-account {
     align-items: center;
 }
 
 #new-listing main,
-#edit-listing main {
+#edit-listing main,
+#edit-account main {
     width: 90%;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
 #new-listing h2,
-#edit-listing h2 {
+#edit-listing h2,
+#edit-account h2 {
     margin-bottom: 0.5em;
 }
 
@@ -746,7 +749,8 @@ dd {
 
     /* NUOVO ANNUNCIO */
     #new-listing main,
-    #edit-listing main {
+    #edit-listing main,
+    #edit-account main {
         width: 75%;
     }
 }
@@ -820,7 +824,8 @@ dd {
 
     /* NUOVO ANNUNCIO */
     #new-listing main,
-    #edit-listing main {
+    #edit-listing main,
+    #edit-account main {
         width: 60%;
     }
 }
@@ -973,7 +978,8 @@ dd {
 
     /* NUOVO ANNUNCIO */
     #new-listing main,
-    #edit-listing main {
+    #edit-listing main,
+    #edit-account main {
         width: 45%;
     }
 
@@ -1071,7 +1077,8 @@ dd {
 
     /* NUOVO ANNUNCIO */
     #new-listing main,
-    #edit-listing main {
+    #edit-listing main,
+    #edit-account main {
         width: 30%;
     }
 
