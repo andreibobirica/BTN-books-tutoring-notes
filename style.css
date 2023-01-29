@@ -235,17 +235,25 @@ footer p {
 }
 
 /* SEARCH FORM */
-
 #search-form {
     background-color: rgba(205, 69, 59, 0.95);
-    padding: 1.25em 1em;
-    border-radius: 15px;
-    margin-top: 1em;
     width: 100%;
 }
 
+#home #search-form {
+    padding: 1.25em 1em;
+    border-radius: 15px;
+    margin-top: 1em;
+}
+
+#search-results #search-form {
+    padding: 1em 0.75em;
+    margin-bottom: 1em;
+}
+
 /* label presente per screen readers ma nascosta */
-#search-form label {
+#home #search-form label,
+#search-results #search-form label {
     height: 1px;
     width: 1px;
     overflow: hidden;
@@ -255,16 +263,32 @@ footer p {
 #search-form input {
     border-radius: 30px;
     width: 100%;
-    padding: 1em;
     border: none;
     font-size: 1em;
     margin-bottom: 1em;
 }
 
+#home #search-form input {
+    padding: 1em;
+}
+
+#search-results #search-form input {
+    padding: 0.35em 1em;
+}
+
 #search-form select,
 #search-form button {
     display: inline;
+}
+
+#home #search-form select,
+#home #search-form button {
     padding: 0.75em;
+}
+
+#search-results #search-form select,
+#search-results #search-form button {
+    padding: 0.35em 0.75em;
 }
 
 #search-form select {
@@ -703,13 +727,6 @@ dd {
         /* background-color:red; */
     }
 
-    #search-form-results {
-        background-color: rgba(205, 69, 59, 0.95);
-        width: 50%;
-        padding: 1.25em 1em;
-        border-radius: 0px 0px 15px 15px;
-        margin: 0em 0em 1em 0em;
-    }
     .listing {
         margin-left: 0.25em;
         margin-right: 0.25em;
@@ -753,6 +770,12 @@ dd {
     #edit-account main {
         width: 75%;
     }
+
+    /* RISULTATI */
+    #results-search #search-form {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -764,7 +787,7 @@ dd {
     }
 
     #home h2,
-    #search-form {
+    #home #search-form {
         width: 80%;
     }
 
@@ -828,6 +851,27 @@ dd {
     #edit-account main {
         width: 60%;
     }
+
+    /* RISULTATI */
+    #results-search #search-form {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+
+    #results-search #search-input {
+        display: inline;
+        width: 50%;
+        margin-bottom: unset;
+    }
+
+    #results-search #search-form select {
+        width: 30%;
+    }
+
+    #results-search #search-form button {
+        float: none;
+        width: 17%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -869,7 +913,7 @@ dd {
     }
 
     #home h2,
-    #search-form {
+    #home #search-form {
         width: 60%;
     }
 
@@ -887,6 +931,11 @@ dd {
     /* RISULTATI */
     .listing {
         width: 30%;
+    }
+
+    #results-search #search-form {
+        padding-left: 10em;
+        padding-right: 10em;
     }
 
     #home main > div {
@@ -1026,7 +1075,7 @@ dd {
     }
 
     #home h2,
-    #search-form {
+    #home #search-form {
         width: 50%;
     }
 
@@ -1083,7 +1132,7 @@ dd {
     }
 
     /* RISULTATI */
-    #search-results main {
+    #search-results #results-listings {
         padding: 2em;
     }
 
@@ -1117,7 +1166,7 @@ dd {
     }
 
     #home h2,
-    #search-form {
+    #home #search-form {
         width: 45%;
     }
 
@@ -1126,6 +1175,15 @@ dd {
         width: 21%;
         margin-left: 0.75em;
         margin-right: 0.75em;
+    }
+
+    #search-results #results-listings {
+        padding: 3em 5em;
+    }
+
+    #search-results #search-form {
+        padding-left: 20em;
+        padding-right: 20em;
     }
 
     /* INFO */
@@ -1152,10 +1210,5 @@ dd {
     /* SINGOLO ANNUNCIO */
     #listing-content main {
         align-self: center;
-    }
-
-    /* RISULTATI */
-    #search-results main {
-        padding: 3em 5em;
     }
 }

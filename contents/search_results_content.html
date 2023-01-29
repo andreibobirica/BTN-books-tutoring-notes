@@ -12,21 +12,28 @@
 
         <main>
             <section id="results-search">
-                <form form action="./search_results.php" method="POST">
+                <form
+                    form
+                    action="./search_results.php"
+                    method="POST"
+                    id="search-form"
+                >
+                    <label for="search-input"
+                        >Ricerca per titolo o materia</label
+                    >
                     <input
                         type="text"
-                        placeholder="Titolo, corso..."
+                        placeholder="Titolo, materia..."
                         name="search"
+                        id="search-input"
                     />
-                    <div id="search-buttons">
-                        <select name="categoria">
-                            <option value="libri">Libri</option>
-                            <option value="ripetizioni">Ripetizioni</option>
-                            <option value="appunti">Appunti</option>
-                        </select>
+                    <select name="categoria">
+                        <option value="libri">Libri</option>
+                        <option value="ripetizioni">Ripetizioni</option>
+                        <option value="appunti">Appunti</option>
+                    </select>
 
-                        <button type="submit">Cerca</button>
-                    </div>
+                    <button type="submit">Cerca</button>
                 </form>
             </section>
             <section id="results-listings">
