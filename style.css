@@ -667,6 +667,7 @@ dd {
     color: var(--accent-red-2);
     font-size: 1.6em;
     margin-bottom: 1em;
+    line-height: 1.25em;
 }
 
 .error main div p {
