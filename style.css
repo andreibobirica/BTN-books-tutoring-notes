@@ -496,17 +496,20 @@ dd {
 }
 
 /* NUOVO ANNUNCIO */
-#new-listing, #edit-listing {
+#new-listing,
+#edit-listing {
     align-items: center;
 }
 
-#new-listing main, #edit-listing main {
+#new-listing main,
+#edit-listing main {
     width: 90%;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-#new-listing h2, #edit-listing h2 {
+#new-listing h2,
+#edit-listing h2 {
     margin-bottom: 0.5em;
 }
 
@@ -553,6 +556,14 @@ dd {
     padding: 2em;
     background-color: var(--bg);
     height: 100%;
+}
+
+#login main {
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #login .multiple-fields-form {
@@ -734,7 +745,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main, #edit-listing main {
+    #new-listing main,
+    #edit-listing main {
         width: 75%;
     }
 }
@@ -788,6 +800,10 @@ dd {
         align-self: center;
     }
 
+    #login main {
+        width: 85%;
+    }
+
     /* LISTA ANNUNCI */
     .listing {
         width: 47%;
@@ -803,7 +819,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main, #edit-listing main {
+    #new-listing main,
+    #edit-listing main {
         width: 60%;
     }
 }
@@ -881,11 +898,7 @@ dd {
 
     #login main {
         width: 60%;
-        align-self: center;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     #registration .multiple-fields-form {
@@ -959,7 +972,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main, #edit-listing main {
+    #new-listing main,
+    #edit-listing main {
         width: 45%;
     }
 
@@ -1056,7 +1070,8 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main, #edit-listing main {
+    #new-listing main,
+    #edit-listing main {
         width: 30%;
     }
 
