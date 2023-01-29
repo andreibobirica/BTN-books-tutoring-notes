@@ -186,7 +186,11 @@ footer {
     color: var(--bg);
     padding: 1em;
     text-align: center;
-    margin-top: auto;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 footer p {
@@ -237,7 +241,7 @@ footer p {
 }
 
 /* label presente per screen readers ma nascosta */
-#search-form label{
+#search-form label {
     height: 1px;
     width: 1px;
     overflow: hidden;
@@ -256,7 +260,7 @@ footer p {
 #search-form select,
 #search-form button {
     display: inline;
-    padding: .75em;
+    padding: 0.75em;
 }
 
 #search-form select {
@@ -273,42 +277,45 @@ footer p {
 }
 
 /* INFO */
-#info img {
-    display: none;
-}
-
 #info main {
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: center;
-}
-
-#info section {
-    display: flex;
-    height: 100%;
     align-items: center;
-    justify-content: center;
-    padding: 0.5em;
+    background-image: url("./assets/imgs/studyoutside.jpg");
     background-size: cover;
     background-position: center;
 }
 
-#info .text {
-    line-height: 1.75em;
+#info section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: unset;
+    padding-bottom: unset;
     background-color: rgba(230, 230, 230, 0.85);
-    padding: 1em;
-    margin: unset;
+}
+
+#info #description-image {
+    display: block;
+    background-image: url("assets/imgs/studyingheadphones.jpg");
+    width: 100%;
+    height: 200px;
+    background-size: cover;
     border-radius: 20px;
-    font-size: 1.1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
-#description {
-    background-image: url("./assets/imgs/studyoutside.jpg");
+#info #description {
+    padding-top: 1.5em;
 }
 
-#disclaimer {
-    background-image: url("./assets/imgs/studyingheadphones.jpg");
+#info #disclaimer {
+    padding-bottom: 5em;
 }
 
 /* RISULTATI */
