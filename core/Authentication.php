@@ -153,7 +153,7 @@ class Authentication
 
     }
 
-    function mod_account($vecchioUsername,$username, $email, $nome, $cognome, $data,$pass1, $pass2): array
+    function edit_account($vecchioUsername,$username, $email, $nome, $cognome, $data,$pass1, $pass2): array
     {
         //Messaggio di conferma nel caso registrazione positiva
         $retResponse = array(

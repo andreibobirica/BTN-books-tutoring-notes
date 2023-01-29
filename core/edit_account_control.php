@@ -38,7 +38,7 @@ if(isset($_POST['username']) && !empty($_POST['username'])){
     );
     //Procedura di registrazione
     if($verifica)
-    $retResponse = $auth->mod_account($oldUsername,$username, $email, $nome, $cognome, $dataNascita, $password, $confPassword);
+    $retResponse = $auth->edit_account($oldUsername,$username, $email, $nome, $cognome, $dataNascita, $password, $confPassword);
     if (!$verifica) {
         print("Errore nei dati inseritii, riprovare");
     }else if ($retResponse["return"] === TRUE) {
