@@ -196,7 +196,7 @@ footer p {
 /* HOME */
 
 #home main {
-    background-image: url("./assets/imgs/studying.jpg");
+    background-image: url("./assets/imgs/home_mobile_background.webp");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -789,7 +789,7 @@ dd {
     /* HOME */
     #home main {
         align-items: center;
-        background-image: url("./assets/imgs/hats.jpg");
+        background-image: url("./assets/imgs/home_desktop_background.webp");
         justify-content: center;
         padding: unset;
     }
