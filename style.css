@@ -496,18 +496,18 @@ dd {
 }
 
 /* NUOVO ANNUNCIO */
-#new-listing {
+#new-listing, #edit-listing {
     align-items: center;
 }
 
-#new-listing main {
+#new-listing main, #edit-listing main {
     width: 90%;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-#new-listing h2 {
-    margin-bottom: .5em;
+#new-listing h2, #edit-listing h2 {
+    margin-bottom: 0.5em;
 }
 
 /* FORMS */
@@ -549,7 +549,6 @@ dd {
 
 /* LOGIN E REGISTRAZIONE */
 #registration main,
-#new-listing #edit-listing main,
 #login main {
     padding: 2em;
     background-color: var(--bg);
@@ -561,7 +560,6 @@ dd {
 }
 
 #registration h2,
-#new-listing #edit-listing h2,
 #login h2 {
     margin-top: unset;
     margin-bottom: 0.75em;
@@ -735,7 +733,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main{
+    #new-listing main, #edit-listing main {
         width: 75%;
     }
 }
@@ -784,8 +782,7 @@ dd {
     }
 
     /* REGISTRAZIONE */
-    #registration main,
-    #new-listing #edit-listing main {
+    #registration main {
         width: 85%;
         align-self: center;
     }
@@ -805,7 +802,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main{
+    #new-listing main, #edit-listing main {
         width: 60%;
     }
 }
@@ -880,7 +877,7 @@ dd {
         background-size: cover;
         background-position: center;
     }
-    
+
     #login main {
         width: 60%;
         align-self: center;
@@ -961,7 +958,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main{
+    #new-listing main, #edit-listing main {
         width: 45%;
     }
 
@@ -1058,7 +1055,7 @@ dd {
     }
 
     /* NUOVO ANNUNCIO */
-    #new-listing main {
+    #new-listing main, #edit-listing main {
         width: 30%;
     }
 
@@ -1127,10 +1124,6 @@ dd {
     /* AREA RISERVATA */
     #area-riservata main {
         padding: 4em 5em;
-    }
-    /* NUOVO ANNUNCIO */
-    #new-listing #edit-listing main {
-        width: 35%;
     }
 
     /* SINGOLO ANNUNCIO */

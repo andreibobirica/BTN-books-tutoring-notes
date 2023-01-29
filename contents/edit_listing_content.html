@@ -26,7 +26,7 @@
                     value="php-listing-title"
                 />
 
-                <label for="new-listing-descr">Descrizione</label>
+                <label for="edit-listing-descr">Descrizione</label>
                 <input
                     type="text"
                     placeholder="Inserisci descrizione"
@@ -36,7 +36,7 @@
                     value="php-listing-descr"
                 />
 
-                <label for="new-listing-price">Prezzo</label>
+                <label for="edit-listing-price">Prezzo</label>
                 <input
                     type="text"
                     placeholder="Inserisci prezzo"
@@ -46,7 +46,7 @@
                     value="php-listing-price"
                 />
 
-                <label id="labelMateria">Materia</label>
+                <label for="edit-listing-subject">Materia</label>
                 <input
                     type="text"
                     placeholder="Inserisci materia"
@@ -66,7 +66,12 @@
 
                 <!-- <php-isbn /> -->
 
-                <button type="submit" name="edit_listing" php-annuncio-id id="edit_listing">
+                <button
+                    type="submit"
+                    name="edit_listing"
+                    php-annuncio-id
+                    id="edit_listing"
+                >
                     Modifica
                 </button>
             </form>
@@ -74,4 +79,3 @@
         <php-footer />
     </body>
 </html>
-                
