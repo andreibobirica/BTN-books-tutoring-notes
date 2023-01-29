@@ -282,7 +282,7 @@ footer p {
     flex-direction: column;
     height: 100%;
     align-items: center;
-    background-image: url("./assets/imgs/studyoutside.jpg");
+    background-image: url("./assets/imgs/info_background.webp");
     background-size: cover;
     background-position: center;
 }
@@ -301,7 +301,7 @@ footer p {
 
 #info #description-image {
     display: block;
-    background-image: url("assets/imgs/studyingheadphones.jpg");
+    background-image: url("assets/imgs/info_content.webp");
     width: 100%;
     height: 200px;
     background-size: cover;
