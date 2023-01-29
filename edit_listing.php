@@ -18,13 +18,13 @@ $edit_listing_file = '<label for="edit-listing-file" class="">Modifica foto</lab
 $edit_listing_file .= '<input type="file" name="mediapath" id="edit-listing-file">';
 
 $edit_listing_author = '<label for="edit-listing-author">Modifica autore</label>';
-$edit_listing_author .= '<input type="text" value="' . $arrayAnnuncio['autore'] . '" placeholder="Vecchio autore: php-old-author" maxlength="25" name="autore" id="edit-listing-author" />';
+$edit_listing_author .= '<input type="text" value="' . $arrayAnnuncio['autore'] . '" placeholder="Vecchio autore: '.$arrayAnnuncio["autore"].'" maxlength="25" name="autore" id="edit-listing-author" />';
 
 $edit_listing_edition = '<label for="edit-listing-edition">Modifica edizione</label>';
-$edit_listing_edition .= '<input type="text" value="' . $arrayAnnuncio['edizione'] . '" placeholder="Vecchia edizione: php-old-edition" maxlength="25" name="edizione" id="edit-listing-edition" />';
+$edit_listing_edition .= '<input type="text" value="' . $arrayAnnuncio['edizione'] . '" placeholder="Vecchia edizione: '.$arrayAnnuncio["edizione"].'" maxlength="25" name="edizione" id="edit-listing-edition" />';
 
 $edit_listing_isbn = '<label for="edit-listing-isbn">Modifica ISBN</label>';
-$edit_listing_isbn .= '<input type="text" value="' . $arrayAnnuncio['isbn'] . '" placeholder="Vecchio ISBN: php-old-isbn" maxlength="25" name="isbn" id="edit-listing-isbn" />';
+$edit_listing_isbn .= '<input type="text" value="' . $arrayAnnuncio['isbn'] . '" placeholder="Vecchio ISBN: '.$arrayAnnuncio["isbn"].'" maxlength="25" name="isbn" id="edit-listing-isbn" />';
 
 $edit_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="edit-listing-categoria" />';
 $edit_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="edit-listing-categoria" />';
@@ -40,6 +40,10 @@ $edit_listing = str_replace('php-type', $_GET['categoria'], $edit_listing);
 //aggiunta id al form
 $edit_listing = str_replace('php-annuncio-id', " value='$arrayAnnuncio[id]' ", $edit_listing);
 
+$edit_listing = str_replace('php-old-title', $arrayAnnuncio['titolo'], $edit_listing);
+$edit_listing = str_replace('php-old-desc', $arrayAnnuncio['descrizione'], $edit_listing);
+$edit_listing = str_replace('php-old-price', $arrayAnnuncio['prezzo'], $edit_listing);
+$edit_listing = str_replace('php-old-subject', $arrayAnnuncio['materia'], $edit_listing);
 
 $edit_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $edit_listing);
 $edit_listing = str_replace('php-listing-title', $arrayAnnuncio['titolo'], $edit_listing);

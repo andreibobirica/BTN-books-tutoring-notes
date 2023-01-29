@@ -32,6 +32,11 @@ if ($auth->getIfLogin()) {
     $edit_account = str_replace('php-value-oldusername'," value='".$user_username."' ", $edit_account);
     $edit_account = str_replace('php-value-password'," value='".$password."' ", $edit_account);
     $edit_account = str_replace('php-value-confPassword'," value='".$password."' ", $edit_account);
+    $edit_account = str_replace('php-old-name',$user_nome, $edit_account);
+    $edit_account = str_replace('php-old-surname', $user_cognome, $edit_account);
+    $edit_account = str_replace('php-old-username', $user_username, $edit_account);
+    $edit_account = str_replace('php-old-email', $user_email, $edit_account);
+
 
 }
 // Mostro la pagina

@@ -28,8 +28,10 @@ $button_edit = '<a href="edit_listing.php?categoria='.$arrayAnnuncio['tipo'].'&m
 $button_delete = '<a href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
 $user_email = '<a href="mailto:'.$arrayAnnuncio['email'].'" class="listing-btn">'.$arrayAnnuncio['email'].'</a>';
 
+$button_save = "";
+if($auth->getIfLogin())
 $button_save = $button_insert_save;
-if($request->verifySaveAnnuncioUser($_SESSION["loginAccount"],$arrayAnnuncio['id'])){
+if($auth->getIfLogin() && $request->verifySaveAnnuncioUser($_SESSION["loginAccount"],$arrayAnnuncio['id'])){
     $button_save = $button_remove_save;
 }
 

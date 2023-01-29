@@ -15,7 +15,7 @@
                 <form
                     form
                     action="./search_results.php"
-                    method="POST"
+                    method="GET"
                     id="search-form"
                 >
                     <label for="search-input"
@@ -26,11 +26,20 @@
                         placeholder="Titolo, materia..."
                         name="search"
                         id="search-input"
+                        value="php-search-value"
                     />
+                    <label for="categoria">Categoria</label>
                     <select name="categoria">
-                        <option value="libri">Libri</option>
-                        <option value="ripetizioni">Ripetizioni</option>
-                        <option value="appunti">Appunti</option>
+                        <option php-catlibri value="libri">Libri</option>
+                        <option php-catripetizioni value="ripetizioni">Ripetizioni</option>
+                        <option php-catappunti value="appunti">Appunti</option>
+                    </select>
+
+                    <label for="ordine">Ordine</label>
+                    <select name="ordine">
+                        <option php-orderstandard value="standard">Standard</option>
+                        <option php-orderpreasc value="prezzoasc">Prezzo Asc</option>
+                        <option php-orderpredisc value="prezzodisc">Prezzo Disc</option>
                     </select>
 
                     <button type="submit">Cerca</button>
