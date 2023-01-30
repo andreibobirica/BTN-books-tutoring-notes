@@ -1,4 +1,9 @@
 <?php
+//Start Session
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once "./core/header.php";
 require_once "./core/Authentication.php";
 require_once './core/listings_list.php';
@@ -15,7 +20,7 @@ class Search_Results_Control
         $this->db = new Database();
     }
 
-    public function getResults($search, $categoria,$ordine)
+    public function getResults($search, $categoria, $ordine)
     {
         $risultatiArray = array();
         //SELECT UNIQUE titolo, utenti.nome, utenti.cognome, annunci.id FROM annunci JOIN utenti JOIN libri WHERE MATCH(titolo,descrizione,materia) AGAINST('Analisi') AND annunci.username = utenti.username;
