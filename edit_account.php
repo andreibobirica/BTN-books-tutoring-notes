@@ -23,15 +23,14 @@ if ($auth->getIfLogin()) {
     $user_email = $_SESSION["emailAccount"];
     $user_birth = $_SESSION["birthdateAccount"];
     //$user_birth =substr($user_birth, 8, 2) . "-" . substr($user_birth, 5, 2) . "-" . substr($user_birth, 0, 4);
-    $password = $auth->getPassword($user_username);
     $edit_account = str_replace('php-value-nome'," value='".$user_nome."' ", $edit_account);
     $edit_account = str_replace('php-value-cognome'," value='".$user_cognome."' ", $edit_account);
     $edit_account = str_replace('php-value-username'," value='".$user_username."' ", $edit_account);
     $edit_account = str_replace('php-value-email'," value='".$user_email."' ", $edit_account);
     $edit_account = str_replace('php-value-data'," value='".$user_birth."' ", $edit_account);
     $edit_account = str_replace('php-value-oldusername'," value='".$user_username."' ", $edit_account);
-    $edit_account = str_replace('php-value-password'," value='".$password."' ", $edit_account);
-    $edit_account = str_replace('php-value-confPassword'," value='".$password."' ", $edit_account);
+    $edit_account = str_replace('php-value-password'," value='' ", $edit_account);
+    $edit_account = str_replace('php-value-confPassword'," value='' ", $edit_account);
     $edit_account = str_replace('php-old-name',$user_nome, $edit_account);
     $edit_account = str_replace('php-old-surname', $user_cognome, $edit_account);
     $edit_account = str_replace('php-old-username', $user_username, $edit_account);

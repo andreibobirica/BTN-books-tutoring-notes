@@ -61,16 +61,6 @@ class Authentication
         return false;
     }
 
-    function getPassword($username){
-        $queryUser = "SELECT password FROM `utenti` WHERE username = '$username'";
-        $result = $this->db->query($queryUser);
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            return $row["password"];
-        }
-        return "";
-    }
-
     /**
      * Function that returns the variable login, returns if there is a login or not
      * Another thing that this function do, is control if we expire the session time, if we expire the limited time to be loged in, we
@@ -161,13 +151,6 @@ class Authentication
             "error" => ""
         );
 
-        //Password non coincidono
-        if ($pass1 != $pass2)
-            return array(
-                "return" => false,
-                "error" => "Le password non Coincidono"
-        );
-
         //verifico se username già esistente 
         $result = $this->db->query("SELECT username FROM utenti WHERE username='$username'");
         if ($result->num_rows != 0 && $username!=$vecchioUsername) {
@@ -177,13 +160,30 @@ class Authentication
             );
         }
 
+        $queryAccount = "UPDATE utenti SET datanascita = '$data', nome = '$nome' REPLACEPASS, cognome = '$cognome', username = '$username', email = '$email' WHERE utenti.username = '$vecchioUsername';";
+        if(!empty($pass1) || !empty($pass2)){
+            $queryAccount = str_replace('REPLACEPASS',", password = '$pass1'", $queryAccount);
+            //Password non coincidono
+            if ($pass1 != $pass2)
+                return array(
+                    "return" => false,
+                    "error" => "Le password non Coincidono"
+            );
+        }else{
+            $queryAccount = str_replace('REPLACEPASS',"", $queryAccount);
+        }
+
         //Applying query account on db
-        $queryAccount = "UPDATE utenti SET nome = '$nome', password = '$pass1' , cognome = '$cognome', username = '$username', email = '$email' WHERE utenti.username = '$vecchioUsername';";
+        print($queryAccount);
         $res = $this->db->query($queryAccount);
         //se modifica avvenuta correttamente  , altrimenti messaggio di errore
         if (($res === TRUE)) {
-            //login
-            if($this->login($username, $pass1))
+            //Aggiorno i dati nelle variabile di sessione
+            $_SESSION["loginAccount"] = $username;
+            $_SESSION["emailAccount"] = $email;
+            $_SESSION["nameAccount"] = $nome;
+            $_SESSION["surnameAccount"] = $cognome;
+            $_SESSION["birthdateAccount"] = $data;
             return $retResponse;
         } else {
             return array(

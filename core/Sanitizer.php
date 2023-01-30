@@ -23,6 +23,10 @@ class Sanitizer{
         return (preg_match("/^[a-zA-Z-' ]*$/", $name) && !empty($name));
     }
 
+    function validateUsername($name) : bool{
+        return (preg_match("/^[a-zA-Z0-9-' ]*$/", $name) && !empty($name));
+    }
+
     function validateNumber($number) : bool{
         return preg_match('/^([0-9]*)$/', $number);
     }
