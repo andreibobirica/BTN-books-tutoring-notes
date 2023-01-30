@@ -64,7 +64,8 @@ if (isset($_POST["edit_listing"])) {
         header("location:./listing.php?annuncio=$_POST[edit_listing]");
         exit();
     }else{
-        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$result[upload][errore]'");
+        $error=$result['upload']['errore'];
+        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error'");
         exit();
     }
 }
