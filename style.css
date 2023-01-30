@@ -490,7 +490,7 @@ footer p {
 #listing-content #listing-price {
     font-weight: bold;
     font-size: 2em;
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -684,7 +684,7 @@ dd {
 }
 
 #area-riservata .custom-link {
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     font-size: 1.2em;
     display: block;
     margin-bottom: 0.5em;
@@ -725,7 +725,7 @@ dd {
 }
 
 .error main div h2 {
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     font-size: 1.6em;
     margin-bottom: 1em;
     line-height: 1.25em;
