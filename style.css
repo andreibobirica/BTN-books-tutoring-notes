@@ -395,6 +395,7 @@ footer p {
 
 .listing-descr {
     padding: 1em;
+    text-align: center;
 }
 
 .listing-title,
@@ -505,13 +506,13 @@ dt {
 
 dd {
     text-align: end;
-    margin-left: 1em;
 }
 
 .definition {
     display: flex;
     justify-content: space-between;
     line-height: 1.75em;
+    flex-wrap: wrap;
 }
 
 #listing-content #listing-buttons {
@@ -644,6 +645,11 @@ dd {
     margin-bottom: 1.5em;
 }
 
+#area-riservata #user-info, #area-riservata #links {
+    width: fit-content;
+}
+
+
 #area-riservata .no-listings {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -665,7 +671,10 @@ dd {
 
 #area-riservata #user-info dd {
     text-align: start;
-    margin-left: 1em;
+}
+
+#area-riservata #user-info dt {
+    margin-right: 1em;
 }
 
 #area-riservata #user-info .definition {
