@@ -20,7 +20,7 @@ class Sanitizer{
     }
 
     function validateName($name) : bool{
-        return (preg_match("/^[a-zA-Z-' ]*$/", $name));
+        return (preg_match("/^[a-zA-Z-' ]*$/", $name) && !empty($name));
     }
 
     function validateNumber($number) : bool{
@@ -40,7 +40,6 @@ class Sanitizer{
     }
 
     function validateEmail($email) : bool{
-        print($email);
         return (filter_var($email, FILTER_VALIDATE_EMAIL));
     }
 

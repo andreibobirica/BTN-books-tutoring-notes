@@ -168,7 +168,6 @@ class RichiesteAnnunci
                 return array("lastid" => 0, "upload" => $upload);
         }
         $sql = "INSERT INTO annunci (titolo,descrizione,prezzo,username,materia) VALUES ('$annuncio[titolo]', '$annuncio[descrizione]', '$annuncio[prezzo]', '$annuncio[username]', '$annuncio[materia]');";
-        print($sql);
         if ($this->auth->db->query($sql) === TRUE) {
             $last_id = $this->auth->db->getConn()->insert_id;
             $sqlTipo = "";
@@ -224,7 +223,6 @@ class RichiesteAnnunci
             switch ($tipoAnnuncio) {
                 case "libri":
                     $sqlTipo = "UPDATE libri SET " . $queryMediaPath . " autore='$annuncio[autore]', edizione='$annuncio[edizione]', ISBN='$annuncio[isbn]' WHERE id='$annuncio[id]';";
-                    print($sqlTipo);
                     if ($this->auth->db->query($sqlTipo) === TRUE)
                         return array("lastid" => $annuncio['id'], "upload" => $upload);
                     break;

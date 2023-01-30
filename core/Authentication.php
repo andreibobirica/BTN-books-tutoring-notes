@@ -124,7 +124,7 @@ class Authentication
         if ($pass1 != $pass2)
             return array(
                 "return" => false,
-                "error" => "Le password non Coincidono"
+                "error" => "Le password non coincidono"
         );
 
         //verifico se username già esistente 
@@ -184,7 +184,6 @@ class Authentication
         if (($res === TRUE)) {
             //login
             if($this->login($username, $pass1))
-            print("login avvenuto");
             return $retResponse;
         } else {
             return array(

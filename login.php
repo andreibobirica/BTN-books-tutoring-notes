@@ -14,7 +14,10 @@ $breadcrumb = printBreadcrumb("accedi");
 $header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $login = str_replace('<php-header />', $header, $login);
 $login = str_replace('<php-footer />', $footer, $login);
-
+if(!isset($_GET['errore']))
+    $login = str_replace('<php-errore />', "", $login);
+else
+    $login = str_replace('<php-errore />', "<p class='emptyErrorMessage'>Username o Password Errata</p>", $login);
 // Mostro la pagina
 echo $login;
 ?>
