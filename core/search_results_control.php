@@ -25,9 +25,13 @@ class Search_Results_Control
         $risultatiArray = array();
         //SELECT UNIQUE titolo, utenti.nome, utenti.cognome, annunci.id FROM annunci JOIN utenti JOIN libri WHERE MATCH(titolo,descrizione,materia) AGAINST('Analisi') AND annunci.username = utenti.username;
         $queryUser = "";
+        //tolgo caratteri speciali dalla ricerca come *
+        while(str_contains($search, '*')){
+            $search = str_replace('*', '', $search);
+        }
         switch ($categoria) {
             case 'libri':
-                $queryUser = "SELECT titolo, annunci.id, prezzo, nome, cognome, mediapath, autore, descrizione, annunci.username FROM annunci RIGHT JOIN libri ON annunci.id = libri.id LEFT JOIN utenti ON annunci.username = utenti.username WHERE MATCH(titolo,descrizione,materia) AGAINST('" . $search . "') ";
+                $queryUser = "SELECT titolo, annunci.id, prezzo, nome, cognome, mediapath, autore, descrizione, annunci.username FROM annunci RIGHT JOIN libri ON annunci.id = libri.id LEFT JOIN utenti ON annunci.username = utenti.username WHERE MATCH(titolo,descrizione,materia) AGAINST(\"" . $search . "\") ";
                 if (!empty($ordine) && $ordine == "prezzoasc")
                     $queryUser = $queryUser . "ORDER BY prezzo ASC;";
                 else if (!empty($ordine) && $ordine == "prezzodisc")
