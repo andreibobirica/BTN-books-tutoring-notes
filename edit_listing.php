@@ -78,6 +78,12 @@ if ($_GET["categoria"] == "ripetizioni") {
     $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_ripetizioni, $edit_listing);
 }
 
+//gestione errori
+if(isset($_GET['errore']) && !empty($_GET['errore']))
+    $edit_listing = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $edit_listing);
+else
+    $edit_listing = str_replace('<php-errore />', "", $edit_listing);
+
 // Non si può cambiare tipo di annuncio, ma viene mostrato il tipo corretto
 $edit_listing = str_replace('value="' . $arrayAnnuncio['tipo'] . '"', 'value="' . $arrayAnnuncio['tipo'] . '" selected', $edit_listing);
 
