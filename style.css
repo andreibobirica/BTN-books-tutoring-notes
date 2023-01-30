@@ -257,6 +257,13 @@ footer p {
     height: 1px;
     width: 1px;
     overflow: hidden;
+}
+
+#home #search-form label {
+    display: block;
+}
+
+#search-results #search-form label {
     display: inline-block;
 }
 
