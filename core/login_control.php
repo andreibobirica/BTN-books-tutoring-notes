@@ -15,10 +15,8 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
     //Verifico Input
     $username = $san->sanitizeString($_POST["utente"]);
     $password = $san->sanitizeString($_POST["password"]);
-    $verifica = $san->validatePassword($password);
-    if($verifica)
     $retResponse = $auth->login($username,$password);
-    if ($verifica && $retResponse === TRUE) {
+    if ($retResponse === TRUE) {
         header("Location: ../area_riservata.php");
     } else {
         header("Location: ../login.php?errore");

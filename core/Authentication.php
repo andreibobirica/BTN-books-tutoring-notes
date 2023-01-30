@@ -36,7 +36,7 @@ class Authentication
             //Execute query to DB to solve login request
             $query = "SELECT username FROM utenti WHERE username='" . $username . "' AND password = '" . $pass . "'";
             $result = $this->db->query($query);
-
+            
             //Control on the result of DB to enstablish or not the login
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();

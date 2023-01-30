@@ -4,7 +4,7 @@ class Sanitizer{
         $admited = "abcdefghijklmnopqrstuvwxyz";
         $admited .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $admited .= "0123456789";
-        $admited .= "áéíñóúü¿¡ÁÉÍÑÓÚÜè+ùòà,.-é*§ç°;:_[]@#{}€$!/ ";
+        $admited .= "'áéíñóúü¿¡ÁÉÍÑÓÚÜè+ùòà,.-é*§ç°;:_[]@#{}€$!/ ";
         if(!empty($string)){
             for ($pos = 0; $pos < strlen($string); $pos++) {
                 $car = substr($string, $pos, 1);
