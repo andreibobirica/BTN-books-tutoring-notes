@@ -2,13 +2,35 @@
     /* La metto per le pagine che non vanno stampate  */
     display: none;
 }
-
+html,
 body {
     font-family: "Times New Roman", Times, serif;
     color:black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    min-height: 100vh;
+}
+a{
+    text-decoration:none;
 }
 
 button{display:none}
+
+header li a{
+    display:none;
+}
+
+#breadcrumb li::before {
+    content: "/ ";
+}
+
+#breadcrumb li {
+    display: inline;
+    padding: unset;
+    margin-left: 0.5em;
+}
 
 #search-form{
     display:none;
@@ -18,29 +40,57 @@ button{display:none}
     display: block;
     margin-bottom: 1.5em;
 }
-
-.listings-list .listing{
-    border:1px solid lightgrey;
-    width:300px;   
-    height:400px;
-    justify-content:start;
+ul{
+    list-style:none;
 }
 
+.listings-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+}
+
+.listing{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid lightgrey;
+    width:200px;
+    margin:1em;
+    height:350px;
+    justify-content:start;
+    align-items:start;
+}
+
+.listing-title{
+    font-weight:bold;
+}
+
+.listing *{
+    margin:5px;
+}
 .listing-img {
     width:150px;
     height:200px;
-    align-self: center;
+    align-self:center;
 }
 
-.listing p a {
+.listing a {
     display:none;
 }
 
-.listings-list .listing-title {
+a:visited{
     color:black;
 }
 
-#breadcrumb li a:visited{
-    color:black;
-    text-decoration: none;
+#area-riservata #links .custom-link {
+    display:none;
 }
+
+footer {
+    padding: 1em;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
