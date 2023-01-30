@@ -33,7 +33,14 @@ if (isset($_POST["edit_listing"])) {
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
     $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
     $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
-    $verifica = $sanit->validateNumber($_POST['prezzo']) && $sanit->validateNumber($_POST['isbn']);
+    $verifica = 
+    $sanit->validateTitle($_POST['titolo']) &&
+    $sanit->validateDescription($_POST['descrizione']) &&
+    $sanit->validateNumber($_POST['prezzo']) && 
+    $sanit->validateNameNumberMaxLength($_POST['materia']) &&
+    $sanit->validateNameMaxLength($_POST['autore']) &&
+    $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
+    $sanit->validateISBN($_POST['isbn']);
     //Mando i dati da modificare del annuncio alla funzione edit_listing con una struttura dati array
     if($verifica)
     $result = $request->edit_listing(

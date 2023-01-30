@@ -27,10 +27,16 @@ if (isset($_POST["new_listing"])) {
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
-    $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
     $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
     $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
-    $verifica = $sanit->validateNumber($_POST['prezzo']) && $sanit->validateNumber($_POST['isbn']);
+    $verifica = 
+    $sanit->validateTitle($_POST['titolo']) &&
+    $sanit->validateDescription($_POST['descrizione']) &&
+    $sanit->validateNumber($_POST['prezzo']) && 
+    $sanit->validateNameNumberMaxLength($_POST['materia']) &&
+    $sanit->validateNameMaxLength($_POST['autore']) &&
+    $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
+    $sanit->validateISBN($_POST['isbn']);
 
     //Inserimento del annuncio
     if($verifica)

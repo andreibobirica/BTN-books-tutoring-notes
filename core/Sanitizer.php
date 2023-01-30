@@ -21,20 +21,44 @@ class Sanitizer{
 
     function validateName($name) : bool{
         return (preg_match("/^[a-zA-Z-' ]*$/", $name) && !empty($name));
+    }  
+
+    function validateNameNumber($name) : bool{
+        return (preg_match("/^[a-zA-Z0-9-' ]*$/", $name) && !empty($name));
     }
 
-    function validateUsername($name) : bool{
-        return (preg_match("/^[a-zA-Z0-9-' ]*$/", $name) && !empty($name));
+    function validateNameNumberMaxLength($name):bool{
+        return ($this->validateNameNumber($name) && strlen($name)<=40);
+    }
+
+    function validateNameMaxLength($name):bool{
+        return ($this->validateName($name) && strlen($name)<=40);
     }
 
     function validateNumber($number) : bool{
         return preg_match('/^([0-9]*)$/', $number);
     }
+    function validateDescription($name){
+        return ($this->validateNameNumber($name) && strlen($name)<=300);
+    }
+
+    function validateTitle($name){
+        return ($this->validateNameNumber($name) && strlen($name)<=60);    
+    }
+
+    function validateUsername($name) : bool{
+        return ($this->validateNameNumber($name) && strlen($name)<=25);
+    }
+
+    function validateISBN($number){
+        return ($this->validateNumber($number) && strlen($number)<=13);
+    }
     
     function validatePassword($password):bool{
         $ret = preg_match("/[0-9]+/", $password) &&
         preg_match("/[A-Z]+/", $password) &&
-        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password);
+        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password)
+        && strlen($password)<=40;
         return $ret;
     }
 
@@ -44,11 +68,7 @@ class Sanitizer{
     }
 
     function validateEmail($email) : bool{
-        return (filter_var($email, FILTER_VALIDATE_EMAIL));
-    }
-
-    function validateURL($url) : bool{
-        return (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url));
+        return (filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email)<=60);
     }
 
 }

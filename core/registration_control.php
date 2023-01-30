@@ -29,13 +29,13 @@ if(isset($_POST['username'])){
     if (!$san->validateEmail($email))$retResponse['error'].="Formato email non corretto - ";
     if (!$san->validatePassword($password))$retResponse['error'].=" Formato password non corretto - ";
     if (!$san->validatePassword($confPassword))$retResponse['error'].="Formato password conferma non corretto - ";
-    if (!$san->validateName($nome))$retResponse['error'].="Formato nome non corretto - ";
-    if (!$san->validateName($cognome))$retResponse['error'].="Formato cognome non corretto - ";
-    if (!$san->validateName($username))$retResponse['error'].="Formato username non corretto - ";
+    if (!$san->validateNameMaxLength($nome))$retResponse['error'].="Formato nome non corretto - ";
+    if (!$san->validateNameMaxLength($cognome))$retResponse['error'].="Formato cognome non corretto - ";
+    if (!$san->validateUsername($username))$retResponse['error'].="Formato username non corretto - ";
     if (!$san->validateDate($dataNascita))$retResponse['error'].="Data immessa non corretta - ";
     $verifica = $san->validateEmail($email) && $san->validatePassword($password)
-        && $san->validatePassword($confPassword) && $san->validateName($nome) && $san->validateUsername($username) 
-        && $san->validateName($cognome) && $san->validateDate($dataNascita);
+        && $san->validatePassword($confPassword) && $san->validateNameMaxLength($nome) && $san->validateUsername($username) 
+        && $san->validateNameMaxLength($cognome) && $san->validateDate($dataNascita);
 
     //Procedura di registrazione
     if($verifica)
