@@ -257,7 +257,7 @@ footer p {
     height: 1px;
     width: 1px;
     overflow: hidden;
-    display: block;
+    display: inline-block;
 }
 
 #search-form input {
@@ -296,11 +296,18 @@ footer p {
     padding-left: 1em;
     border: none;
     font-size: 1em;
+}
+
+#home #search-form select {
     width: 70%;
 }
 
+#search-results #search-form select {
+    width: 35%;
+}
+
 #search-form button {
-    width: 27%;
+    width: 20%;
     float: right;
 }
 
@@ -860,17 +867,17 @@ dd {
 
     #results-search #search-input {
         display: inline;
-        width: 50%;
+        width: 30%;
         margin-bottom: unset;
     }
 
     #results-search #search-form select {
-        width: 30%;
+        width: 20%;
     }
 
     #results-search #search-form button {
         float: none;
-        width: 17%;
+        width: 15%;
     }
 }
 
