@@ -31,9 +31,10 @@ if(isset($_POST['username'])){
     if (!$san->validatePassword($confPassword))$retResponse['error'].="Formato password conferma non corretto - ";
     if (!$san->validateName($nome))$retResponse['error'].="Formato nome non corretto - ";
     if (!$san->validateName($cognome))$retResponse['error'].="Formato cognome non corretto - ";
+    if (!$san->validateName($username))$retResponse['error'].="Formato username non corretto - ";
     if (!$san->validateDate($dataNascita))$retResponse['error'].="Data immessa non corretta - ";
     $verifica = $san->validateEmail($email) && $san->validatePassword($password)
-        && $san->validatePassword($confPassword) && $san->validateName($nome) 
+        && $san->validatePassword($confPassword) && $san->validateName($nome) && $san->validateName($username) 
         && $san->validateName($cognome) && $san->validateDate($dataNascita);
 
     //Procedura di registrazione

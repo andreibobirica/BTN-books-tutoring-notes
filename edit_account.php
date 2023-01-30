@@ -36,9 +36,12 @@ if ($auth->getIfLogin()) {
     $edit_account = str_replace('php-old-surname', $user_cognome, $edit_account);
     $edit_account = str_replace('php-old-username', $user_username, $edit_account);
     $edit_account = str_replace('php-old-email', $user_email, $edit_account);
-
-
-}
+    
+    if(isset($_GET['errore']) && !empty($_GET['errore']))
+        $edit_account = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $edit_account);
+    else
+        $registration = str_replace('<php-errore />', "", $edit_account);
+    }
 // Mostro la pagina
 echo $edit_account;
 ?>
