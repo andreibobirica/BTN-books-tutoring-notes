@@ -523,7 +523,7 @@ dd {
 }
 
 #listing-content .listing-btn {
-    background-color: var(--accent-red-3);
+    background-color: var(--accent-red);
     padding: 0.5em;
     border-radius: 10px;
     width: 49%;
@@ -532,6 +532,7 @@ dd {
     color: white;
     font-size: 1.2em;
     text-transform: uppercase;
+    margin-bottom:1em;
 }
 
 /* NUOVO ANNUNCIO */
