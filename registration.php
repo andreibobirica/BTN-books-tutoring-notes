@@ -15,6 +15,10 @@ $header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $registration = str_replace('<php-header />', $header, $registration);
 $registration = str_replace('php-action', $_SERVER['PHP_SELF'], $registration);
 $registration = str_replace('<php-footer />', $footer, $registration);
+if(isset($_GET['errore']) && !empty($_GET['errore']))
+    $registration = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $registration);
+else
+    $registration = str_replace('<php-errore />', "", $registration);
 
 // Mostro la pagina
 echo $registration;

@@ -12,7 +12,13 @@ require_once './core/Sanitizer.php';
 $san = new Sanitizer();
 
 if ($auth->getIfLogin()) {
-    if (isset($_POST['username']) && !empty($_POST['username'])) {
+    if (isset($_POST['username'])) {
+        //Responso corretto
+        $retResponse = array(
+            "return" => true,
+            "error" => ""
+        );
+
         //Verifico input
         $username = $san->sanitizeString($_POST["username"]);
         $oldUsername = $san->sanitizeString($_POST["modifica"]);
@@ -22,48 +28,35 @@ if ($auth->getIfLogin()) {
         $nome = $san->sanitizeString($_POST["nome"]);
         $cognome = $san->sanitizeString($_POST["cognome"]);
         $dataNascita = $san->sanitizeString($_POST["dataNascita"]);
-        if (!$san->validateEmail($email))
-            print("email");
-        if (!$san->validatePassword($password))
-            print("password");
-        if (!$san->validatePassword($confPassword))
-            print("2password");
-        if (!$san->validateName($nome))
-            print("nome");
-        if (!$san->validateName($cognome))
-            print("cognome");
-        if (!$san->validateDate($dataNascita))
-            print("data");
-        $verifica = $san->validateEmail($email) && $san->validatePassword($password)
-            && $san->validatePassword($confPassword) && $san->validateName($nome)
-            && $san->validateName($cognome) && $san->validateDate($dataNascita);
-        $verifica = $verifica && $password == $confPassword;
-        //Responso corretto
-        $retResponse = array(
-            "return" => true,
-            "error" => ""
-        );
+        if (!$san->validateEmail($email))$retResponse['error'].="Formato email non corretto - ";
+        if (!$san->validateNameMaxLength($nome))$retResponse['error'].="Formato nome non corretto - ";
+        if (!$san->validateNameMaxLength($cognome))$retResponse['error'].="Formato cognome non corretto - ";
+        if (!$san->validateUsername($username))$retResponse['error'].="Formato username non corretto - ";
+        if (!$san->validateDate($dataNascita))$retResponse['error'].="Data immessa non corretta - ";
+        $verifica = $san->validateEmail($email) && $san->validateNameMaxLength($nome) 
+        && $san->validateUsername($username) && $san->validateNameMaxLength($cognome) && $san->validateDate($dataNascita);
+        
+        if(!empty($password) || !empty($confPassword)){
+            if (!$san->validatePassword($password))$retResponse['error'].=" Formato password non corretto - ";
+            if (!$san->validatePassword($confPassword))$retResponse['error'].="Formato password conferma non corretto - ";
+            $verifica = $verifica && $san->validatePassword($password) && $san->validatePassword($confPassword);
+        }
         //Procedura di registrazione
-        if ($verifica)
+        if ($verifica){
             $retResponse = $auth->edit_account($oldUsername, $username, $email, $nome, $cognome, $dataNascita, $password, $confPassword);
-        if (!$verifica) {
-            print("Errore nei dati inseritii, riprovare");
-        } else if ($retResponse["return"] === TRUE) {
-            /*print("
-            <script>
-            alert('Modifica Avvenuta con successo');
-            window.location = './area_riservata.php';
-            </script>
-            ");*/
+        }
+        else{
+            header("Location: ./edit_account.php?errore='$retResponse[error]'");
+            exit();
+        }
+
+        if ($retResponse["return"] === TRUE) {
+            header("Location: ./area_riservata.php");    
         } else {
-            //messaggio di conferma non visibile dato che viene reindirizzato da php l'header
-            print("
-        <script>alert('Errore:" . $retResponse['error'] . " ');</script>
-        ");
+            header("Location: ./edit_account.php?errore='$retResponse[error]'");
         }
     }
 } else {
-    header("Location: login.php");
-    exit();
+    header("Location: ./login.php");
 }
 ?>

@@ -11,10 +11,11 @@
         <title>BTN - Registrazione</title>
     </head>
 
-    <body id="registration">
+    <body id="registration" class="no_print">
         <php-header />
         <main>
             <h2>Registrati</h2>
+            <php-errore />
             <form
                 action="php-action"
                 class="multiple-fields-form"
@@ -78,6 +79,7 @@
                     placeholder="Data di nascita"
                     name="dataNascita"
                     id="inputDataNascita"
+                    value="1999-12-29"
                     required
                 />
 
@@ -110,6 +112,12 @@
                         <p>
                             Salva gli annunci che ti interessano con la
                             possibilità di ritrovarli facilmente
+                        </p>
+                    </li>
+                    <li>
+                        <span class="icon" id="mailVendImg"></span>
+                        <p>
+                            Visualizza le informazioni di contatto dei venditori
                         </p>
                     </li>
                 </ul>

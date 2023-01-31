@@ -15,23 +15,11 @@ if (isset($_POST['utente']) && !empty($_POST['utente'])) {
     //Verifico Input
     $username = $san->sanitizeString($_POST["utente"]);
     $password = $san->sanitizeString($_POST["password"]);
-    $verifica = $san->validatePassword($password);
-    if($verifica)
     $retResponse = $auth->login($username,$password);
-    if ($verifica && $retResponse === TRUE) {
-        print("
-        <script>
-        alert('Login Avvenuta con successo');
-        window.location = '../area_riservata.php';
-        </script>
-        ");
+    if ($retResponse === TRUE) {
+        header("Location: ../area_riservata.php");
     } else {
-        print("
-        <script>
-        alert('Errore nel Login');
-        window.location = '../login.php';
-        </script>
-        ");
+        header("Location: ../login.php?errore");
     }
 }
 ?>

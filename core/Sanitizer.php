@@ -4,7 +4,7 @@ class Sanitizer{
         $admited = "abcdefghijklmnopqrstuvwxyz";
         $admited .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $admited .= "0123456789";
-        $admited .= "áéíñóúü¿¡ÁÉÍÑÓÚÜè+ùòà,.-é*§ç°;:_[]@#{}€$!/ ";
+        $admited .= "'áéíñóúü¿¡ÁÉÍÑÓÚÜè+ùòà,.-é*§ç°;:_[]@#{}€$!/ ";
         if(!empty($string)){
             for ($pos = 0; $pos < strlen($string); $pos++) {
                 $car = substr($string, $pos, 1);
@@ -20,17 +20,46 @@ class Sanitizer{
     }
 
     function validateName($name) : bool{
-        return (preg_match("/^[a-zA-Z-' ]*$/", $name));
+        return (preg_match("/^[a-zA-Z-' ]*$/", $name) && !empty($name));
+    }  
+
+    function validateNameNumber($name) : bool{
+        return (preg_match("/^[a-zA-Z0-9-' ]*$/", $name) && !empty($name));
+    }
+
+    function validateNameNumberMaxLength($name):bool{
+        return ($this->validateNameNumber($name) && strlen($name)<=40  && !empty($name));
+    }
+
+    function validateNameMaxLength($name):bool{
+        return ($this->validateName($name) && strlen($name)<=40 && !empty($name));
     }
 
     function validateNumber($number) : bool{
-        return preg_match('/^([0-9]*)$/', $number);
+        return preg_match('/^([0-9]*)$/', $number) && !empty($number);
+    }
+    function validateDescription($name){
+        return ($this->validateNameNumber($name) && strlen($name)<=300 && !empty($name));
+    }
+
+    function validateTitle($name){
+        return ($this->validateNameNumber($name) && strlen($name)<=60 && !empty($name));    
+    }
+
+    function validateUsername($name) : bool{
+        return ($this->validateNameNumber($name) && strlen($name)<=25 && !empty($name));
+    }
+
+    function validateISBN($number){
+        return ($this->validateNumber($number) && strlen($number)<=13 && !empty($number));
     }
     
     function validatePassword($password):bool{
         $ret = preg_match("/[0-9]+/", $password) &&
         preg_match("/[A-Z]+/", $password) &&
-        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password);
+        preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password)
+        && strlen($password)<=40
+        && !empty($password);
         return $ret;
     }
 
@@ -40,12 +69,7 @@ class Sanitizer{
     }
 
     function validateEmail($email) : bool{
-        print($email);
-        return (filter_var($email, FILTER_VALIDATE_EMAIL));
-    }
-
-    function validateURL($url) : bool{
-        return (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url));
+        return (filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($email)<=60 && !empty($email));
     }
 
 }
