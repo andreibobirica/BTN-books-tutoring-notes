@@ -3,6 +3,7 @@
     <head>
         <php-imports />
         <title>BTN - Libri, appunti, ripetizioni</title>
+        <script src="./scripts/listing_form_manager.js" async></script>
     </head>
 
     <body id="new-listing">
@@ -15,7 +16,7 @@
                 method="POST"
                 enctype="multipart/form-data"
             >
-                <label for="new-listing-title">Titolo</label>
+                <label id="labelTitoloAnnuncio" for="new-listing-title">Titolo</label>
                 <input
                     type="text"
                     placeholder="Inserisci titolo"

@@ -83,7 +83,7 @@ function checkEmail(elementCheck,labelId){
 }
 
 function checkName(elementCheck,labelId){
-    const nameCharacters = /[^A-Za-z]+/;
+    const nameCharacters = /[^A-Za-z ]+/;
 
     if(nameCharacters.test(elementCheck.value.trim()))
         appendErrorMessage(labelId, createErrorMessage("Inserire un nome valido", "nameFormatErrorMessage"), "nameFormatErrorMessage");
@@ -92,7 +92,7 @@ function checkName(elementCheck,labelId){
 }
 
 function checkSurname(elementCheck,labelId){
-    const nameCharacters = /[^A-Za-z]+/;
+    const nameCharacters = /[^A-Za-z ]+/;
 
     if(nameCharacters.test(elementCheck.value.trim()))
         appendErrorMessage(labelId, createErrorMessage("Inserire un cognome valido", "surnameFormatErrorMessage"), "surnameFormatErrorMessage");
@@ -102,7 +102,7 @@ function checkSurname(elementCheck,labelId){
 
 
 function checkUsername(elementCheck,labelId){
-    const userCharacters = /[^\w_-]+/;  
+    const userCharacters = /[^A-Za-z0-9_-]+/;  
 
     if(userCharacters.test(elementCheck.value.trim()))
         appendErrorMessage(labelId, createErrorMessage("Inserire un username valido", "userFormatErrorMessage"), "userFormatErrorMessage");
