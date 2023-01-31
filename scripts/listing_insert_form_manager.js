@@ -34,12 +34,22 @@ function checkLength(elementCheck,labelId, minLength){
 
 }
 
+function checkISBN(elementCheck,labelId){
+    const userCharacters = /[^0-9]+/;  
+
+    if(userCharacters.test(elementCheck.value.trim()))
+        appendErrorMessage(labelId, createErrorMessage("L'ISBN può contenere solo numeri", "userFormatErrorMessage"), "userFormatErrorMessage");
+    else
+        removeErrorMessage(labelId,"userFormatErrorMessage");
+
+}
 
 function addEventListener(){
     const listingTitle = document.getElementById("new-listing-title");
     const listingDescr = document.getElementById("new-listing-descr");
     const listingPrice = document.getElementById("new-listing-price");
     const listingSubject = document.getElementById("new-listing-subject");
+    const listingISBNEdit = document.getElementById("new-listing-isbn");
     
     //inserimento annuncio
 
@@ -59,6 +69,10 @@ function addEventListener(){
         checkLength(listingSubject,"labeSubjectAnnuncio",2);
     });
 
+    // controllo per l'ISBN
+    listingISBNEdit.addEventListener("blur", function(){
+        checkISBN(listingISBNEdit, "labelISBN");
+    });
 }
 
 addEventListener();

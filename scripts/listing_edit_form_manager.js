@@ -35,12 +35,22 @@ function checkLength(elementCheck,labelId, minLength){
 }
 
 
+function checkISBN(elementCheck,labelId){
+    const userCharacters = /[^0-9]+/;  
+
+    if(userCharacters.test(elementCheck.value.trim()))
+        appendErrorMessage(labelId, createErrorMessage("L'ISBN può contenere solo numeri", "userFormatErrorMessage"), "userFormatErrorMessage");
+    else
+        removeErrorMessage(labelId,"userFormatErrorMessage");
+
+}
+
 function addEventListener(){
     const listingTitleEdit = document.getElementById("edit-listing-title");
     const listingDescrEdit = document.getElementById("edit-listing-descr");
     const listingPriceEdit = document.getElementById("edit-listing-price");
-    const listingSubjectEdit = document.getElementById("edit-listing-subject");
-
+    const listingSubjectEdit = document.getElementById("inputMateria");
+    const listingISBNEdit = document.getElementById("edit-listing-isbn");
 
     // pagina di modifica annuncio 
 
@@ -57,10 +67,13 @@ function addEventListener(){
     });
 
     listingSubjectEdit.addEventListener("blur", function(){
-        checkLength(listingSubjectEdit,"labeSubjectAnnuncio",2);
+        checkLength(listingSubjectEdit,"inputMateria",2);
     });
 
 
+    listingISBNEdit.addEventListener("blur", function(){
+        checkISBN(listingISBNEdit, "labelISBN");
+    });
 }
 
 addEventListener();

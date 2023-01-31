@@ -19,8 +19,8 @@ $new_listing_author .= '<input type="text" placeholder="Inserisci autore" maxlen
 $new_listing_edition = '<label for="new-listing-edition">Edizione</label>';
 $new_listing_edition .= '<input type="text" placeholder="Inserisci edizione" maxlength="25" name="edizione" id="new-listing-edition" />';
 
-$new_listing_isbn = '<label for="new-listing-isbn">ISBN</label>';
-$new_listing_isbn .= '<input type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />';
+$new_listing_isbn = '<label id="labelISBN" for="new-listing-isbn">ISBN</label>';
+$new_listing_isbn .= '<input id="new-listing-isbn" type="text" placeholder="Inserisci ISBN" maxlength="25" name="isbn" id="new-listing-isbn" />';
 
 $new_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="new-listing-categoria" />';
 $new_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="new-listing-categoria" />';
