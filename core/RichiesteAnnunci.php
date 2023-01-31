@@ -163,7 +163,7 @@ class RichiesteAnnunci
     {
         $upload = array("lastid" => 0, "upload" => array("esito" => false, "errore" => "Errore Generico", "path" => ""));
         if ($annuncio['tipo'] == "libri" || $annuncio['tipo'] == "appunti") {
-            $upload = $this->uploadFile($annuncio['mediapath']);
+            $upload = $this->uploadFile($annuncio['mediapath'],$annuncio['username']);
             if (!$upload["esito"])
                 return array("lastid" => 0, "upload" => $upload);
         }
@@ -196,8 +196,6 @@ class RichiesteAnnunci
     {
         $sql = "UPDATE annunci SET titolo='$annuncio[titolo]', descrizione='$annuncio[descrizione]',prezzo='$annuncio[prezzo]', username='$annuncio[username]',materia='$annuncio[materia]' WHERE id='$annuncio[id]';";
         if ($this->auth->db->query($sql) === TRUE) {
-            print_r($annuncio);
-            print("SELECT DISTINCT annunci.id FROM annunci JOIN appunti WHERE annunci.id = $annuncio[id] AND appunti.id = $annuncio[id];");
             $tipoAnnuncio =
                 $this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN appunti WHERE annunci.id = $annuncio[id] AND appunti.id = $annuncio[id];")->num_rows == 1 ? "appunti" :
                 ($this->auth->db->query("SELECT DISTINCT annunci.id FROM annunci JOIN libri WHERE annunci.id = $annuncio[id] AND libri.id = $annuncio[id];")->num_rows == 1 ? "libri" : "ripetizioni");
@@ -207,9 +205,8 @@ class RichiesteAnnunci
             //aggiorno la porzione di query del mediapath solo se cambiato
             $queryMediaPath = "";
             if ($tipoAnnuncio == "libri" || $tipoAnnuncio == "appunti") {
-                print_r($annuncio['mediapath']['name']);
                 if (!empty($annuncio['mediapath']['name'])) {
-                    $upload = $this->uploadFile($annuncio['mediapath']);
+                    $upload = $this->uploadFile($annuncio['mediapath'],$annuncio['username']);
                     if (!$upload["esito"])
                         return array("lastid" => 0, "upload" => $upload);
                     else {
@@ -266,7 +263,7 @@ class RichiesteAnnunci
     //verifica che il formato del file sia di tipo immagine
     //prova a fare l'upload
     //ritorna esito ed eventualmente un messaggio di errore attraverso un array()
-    function uploadFile($file)
+    function uploadFile($file,$username)
     {
         if (empty($file['name']))
             return array("esito" => true, "errore" => "Nessun File Inserito", "path" => "");
@@ -274,25 +271,25 @@ class RichiesteAnnunci
         $target_dir = "uploads/";
         $target_file_origin = $target_dir . basename($file["name"]);
         $imageFileType = strtolower(pathinfo($target_file_origin, PATHINFO_EXTENSION));
-        $target_file = $target_dir . basename($file["name"], $imageFileType) . md5_file($file['tmp_name']) . "." . $imageFileType;
+        $target_file = $target_dir . $username . md5_file($file['tmp_name']) . "." . $imageFileType;
         $uploadOk = array("esito" => true, "errore" => "", "path" => $target_file);
         // Check if image file is a actual image or fake image
         if (getimagesize($file["tmp_name"]) === false) {
-            $uploadOk["errore"] = "File is not an image.";
+            $uploadOk["errore"] = "Il file non è una immagine";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
 
         // Check if file already exists
         if (file_exists($target_file)) {
-            $uploadOk["errore"] = "Sorry, file already exists.";
+            $uploadOk["errore"] = "L'immagine esiste già nei tuoi annunci, caricarne un'altra";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
 
-        // Check file size
-        if ($file["size"] > 500000) {
-            $uploadOk["errore"] = "Sorry, your file is too large.";
+        // Check file size max 10 MByte
+        if ($file["size"] > 10000000) {
+            $uploadOk["errore"] = "Dimensione dell'immagine troppo grande, max 10 Mbyte";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
@@ -302,7 +299,7 @@ class RichiesteAnnunci
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif"
         ) {
-            $uploadOk["errore"] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk["errore"] = "Estensione non ammessa, consentiti solo JPG, JPEG, PNG & GIF";
             $uploadOk["esito"] = false;
             return $uploadOk;
 
@@ -311,7 +308,7 @@ class RichiesteAnnunci
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk["esito"]) {
             if (!move_uploaded_file($file["tmp_name"], $target_file)) {
-                $uploadOk["errore"] = "Sorry, there was an error uploading your file.";
+                $uploadOk["errore"] = "C'è stato un errore nel caricamento dell'immagine";
                 $uploadOk["esito"] = false;
                 return $uploadOk;
             }
