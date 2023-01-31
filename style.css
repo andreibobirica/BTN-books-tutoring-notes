@@ -314,8 +314,15 @@ footer p {
 }
 
 #search-form button {
-    width: 20%;
     float: right;
+}
+
+#home #search-form button {
+    width: 27%;
+}
+
+#search-results #search-form button {
+    width: 23%;
 }
 
 /* INFO */
