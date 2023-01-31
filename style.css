@@ -137,6 +137,10 @@ header nav a:visited,
 }
 
 #breadcrumb {
+    color:white;
+}
+
+#breadcrumb {
     font-size: 1em;
     background-color: #c42727;
     color: var(--bg);
