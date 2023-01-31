@@ -34,7 +34,6 @@ function checkLength(elementCheck,labelId, minLength){
 
 }
 
-
 function checkISBN(elementCheck,labelId){
     const userCharacters = /[^0-9]+/;  
 
@@ -70,7 +69,7 @@ function addEventListener(){
         checkLength(listingSubjectEdit,"inputMateria",2);
     });
 
-
+    // controllo per l'ISBN
     listingISBNEdit.addEventListener("blur", function(){
         checkISBN(listingISBNEdit, "labelISBN");
     });

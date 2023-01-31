@@ -43,7 +43,7 @@ function checkISBN(elementCheck,labelId){
         removeErrorMessage(labelId,"userFormatErrorMessage");
 
 }
-
+    
 function addEventListener(){
     const listingTitle = document.getElementById("new-listing-title");
     const listingDescr = document.getElementById("new-listing-descr");

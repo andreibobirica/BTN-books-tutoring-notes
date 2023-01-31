@@ -105,7 +105,7 @@ function checkUsername(elementCheck,labelId){
     const userCharacters = /[^A-Za-z0-9_-]+/;  
 
     if(userCharacters.test(elementCheck.value.trim()))
-        appendErrorMessage(labelId, createErrorMessage("Inserire un username valido", "userFormatErrorMessage"), "userFormatErrorMessage");
+        appendErrorMessage(labelId, createErrorMessage("Inserire un username valido (l'username può contenere solo numeri,lettere,-,_)", "userFormatErrorMessage"), "userFormatErrorMessage");
     else
         removeErrorMessage(labelId,"userFormatErrorMessage");
 
