@@ -30,25 +30,34 @@ if (isset($_POST["edit_listing"])) {
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
-    $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
-    $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
-    $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
+    if($_POST['categoria'] == "libri"){
+        $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
+        $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
+        $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
+    }
+    
     $error="";
     if(!$sanit->validateTitle($_POST['titolo']))$error.="Formato Titolo non corretto - ";
     if(!$sanit->validateDescription($_POST['descrizione']))$error.="Formato Descrizione non corretto - ";
     if(!$sanit->validateNumber($_POST['prezzo']))$error.="Formato Prezzo non corretto - ";
     if(!$sanit->validateNameNumberMaxLength($_POST['materia']))$error.="Formato Materia non corretto - ";
-    if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato Autore non corretto - ";
-    if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato Edizione non corretto - ";
-    if(!$sanit->validateISBN($_POST['isbn']))$error.="Formato ISBN non corretto - ";
+    if($_POST['categoria'] == "libri"){
+        if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato Autore non corretto - ";
+        if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato Edizione non corretto - ";
+        if(!$sanit->validateISBN($_POST['isbn']))$error.="Formato ISBN non corretto - ";
+    }
     $verifica = 
     $sanit->validateTitle($_POST['titolo']) &&
     $sanit->validateDescription($_POST['descrizione']) &&
     $sanit->validateNumber($_POST['prezzo']) && 
-    $sanit->validateNameNumberMaxLength($_POST['materia']) &&
-    $sanit->validateNameMaxLength($_POST['autore']) &&
-    $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
-    $sanit->validateISBN($_POST['isbn']);
+    $sanit->validateNameNumberMaxLength($_POST['materia']);
+
+    if($_POST['categoria'] == "libri"){
+        $verifica = $verifica &&
+        $sanit->validateNameMaxLength($_POST['autore']) &&
+        $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
+        $sanit->validateISBN($_POST['isbn']);
+    }
 
     //Mando i dati da modificare del annuncio alla funzione edit_listing con una struttura dati array
     if($verifica){
