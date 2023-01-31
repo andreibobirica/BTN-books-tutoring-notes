@@ -3,6 +3,7 @@
     <head>
         <php-imports />
         <title>BTN - Libri, appunti, ripetizioni</title>
+        <script src="./scripts/listing_edit_form_manager.js" async></script>
     </head>
 
     <body id="edit-listing">
@@ -16,7 +17,7 @@
                 method="POST"
                 enctype="multipart/form-data"
             >
-                <label for="edit-listing-title">Modifica titolo</label>
+                <label id="labelTitoloAnnuncio" for="edit-listing-title">Modifica titolo</label>
                 <input
                     type="text"
                     placeholder="Vecchio titolo: php-old-title"
@@ -26,7 +27,7 @@
                     value="php-listing-title"
                 />
 
-                <label for="edit-listing-descr">Modifica descrizione</label>
+                <label id="labelDescrAnnuncio" for="edit-listing-descr">Modifica descrizione</label>
                 <input
                     type="text"
                     placeholder="Vecchia descrizione: php-old-descr"
@@ -36,7 +37,7 @@
                     value="php-listing-descr"
                 />
 
-                <label for="edit-listing-price">Modifica prezzo</label>
+                <label id="labelPriceAnnuncio" for="edit-listing-price">Modifica prezzo</label>
                 <input
                     type="text"
                     placeholder="Vecchio prezzo: php-old-price"
@@ -46,7 +47,7 @@
                     value="php-listing-price"
                 />
 
-                <label for="edit-listing-subject">Modifica materia</label>
+                <label id="labelSubjectAnnuncio" for="edit-listing-subject">Modifica materia</label>
                 <input
                     type="text"
                     placeholder="Vecchia materia: php-old-subject"

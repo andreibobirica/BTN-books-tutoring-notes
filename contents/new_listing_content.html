@@ -3,7 +3,7 @@
     <head>
         <php-imports />
         <title>BTN - Libri, appunti, ripetizioni</title>
-        <script src="./scripts/listing_form_manager.js" async></script>
+        <script src="./scripts/listing_insert_form_manager.js" async></script>
     </head>
 
     <body id="new-listing">
@@ -23,33 +23,37 @@
                     maxlength="60"
                     name="titolo"
                     id="new-listing-title"
+                    required
                 />
 
-                <label for="new-listing-descr">Descrizione</label>
+                <label id="labelDescrAnnuncio" for="new-listing-descr">Descrizione</label>
                 <input
                     type="text"
                     placeholder="Inserisci descrizione"
                     maxlength="255"
                     name="descrizione"
                     id="new-listing-descr"
+                    required
                 />
 
-                <label for="new-listing-price">Prezzo</label>
+                <label id="labelPriceAnnuncio" for="new-listing-price">Prezzo</label>
                 <input
                     type="text"
                     placeholder="Inserisci prezzo"
                     maxlength="25"
                     name="prezzo"
                     id="new-listing-price"
+                    required
                 />
 
-                <label for="new-listing-subject">Materia</label>
+                <label id="labeSubjectAnnuncio" for="new-listing-subject">Materia</label>
                 <input
                     type="text"
                     placeholder="Inserisci materia"
                     maxlength="25"
                     name="materia"
                     id="new-listing-subject"
+                    required
                 />
 
                 <!-- <php-categoria /> -->

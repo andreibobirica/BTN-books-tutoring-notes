@@ -35,7 +35,7 @@ function checkLength(elementCheck,labelId, minLength){
     else{
         if(minLength && fieldLength < minLength){
             appendErrorMessage(labelId, createErrorMessage("Questo campo deve essere lungo almeno " + minLength + " caratteri", "noLongEnough"), "noLongEnough");
-            removeErrorMessage(labelId,"emptyErrorMessage"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
+            removeErrorMessage(labelId,"emptyErrorMessage");
         }
         else{
             removeErrorMessage(labelId,"emptyErrorMessage");
