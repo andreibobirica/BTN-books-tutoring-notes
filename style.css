@@ -490,7 +490,7 @@ footer p {
 #listing-content #listing-price {
     font-weight: bold;
     font-size: 2em;
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     margin-top: 1em;
     margin-bottom: 1em;
 }
@@ -523,7 +523,7 @@ dd {
 }
 
 #listing-content .listing-btn {
-    background-color: var(--accent-red-3);
+    background-color: var(--accent-red);
     padding: 0.5em;
     border-radius: 10px;
     width: 49%;
@@ -532,6 +532,7 @@ dd {
     color: white;
     font-size: 1.2em;
     text-transform: uppercase;
+    margin-bottom:1em;
 }
 
 /* NUOVO ANNUNCIO */
@@ -684,7 +685,7 @@ dd {
 }
 
 #area-riservata .custom-link {
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     font-size: 1.2em;
     display: block;
     margin-bottom: 0.5em;
@@ -725,7 +726,7 @@ dd {
 }
 
 .error main div h2 {
-    color: var(--accent-red-2);
+    color: var(--accent-red);
     font-size: 1.6em;
     margin-bottom: 1em;
     line-height: 1.25em;
