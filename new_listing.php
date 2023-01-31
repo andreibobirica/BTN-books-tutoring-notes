@@ -59,6 +59,12 @@ if($_GET["categoria"]=="ripetizioni"){
 $new_listing = str_replace('<php-footer />', $footer, $new_listing);
 $new_listing = str_replace('php-type', $_GET['categoria'], $new_listing);
 
+//gestione errori
+if(isset($_GET['errore']) && !empty($_GET['errore']))
+    $new_listing = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $new_listing);
+else
+    $new_listing = str_replace('<php-errore />', "", $new_listing);
+
 // Mostro la pagina
 echo $new_listing;
 ?>
