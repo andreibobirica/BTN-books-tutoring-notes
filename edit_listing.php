@@ -29,6 +29,12 @@ $edit_listing_isbn .= '<input type="text" value="' . $arrayAnnuncio['isbn'] . '"
 $edit_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="edit-listing-categoria" />';
 $edit_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="edit-listing-categoria" />';
 $edit_listing_cat_ripetizioni = '<input type="hidden" name="categoria" value="ripetizioni" id="edit-listing-categoria" />';
+//immagine da mostrare
+if($arrayAnnuncio['tipo']!="ripetizioni" )
+    $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
+else
+    $listing_img = "";
+
 
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<navbar/>', $navbar, $header);
@@ -40,11 +46,14 @@ $edit_listing = str_replace('php-type', $_GET['categoria'], $edit_listing);
 //aggiunta id al form
 $edit_listing = str_replace('php-annuncio-id', " value='$arrayAnnuncio[id]' ", $edit_listing);
 
+
+
 $edit_listing = str_replace('php-old-title', $arrayAnnuncio['titolo'], $edit_listing);
 $edit_listing = str_replace('php-old-desc', $arrayAnnuncio['descrizione'], $edit_listing);
 $edit_listing = str_replace('php-old-price', $arrayAnnuncio['prezzo'], $edit_listing);
 $edit_listing = str_replace('php-old-subject', $arrayAnnuncio['materia'], $edit_listing);
 
+$edit_listing = str_replace('<php-img />', $listing_img, $edit_listing);
 $edit_listing = str_replace('php-action', $_SERVER['PHP_SELF'], $edit_listing);
 $edit_listing = str_replace('php-listing-title', $arrayAnnuncio['titolo'], $edit_listing);
 $edit_listing = str_replace('php-listing-descr', $arrayAnnuncio['descrizione'], $edit_listing);
