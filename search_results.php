@@ -28,6 +28,9 @@ $search_results = str_replace('php-catlibri', $_GET['categoria']=="libri"?"selec
 $search_results = str_replace('php-catappunti', $_GET['categoria']=="appunti"?"selected":"", $search_results);
 $search_results = str_replace('php-catripetizioni', $_GET['categoria']=="ripetizioni"?"selected":"", $search_results);
 
+$search_results = str_replace('php-title-search', $_GET['search'], $search_results);
+$search_results = str_replace('php-type-search', $_GET['categoria'], $search_results);
+
 if (!isset($_GET['ordine'])) {
     $search_results = str_replace('php-orderstandard', "selected", $search_results);
 } else {

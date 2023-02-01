@@ -2,7 +2,12 @@
 <html lang="it">
     <head>
         <php-imports />
-        <title>BTN - Libri, appunti, ripetizioni</title>
+        <meta
+            name="description"
+            content="Inserisci un nuovo annuncio su BTN e lascia che gli interessati ti contattino facilmente."
+        />
+        <meta name="keywords" content="BTN, nuovo, annuncio, libro, appunti, ripetizioni, vendi, inserisci" />
+        <title>Nuovo annuncio - BTN</title>
         <script src="./scripts/listing_insert_form_manager.js" async></script>
     </head>
 
@@ -17,7 +22,9 @@
                 method="POST"
                 enctype="multipart/form-data"
             >
-                <label id="labelTitoloAnnuncio" for="new-listing-title">Titolo</label>
+                <label id="labelTitoloAnnuncio" for="new-listing-title"
+                    >Titolo</label
+                >
                 <input
                     type="text"
                     placeholder="Inserisci titolo"
@@ -27,7 +34,9 @@
                     required
                 />
 
-                <label id="labelDescrAnnuncio" for="new-listing-descr">Descrizione</label>
+                <label id="labelDescrAnnuncio" for="new-listing-descr"
+                    >Descrizione</label
+                >
                 <input
                     type="text"
                     placeholder="Inserisci descrizione"
@@ -37,7 +46,9 @@
                     required
                 />
 
-                <label id="labelPriceAnnuncio" for="new-listing-price">Prezzo</label>
+                <label id="labelPriceAnnuncio" for="new-listing-price"
+                    >Prezzo</label
+                >
                 <input
                     type="text"
                     placeholder="Inserisci prezzo"
@@ -47,7 +58,9 @@
                     required
                 />
 
-                <label id="labeSubjectAnnuncio" for="new-listing-subject">Materia</label>
+                <label id="labeSubjectAnnuncio" for="new-listing-subject"
+                    >Materia</label
+                >
                 <input
                     type="text"
                     placeholder="Inserisci materia"

@@ -11,7 +11,7 @@ $footer = file_get_contents("./contents/footer.html");
 $header = printHeader("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['titolo']);
 // Prendo il percorso e inserisco l'immagine
-if($arrayAnnuncio['tipo']!="ripetizioni" )
+if ($arrayAnnuncio['tipo'] != "ripetizioni")
     $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
 else
     $listing_img = "";
@@ -22,16 +22,16 @@ $listing_user = $arrayAnnuncio['username'];
 $listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
 $listing_descr = '<p id="listing-descr">' . $arrayAnnuncio['descrizione'] . '</p>';
 
-$button_insert_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&insertsave" class="listing-btn">Salva annuncio</a>';
-$button_remove_save = '<a href="./listing.php?annuncio='.$arrayAnnuncio['id'].'&removesave" class="listing-btn">Rimuovi annuncio dai Salvati</a>';
-$button_edit = '<a href="edit_listing.php?categoria='.$arrayAnnuncio['tipo'].'&modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
+$button_insert_save = '<a href="./listing.php?annuncio=' . $arrayAnnuncio['id'] . '&insertsave" class="listing-btn">Salva annuncio</a>';
+$button_remove_save = '<a href="./listing.php?annuncio=' . $arrayAnnuncio['id'] . '&removesave" class="listing-btn">Rimuovi annuncio dai Salvati</a>';
+$button_edit = '<a href="edit_listing.php?categoria=' . $arrayAnnuncio['tipo'] . '&modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
 $button_delete = '<a href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
-$user_email = '<a href="mailto:'.$arrayAnnuncio['email'].'" class="listing-btn">'.$arrayAnnuncio['email'].'</a>';
+$user_email = '<a href="mailto:' . $arrayAnnuncio['email'] . '" class="listing-btn">' . $arrayAnnuncio['email'] . '</a>';
 
 $button_save = "";
-if($auth->getIfLogin())
-$button_save = $button_insert_save;
-if($auth->getIfLogin() && $request->verifySaveAnnuncioUser($_SESSION["loginAccount"],$arrayAnnuncio['id'])){
+if ($auth->getIfLogin())
+    $button_save = $button_insert_save;
+if ($auth->getIfLogin() && $request->verifySaveAnnuncioUser($_SESSION["loginAccount"], $arrayAnnuncio['id'])) {
     $button_save = $button_remove_save;
 }
 
@@ -43,7 +43,7 @@ if ($auth->getIfLogin()) {
     }
 }
 $book_isbn = "";
-$book_author= "";
+$book_author = "";
 $book_author_def = "";
 $book_edition = "";
 $book_isbn = "";
@@ -69,10 +69,22 @@ if (isset($arrayAnnuncio['isbn']) && !empty($arrayAnnuncio['isbn'])) {
 </div>';
 }
 
+// Suddivido titolo, autore e materia in singole parole da usare come keywords e le unisco in un array
+$keywords = array_merge(explode(' ', $arrayAnnuncio['titolo']), explode(' ', $arrayAnnuncio['autore']), explode(' ', $arrayAnnuncio['materia']));
+// Rimuovo le parole con lunghezza <=2
+foreach ($keywords as $keyword) {
+    if (strlen($keyword) <= 2) {
+        unset($keywords[array_search($keyword, $keywords)]);
+    }
+}
+// Converto tutto in minuscolo e unisco le parole con una virgola in una stringa, togliendo i doppioni
+$keywords = strtolower(implode(', ', array_unique($keywords)));
+
 // Rimpiazzo i segnaposti coi contenuti HTML
 $header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $user_book = str_replace('<php-header />', $header, $user_book);
-
+$user_book = str_replace('php-meta-descr', $arrayAnnuncio['descrizione'], $user_book);
+$user_book = str_replace('php-meta-keys', $keywords, $user_book);
 $user_book = str_replace('<php-img />', $listing_img, $user_book);
 $user_book = str_replace('<php-price />', $listing_price, $user_book);
 $user_book = str_replace('<php-title />', $listing_title, $user_book);
