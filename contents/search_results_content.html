@@ -11,9 +11,8 @@
         <php-header />
 
         <main>
-            <section id="results-search">
+            <div id="results-search">
                 <form
-                    form
                     action="./search_results.php"
                     method="GET"
                     id="search-form"
@@ -28,7 +27,7 @@
                         id="search-input"
                         value="php-search-value"
                     />
-                    <label for="categoria">Categoria</label>
+                    <label>Categoria</label>
                     <select name="categoria">
                         <option php-catlibri value="libri">Libri</option>
                         <option php-catripetizioni value="ripetizioni">
@@ -39,20 +38,20 @@
 
                     <label for="ordine">Ordine</label>
                     <select name="ordine" id="ordine">
-                        <option php-orderstandard value="standard">
+                        <option value="standard">
                             Standard
                         </option>
-                        <option php-orderpreasc value="prezzoasc">
+                        <option value="prezzoasc">
                             Prezzo crescente
                         </option>
-                        <option php-orderpredisc value="prezzodisc">
+                        <option value="prezzodisc">
                             Prezzo decrescente
                         </option>
                     </select>
 
                     <button type="submit">Cerca</button>
                 </form>
-            </section>
+            </div>
             <section id="results-listings">
                 <php-listings />
             </section>
