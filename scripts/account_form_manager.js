@@ -1,173 +1,250 @@
-// prende in input: il messaggio che deve mostrare e la classe che deve aggiungere al errore ( mi servirà poi per trovarlo e cancellarlo)
-function createErrorMessage(message, errorClass){
-    let messageParagraph = document.createElement("p");
-    messageParagraph.innerText = message;
-    messageParagraph.setAttribute("class", errorClass);
-    return messageParagraph;
+/* Scrive il messaggio di errore.
+ * @param error: elemento in cui scrivere il messaggio di errore
+ * @param errorMessage: messaggio di errore da scrivere
+ * @param errorClass: classe da applicare al messaggio
+ */
+function writeErrorMessage(error, errorMessage, errorClass) {
+    error.innerHTML = errorMessage;
+    error.classList.remove("input-hint");
+    error.classList.add("error");
+    error.classList.add(errorClass);
 }
 
-// prende in input: l'id della label in cui deve apparire , il <p> con l'errore da mostrare , la classe del'errore in modo da controllare che non sia già presente
-function appendErrorMessage(labelId, errorMessage, errorClass){
-    const label = document.getElementById(labelId);
-    let errorParagraph = label.querySelector('.' + errorClass);
-
-    if(errorParagraph == null)
-        label.appendChild(errorMessage); 
+/* Rimuove il messaggio di errore.
+ * @param error: elemento da cui rimuovere il messaggio di errore
+ * @param errorClass: classe da rimuovere dall'elemento
+ * @param oldMsg: messaggio pre-errore da ripristinare
+ */
+function removeErrorMessage(error, errorClass, oldMsg = "") {
+    error.classList.remove(errorClass);
+    error.classList.remove("error");
+    error.classList.add("input-hint");
+    error.innerHTML = oldMsg;
 }
 
-function removeErrorMessage(labelId, errorClass){
-    const label = document.getElementById(labelId);
-    let errorParagraph = label.querySelector('.' + errorClass);   // chiamo querySelector perché  è l'unico che può essere chiamato su un elemento e non solo su document come getElementById
-    
-    if(errorParagraph != null)
-        errorParagraph.remove()
-    
-}
-
-// prende in input: l'input su cui deve fare il controllo, il nome della label dove mettere il messaggio e la lunghezza minima che deve avere il campo
-function checkLength(elementCheck,labelId, minLength){
+/* Controlla la lunghezza del campo.
+ * @param elementCheck - Elemento da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - minLength Lunghezza minima del campo
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkLength(elementCheck, error, minLength, oldMsg = "") {
     const fieldLength = elementCheck.value.trim().length;
-
-    if(fieldLength == 0){
-        appendErrorMessage(labelId, createErrorMessage("Questo campo non può essere lasciato vuoto", "emptyErrorMessage"), "emptyErrorMessage");
-        removeErrorMessage(labelId,"noLongEnough"); /* rimuove il messaggio di errore campo vuoto nel caso ci sia */
-    } 
-    else{
-        if(minLength && fieldLength < minLength){
-            appendErrorMessage(labelId, createErrorMessage("Questo campo deve essere lungo almeno " + minLength + " caratteri", "noLongEnough"), "noLongEnough");
-            removeErrorMessage(labelId,"emptyErrorMessage");
-        }
-        else{
-            removeErrorMessage(labelId,"emptyErrorMessage");
-            removeErrorMessage(labelId,"noLongEnough");
-        }
-    }    
+    // se la lunghezza è minore di minLength
+    if (minLength && fieldLength > 0 && fieldLength < minLength) {
+        writeErrorMessage(
+            error,
+            "Questo campo deve essere lungo almeno " + minLength + " caratteri",
+            "noLongEnough"
+        );
+        return false;
+    } else {
+        removeErrorMessage(error, "noLongEnough", oldMsg);
+        return true;
+    }
 }
 
-function confirmPassword(pass,confPass,labelId){
-    if(pass.value !== confPass.value)
-        appendErrorMessage(labelId, createErrorMessage("La password non coincide", "confPassFail"), "confPassFail");
-    else
-        removeErrorMessage(labelId,"confPassFail");
+/* Controlla la conferma della password.
+ * @param pass - Password
+ * @param confPass - Conferma password
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ */
+function confirmPassword(pass, confPass, error) {
+    if (pass.value !== confPass.value)
+        writeErrorMessage(error, "La password non coincide", "confPassFail");
+    else removeErrorMessage(error, "confPassFail");
 }
 
-// controlla che contenga un numero, una lettera maiuscola e un carattere speciale
-function checkPasswordFormat(elementCheck,labelId){
+/* Controlla che la password contenga un numero, una lettera maiuscola e un carattere speciale
+ * @param password - Password da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkPasswordFormat(password, error, oldMsg) {
     const numero = /[0-9]/;
     const upperCaseLetter = /[A-Z]/;
     const specialCharacter = /[\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
 
-    if(!numero.test(elementCheck.value))
-        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno un numero", "numberErrorMessage"), "numberErrorMessage");
-    else
-        removeErrorMessage(labelId,"numberErrorMessage");
+    if (!numero.test(password.value)) {
+        writeErrorMessage(
+            error,
+            "La password deve contenere almeno un numero",
+            "numberErrorMessage"
+        );
+    } else {
+        removeErrorMessage(error, "numberErrorMessage", oldMsg);
+    }
 
-    if (!upperCaseLetter.test(elementCheck.value))
-        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno una lettera maiuscola", "upperCaseErrorMessage"), "upperCaseErrorMessage");
-    else
-        removeErrorMessage(labelId,"upperCaseErrorMessage");
+    if (!upperCaseLetter.test(password.value)) {
+        writeErrorMessage(
+            error,
+            "La password deve contenere almeno una lettera maiuscola",
+            "upperCaseErrorMessage"
+        );
+    } else {
+        removeErrorMessage(error, "upperCaseErrorMessage", oldMsg);
+    }
 
-    if(!specialCharacter.test(elementCheck.value))
-        appendErrorMessage(labelId, createErrorMessage("Questo campo deve contenere almeno un carattere speciale", "specCharactErrorMessage"), "specCharactErrorMessage");
-    else
-        removeErrorMessage(labelId,"specCharactErrorMessage");
+    if (!specialCharacter.test(password.value)) {
+        writeErrorMessage(
+            error,
+            "La password deve contenere almeno un carattere speciale",
+            "specCharactErrorMessage"
+        );
+    } else {
+        removeErrorMessage(error, "specCharactErrorMessage", oldMsg);
+    }
 }
 
-function checkEmail(elementCheck,labelId){
-    const email = /^[a-z0-9]+[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
+/* Controlla la correttezza del campo email.
+ * @param email - Email da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ */
+function checkEmail(email, error) {
+    const emailRegex =
+        /^[a-z0-9]+[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
 
-    if(!email.test(elementCheck.value)) // non c'è il trim perché il formato html email ce lo ha di default
-        appendErrorMessage(labelId, createErrorMessage("Inserire un email valida", "emailFormatErrorMessage"), "emailFormatErrorMessage");
-    else
-        removeErrorMessage(labelId,"emailFormatErrorMessage");
+    if (!emailRegex.test(email.value))
+        // Niente trim perché l'input di tipo email in HTML lo fa di default
+        writeErrorMessage(
+            error,
+            "Inserire un email valida",
+            "emailFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "emailFormatErrorMessage");
 }
 
-function checkName(elementCheck,labelId){
+/* Controlla il formato del nome.
+ * @param nome - Nome da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkName(nome, error, oldMsg) {
     const nameCharacters = /[^A-Za-z ]+/;
 
-    if(nameCharacters.test(elementCheck.value.trim()))
-        appendErrorMessage(labelId, createErrorMessage("Inserire un nome valido", "nameFormatErrorMessage"), "nameFormatErrorMessage");
-    else
-        removeErrorMessage(labelId,"nameFormatErrorMessage");
+    if (nameCharacters.test(nome.value.trim()))
+        writeErrorMessage(
+            error,
+            "Inserire un nome valido",
+            "nameFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "nameFormatErrorMessage", oldMsg);
 }
 
-function checkSurname(elementCheck,labelId){
+/* Controlla il formato del cognome.
+ * @param cognome - Cognome da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkSurname(cognome, error, oldMsg) {
     const nameCharacters = /[^A-Za-z ]+/;
 
-    if(nameCharacters.test(elementCheck.value.trim()))
-        appendErrorMessage(labelId, createErrorMessage("Inserire un cognome valido", "surnameFormatErrorMessage"), "surnameFormatErrorMessage");
-    else
-        removeErrorMessage(labelId,"surnameFormatErrorMessage");
+    if (nameCharacters.test(cognome.value.trim()))
+        writeErrorMessage(
+            error,
+            "Inserire un cognome valido",
+            "surnameFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "surnameFormatErrorMessage", oldMsg);
 }
 
+/* Controlla il formato dello username.
+ * @param nome - Username da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkUsername(username, error, oldMsg) {
+    const userCharacters = /[^A-Za-z0-9_-]+/;
 
-function checkUsername(elementCheck,labelId){
-    const userCharacters = /[^A-Za-z0-9_-]+/;  
-
-    if(userCharacters.test(elementCheck.value.trim()))
-        appendErrorMessage(labelId, createErrorMessage("Inserire un username valido (l'username può contenere solo numeri,lettere,-,_)", "userFormatErrorMessage"), "userFormatErrorMessage");
-    else
-        removeErrorMessage(labelId,"userFormatErrorMessage");
-
+    if (userCharacters.test(username.value.trim()))
+        writeErrorMessage(
+            error,
+            "Inserire un username valido (l'username può contenere solo numeri,lettere,-,_)",
+            "userFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "userFormatErrorMessage", oldMsg);
 }
 
-function checkDate(elementCheck,labelId){
-    const date = new Date(elementCheck.value);
+/* Controlla il formato della data di nascita.
+ * @param nome - Data da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkDate(data, error) {
+    const date = new Date(data.value);
 
-    if(date.getFullYear() > 2023 || date.getFullYear() <= 1930) 
-        appendErrorMessage(labelId, createErrorMessage("Inserire una data valida", "userDateErrorMessage"), "userDateErrorMessage");
-    else
-        removeErrorMessage(labelId,"userDateErrorMessage");
+    if (date.getFullYear() > 2023 || date.getFullYear() <= 1930)
+        writeErrorMessage(
+            error,
+            "Inserire una data valida",
+            "userDateErrorMessage"
+        );
+    else removeErrorMessage(error, "userDateErrorMessage");
 }
 
+const nome = document.getElementById("inputNome");
+const errNome = document.getElementById("nome-errore");
+const oldNome = errNome.innerHTML;
 
+const cognome = document.getElementById("inputCognome");
+const errCognome = document.getElementById("cognome-errore");
+const oldCognome = errCognome.innerHTML;
 
-function addEventListener(){
-    const nome = document.getElementById("inputNome");
-    const cognome = document.getElementById("inputCognome");
-    const username = document.getElementById("inputUsername");
-    const password = document.getElementById("inputPassword");
-    const confPassword = document.getElementById("inputConfPassword");
-    const dataNascita = document.getElementById("inputDataNascita");
-    const email = document.getElementById("inputEmail");
+const username = document.getElementById("inputUsername");
+const errUser = document.getElementById("username-errore");
+const oldUser = errUser.innerHTML;
 
-    
-    nome.addEventListener("blur", function(){
-        checkLength(nome,"labelNome",2);
-        checkName(nome,"labelNome");
-    });
+const password = document.getElementById("inputPassword");
+const errPsw = document.getElementById("password-errore");
+const oldPsw = errPsw.innerHTML;
 
-    cognome.addEventListener("blur", function(){
-        checkLength(cognome,"labelCognome",2);
-        checkSurname(cognome,"labelCognome");
-    });
+const confPassword = document.getElementById("inputConfPassword");
+const errConf = document.getElementById("conferma-errore");
 
-    username.addEventListener("blur", function(){
-        checkLength(username,"labelUsername",2);
-        checkUsername(username,"labelUsername");
-    });
+const dataNascita = document.getElementById("inputDataNascita");
+const errNasc = document.getElementById("nascita-errore");
 
-    password.addEventListener("blur", function(){
-        checkLength(password,"labelPassword",8);
-        checkPasswordFormat(password,"labelPassword");
-    });
+const email = document.getElementById("inputEmail");
+const errMail = document.getElementById("email-errore");
 
-    confPassword.addEventListener("blur", function(){
-        checkLength(confPassword,"labelConfPassword");
-        confirmPassword(password,confPassword,"labelConfPassword");
-    });
+nome.addEventListener("blur", function () {
+    if (checkLength(nome, errNome, 2, oldNome)) {
+        checkName(nome, errNome, oldNome);
+    }
+});
 
-    dataNascita.addEventListener("blur", function(){
-        checkLength(dataNascita,"labelDataNascita");
-        checkDate(dataNascita,"labelDataNascita");
-    });
+cognome.addEventListener("blur", function () {
+    if (checkLength(cognome, errCognome, 2, oldCognome)) {
+        checkSurname(cognome, errCognome, oldCognome);
+    }
+});
 
-    email.addEventListener("blur", function(){
-        checkLength(email,"labelEmail");
-        checkEmail(email,"labelEmail");
-    });
+username.addEventListener("blur", function () {
+    if (checkLength(username, errUser, 2, oldUser)) {
+        checkUsername(username, errUser, oldUser);
+    }
+});
 
-}
+password.addEventListener("blur", function () {
+    if (checkLength(password, errPsw, 8, oldPsw)) {
+        checkPasswordFormat(password, errPsw, oldPsw);
+    }
+});
 
-addEventListener();
+confPassword.addEventListener("blur", function () {
+    if (checkLength(confPassword, errConf)) {
+        confirmPassword(password, confPassword, errConf);
+    }
+});
 
+dataNascita.addEventListener("blur", function () {
+    if (checkLength(dataNascita, errNasc)) {
+        checkDate(dataNascita, errNasc);
+    }
+});
+
+email.addEventListener("blur", function () {
+    if (checkLength(email, errMail)) {
+        checkEmail(email, errMail);
+    }
+});

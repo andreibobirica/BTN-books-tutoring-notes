@@ -166,15 +166,12 @@ section {
     width: 100%;
 }
 
-input {
-    margin-bottom: 1em;
-}
-
 label {
     margin-bottom: 0.25em;
+    margin-top: 1em;
 }
 
-label p {
+.errorMessage {
     /* errori client-side sugli input */
     background-color: var(--error-warning);
     padding: 0.5em;
@@ -600,6 +597,16 @@ dd {
     font-size: 1.5em;
 }
 
+.multiple-fields-form .input-hint {
+    font-size: 0.8em;
+    color: rgb(50, 50, 50);
+}
+
+.multiple-fields-form .error {
+    font-size: 0.8em;
+    color: red;
+}
+
 /* LOGIN E REGISTRAZIONE */
 #registration main,
 #login main {
@@ -623,7 +630,7 @@ dd {
 #registration h2,
 #login h2 {
     margin-top: unset;
-    margin-bottom: 0.75em;
+    margin-bottom: 0.25em;
     font-weight: 500;
     font-size: 2em;
     color: var(--accent-red);
