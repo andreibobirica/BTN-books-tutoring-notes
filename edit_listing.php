@@ -19,12 +19,14 @@ $edit_listing_file .= '<input type="file" name="mediapath" id="edit-listing-file
 
 $edit_listing_author = '<label for="edit-listing-author">Modifica autore</label>';
 $edit_listing_author .= '<input type="text" value="' . $arrayAnnuncio['autore'] . '" placeholder="Vecchio autore: '.$arrayAnnuncio["autore"].'" maxlength="25" name="autore" id="edit-listing-author" />';
+$edit_listing_author .= '<p id="autore-errore" class="input-hint"></p>';
 
 $edit_listing_edition = '<label for="edit-listing-edition">Modifica edizione</label>';
 $edit_listing_edition .= '<input type="text" value="' . $arrayAnnuncio['edizione'] . '" placeholder="Vecchia edizione: '.$arrayAnnuncio["edizione"].'" maxlength="25" name="edizione" id="edit-listing-edition" />';
 
 $edit_listing_isbn = '<label id="labelISBN" for="edit-listing-isbn">Modifica ISBN</label>';
 $edit_listing_isbn .= '<input id="edit-listing-isbn" type="text" value="' . $arrayAnnuncio['isbn'] . '" placeholder="Vecchio ISBN: '.$arrayAnnuncio["isbn"].'" maxlength="25" name="isbn" id="edit-listing-isbn" />';
+$edit_listing_isbn .= '<p id="isbn-errore" class="input-hint">10-13 cifre</p>';
 
 $edit_listing_cat_libri = '<input type="hidden" name="categoria" value="libri" id="edit-listing-categoria" />';
 $edit_listing_cat_appunti = '<input type="hidden" name="categoria" value="appunti" id="edit-listing-categoria" />';
