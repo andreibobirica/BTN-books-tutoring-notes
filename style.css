@@ -1007,27 +1007,24 @@ dd {
     }
 
     #registration main {
-        display: flex;
+        /*display: flex;
         justify-content: center;
-        align-items: flex-start;
-    }
-
-    #registration h2 {
-        display: none;
+        align-items: flex-start;*/
     }
 
     #registration .multiple-fields-form {
         width: 50%;
+        float: left;
     }
 
     #registration-perks {
         background-color: var(--bg-alt);
         list-style: none;
         display: block;
+        float: right;
         border-radius: 30px;
-        margin-left: 3em;
         padding: 2em;
-        width: 50%;
+        width: 45%;
     }
 
     #registration-perks h2 {
@@ -1145,7 +1142,11 @@ dd {
         max-width: 40%;
     }
 
-    #registration-perks li {
+    #registration #registration-perks {
+        width: 55%;
+    }
+
+    #registration #registration-perks li {
         font-size: 1.15em;
     }
 
