@@ -378,6 +378,10 @@ footer p {
     padding-bottom: 1.5em;
 }
 
+#info #disclaimer h2 {
+    margin-top: 1em;
+}
+
 /* RISULTATI */
 #search-results main {
     display: flex;
