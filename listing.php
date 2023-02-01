@@ -49,24 +49,18 @@ $book_edition = "";
 $book_isbn = "";
 if (isset($arrayAnnuncio['autore']) && !empty($arrayAnnuncio['autore'])) {
     $book_author = $arrayAnnuncio['autore'];
-    $book_author_def = '<div class="definition">
-    <dt>Autore</dt>
-    <dd>' . $book_author . '</dd>
-</div>';
+    $book_author_def = '<dt>Autore</dt>
+    <dd>' . $book_author . '</dd>';
 }
 
 if (isset($arrayAnnuncio['edizione']) && !empty($arrayAnnuncio['edizione'])) {
-    $book_edition = '<div class="definition">
-    <dt>Edizione</dt>
-    <dd>' . $arrayAnnuncio['edizione'] . '</dd>
-</div>';
+    $book_edition = '<dt>Edizione</dt>
+    <dd>' . $arrayAnnuncio['edizione'] . '</dd>';
 }
 
 if (isset($arrayAnnuncio['isbn']) && !empty($arrayAnnuncio['isbn'])) {
-    $book_isbn = '<div class="definition">
-    <dt>ISBN</dt>
-    <dd>' . $arrayAnnuncio['isbn'] . '</dd>
-</div>';
+    $book_isbn = '<dt>ISBN</dt>
+    <dd>' . $arrayAnnuncio['isbn'] . '</dd>';
 }
 
 // Suddivido titolo, autore e materia in singole parole da usare come keywords e le unisco in un array
