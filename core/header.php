@@ -16,6 +16,7 @@ function printHeader($pagina = 'default', $login)
         case "cerca":
             $header = str_replace('<li><a href="./index.php">Cerca</a></li>', "<li>Cerca</li>", $header);
             $header = str_replace('<a href="./index.php" id="logo"><abbr lang="en" title="Books Tutoring Notes">BTN</abbr></a>', '<abbr lang="en" title="Books Tutoring Notes">BTN</abbr>', $header);
+            $header = str_replace('<breadcrumb />', '', $header);
             break;
         case "info":
             $header = str_replace('<li><a href="./info.php">Info</a></li>', "<li>Info</li>", $header);
