@@ -18,9 +18,9 @@ function listingsList($listings, $categoria)
                     } else {
                         $list .= '<img src="' . $book['mediapath'] . '" class="listing-img" alt="' . $book['descrizione'] . '" />';
                     }
-                    $list .= '<p class="listing-user">' . $book['username'] . '<p>';
-                    $list .= '<p class="listing-price">' . $book['prezzo'] . '€<p>';
-                    $list .= '<a href="listing.php?annuncio=' . $book['id'] . '">Vedi annuncio</a>';
+                    $list .= '<p class="listing-user">' . $book['username'] . '</p>';
+                    $list .= '<p class="listing-price">' . $book['prezzo'] . '€</p>';
+                    $list .= '<a role="button" href="listing.php?annuncio=' . $book['id'] . '">Vedi annuncio</a>';
                     $list .= '</li>';
                 }
                 break;

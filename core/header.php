@@ -38,56 +38,56 @@ function printHeader($pagina = 'default', $login)
 
 function printBreadcrumb($pagina, $altro = '')
 {
-    $breadcrumb = '<nav id="breadcrumb">';
+    $breadcrumb = '<nav id="breadcrumb" aria-label="breadcrumb">';
     $breadcrumb .= '<ol>';
 
     switch ($pagina) {
         case "info":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Info</li>';
+            $breadcrumb .= '<li aria-page="current">Info</li>';
             break;
         case "accedi":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Login</li>';
+            $breadcrumb .= '<li aria-page="current">Login</li>';
             break;
         case "registrati":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Registrati</li>';
+            $breadcrumb .= '<li aria-page="current">Registrati</li>';
             break;
         case "areariservata":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Area Riservata</li>';
+            $breadcrumb .= '<li aria-page="current">Area Riservata</li>';
             break;
         case "annuncio":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>' . $altro . '</li>';
+            $breadcrumb .= '<li aria-page="current">' . $altro . '</li>';
             break;
         case "new_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Nuovo annuncio ' . $altro . '</li>';
+            $breadcrumb .= '<li aria-page="current">Nuovo annuncio ' . $altro . '</li>';
             break;
         case "edit_listing":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Modifica annuncio ' . $altro . '</li>';
+            $breadcrumb .= '<li aria-page="current">Modifica annuncio ' . $altro . '</li>';
             break;
         case "edit_account":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
             $breadcrumb .= '<li><a href="./area_riservata.php" lang="en">Area Riservata</a></li>';
-            $breadcrumb .= '<li>Modifica dati account</li>';
+            $breadcrumb .= '<li aria-page="current">Modifica dati account</li>';
             break;
         case "404":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Pagina non trovata</li>';
+            $breadcrumb .= '<li aria-page="current">Pagina non trovata</li>';
             break;
         case "500":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Errore del server</li>';
+            $breadcrumb .= '<li aria-page="current">Errore del server</li>';
             break;
         case "risultati":
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';
-            $breadcrumb .= '<li>Ricerca "' . $altro . '"</li>';
+            $breadcrumb .= '<li aria-page="current">Ricerca "' . $altro . '"</li>';
             break;
         default:
             $breadcrumb .= '<li><a href="./index.php" lang="en">Home</a></li>';

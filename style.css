@@ -36,16 +36,12 @@
 html,
 body {
     width: 100%;
-
     display: flex;
     flex-direction: column;
-
     font-size: 100%;
     font-family: "Alexandria", sans-serif;
     line-height: 1.5em;
-
     margin: auto;
-
     min-height: 100vh;
 }
 
