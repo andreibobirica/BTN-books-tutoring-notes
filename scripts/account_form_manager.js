@@ -61,11 +61,11 @@ function confirmPassword(pass, confPass, error) {
  * @param - oldMsg Messaggio pre-errore da ripristinare
  */
 function checkPasswordFormat(password, error, oldMsg) {
-    const numero = /[0-9]/;
+    const numbers = /[0-9]/;
     const upperCaseLetter = /[A-Z]/;
     const specialCharacter = /[\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
 
-    if (!numero.test(password.value)) {
+    if (!numbers.test(password.value)) {
         writeErrorMessage(
             error,
             "La password deve contenere almeno un numero",
