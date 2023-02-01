@@ -248,6 +248,10 @@ footer p {
     margin-top: 1em;
 }
 
+#home #search-form label {
+    margin: unset;
+}
+
 #search-results #search-form {
     padding: 1em 0.75em;
     margin-bottom: 1em;
@@ -1215,7 +1219,7 @@ dd {
 
     #home h2,
     #home #search-form {
-        width: 45%;
+        width: 40%;
     }
 
     /* RISULTATI */
