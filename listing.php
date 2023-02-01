@@ -12,7 +12,7 @@ $header = printHeader("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['titolo']);
 // Prendo il percorso e inserisco l'immagine
 if ($arrayAnnuncio['tipo'] != "ripetizioni")
-    $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '">';
+    $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '" alt="">';
 else
     $listing_img = "";
 // Controllo il login e mostro le parti corrette
@@ -37,9 +37,9 @@ if ($auth->getIfLogin() && $request->verifySaveAnnuncioUser($_SESSION["loginAcco
 
 if ($auth->getIfLogin()) {
     if ($arrayAnnuncio['username'] == $_SESSION["loginAccount"]) {
-        $user_book = str_replace('<php-buttons />', $button_edit . $button_delete, $user_book);
+        $user_book = str_replace('<!--<php-buttons />-->', $button_edit . $button_delete, $user_book);
     } else {
-        $user_book = str_replace('<php-buttons />', $button_save . $user_email, $user_book);
+        $user_book = str_replace('<!--<php-buttons />-->', $button_save . $user_email, $user_book);
     }
 }
 $book_isbn = "";
