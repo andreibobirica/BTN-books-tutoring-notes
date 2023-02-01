@@ -20,11 +20,11 @@ class Sanitizer{
     }
 
     function validateName($name) : bool{
-        return (preg_match("/^[a-zA-Z-' ,.]*$/", $name) && !empty($name));
+        return (preg_match("/^[a-zA-Z-' ,.+]*$/", $name) && !empty($name));
     }  
 
     function validateNameNumber($name) : bool{
-        return (preg_match("/^[a-zA-Z0-9-' ,.]*$/", $name) && !empty($name));
+        return (preg_match("/^[a-zA-Z0-9-' ,.+]*$/", $name) && !empty($name));
     }
 
     function validateNameNumberMaxLength($name):bool{
