@@ -152,6 +152,11 @@ header nav a:visited,
     display: inline;
     padding: unset;
     margin-left: 0.5em;
+    color: white;
+}
+
+#breadcrumb li a {
+    color: white;
 }
 
 #breadcrumb li::before {
@@ -344,6 +349,10 @@ footer p {
     padding-bottom: unset;
     background-color: rgba(230, 230, 230, 0.85);
     flex-grow: 1;
+}
+
+#info h2 {
+    margin-bottom: 1em;
 }
 
 #info #description-image {
