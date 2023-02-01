@@ -1,78 +1,99 @@
-function createErrorMessage(message, errorClass){
-    let messageParagraph = document.createElement("p");
-    messageParagraph.innerText = message;
-    messageParagraph.setAttribute("class", errorClass);
-    return messageParagraph;
+/* Scrive il messaggio di errore.
+ * @param error: elemento in cui scrivere il messaggio di errore
+ * @param errorMessage: messaggio di errore da scrivere
+ * @param errorClass: classe da applicare al messaggio
+ */
+function writeErrorMessage(error, errorMessage, errorClass) {
+    error.innerHTML = errorMessage;
+    error.classList.remove("input-hint");
+    error.classList.add("error");
+    error.classList.add(errorClass);
 }
 
-// prende in input: l'id della label in cui deve apparire , il <p> con l'errore da mostrare , la classe del'errore in modo da controllare che non sia già presente
-function appendErrorMessage(labelId, errorMessage, errorClass){
-    const label = document.getElementById(labelId);
-    let errorParagraph = label.querySelector('.' + errorClass);
-
-    if(errorParagraph == null)
-        label.appendChild(errorMessage); 
+/* Rimuove il messaggio di errore.
+ * @param error: elemento da cui rimuovere il messaggio di errore
+ * @param errorClass: classe da rimuovere dall'elemento
+ * @param oldMsg: messaggio pre-errore da ripristinare
+ */
+function removeErrorMessage(error, errorClass, oldMsg = "") {
+    error.classList.remove(errorClass);
+    error.classList.remove("error");
+    error.classList.add("input-hint");
+    error.innerHTML = oldMsg;
 }
 
-function removeErrorMessage(labelId, errorClass){
-    const label = document.getElementById(labelId);
-    let errorParagraph = label.querySelector('.' + errorClass);   // chiamo querySelector perché  è l'unico che può essere chiamato su un elemento e non solo su document come getElementById
-    
-    if(errorParagraph != null)
-        errorParagraph.remove()
-}
-
-function checkLength(elementCheck,labelId, minLength){
+/* Controlla la lunghezza del campo.
+ * @param elementCheck - Elemento da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - minLength Lunghezza minima del campo
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkLength(elementCheck, error, minLength, oldMsg = "") {
     const fieldLength = elementCheck.value.trim().length;
-
-    if(fieldLength == 0){
-        appendErrorMessage(labelId, createErrorMessage("Questo campo non può essere lasciato vuoto", "emptyErrorMessage"), "emptyErrorMessage");
-    } 
-    else{
-        removeErrorMessage(labelId,"emptyErrorMessage");
+    // se la lunghezza è minore di minLength
+    if (minLength && fieldLength > 0 && fieldLength < minLength) {
+        writeErrorMessage(
+            error,
+            "Questo campo deve essere lungo almeno " + minLength + " caratteri",
+            "noLongEnough"
+        );
+        return false;
+    } else {
+        removeErrorMessage(error, "noLongEnough", oldMsg);
+        return true;
     }
-
 }
 
-function checkISBN(elementCheck,labelId){
-    const userCharacters = /[^0-9]+/;  
+/* Controlla il formato dell'ISBN.
+ * @param isbn - ISBN da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkISBN(isbn, error, oldMsg) {
+    const numbers = /[^0-9]+/;
 
-    if(userCharacters.test(elementCheck.value.trim()))
-        appendErrorMessage(labelId, createErrorMessage("L'ISBN può contenere solo numeri", "userFormatErrorMessage"), "userFormatErrorMessage");
-    else
-        removeErrorMessage(labelId,"userFormatErrorMessage");
-
-}
-    
-function addEventListener(){
-    const listingTitle = document.getElementById("new-listing-title");
-    const listingDescr = document.getElementById("new-listing-descr");
-    const listingPrice = document.getElementById("new-listing-price");
-    const listingSubject = document.getElementById("new-listing-subject");
-    const listingISBNEdit = document.getElementById("new-listing-isbn");
-    
-    //inserimento annuncio
-
-    listingTitle.addEventListener("blur", function(){
-        checkLength(listingTitle,"labelTitoloAnnuncio",2);
-    });
-
-    listingDescr.addEventListener("blur", function(){
-        checkLength(listingDescr,"labelDescrAnnuncio",2);
-    });
-
-    listingPrice.addEventListener("blur", function(){
-        checkLength(listingPrice,"labelPriceAnnuncio",2);
-    });
-
-    listingSubject.addEventListener("blur", function(){
-        checkLength(listingSubject,"labeSubjectAnnuncio",2);
-    });
-
-    // controllo per l'ISBN
-    listingISBNEdit.addEventListener("blur", function(){
-        checkISBN(listingISBNEdit, "labelISBN");
-    });
+    if (numbers.test(isbn.value.trim()))
+        writeErrorMessage(
+            error,
+            "L'ISBN può contenere solo numeri",
+            "userFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "userFormatErrorMessage", oldMsg);
 }
 
-addEventListener();
+/* Controlla il formato del prezzo.
+ * @param prezzo - Prezzo da controllare
+ * @param error - Elemento in cui scrivere il messaggio di errore
+ * @param - oldMsg Messaggio pre-errore da ripristinare
+ */
+function checkPrice(prezzo, error, oldMsg) {
+    console.log("blur prezzo");
+
+    const decimal = /^\d+(.\d{1,2})?$/;
+
+    if (!decimal.test(prezzo.value.trim()))
+        writeErrorMessage(
+            error,
+            "Il prezzo può contenere solo con massimo due cifre decimali",
+            "userFormatErrorMessage"
+        );
+    else removeErrorMessage(error, "userFormatErrorMessage", oldMsg);
+}
+
+const listingPrice = document.getElementById("new-listing-price");
+const errPrezzo = document.getElementById("prezzo-errore");
+const oldPrezzo = errPrezzo.innerHTML;
+
+const listingISBN = document.getElementById("new-listing-isbn");
+const errISBN = document.getElementById("isbn-errore");
+const oldISBN = errISBN.innerHTML;
+
+listingPrice.addEventListener("blur", function () {
+    checkPrice(listingPrice, errPrezzo, oldPrezzo);
+});
+
+listingISBN.addEventListener("blur", function () {
+    if (checkLength(listingISBN, errISBN, 10, oldISBN)) {
+        checkISBN(listingISBN, errISBN, oldISBN);
+    }
+});
