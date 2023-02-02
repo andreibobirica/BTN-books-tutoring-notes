@@ -13,7 +13,6 @@ if (!$auth->getIfLogin()) {
 
 //Script Inserimento Annuncio
 if (isset($_POST["new_listing"])) {
-    print_r($_POST);
     //Verifico Input e sanitize
     $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
     $_POST['descrizione'] = $sanit->sanitizeString($_POST['descrizione']);
@@ -75,7 +74,7 @@ if (isset($_POST["new_listing"])) {
         exit();
     } else {
         $error = $result['upload']['errore'];
-        header("location:./edit_listing.php?categoria=$_POST[categoria]&errore=$error");
+        header("location:./new_listing.php?categoria=$_POST[categoria]&errore=$error");
         exit();
     }
 

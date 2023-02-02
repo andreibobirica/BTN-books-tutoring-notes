@@ -23,7 +23,7 @@ if (isset($_POST["edit_listing"])) {
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
-    if($_POST['categoria'] == "libri"){
+    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
         $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
         $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
         $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
@@ -34,7 +34,7 @@ if (isset($_POST["edit_listing"])) {
     if(!$sanit->validateDescription($_POST['descrizione']))$error.="Formato Descrizione non corretto - ";
     if(!$sanit->validateNumber($_POST['prezzo']))$error.="Formato Prezzo non corretto - ";
     if(!$sanit->validateNameNumberMaxLength($_POST['materia']))$error.="Formato materia non corretto - ";
-    if($_POST['categoria'] == "libri"){
+    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
         if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato autore non corretto - ";
         if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato edizione non corretto - ";
         if(!$sanit->validateISBN($_POST['isbn']))$error.="Formato ISBN non corretto - ";
@@ -45,7 +45,7 @@ if (isset($_POST["edit_listing"])) {
     $sanit->validateNumber($_POST['prezzo']) && 
     $sanit->validateNameNumberMaxLength($_POST['materia']);
 
-    if($_POST['categoria'] == "libri"){
+    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
         $verifica = $verifica &&
         $sanit->validateNameMaxLength($_POST['autore']) &&
         $sanit->validateNameNumberMaxLength($_POST['edizione']) &&

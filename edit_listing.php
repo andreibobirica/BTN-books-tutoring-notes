@@ -7,7 +7,7 @@ $edit_listing = boilerplate($edit_listing_content);
 
 // Prendo il contenuto corretto della navbar
 $header = printHeader("modificaAnnuncio", $auth->getIfLogin());
-$breadcrumb = printBreadcrumb("edit_listing", $_GET['categoria']);
+$breadcrumb = printBreadcrumb("edit_listing", isset($_POST['categoria']) ? $_GET['categoria'] : "libri");
 
 $footer = file_get_contents("./contents/footer.html");
 // Prendo il contenuto corretto della navbar
@@ -44,7 +44,7 @@ $header = str_replace('<breadcrumb />', $breadcrumb, $header);
 $edit_listing = str_replace('<php-header />', $header, $edit_listing);
 
 //categoria
-$edit_listing = str_replace('php-type', $_GET['categoria'], $edit_listing);
+$edit_listing = str_replace('php-type', isset($_POST['categoria']) ? $_GET['categoria'] : "libri", $edit_listing);
 //aggiunta id al form
 $edit_listing = str_replace('php-annuncio-id', " value='$arrayAnnuncio[id]' ", $edit_listing);
 
@@ -67,21 +67,21 @@ $edit_listing = str_replace('php-listing-edition', $arrayAnnuncio['edizione'], $
 $edit_listing = str_replace('php-listing-ISBN', $arrayAnnuncio['isbn'], $edit_listing);
 $edit_listing = str_replace('php-button-value', $_GET["modifica"], $edit_listing);
 // MOSTRARE O NASCONDERE IN BASE AL TIPO DI ANNUNCIO
-if ($_GET["categoria"] == "libri") {
+if (isset($_POST['categoria']) && $_GET["categoria"] == "libri") {
     $edit_listing = str_replace('<!-- <php-author /> -->', $edit_listing_author, $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', $edit_listing_edition, $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', $edit_listing_isbn, $edit_listing);
     $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_libri, $edit_listing);
     $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
-if ($_GET["categoria"] == "appunti") {
+if (isset($_POST['categoria']) && $_GET["categoria"] == "appunti") {
     $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-categoria /> -->', $edit_listing_cat_appunti, $edit_listing);
     $edit_listing = str_replace('<!-- <php-file /> -->', $edit_listing_file, $edit_listing);
 }
-if ($_GET["categoria"] == "ripetizioni") {
+if (isset($_POST['categoria']) && $_GET["categoria"] == "ripetizioni") {
     $edit_listing = str_replace('<!-- <php-author /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-edition /> -->', '', $edit_listing);
     $edit_listing = str_replace('<!-- <php-isbn /> -->', '', $edit_listing);

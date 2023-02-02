@@ -23,9 +23,13 @@ if (isset($_GET["annuncio"]) && !empty($_GET["annuncio"])) {
             $_GET["insertsave"] = $sanit->sanitizeString($_GET["insertsave"]);
             $request->insertSavedAnnuncio($_GET["annuncio"], $_SESSION["loginAccount"]);
         }
-    } else {
+    }else {
         header("Location: ./404.php");
+        exit();
     }
+}else {
+    header("Location: ./404.php");
+    exit();
 }
 
 

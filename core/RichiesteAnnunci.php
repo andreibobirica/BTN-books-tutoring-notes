@@ -180,7 +180,6 @@ class RichiesteAnnunci
                     $sqlTipo = "INSERT INTO ripetizioni (id) VALUES ('$last_id')";
                     break;
             }
-            print($sqlTipo);
             if ($this->auth->db->query($sqlTipo) === TRUE)
                 return array("lastid" => $last_id, "upload" => $upload);
         }
@@ -267,7 +266,7 @@ class RichiesteAnnunci
             return array("esito" => true, "errore" => "Nessun immagine inserita", "path" => "");
         }
         if (empty($file['tmp_name'])) {
-            return array("esito" => false, "errore" => "Errore nel caricamento dell'immagine, provare con una di minori dimensioni.", "path" => "");
+            return array("esito" => false, "errore" => "Errore nel caricamento dell'immagine, provare con una di minori dimensioni. Max 2 MByte", "path" => "");
         }
         $target_dir = "uploads/";
         $target_file_origin = $target_dir . basename($file["name"]);
@@ -287,8 +286,8 @@ class RichiesteAnnunci
             return $uploadOk;
         }
 
-        if ($file["size"] > 10000000) {
-            $uploadOk["errore"] = "Immagine troppo grande, max 10 Mbyte";
+        if ($file["size"] > 2000000) {
+            $uploadOk["errore"] = "Immagine troppo grande, max 2 Mbyte";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
