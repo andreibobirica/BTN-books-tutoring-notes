@@ -70,14 +70,14 @@ footer {
     display: none;
 }
 
-#search-results .listings-list {
+.listings-list {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1.5em;
     padding: unset;
 }
 
-#search-results .listing {
+.listing {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -89,27 +89,27 @@ footer {
     align-items: start;
 }
 
-#search-results .listing-title {
+.listing-title {
     font-weight: bold;
 }
 
-#search-results .listing * {
+.listing * {
     margin: 5px;
 }
 
-#search-results .listing-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+.listing-img {
+    width: 250px;
+    height: 300px;
+    object-fit: contain;
     align-self: center;
 }
 
-#search-results .listing-price,
-#search-results .listing-title {
+.listing-price,
+.listing-title {
     font-size: 15pt;
 }
 
-#search-results .listing a {
+.listing a {
     display: none;
 }
 
