@@ -57,6 +57,25 @@ button {
     font-size: 1em;
 }
 
+.backend-error {
+    padding: 1em;
+    background-color: hsl(6, 100%, 80%);
+    border-radius: 10px;
+}
+
+dt,
+dd {
+    display: inline;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    text-align: end;
+}
+
 /* HEADER */
 
 header a {
@@ -141,7 +160,7 @@ header nav a:visited,
 }
 
 #breadcrumb {
-    color:white;
+    color: white;
 }
 
 #breadcrumb {
@@ -524,26 +543,6 @@ footer p {
     margin-bottom: 1em;
 }
 
-dt,
-dd {
-    display: inline;
-}
-
-dt {
-    font-weight: bold;
-}
-
-dd {
-    text-align: end;
-}
-
-.definition {
-    display: flex;
-    justify-content: space-between;
-    line-height: 1.75em;
-    flex-wrap: wrap;
-}
-
 #listing-content #listing-buttons {
     display: flex;
     justify-content: space-between;
@@ -561,7 +560,7 @@ dd {
     color: white;
     font-size: 1.2em;
     text-transform: uppercase;
-    margin-bottom:1em;
+    margin-bottom: 1em;
 }
 
 /* NUOVO ANNUNCIO */
@@ -661,6 +660,11 @@ dd {
     color: var(--accent-red);
 }
 
+#registration .backend-error,
+#login .backend-error {
+    margin-top: 1.25em;
+}
+
 #registration-perks {
     display: none;
 }
@@ -685,10 +689,10 @@ dd {
     margin-bottom: 1.5em;
 }
 
-#area-riservata #user-info, #area-riservata #links {
+#area-riservata #user-info,
+#area-riservata #links {
     width: fit-content;
 }
-
 
 #area-riservata .no-listings {
     margin-top: 1em;
@@ -1019,18 +1023,14 @@ dd {
     }
 
     #registration .multiple-fields-form {
-        max-width: 85%;
-    }
-
-    #registration main {
-        /*display: flex;
-        justify-content: center;
-        align-items: flex-start;*/
-    }
-
-    #registration .multiple-fields-form {
         width: 50%;
         float: left;
+    }
+
+    #registration .backend-error {
+        width: 45%;
+        float: right;
+        margin-bottom: 1.5em;
     }
 
     #registration-perks {
@@ -1158,7 +1158,8 @@ dd {
         max-width: 40%;
     }
 
-    #registration #registration-perks {
+    #registration #registration-perks,
+    #registration .backend-error {
         width: 55%;
     }
 

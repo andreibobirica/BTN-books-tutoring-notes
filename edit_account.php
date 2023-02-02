@@ -37,7 +37,7 @@ if ($auth->getIfLogin()) {
     $edit_account = str_replace('php-old-email', $user_email, $edit_account);
     
     if(isset($_GET['errore']) && !empty($_GET['errore']))
-        $edit_account = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $edit_account);
+        $edit_account = str_replace('<php-errore />', "<p class='backend-error'>$_GET[errore]</p>", $edit_account);
     else
         $registration = str_replace('<php-errore />', "", $edit_account);
     }

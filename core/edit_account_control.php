@@ -1,6 +1,6 @@
 <?php
 //Start Session
-if(session_status() == PHP_SESSION_NONE){
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -28,30 +28,36 @@ if ($auth->getIfLogin()) {
         $nome = $san->sanitizeString($_POST["nome"]);
         $cognome = $san->sanitizeString($_POST["cognome"]);
         $dataNascita = $san->sanitizeString($_POST["dataNascita"]);
-        if (!$san->validateEmail($email))$retResponse['error'].="Formato email non corretto - ";
-        if (!$san->validateNameMaxLength($nome))$retResponse['error'].="Formato nome non corretto - ";
-        if (!$san->validateNameMaxLength($cognome))$retResponse['error'].="Formato cognome non corretto - ";
-        if (!$san->validateUsername($username))$retResponse['error'].="Formato username non corretto - ";
-        if (!$san->validateDate($dataNascita))$retResponse['error'].="Data immessa non corretta - ";
-        $verifica = $san->validateEmail($email) && $san->validateNameMaxLength($nome) 
-        && $san->validateUsername($username) && $san->validateNameMaxLength($cognome) && $san->validateDate($dataNascita);
-        
-        if(!empty($password) || !empty($confPassword)){
-            if (!$san->validatePassword($password))$retResponse['error'].=" Formato password non corretto - ";
-            if (!$san->validatePassword($confPassword))$retResponse['error'].="Formato password conferma non corretto - ";
+        if (!$san->validateEmail($email))
+            $retResponse['error'] .= "Formato email non corretto - ";
+        if (!$san->validateNameMaxLength($nome))
+            $retResponse['error'] .= "Formato nome non corretto - ";
+        if (!$san->validateNameMaxLength($cognome))
+            $retResponse['error'] .= "Formato cognome non corretto - ";
+        if (!$san->validateUsername($username))
+            $retResponse['error'] .= "Formato username non corretto - ";
+        if (!$san->validateDate($dataNascita))
+            $retResponse['error'] .= "Data immessa non corretta - ";
+        $verifica = $san->validateEmail($email) && $san->validateNameMaxLength($nome)
+            && $san->validateUsername($username) && $san->validateNameMaxLength($cognome) && $san->validateDate($dataNascita);
+
+        if (!empty($password) || !empty($confPassword)) {
+            if (!$san->validatePassword($password))
+                $retResponse['error'] .= "Formato password non corretto\n";
+            if (!$san->validatePassword($confPassword))
+                $retResponse['error'] .= "Formato password conferma non corretto\n";
             $verifica = $verifica && $san->validatePassword($password) && $san->validatePassword($confPassword);
         }
         //Procedura di registrazione
-        if ($verifica){
+        if ($verifica) {
             $retResponse = $auth->edit_account($oldUsername, $username, $email, $nome, $cognome, $dataNascita, $password, $confPassword);
-        }
-        else{
+        } else {
             header("Location: ./edit_account.php?errore='$retResponse[error]'");
             exit();
         }
 
         if ($retResponse["return"] === TRUE) {
-            header("Location: ./area_riservata.php");    
+            header("Location: ./area_riservata.php");
         } else {
             header("Location: ./edit_account.php?errore='$retResponse[error]'");
         }

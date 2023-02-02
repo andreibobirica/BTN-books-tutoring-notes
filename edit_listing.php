@@ -91,7 +91,7 @@ if ($_GET["categoria"] == "ripetizioni") {
 
 //gestione errori
 if(isset($_GET['errore']) && !empty($_GET['errore']))
-    $edit_listing = str_replace('<php-errore />', "<p class='emptyErrorMessage'>$_GET[errore]</p>", $edit_listing);
+    $edit_listing = str_replace('<php-errore />', "<p class='backend-error'>$_GET[errore]</p>", $edit_listing);
 else
     $edit_listing = str_replace('<php-errore />', "", $edit_listing);
 

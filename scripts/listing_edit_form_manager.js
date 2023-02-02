@@ -74,7 +74,7 @@ function checkPrice(prezzo, error, oldMsg) {
     if (!decimal.test(prezzo.value.trim()))
         writeErrorMessage(
             error,
-            "Il prezzo può contenere solo con massimo due cifre decimali",
+            "Il prezzo può essere solo un numero con massimo due cifre decimali",
             "userFormatErrorMessage"
         );
     else removeErrorMessage(error, "userFormatErrorMessage", oldMsg);

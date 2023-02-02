@@ -83,27 +83,25 @@ class RichiesteAnnunci
         return $this->auth->db->query("DELETE FROM annunci WHERE id = '$annuncio'") === TRUE;
     }
 
-     //Elimina Saved annuncio of user
-     function deleteSavedAnnuncio($annuncio,$username)
-     {
+    //Elimina Saved annuncio of user
+    function deleteSavedAnnuncio($annuncio, $username)
+    {
         return $this->auth->db->query("DELETE FROM salvati WHERE annuncio = '$annuncio' AND utente = '$username'") === TRUE;
-     }
+    }
 
-     //Insert Saved annuncio of user
-     function insertSavedAnnuncio($annuncio,$username)
-     {
+    //Insert Saved annuncio of user
+    function insertSavedAnnuncio($annuncio, $username)
+    {
         return $this->auth->db->query("INSERT INTO salvati (annuncio, utente) VALUES ('$annuncio', '$username');") === TRUE;
-     }
+    }
 
-     //Ritorna un bool con l'esito della verifica
+    //Ritorna un bool con l'esito della verifica
     //se l'annuncio appartiene al utente $user true, false il contrario
     function verifySaveAnnuncioUser($username, $annuncio): bool
     {
         $result = $this->auth->db->query("SELECT annuncio FROM salvati WHERE utente='$username' and annuncio='$annuncio'");
         return ($result->num_rows == 1);
     }
-
-
 
     //getAnnuncio
     function getAnnuncio($annuncio)
@@ -114,7 +112,7 @@ class RichiesteAnnunci
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
             //	id	titolo	descrizione	prezzo	username	mediapath	materia
-            $arrayRet = array("id" => $row['id'], "tipo" => "", "titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "", "email"=>"");
+            $arrayRet = array("id" => $row['id'], "tipo" => "", "titolo" => $row['titolo'], "descrizione" => $row['descrizione'], "prezzo" => $row['prezzo'], "username" => $row["username"], "mediapath" => "", "materia" => $row['materia'], "autore" => "", "edizione" => "", "isbn" => "", "email" => "");
             $idAnnuncio = $row['id'];
 
             //Libri
@@ -163,7 +161,7 @@ class RichiesteAnnunci
     {
         $upload = array("lastid" => 0, "upload" => array("esito" => false, "errore" => "Errore Generico", "path" => ""));
         if ($annuncio['tipo'] == "libri" || $annuncio['tipo'] == "appunti") {
-            $upload = $this->uploadFile($annuncio['mediapath'],$annuncio['username']);
+            $upload = $this->uploadFile($annuncio['mediapath'], $annuncio['username']);
             if (!$upload["esito"])
                 return array("lastid" => 0, "upload" => $upload);
         }
@@ -206,7 +204,7 @@ class RichiesteAnnunci
             $queryMediaPath = "";
             if ($tipoAnnuncio == "libri" || $tipoAnnuncio == "appunti") {
                 if (!empty($annuncio['mediapath']['name'])) {
-                    $upload = $this->uploadFile($annuncio['mediapath'],$annuncio['username']);
+                    $upload = $this->uploadFile($annuncio['mediapath'], $annuncio['username']);
                     if (!$upload["esito"])
                         return array("lastid" => 0, "upload" => $upload);
                     else {
@@ -263,11 +261,14 @@ class RichiesteAnnunci
     //verifica che il formato del file sia di tipo immagine
     //prova a fare l'upload
     //ritorna esito ed eventualmente un messaggio di errore attraverso un array()
-    function uploadFile($file,$username)
+    function uploadFile($file, $username)
     {
-        if (empty($file['name']))
-            return array("esito" => true, "errore" => "Nessun File Inserito", "path" => "");
-        ;
+        if (empty($file['name'])) {
+            return array("esito" => true, "errore" => "Nessun immagine inserita", "path" => "");
+        }
+        if (empty($file['tmp_name'])) {
+            return array("esito" => false, "errore" => "Errore nel caricamento dell'immagine, provare con una di minori dimensioni.", "path" => "");
+        }
         $target_dir = "uploads/";
         $target_file_origin = $target_dir . basename($file["name"]);
         $imageFileType = strtolower(pathinfo($target_file_origin, PATHINFO_EXTENSION));
