@@ -19,6 +19,12 @@ function removeErrorMessage(error, errorClass, oldMsg = "") {
     error.classList.remove(errorClass);
 }
 
+function removeError(error, oldMsg = "") {
+    error.classList.remove("error");
+    error.classList.add("input-hint");
+    error.innerHTML = oldMsg;
+}
+
 /* Controlla la lunghezza del campo.
  * @param elementCheck - Elemento da controllare
  * @param error - Elemento in cui scrivere il messaggio di errore
@@ -47,9 +53,12 @@ function checkLength(elementCheck, error, minLength, oldMsg = "") {
  * @param error - Elemento in cui scrivere il messaggio di errore
  */
 function confirmPassword(pass, confPass, error) {
-    if (pass.value !== confPass.value)
+    if (pass.value !== confPass.value) {
         writeErrorMessage(error, "La password non coincide", "confPassFail");
-    else removeErrorMessage(error, "confPassFail");
+    } else {
+        removeErrorMessage(error, "confPassFail");
+        removeError(error);
+    }
 }
 
 /* Controlla che la password contenga un numero, una lettera maiuscola e un carattere speciale
@@ -99,9 +108,7 @@ function checkPasswordFormat(password, error, oldMsg) {
     }
 
     if (number && upper && special) {
-        error.classList.remove("error");
-        error.classList.add("input-hint");
-        error.innerHTML = oldMsg;
+        removeError(error);
     }
 }
 
@@ -113,14 +120,17 @@ function checkEmail(email, error) {
     const emailRegex =
         /^[a-z0-9]+[\w!#$%&'*+-/=?^_`{|}~]*@[\w|\d|!#$%&'*+-/=?^_`{|}~]*\.\w{2,3}$/;
 
-    if (!emailRegex.test(email.value))
+    if (!emailRegex.test(email.value)) {
         // Niente trim perché l'input di tipo email in HTML lo fa di default
         writeErrorMessage(
             error,
             "Inserire un email valida",
             "emailFormatErrorMessage"
         );
-    else removeErrorMessage(error, "emailFormatErrorMessage");
+    } else {
+        removeErrorMessage(error, "emailFormatErrorMessage");
+        removeError(error);
+    }
 }
 
 /* Controlla il formato del nome.
@@ -131,13 +141,16 @@ function checkEmail(email, error) {
 function checkName(nome, error, oldMsg) {
     const nameCharacters = /[^A-Za-z ]+/;
 
-    if (nameCharacters.test(nome.value.trim()))
+    if (nameCharacters.test(nome.value.trim())) {
         writeErrorMessage(
             error,
             "Inserire un nome valido",
             "nameFormatErrorMessage"
         );
-    else removeErrorMessage(error, "nameFormatErrorMessage", oldMsg);
+    } else {
+        removeErrorMessage(error, "nameFormatErrorMessage", oldMsg);
+        removeError(error, oldMsg);
+    }
 }
 
 /* Controlla il formato del cognome.
@@ -148,13 +161,16 @@ function checkName(nome, error, oldMsg) {
 function checkSurname(cognome, error, oldMsg) {
     const nameCharacters = /[^A-Za-z ]+/;
 
-    if (nameCharacters.test(cognome.value.trim()))
+    if (nameCharacters.test(cognome.value.trim())) {
         writeErrorMessage(
             error,
             "Inserire un cognome valido",
             "surnameFormatErrorMessage"
         );
-    else removeErrorMessage(error, "surnameFormatErrorMessage", oldMsg);
+    } else {
+        removeErrorMessage(error, "surnameFormatErrorMessage", oldMsg);
+        removeError(error, oldMsg);
+    }
 }
 
 /* Controlla il formato dello username.
@@ -165,13 +181,16 @@ function checkSurname(cognome, error, oldMsg) {
 function checkUsername(username, error, oldMsg) {
     const userCharacters = /[^A-Za-z0-9_-]+/;
 
-    if (userCharacters.test(username.value.trim()))
+    if (userCharacters.test(username.value.trim())) {
         writeErrorMessage(
             error,
             "Inserire un username valido (l'username può contenere solo numeri,lettere,-,_)",
             "userFormatErrorMessage"
         );
-    else removeErrorMessage(error, "userFormatErrorMessage", oldMsg);
+    } else {
+        removeErrorMessage(error, "userFormatErrorMessage", oldMsg);
+        removeError(error, oldMsg);
+    }
 }
 
 /* Controlla il formato della data di nascita.
@@ -182,13 +201,20 @@ function checkUsername(username, error, oldMsg) {
 function checkDate(data, error) {
     const date = new Date(data.value);
 
-    if (date.getFullYear() > 2023 || date.getFullYear() <= 1930)
+    if (
+        date.getFullYear() > 2023 ||
+        date.getFullYear() <= 1930 ||
+        isNaN(date)
+    ) {
         writeErrorMessage(
             error,
             "Inserire una data valida",
             "userDateErrorMessage"
         );
-    else removeErrorMessage(error, "userDateErrorMessage");
+    } else {
+        removeErrorMessage(error, "userDateErrorMessage");
+        removeError(error);
+    }
 }
 
 const nome = document.getElementById("inputNome");
