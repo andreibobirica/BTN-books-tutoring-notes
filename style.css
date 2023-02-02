@@ -570,6 +570,12 @@ footer p {
     align-items: center;
 }
 
+#new-listing .backend-error,
+#edit-listing .backend-error,
+#edit-account .backend-error {
+    margin-bottom: 1em;
+}
+
 #new-listing main,
 #edit-listing main,
 #edit-account main {
