@@ -11,12 +11,14 @@ $footer = file_get_contents("./contents/footer.html");
 $header = printHeader("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['titolo']);
 // Prendo il percorso e inserisco l'immagine
-if ($arrayAnnuncio['tipo'] != "ripetizioni")
+if ($arrayAnnuncio['tipo'] != "ripetizioni") {
     $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '" alt="">';
-else
+    $listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '&euro;</p>';
+} else {
     $listing_img = "";
+    $listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '&euro;/ora</p>';
+}
 // Controllo il login e mostro le parti corrette
-$listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '€</p>';
 $listing_title = $arrayAnnuncio['titolo'];
 $listing_user = $arrayAnnuncio['username'];
 $listing_subject = '<dd>' . $arrayAnnuncio['materia'] . '</dd>';
