@@ -69,7 +69,7 @@ class Sanitizer
     {
         $ret = preg_match("/[0-9]+/", $password) &&
             preg_match("/[A-Z]+/", $password) &&
-            preg_match('/[\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password)
+            preg_match('/[\\#\\@\\*-\\+\\=\\.,\\?\\^!\\/&%\\$£;°ç\\[\\]\\(\\)\\{\\}<>_\\\\!]+/', $password)
             && strlen($password) <= 40
             && !empty($password);
         return $ret;
