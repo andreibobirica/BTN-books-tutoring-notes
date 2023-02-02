@@ -43,7 +43,7 @@ class Sanitizer
 
     function validateNumber($number): bool
     {
-        return preg_match('/^([0-9]*)$/', $number) && !empty($number);
+        return preg_match('/^([0-9]*.*[0-9]*)$/', $number) && !empty($number);
     }
     function validateDescription($name)
     {

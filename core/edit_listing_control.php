@@ -23,50 +23,57 @@ if (isset($_POST["edit_listing"])) {
     $_POST['prezzo'] = $sanit->sanitizeString($_POST['prezzo']);
     $_POST['materia'] = $sanit->sanitizeString($_POST['materia']);
     $_POST['autore'] = $sanit->sanitizeString($_POST['autore']);
-    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
+    if (isset($_POST['categoria']) && $_POST['categoria'] == "libri") {
         $_POST['titolo'] = $sanit->sanitizeString($_POST['titolo']);
         $_POST['edizione'] = $sanit->sanitizeString($_POST['edizione']);
         $_POST['isbn'] = $sanit->sanitizeString($_POST['isbn']);
     }
-    
-    $error="";
-    if(!$sanit->validateTitle($_POST['titolo']))$error.="Formato Titolo non corretto - ";
-    if(!$sanit->validateDescription($_POST['descrizione']))$error.="Formato Descrizione non corretto - ";
-    if(!$sanit->validateNumber($_POST['prezzo']))$error.="Formato Prezzo non corretto - ";
-    if(!$sanit->validateNameNumberMaxLength($_POST['materia']))$error.="Formato materia non corretto - ";
-    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
-        if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato autore non corretto - ";
-        if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato edizione non corretto - ";
-        if(!$sanit->validateISBN($_POST['isbn']))$error.="Formato ISBN non corretto - ";
-    }
-    $verifica = 
-    $sanit->validateTitle($_POST['titolo']) &&
-    $sanit->validateDescription($_POST['descrizione']) &&
-    $sanit->validateNumber($_POST['prezzo']) && 
-    $sanit->validateNameNumberMaxLength($_POST['materia']);
 
-    if(isset($_POST['categoria'])&&$_POST['categoria'] == "libri"){
+    $error = "";
+    if (!$sanit->validateTitle($_POST['titolo']))
+        $error .= "Formato Titolo non corretto - ";
+    if (!$sanit->validateDescription($_POST['descrizione']))
+        $error .= "Formato Descrizione non corretto - ";
+    if (!$sanit->validateNumber($_POST['prezzo']))
+        $error .= "Formato Prezzo non corretto - ";
+    if (!$sanit->validateNameNumberMaxLength($_POST['materia']))
+        $error .= "Formato materia non corretto - ";
+    if (isset($_POST['categoria']) && $_POST['categoria'] == "libri") {
+        if (!$sanit->validateNameMaxLength($_POST['autore']))
+            $error .= "Formato autore non corretto - ";
+        if (!$sanit->validateNameNumberMaxLength($_POST['edizione']))
+            $error .= "Formato edizione non corretto - ";
+        if (!$sanit->validateISBN($_POST['isbn']))
+            $error .= "Formato ISBN non corretto - ";
+    }
+    $verifica =
+        $sanit->validateTitle($_POST['titolo']) &&
+        $sanit->validateDescription($_POST['descrizione']) &&
+        $sanit->validateNumber($_POST['prezzo']) &&
+        $sanit->validateNameNumberMaxLength($_POST['materia']);
+
+    if (isset($_POST['categoria']) && $_POST['categoria'] == "libri") {
         $verifica = $verifica &&
-        $sanit->validateNameMaxLength($_POST['autore']) &&
-        $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
-        $sanit->validateISBN($_POST['isbn']);
+            $sanit->validateNameMaxLength($_POST['autore']) &&
+            $sanit->validateNameNumberMaxLength($_POST['edizione']) &&
+            $sanit->validateISBN($_POST['isbn']);
     }
 
     //Mando i dati da modificare del annuncio alla funzione edit_listing con una struttura dati array
-    if($verifica){
+    if ($verifica) {
         $result = $request->edit_listing(
             array("id" => $_POST["edit_listing"], "titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
         );
-    }else{
+    } else {
         header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error");
         exit();
     }
     //Se nei risultati il campo lastid è valorizzato !=0 la modifica è avvenuta con successo
-    if ($result["lastid"] != 0){
+    if ($result["lastid"] != 0) {
         header("location:./listing.php?annuncio=$_POST[edit_listing]");
         exit();
-    }else{
-        $error=$result['upload']['errore'];
+    } else {
+        $error = $result['upload']['errore'];
         header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error");
         exit();
     }

@@ -6,7 +6,10 @@
             name="description"
             content="Inserisci un nuovo annuncio su BTN e lascia che gli interessati ti contattino facilmente."
         />
-        <meta name="keywords" content="BTN, nuovo, annuncio, libro, appunti, ripetizioni, vendi, inserisci" />
+        <meta
+            name="keywords"
+            content="BTN, nuovo, annuncio, libro, appunti, ripetizioni, vendi, inserisci"
+        />
         <title>Nuovo annuncio - BTN</title>
         <script src="./scripts/listing_insert_form_manager.js" async></script>
     </head>
@@ -46,13 +49,17 @@
                     id="new-listing-descr"
                     required
                 />
-                <p id="descr-errore" class="input-hint">Descrivi il tuo annuncio specificando tutti i dettagli utili.</p>
+                <p id="descr-errore" class="input-hint">
+                    Descrivi il tuo annuncio specificando tutti i dettagli
+                    utili.
+                </p>
 
                 <label id="labelPriceAnnuncio" for="new-listing-price"
                     >Prezzo</label
                 >
                 <input
-                    type="text"
+                    type="number"
+                    step="0.01"
                     placeholder="Inserisci prezzo"
                     maxlength="6"
                     name="prezzo"
@@ -72,7 +79,9 @@
                     id="new-listing-subject"
                     required
                 />
-                <p id="materia-errore" class="input-hint">Specifica una o più materie di riferimento.</p>
+                <p id="materia-errore" class="input-hint">
+                    Specifica una o più materie di riferimento.
+                </p>
 
                 <!-- <php-categoria /> -->
 

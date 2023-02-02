@@ -20,7 +20,9 @@
                 method="POST"
                 enctype="multipart/form-data"
             >
-                <label id="labelTitoloAnnuncio" for="edit-listing-title">Modifica titolo</label>
+                <label id="labelTitoloAnnuncio" for="edit-listing-title"
+                    >Modifica titolo</label
+                >
                 <input
                     type="text"
                     placeholder="Vecchio titolo: php-old-title"
@@ -32,7 +34,9 @@
                 />
                 <p id="titolo-errore" class="input-hint"></p>
 
-                <label id="labelDescrAnnuncio" for="edit-listing-descr">Modifica descrizione</label>
+                <label id="labelDescrAnnuncio" for="edit-listing-descr"
+                    >Modifica descrizione</label
+                >
                 <input
                     type="text"
                     placeholder="Vecchia descrizione: php-old-descr"
@@ -42,11 +46,17 @@
                     value="php-listing-descr"
                     required
                 />
-                <p id="descr-errore" class="input-hint">Descrivi il tuo annuncio specificando tutti i dettagli utili.</p>
+                <p id="descr-errore" class="input-hint">
+                    Descrivi il tuo annuncio specificando tutti i dettagli
+                    utili.
+                </p>
 
-                <label id="labelPriceAnnuncio" for="edit-listing-price">Modifica prezzo</label>
+                <label id="labelPriceAnnuncio" for="edit-listing-price"
+                    >Modifica prezzo</label
+                >
                 <input
-                    type="text"
+                    type="number"
+                    step="0.01"
                     placeholder="Vecchio prezzo: php-old-price"
                     maxlength="6"
                     name="prezzo"
@@ -56,7 +66,9 @@
                 />
                 <p id="prezzo-errore" class="input-hint">Prezzo in euro.</p>
 
-                <label id="labelSubjectAnnuncio" for="edit-listing-subject">Modifica materia</label>
+                <label id="labelSubjectAnnuncio" for="edit-listing-subject"
+                    >Modifica materia</label
+                >
                 <input
                     type="text"
                     placeholder="Vecchia materia: php-old-subject"
@@ -66,7 +78,9 @@
                     value="php-listing-subject"
                     required
                 />
-                <p id="materia-errore" class="input-hint">Specifica una o più materie di riferimento.</p>
+                <p id="materia-errore" class="input-hint">
+                    Specifica una o più materie di riferimento.
+                </p>
 
                 <!-- <php-categoria /> -->
 
