@@ -1,4 +1,8 @@
 <?php
+require_once 'Authentication.php';
+$auth = new Authentication();
+require_once 'header.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

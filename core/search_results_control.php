@@ -1,11 +1,9 @@
 <?php
 
-require_once "./core/header.php";
-require_once "./core/Authentication.php";
-require_once './core/listings_list.php';
-$auth = new Authentication();
+
 require_once "imports.php";
 require_once "Database.php";
+require_once './core/listings_list.php';
 
 class Search_Results_Control
 {

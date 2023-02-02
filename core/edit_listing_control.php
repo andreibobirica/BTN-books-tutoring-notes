@@ -1,13 +1,9 @@
 <?php
-
-require_once './core/Authentication.php';
-$auth = new Authentication();
+require_once 'imports.php';
 require_once './core/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
 require_once './core/Sanitizer.php';
 $sanit = new Sanitizer();
-require_once './core/header.php';
-require_once "imports.php";
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])) {
     //Verifico Input

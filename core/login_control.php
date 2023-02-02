@@ -1,8 +1,4 @@
 <?php
-
-require_once 'Authentication.php';
-$auth = new Authentication();
-require_once 'header.php';
 require_once "imports.php";
 require_once 'Sanitizer.php';
 $san = new Sanitizer();
