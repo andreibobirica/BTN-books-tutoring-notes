@@ -17,9 +17,6 @@ function writeErrorMessage(error, errorMessage, errorClass) {
  */
 function removeErrorMessage(error, errorClass, oldMsg = "") {
     error.classList.remove(errorClass);
-    error.classList.remove("error");
-    error.classList.add("input-hint");
-    error.innerHTML = oldMsg;
 }
 
 /* Controlla la lunghezza del campo.
@@ -71,8 +68,10 @@ function checkPasswordFormat(password, error, oldMsg) {
             "La password deve contenere almeno un numero",
             "numberErrorMessage"
         );
+        number = false;
     } else {
         removeErrorMessage(error, "numberErrorMessage", oldMsg);
+        number = true;
     }
 
     if (!upperCaseLetter.test(password.value)) {
@@ -81,8 +80,10 @@ function checkPasswordFormat(password, error, oldMsg) {
             "La password deve contenere almeno una lettera maiuscola",
             "upperCaseErrorMessage"
         );
+        upper = false;
     } else {
         removeErrorMessage(error, "upperCaseErrorMessage", oldMsg);
+        upper = true;
     }
 
     if (!specialCharacter.test(password.value)) {
@@ -91,8 +92,16 @@ function checkPasswordFormat(password, error, oldMsg) {
             "La password deve contenere almeno un carattere speciale",
             "specCharactErrorMessage"
         );
+        special = false;
     } else {
         removeErrorMessage(error, "specCharactErrorMessage", oldMsg);
+        special = true;
+    }
+
+    if (number && upper && special) {
+        error.classList.remove("error");
+        error.classList.add("input-hint");
+        error.innerHTML = oldMsg;
     }
 }
 
