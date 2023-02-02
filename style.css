@@ -543,12 +543,13 @@ footer p {
     font-size: 2em;
     color: var(--accent-red);
     margin-top: 1em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     text-align: center;
 }
 
 #listing-content #listing-descr {
     width: 100%;
+    margin-top: 2em;
 }
 
 #listing-content #listing-buttons {
@@ -562,12 +563,20 @@ footer p {
     text-align: center;
     border: 2px solid var(--accent-red-2);
     border-radius: 20px;
-    padding: 1.5em;
+    padding: 1.5em 0;
+    margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #listing-content dt {
     display: block;
     margin-top: 0.5em;
+}
+
+#listing-content dd {
+    text-align: center;
 }
 
 #listing-content .listing-btn {
@@ -919,8 +928,20 @@ footer p {
         margin-right: 2.5em;
     }
 
+    #listing-content #img-def {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1em;
+    }
+
+    #listing-content img,
+    #listing-content dl {
+        width: 49%;
+        margin: unset;
+    }
+
     #listing-content #listing-descr {
-       width: 60%;
+        width: 60%;
     }
 
     /* REGISTRAZIONE */
@@ -1312,7 +1333,11 @@ footer p {
         align-self: center;
     }
 
+    #listing-content img {
+        float: left;
+    }
+
     #listing-content #listing-descr {
-        width: 100%;
+        width: 60%;
     }
 }

@@ -12,22 +12,21 @@
         <main id="main">
             <h2><php-title /></h2>
             <p class="single-listing-user">Caricato da <php-user /></p>
-            <php-img />
+            <div id="img-def">
+                <php-img />
+
+                <dl>
+                    <php-author-def />
+                    <dt>Materia</dt>
+                    <php-subject />
+                    <php-edition-def />
+                    <php-isbn-def />
+                </dl>
+            </div>
 
             <php-descr />
 
             <php-price />
-
-            <dl>
-                <php-author-def />
-
-                <dt>Materia</dt>
-                <php-subject />
-
-                <php-edition-def />
-
-                <php-isbn-def />
-            </dl>
 
             <div id="listing-buttons">
                 <!--<php-buttons />-->
