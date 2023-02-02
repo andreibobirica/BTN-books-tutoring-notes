@@ -27,6 +27,7 @@
                     id="inputNome"
                     required
                 />
+                <p id="nome-errore" class="input-hint">Usa il tuo nome reale.</p>
 
                 <label id="labelCognome" for="inputCognome"
                     >Modifica cognome</label
@@ -40,6 +41,7 @@
                     id="inputCognome"
                     required
                 />
+                <p id="cognome-errore" class="input-hint">Usa il tuo cognome reale.</p>
 
                 <label id="labelUsername" lang="en" for="inputUsername"
                     >Modifica username</label
@@ -53,6 +55,7 @@
                     id="inputUsername"
                     required
                 />
+                <p id="username-errore" class="input-hint">Username con cui ti vedranno gli altri utenti.</p>
 
                 <label id="labelPassword" lang="en" for="inputPassword"
                     >Modifica password</label
@@ -64,8 +67,8 @@
                     name="password"
                     php-value-password
                     id="inputPassword"
-                    required
                 />
+                <p id="password-errore" class="input-hint">Almeno 8 caratteri, una lettera maiuscola, un numero e un carattere speciale.</p>
 
                 <label id="labelConfPassword" for="inputConfPassword"
                     >Conferma nuova <span lang="en">Password</span></label
@@ -77,8 +80,8 @@
                     name="confPassword"
                     php-value-confPassword
                     id="inputConfPassword"
-                    required
                 />
+                <p id="conferma-errore" class="input-hint"></p>
 
                 <label id="labelDataNascita" for="inputDataNascita">Modifica data di nascita</label>
                 <input
@@ -88,6 +91,7 @@
                     id="inputDataNascita"
                     required
                 />
+                <p id="nascita-errore" class="input-hint"></p>
 
                 <label id="labelEmail" for="inputEmail"
                     >Modifica <span lang="en">email</span></label
@@ -101,6 +105,7 @@
                     id="inputEmail"
                     required
                 />
+                <p id="email-errore" class="input-hint"></p>
 
                 <button type="submit" name="modifica" php-value-oldusername>
                     Modifica
