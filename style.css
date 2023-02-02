@@ -515,7 +515,8 @@ footer p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--bg-alt);
+    align-items: center;
+    padding: 1.5em;
 }
 
 #listing-content h2 {
@@ -523,6 +524,7 @@ footer p {
     font-size: 2em;
     line-height: 1.25em;
     margin-bottom: 0.25em;
+    text-align: center;
 }
 
 #listing-content img {
@@ -533,6 +535,7 @@ footer p {
     object-fit: contain;
     margin-top: 2em;
     margin-bottom: 2em;
+    border-radius: 20px;
 }
 
 #listing-content #listing-price {
@@ -540,7 +543,12 @@ footer p {
     font-size: 2em;
     color: var(--accent-red);
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
+    text-align: center;
+}
+
+#listing-content #listing-descr {
+    width: 100%;
 }
 
 #listing-content #listing-buttons {
@@ -548,6 +556,18 @@ footer p {
     justify-content: space-between;
     align-items: center;
     margin-top: 2.5em;
+}
+
+#listing-content dl {
+    text-align: center;
+    border: 2px solid var(--accent-red-2);
+    border-radius: 20px;
+    padding: 1.5em;
+}
+
+#listing-content dt {
+    display: block;
+    margin-top: 0.5em;
 }
 
 #listing-content .listing-btn {
@@ -561,6 +581,10 @@ footer p {
     font-size: 1.2em;
     text-transform: uppercase;
     margin-bottom: 1em;
+}
+
+#listing-content .single-listing-user {
+    text-align: center;
 }
 
 /* NUOVO ANNUNCIO */
@@ -844,6 +868,10 @@ footer p {
         width: 75%;
     }
 
+    #listing-content #listing-descr {
+        width: 80%;
+    }
+
     /* RISULTATI */
     #results-search #search-form {
         padding-left: 3em;
@@ -885,13 +913,14 @@ footer p {
     }
 
     /* SINGOLO ANNUNCIO */
-    #listing-content dl {
-        max-width: 49%;
-    }
 
     #listing-content #listing-buttons {
         margin-left: 2.5em;
         margin-right: 2.5em;
+    }
+
+    #listing-content #listing-descr {
+       width: 60%;
     }
 
     /* REGISTRAZIONE */
@@ -1122,7 +1151,7 @@ footer p {
     }
 
     #listing-content #listing-descr {
-        width: 80%;
+        width: 70%;
     }
 }
 
@@ -1281,5 +1310,9 @@ footer p {
     /* SINGOLO ANNUNCIO */
     #listing-content main {
         align-self: center;
+    }
+
+    #listing-content #listing-descr {
+        width: 100%;
     }
 }
