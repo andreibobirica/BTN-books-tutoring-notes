@@ -63,7 +63,7 @@ function confirmPassword(pass, confPass, error) {
 function checkPasswordFormat(password, error, oldMsg) {
     const numbers = /[0-9]/;
     const upperCaseLetter = /[A-Z]/;
-    const specialCharacter = /[\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
+    const specialCharacter = /[#@\*-\+\=\.,\?\^!\/&%\$£;°ç\[\]\(\)\{\}<>_\\!]/;
 
     if (!numbers.test(password.value)) {
         writeErrorMessage(
