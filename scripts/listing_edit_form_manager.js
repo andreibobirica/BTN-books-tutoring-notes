@@ -90,7 +90,7 @@ const listingPriceEdit = document.getElementById("edit-listing-price");
 const errPrezzoEdit = document.getElementById("prezzo-errore");
 const oldPrezzoEdit = errPrezzoEdit.innerHTML;
 
-const listingSubjectEdit = document.getElementById("inputMateria");
+const listingSubjectEdit = document.getElementById("edit-listing-subject");
 const errSubjectEdit = document.getElementById("materia-errore");
 
 const listingAuthorEdit = document.getElementById("edit-listing-author");
