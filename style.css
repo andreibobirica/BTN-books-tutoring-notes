@@ -472,6 +472,10 @@ footer p {
     max-width: 100%;
 }
 
+.placeholder {
+    object-fit: contain;
+}
+
 .listing-user {
     padding: 0.75em 0 0.75em 1em;
     font-weight: normal;

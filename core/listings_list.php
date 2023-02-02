@@ -13,10 +13,10 @@ function listingsList($listings, $categoria)
                     $list .= '<p class="listing-title">' . $book['titolo'] . '</p>';
                     $list .= '<p class="listing-author">' . $book['autore'] . '</p>';
                     // In caso di immagine assente applico una classe che mostri meglio l'alt
-                    if (empty($book['mediapath'])) {
+                    if (!empty($book['mediapath'])) {
                         $list .= '<img src="' . $book['mediapath'] . '" class="listing-descr" alt="' . $book['descrizione'] . '" />';
                     } else {
-                        $list .= '<img src="' . $book['mediapath'] . '" class="listing-img" alt="' . $book['descrizione'] . '" />';
+                        $list .= '<img src="./assets/imgs/img_placeholder.png" class="listing-img placeholder" alt="' . $book['descrizione'] . '" />';
                     }
                     $list .= '<p class="listing-user">' . $book['username'] . '</p>';
                     $list .= '<p class="listing-price">' . $book['prezzo'] . '&euro;</p>';

@@ -12,12 +12,19 @@ $header = printHeader("annuncio", $auth->getIfLogin());
 $breadcrumb = printBreadcrumb("annuncio", $arrayAnnuncio['titolo']);
 // Prendo il percorso e inserisco l'immagine
 if ($arrayAnnuncio['tipo'] != "ripetizioni") {
-    $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '" alt="">';
+    if (empty($arrayAnnuncio['mediapath'])) {
+        $listing_img = '<img src="./assets/imgs/img_placeholder.png" alt="">';
+    } else {
+        $listing_img = '<img width="300" height="400" src="' . $arrayAnnuncio["mediapath"] . '" alt="">';
+    }
     $listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '&euro;</p>';
 } else {
     $listing_img = "";
     $listing_price = '<p id="listing-price">' . $arrayAnnuncio['prezzo'] . '&euro;/ora</p>';
 }
+
+
+
 // Controllo il login e mostro le parti corrette
 $listing_title = $arrayAnnuncio['titolo'];
 $listing_user = $arrayAnnuncio['username'];
