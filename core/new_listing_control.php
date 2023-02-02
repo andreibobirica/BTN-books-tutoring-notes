@@ -29,20 +29,20 @@ if (isset($_POST["new_listing"])) {
         array_push($error, "Formato Titolo non corretto");
     }
     if (!$sanit->validateDescription($_POST['descrizione'])) {
-        array_push($error, "Formato Descrizione non corretto");
+        array_push($error, "Formato descrizione non corretto");
     }
     if (!$sanit->validateNumber($_POST['prezzo'])) {
-        array_push($error, "Formato Prezzo non corretto");
+        array_push($error, "Formato prezzo non corretto");
     }
     if (!$sanit->validateNameNumberMaxLength($_POST['materia'])) {
-        array_push($error, "Formato Materia non corretto");
+        array_push($error, "Formato materia non corretto");
     }
     if ($_POST['categoria'] == "libri") {
         if (!$sanit->validateNameMaxLength($_POST['autore'])) {
-            array_push($error, "Formato Autore non corretto");
+            array_push($error, "Formato autore non corretto");
         }
         if (!$sanit->validateNameNumberMaxLength($_POST['edizione'])) {
-            array_push($error, "Formato Edizione non corretto");
+            array_push($error, "Formato edizione non corretto");
         }
         if (!$sanit->validateISBN($_POST['isbn'])) {
             array_push($error, "Formato ISBN non corretto");
@@ -60,8 +60,6 @@ if (isset($_POST["new_listing"])) {
             $sanit->validateISBN($_POST['isbn']);
     }
 
-
-
     //Mando i dati da modificare del annuncio alla funzione new_listing con una struttura dati array
     if ($verifica) {
         $result = $request->new_listing(
@@ -71,13 +69,13 @@ if (isset($_POST["new_listing"])) {
         header('location:./new_listing.php?categoria=' . $_POST['categoria'] . '&errore=' . implode(" - ", $error));
         exit();
     }
-    //Se nei risultati il campo lastid è valorizzato !=0 la modifica è avvenuta con successo
+    //Se nei risultati il campo lastid è valorizzato !=0 l'inserimento è avvenuta con successo
     if ($result["lastid"] != 0) {
         header("location:./listing.php?annuncio=$result[lastid]");
         exit();
     } else {
         $error = $result['upload']['errore'];
-        header("location:./edit_listing.php?categoria=$_POST[categoria]&errore=$error'");
+        header("location:./edit_listing.php?categoria=$_POST[categoria]&errore=$error");
         exit();
     }
 

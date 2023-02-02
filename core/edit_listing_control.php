@@ -33,10 +33,10 @@ if (isset($_POST["edit_listing"])) {
     if(!$sanit->validateTitle($_POST['titolo']))$error.="Formato Titolo non corretto - ";
     if(!$sanit->validateDescription($_POST['descrizione']))$error.="Formato Descrizione non corretto - ";
     if(!$sanit->validateNumber($_POST['prezzo']))$error.="Formato Prezzo non corretto - ";
-    if(!$sanit->validateNameNumberMaxLength($_POST['materia']))$error.="Formato Materia non corretto - ";
+    if(!$sanit->validateNameNumberMaxLength($_POST['materia']))$error.="Formato materia non corretto - ";
     if($_POST['categoria'] == "libri"){
-        if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato Autore non corretto - ";
-        if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato Edizione non corretto - ";
+        if(!$sanit->validateNameMaxLength($_POST['autore']))$error.="Formato autore non corretto - ";
+        if(!$sanit->validateNameNumberMaxLength($_POST['edizione']))$error.="Formato edizione non corretto - ";
         if(!$sanit->validateISBN($_POST['isbn']))$error.="Formato ISBN non corretto - ";
     }
     $verifica = 
@@ -58,7 +58,7 @@ if (isset($_POST["edit_listing"])) {
             array("id" => $_POST["edit_listing"], "titolo" => $_POST['titolo'], "descrizione" => $_POST['descrizione'], "prezzo" => $_POST['prezzo'], "username" => $_SESSION["loginAccount"], "mediapath" => $_FILES["mediapath"], "materia" => $_POST['materia'], "autore" => $_POST['autore'], "edizione" => $_POST['edizione'], "isbn" => $_POST['isbn'])
         );
     }else{
-        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error'");
+        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error");
         exit();
     }
     //Se nei risultati il campo lastid è valorizzato !=0 la modifica è avvenuta con successo
@@ -67,7 +67,7 @@ if (isset($_POST["edit_listing"])) {
         exit();
     }else{
         $error=$result['upload']['errore'];
-        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error'");
+        header("location:./edit_listing.php?categoria=$_POST[categoria]&modifica=$_POST[edit_listing]&errore=$error");
         exit();
     }
 }

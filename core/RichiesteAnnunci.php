@@ -274,23 +274,21 @@ class RichiesteAnnunci
         $imageFileType = strtolower(pathinfo($target_file_origin, PATHINFO_EXTENSION));
         $target_file = $target_dir . $username . md5_file($file['tmp_name']) . "." . $imageFileType;
         $uploadOk = array("esito" => true, "errore" => "", "path" => $target_file);
-        // Check if image file is a actual image or fake image
+
         if (getimagesize($file["tmp_name"]) === false) {
             $uploadOk["errore"] = "Il file non è una immagine";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
 
-        // Check if file already exists
         if (file_exists($target_file)) {
             $uploadOk["errore"] = "L'immagine esiste già nei tuoi annunci, caricarne un'altra";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
 
-        // Check file size max 10 MByte
         if ($file["size"] > 10000000) {
-            $uploadOk["errore"] = "Dimensione dell'immagine troppo grande, max 10 Mbyte";
+            $uploadOk["errore"] = "Immagine troppo grande, max 10 Mbyte";
             $uploadOk["esito"] = false;
             return $uploadOk;
         }
@@ -306,7 +304,6 @@ class RichiesteAnnunci
 
         }
 
-        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk["esito"]) {
             if (!move_uploaded_file($file["tmp_name"], $target_file)) {
                 $uploadOk["errore"] = "C'è stato un errore nel caricamento dell'immagine";
