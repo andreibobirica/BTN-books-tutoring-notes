@@ -1,12 +1,12 @@
 /* Importazione font */
 @font-face {
     font-family: "Alexandria";
-    src: url("./assets/fonts/Alexandria-VariableFont_wght.ttf");
+    src: url("../assets/fonts/Alexandria-VariableFont_wght.ttf");
 }
 
 @font-face {
     font-family: "Alfa Slab One";
-    src: url("./assets/fonts/AlfaSlabOne-Regular.ttf");
+    src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
 }
 
 /* Variabili colori */
@@ -230,10 +230,18 @@ footer p {
     font-family: "Alfa Slab One", sans-serif;
 }
 
+footer a {
+    color: white;
+}
+
+footer a:visited {
+    color: var(--visited-link-header);
+}
+
 /* HOME */
 
 #home main {
-    background-image: url("./assets/imgs/home_mobile_background.webp");
+    background-image: url("../assets/imgs/home_mobile_background.webp");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -364,7 +372,7 @@ footer p {
     flex-direction: column;
     height: 100%;
     align-items: center;
-    background-image: url("./assets/imgs/info_background.webp");
+    background-image: url("../assets/imgs/info_background.webp");
     background-size: cover;
     background-position: center;
 }
@@ -388,7 +396,7 @@ footer p {
 
 #info #description-image {
     display: block;
-    background-image: url("assets/imgs/info_content.webp");
+    background-image: url("../assets/imgs/info_content.webp");
     width: 100%;
     height: 200px;
     background-size: cover;
@@ -749,7 +757,7 @@ footer p {
     background-repeat: no-repeat;
     background-position: center;
     display: block;
-    background-image: url("assets/imgs/user-solid.svg");
+    background-image: url("../assets/imgs/user-solid.svg");
 }
 
 #area-riservata #user-info dt::after {
@@ -798,7 +806,7 @@ footer p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(./assets/imgs/404.webp);
+    background-image: url(../assets/imgs/404.webp);
     background-size: cover;
     background-position: center;
     padding: 1.5em;
@@ -1034,7 +1042,7 @@ footer p {
     /* HOME */
     #home main {
         align-items: center;
-        background-image: url("./assets/imgs/home_desktop_background.webp");
+        background-image: url("../assets/imgs/home_desktop_background.webp");
         justify-content: center;
         padding: unset;
     }
@@ -1072,7 +1080,7 @@ footer p {
     /* LOGIN E REGISTRAZIONE */
     #registration,
     #login {
-        background-image: url(./assets/imgs/login.webp);
+        background-image: url(../assets/imgs/login.webp);
         background-size: cover;
         background-position: center;
     }
@@ -1129,15 +1137,15 @@ footer p {
     }
 
     #addAnnuncioImg {
-        background-image: url("assets/imgs/vantaggiAddItem.png");
+        background-image: url("../assets/imgs/vantaggiAddItem.png");
     }
 
     #salvaAnnuncioImg {
-        background-image: url("assets/imgs/vantaggiSaveItem.png");
+        background-image: url("../assets/imgs/vantaggiSaveItem.png");
     }
 
     #mailVendImg {
-        background-image: url("assets/imgs/vantaggiEmailVend.png");
+        background-image: url("../assets/imgs/vantaggiEmailVend.png");
     }
 
     /* AREA RISERVATA */
