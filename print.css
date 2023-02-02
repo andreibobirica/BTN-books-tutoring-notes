@@ -1,101 +1,63 @@
+/* IMPORTAZIONE FONT */
+@font-face {
+    font-family: "Alfa Slab One";
+    src: url("./assets/fonts/AlfaSlabOne-Regular.ttf");
+}
+
+/* Classe per le pagine che non vanno stampate  */
 .no_print {
-    /* La metto per le pagine che non vanno stampate  */
     display: none;
 }
+
+/* COMPONENTI COMUNI A TUTTE LE PAGINE */
 html,
 body {
     font-family: "Times New Roman", Times, serif;
-    color:black;
+    color: black;
     width: 100%;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-a{
-    text-decoration:none;
-}
-abbr{
+
+a {
     text-decoration: none;
 }
 
-button{display:none}
-
-header li{
-    display:none;
+abbr {
+    text-decoration: none;
 }
 
-#breadcrumb{
-    display:none;
-}
-/* #breadcrumb li::before {
-    content: "/ ";
+button {
+    display: none;
 }
 
-#breadcrumb li {
-    display: inline;
-    padding: unset;
-    margin-left: 0.5em;
-} */
-
-#search-form{
-    display:none;
+ul {
+    list-style: none;
 }
 
-.listings-list {
-    display: block;
-    margin-bottom: 1.5em;
-}
-ul{
-    list-style:none;
+a:visited {
+    color: black;
 }
 
-.listings-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1.5em;
+/* HEADER */
+header #logo {
+    font-family: "Alfa Slab One";
 }
 
-.listing{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    border:1px solid lightgrey;
-    width:190px;
-    margin:1em;
-    height:290px;
-    justify-content:start;
-    align-items:start;
+header #skiptomaincontent {
+    display: none;
 }
 
-.listing-title{
-    font-weight:bold;
+header li {
+    display: none;
 }
 
-.listing *{
-    margin:5px;
-}
-.listing-img {
-    width:120px;
-    height:160px;
-    align-self:center;
+#breadcrumb {
+    display: none;
 }
 
-.listing a {
-    display:none;
-}
-
-a:visited{
-    color:black;
-}
-
-#area-riservata #links .custom-link {
-    display:none;
-}
-
-/* Pagina annuncio singolo ---- */
-
-
-
+/* FOOTER */
 footer {
     padding: 1em;
     text-align: center;
@@ -103,29 +65,115 @@ footer {
     width: 100%;
 }
 
+/* RISULTATI RICERCA */
+#search-results #search-form {
+    display: none;
+}
+
+#search-results .listings-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+    padding: unset;
+}
+
+#search-results .listing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid lightgrey;
+    width: 200px;
+    margin: 1em;
+    height: auto;
+    justify-content: start;
+    align-items: start;
+}
+
+#search-results .listing-title {
+    font-weight: bold;
+}
+
+#search-results .listing * {
+    margin: 5px;
+}
+
+#search-results .listing-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    align-self: center;
+}
+
+#search-results .listing-price,
+#search-results .listing-title {
+    font-size: 15pt;
+}
+
+#search-results .listing a {
+    display: none;
+}
+
+/* AREA RISERVATA */
+#area-riservata #links .custom-link {
+    display: none;
+}
+
+/* SINGOLO ANNUNCIO */
+#listing-content h2 {
+    font-weight: bold;
+    font-size: 30pt;
+    margin: unset;
+}
+
+#listing-content .single-listing-author {
+    font-size: 25pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content .single-listing-user {
+    font-size: 15pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content #listing-descr,
+#listing-content #listing-price,
+#listing-content dl {
+    font-size: 20pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content dt {
+    margin-top: 20px;
+}
+
+#listing-content dd {
+    margin: unset;
+}
+
 #listing-content img {
-    float:left;
-    margin-right:10px;
-}
- dt{
-    font-weight:bold;   
- }
-
- #listing-price{
-    font-weight:bold;
- }
-
-#listing-buttons {
-    display:none;
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 400px;
+    width: auto;
 }
 
-.definition {
-    display:flex;
-    flex-direction: row;
-    align-content: center;
-    margin-top:20px;
+#listing-content dt {
+    font-weight: bold;
 }
 
-#search-results h2{
-    margin-top:0px;
+#listing-content #listing-price {
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+#listing-content #listing-buttons {
+    display: none;
+}
+
+#listing-content #buttonmail {
+    display: block;
 }

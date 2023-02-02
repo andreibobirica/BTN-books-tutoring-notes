@@ -28,7 +28,7 @@ $button_insert_save = '<a role="button" href="./listing.php?annuncio=' . $arrayA
 $button_remove_save = '<a role="button" href="./listing.php?annuncio=' . $arrayAnnuncio['id'] . '&removesave" class="listing-btn">Rimuovi annuncio dai Salvati</a>';
 $button_edit = '<a role="button" href="edit_listing.php?categoria=' . $arrayAnnuncio['tipo'] . '&modifica=' . $arrayAnnuncio['id'] . '" class="listing-btn">Modifica annuncio</a>';
 $button_delete = '<a role="button" href="edit_listing.php?elimina=' . $arrayAnnuncio['id'] . '" class="listing-btn">Elimina annuncio</a>';
-$user_email = '<a href="mailto:' . $arrayAnnuncio['email'] . '" class="listing-btn">' . $arrayAnnuncio['email'] . '</a>';
+$user_email = '<a id="buttonmail" href="mailto:' . $arrayAnnuncio['email'] . '" class="listing-btn">' . $arrayAnnuncio['email'] . '</a>';
 
 $button_save = "";
 if ($auth->getIfLogin())
