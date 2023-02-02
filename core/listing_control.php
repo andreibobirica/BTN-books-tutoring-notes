@@ -1,8 +1,4 @@
 <?php
-//Start Session
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
 require_once 'Authentication.php';
 $auth = new Authentication();
