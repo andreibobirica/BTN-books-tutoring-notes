@@ -43,10 +43,8 @@ if ($auth->getIfLogin()) {
             if (!$san->validatePassword($password)) {
                 array_push($retResponse['error'], "Formato password non corretto");
             }
-            if (!$san->validatePassword($confPassword)) {
-                array_push($retResponse['error'], "Formato password conferma non corretto");
-            }
-            $verifica = $verifica && $san->validatePassword($password) && $san->validatePassword($confPassword);
+            
+            $verifica = $verifica && $san->validatePassword($password);
         }
         //Procedura di registrazione
         if ($verifica) {
