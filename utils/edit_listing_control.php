@@ -1,8 +1,8 @@
 <?php
 require_once 'imports.php';
-require_once './core/RichiesteAnnunci.php';
+require_once './utils/RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
-require_once './core/Sanitizer.php';
+require_once './utils/Sanitizer.php';
 $sanit = new Sanitizer();
 
 if (isset($_GET["elimina"]) && !empty($_GET["elimina"])) {

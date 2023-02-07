@@ -1,5 +1,5 @@
 <?php
-require_once './core/Authentication.php';
+require_once './utils/Authentication.php';
 
 class RichiesteAnnunci
 {

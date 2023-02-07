@@ -1,5 +1,5 @@
 <?php
-require_once './core/area_riservata_control.php';
+require_once './utils/area_riservata_control.php';
 
 // HTML di pagina, header e footer
 $area_riservata_content = file_get_contents("./contents/area_riservata_content.html");

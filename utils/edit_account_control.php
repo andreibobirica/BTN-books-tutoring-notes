@@ -1,6 +1,6 @@
 <?php
 require_once "imports.php";
-require_once './core/Sanitizer.php';
+require_once './utils/Sanitizer.php';
 $san = new Sanitizer();
 
 if ($auth->getIfLogin()) {

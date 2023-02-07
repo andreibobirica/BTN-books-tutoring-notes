@@ -1,5 +1,5 @@
 <?php
-require_once "./core/imports.php";
+require_once "./utils/imports.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $server_error_content = file_get_contents("./contents/500_content.html");

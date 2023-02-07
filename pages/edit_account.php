@@ -1,5 +1,5 @@
 <?php
-require_once "./core/edit_account_control.php";
+require_once "./utils/edit_account_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $edit_account_content = file_get_contents("./contents/edit_account_content.html");

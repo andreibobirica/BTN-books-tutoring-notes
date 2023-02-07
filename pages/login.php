@@ -1,5 +1,5 @@
 <?php
-require_once "./core/login_control.php";
+require_once "./utils/login_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $login_content = file_get_contents("./contents/login_content.html");

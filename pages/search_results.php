@@ -1,5 +1,5 @@
 <?php
-require_once "core/search_results_control.php";
+require_once "utils/search_results_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $search_results_content = file_get_contents("./contents/search_results_content.html");

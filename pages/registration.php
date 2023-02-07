@@ -1,5 +1,5 @@
 <?php
-require_once "./core/registration_control.php";
+require_once "./utils/registration_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $registration_content = file_get_contents("./contents/registration_content.html");

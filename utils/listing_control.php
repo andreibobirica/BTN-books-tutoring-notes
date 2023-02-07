@@ -2,7 +2,7 @@
 require_once 'imports.php';
 require_once 'RichiesteAnnunci.php';
 $request = new RichiesteAnnunci();
-require_once './core/Sanitizer.php';
+require_once './utils/Sanitizer.php';
 $sanit = new Sanitizer();
 
 //Visualizzazione info annuncio

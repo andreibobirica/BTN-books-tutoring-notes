@@ -1,5 +1,5 @@
 <?php
-require_once "./core/listing_control.php";
+require_once "./utils/listing_control.php";
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $listing_content = file_get_contents("./contents/listing_content.html");

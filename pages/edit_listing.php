@@ -1,5 +1,5 @@
 <?php
-require_once './core/edit_listing_control.php';
+require_once './utils/edit_listing_control.php';
 
 // Prendo l'HTML della pagina, dell'header e del footer
 $edit_listing_content = file_get_contents("./contents/edit_listing_content.html");
