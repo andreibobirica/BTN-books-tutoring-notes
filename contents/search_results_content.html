@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta name="description" content='Risultati della ricerca php-type-search "php-title-search"' />
+        <meta name="keywords" content="php-title-search, php-type-search, BTN, ricerca"  />
+        <title>Ricerca php-type-search "php-title-search" - BTN</title>
+    </head>
+
+    <body id="search-results">
+        <php-header />
+
+        <main id="main">
+            <div id="results-search">
+                <form
+                    action="./search_results.php"
+                    method="GET"
+                    id="search-form"
+                >
+                    <label for="search-input"
+                        >Ricerca per titolo o materia</label
+                    >
+                    <input
+                        type="text"
+                        placeholder="Titolo, materia..."
+                        name="search"
+                        id="search-input"
+                        value="php-search-value"
+                        required
+                    />
+                    <label for="search-cat">Categoria</label>
+                    <select name="categoria" id="search-cat">
+                        <option php-catlibri value="libri">Libri</option>
+                        <option php-catripetizioni value="ripetizioni">
+                            Ripetizioni
+                        </option>
+                        <option php-catappunti value="appunti">Appunti</option>
+                    </select>
+
+                    <label for="ordine">Ordine</label>
+                    <select name="ordine" id="ordine">
+                        <option value="standard">
+                            Standard
+                        </option>
+                        <option value="prezzoasc">
+                            Prezzo crescente
+                        </option>
+                        <option value="prezzodisc">
+                            Prezzo decrescente
+                        </option>
+                    </select>
+
+                    <button type="submit">Cerca</button>
+                </form>
+            </div>
+            <section id="results-listings">
+                <php-listings />
+            </section>
+        </main>
+        <php-footer />
+    </body>
+</html>

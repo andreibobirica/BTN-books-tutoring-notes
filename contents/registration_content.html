@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Registrati su BTN per vendere libri, annunci e ripetizioni o salvare elementi di interesse."
+        />
+        <meta name="keywords" content="BTN, registrazione, account, login, area, riservata" />
+        <script src="./scripts/account_form_manager.js" async></script>
+        <title>Registrazione - BTN</title>
+    </head>
+
+    <body id="registration" class="no_print">
+        <php-header />
+        <main id="main">
+            <h2>Registrati</h2>
+            <php-errore />
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label id="labelNome" for="inputNome">Nome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo nome"
+                    maxlength="40"
+                    name="nome"
+                    id="inputNome"
+                    required
+                />
+                <p id="nome-errore" class="input-hint">Usa il tuo nome reale.</p>
+
+                <label id="labelCognome" for="inputCognome">Cognome</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo cognome"
+                    maxlength="40"
+                    name="cognome"
+                    id="inputCognome"
+                    required
+                />
+                <p id="cognome-errore" class="input-hint">Usa il tuo cognome reale.</p>
+
+                <label id="labelUsername" lang="en" for="inputUsername">Username</label>
+                <input
+                    type="text"
+                    placeholder="Inserisci il tuo username"
+                    maxlength="25"
+                    name="username"
+                    id="inputUsername"
+                    required
+                />
+                <p id="username-errore" class="input-hint">Username con cui ti vedranno gli altri utenti.</p>
+
+                <label id="labelPassword" lang="en" for="inputPassword">Password</label>
+                <input
+                    type="password"
+                    placeholder="Inserisci password"
+                    maxlength="40"
+                    name="password"
+                    id="inputPassword"
+                    required
+                />
+                <p id="password-errore" class="input-hint">Almeno 8 caratteri, una lettera maiuscola, un numero e un carattere speciale.</p>
+
+                <label id="labelConfPassword" for="inputConfPassword"
+                    >Conferma <span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Reinserisci la tua password"
+                    maxlength="40"
+                    name="confPassword"
+                    id="inputConfPassword"
+                    required
+                />
+                <p id="conferma-errore" class="input-hint"></p>
+
+                <label id="labelDataNascita" for="inputDataNascita">Data di nascita</label>
+                <input
+                    type="date"
+                    name="dataNascita"
+                    id="inputDataNascita"
+                    value="1999-12-29"
+                    required
+                />
+                <p id="nascita-errore" class="input-hint"></p>
+
+                <label id="labelEmail" for="inputEmail" lang="en">Email</label>
+                <input
+                    type="email"
+                    placeholder="Inserisci la tua e-mail"
+                    maxlength="60"
+                    name="email"
+                    id="inputEmail"
+                    required
+                />
+                <p id="email-errore" class="input-hint"></p>
+
+                <button type="submit">Registrati</button>
+                <p>
+                    Hai già un <span lang="en">account</span>?
+                    <a href="login.php">Accedi</a>
+                </p>
+            </form>
+
+            <div id="registration-perks">
+                <ul id="listaVantaggi">
+                    <li>
+                        <span class="icon" id="addAnnuncioImg"></span>
+                        <p>Ottieni la possibilità di aggiungere annunci</p>
+                    </li>
+                    <li>
+                        <span class="icon" id="salvaAnnuncioImg"></span>
+                        <p>
+                            Salva gli annunci che ti interessano con la
+                            possibilità di ritrovarli facilmente
+                        </p>
+                    </li>
+                    <li>
+                        <span class="icon" id="mailVendImg"></span>
+                        <p>
+                            Visualizza le informazioni di contatto dei venditori
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <php-footer />
+    </body>
+</html>

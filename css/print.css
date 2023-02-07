@@ -1,0 +1,179 @@
+/* IMPORTAZIONE FONT */
+@font-face {
+    font-family: "Alfa Slab One";
+    src: url("./assets/fonts/AlfaSlabOne-Regular.ttf");
+}
+
+/* Classe per le pagine che non vanno stampate  */
+.no_print {
+    display: none;
+}
+
+/* COMPONENTI COMUNI A TUTTE LE PAGINE */
+html,
+body {
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+button {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+a:visited {
+    color: black;
+}
+
+/* HEADER */
+header #logo {
+    font-family: "Alfa Slab One";
+}
+
+header #skiptomaincontent {
+    display: none;
+}
+
+header li {
+    display: none;
+}
+
+#breadcrumb {
+    display: none;
+}
+
+/* FOOTER */
+footer {
+    padding: 1em;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* RISULTATI RICERCA */
+#search-results #search-form {
+    display: none;
+}
+
+.listings-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+    padding: unset;
+}
+
+.listing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid lightgrey;
+    width: 200px;
+    margin: 1em;
+    height: auto;
+    justify-content: start;
+    align-items: start;
+}
+
+.listing-title {
+    font-weight: bold;
+}
+
+.listing * {
+    margin: 5px;
+}
+
+.listing-img {
+    width: 250px;
+    height: 300px;
+    object-fit: contain;
+    align-self: center;
+}
+
+.listing-price,
+.listing-title {
+    font-size: 15pt;
+}
+
+.listing a {
+    display: none;
+}
+
+/* AREA RISERVATA */
+#area-riservata #links .custom-link {
+    display: none;
+}
+
+/* SINGOLO ANNUNCIO */
+#listing-content h2 {
+    font-weight: bold;
+    font-size: 30pt;
+    margin: unset;
+}
+
+#listing-content .single-listing-author {
+    font-size: 25pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content .single-listing-user {
+    font-size: 15pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content #listing-descr,
+#listing-content #listing-price,
+#listing-content dl {
+    font-size: 20pt;
+    margin: unset;
+    margin-top: 20px;
+}
+
+#listing-content dt {
+    margin-top: 20px;
+}
+
+#listing-content dd {
+    margin: unset;
+}
+
+#listing-content img {
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 400px;
+    width: auto;
+}
+
+#listing-content dt {
+    font-weight: bold;
+}
+
+#listing-content #listing-price {
+    font-weight: bold;
+    font-size: 30pt;
+}
+
+#listing-content #listing-buttons {
+    display: none;
+}
+
+#listing-content #buttonmail {
+    display: block;
+}

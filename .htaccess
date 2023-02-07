@@ -1,0 +1,8 @@
+ErrorDocument 404 /eitalian/404.php
+ErrorDocument 500 /eitalian/500.php
+ErrorDocument 501 /eitalian/500.php
+ErrorDocument 502 /eitalian/500.php
+ErrorDocument 503 /eitalian/500.php
+ErrorDocument 504 /eitalian/500.php
+ErrorDocument 505 /eitalian/500.php
+ErrorDocument 507 /eitalian/500.php

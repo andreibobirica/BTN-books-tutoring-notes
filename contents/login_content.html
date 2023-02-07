@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Effettua il login su BTN per vendere libri, annunci e ripetizioni o vedere gli elementi salvati."
+        />
+        <meta name="keywords" content="BTN, login, account, area, riservata" />
+        <title>Login - BTN</title>
+    </head>
+
+    <body id="login" class="no_print">
+        <php-header />
+        <main id="main">
+            <h2>Login</h2>
+            <php-errore />
+            <form
+                action="./core/login_control.php"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label lang="en" for="login-user">Username</label>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    name="utente"
+                    id="login-user"
+                    required
+                />
+                <label for="login-password"
+                    ><span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    id="login-password"
+                    required
+                />
+
+                <button type="submit">Accedi</button>
+                <p>
+                    Prima volta su
+                    <abbr lang="en" title="Books Tutoring Notes">BTN</abbr>?
+                    <a href="registration.php">Registrati</a>
+                </p>
+            </form>
+        </main>
+        <php-footer />
+    </body>
+</html>

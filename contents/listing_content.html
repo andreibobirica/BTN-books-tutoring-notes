@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta name="description" content="php-meta-descr" />
+        <meta name="keywords" content="php-meta-keys" />
+        <title><php-title /> - BTN</title>
+    </head>
+
+    <body id="listing-content">
+        <php-header />
+        <main id="main">
+            <h2><php-title /></h2>
+            <p class="single-listing-user">Caricato da <php-user /></p>
+            <div id="img-def">
+                <php-img />
+
+                <dl>
+                    <php-author-def />
+                    <dt>Materia</dt>
+                    <php-subject />
+                    <php-edition-def />
+                    <php-isbn-def />
+                </dl>
+            </div>
+
+            <php-descr />
+
+            <php-price />
+
+            <div id="listing-buttons">
+                <!--<php-buttons />-->
+            </div>
+        </main>
+
+        <php-footer />
+    </body>
+</html>

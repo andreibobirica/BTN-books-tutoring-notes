@@ -1,0 +1,1355 @@
+/* Importazione font */
+@font-face {
+    font-family: "Alexandria";
+    src: url("../assets/fonts/Alexandria-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Alfa Slab One";
+    src: url("../assets/fonts/AlfaSlabOne-Regular.ttf");
+}
+
+/* Variabili colori */
+:root {
+    --bg: #fafafa;
+    --bg-alt: #e6e6e6;
+    --fg-alt: #808080;
+    --accent-red: #990014;
+    --accent-red-2: #cd453b;
+    --accent-red-3: #ff7666;
+    --registration-advantages: #f7f8fb;
+    --error-warning: rgba(255, 42, 81, 0.1);
+    --visited-link-header: #f5f39e;
+    --visited-link: #611114;
+    --fg: #141414;
+}
+
+/* Mobile-first, quindi le regole si applicano a tutti gli schermi con dimensioni minori del primo breakpoint */
+
+/* Regole generali, da applicare a tutte le pagine */
+* {
+    box-sizing: border-box;
+    margin: unset;
+    padding: unset;
+}
+
+html,
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 100%;
+    font-family: "Alexandria", sans-serif;
+    line-height: 1.5em;
+    margin: auto;
+    min-height: 100vh;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    font-size: 1em;
+}
+
+.backend-error {
+    padding: 1em;
+    background-color: hsl(6, 100%, 80%);
+    border-radius: 10px;
+}
+
+dt,
+dd {
+    display: inline;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    text-align: end;
+}
+
+/* HEADER */
+
+header a {
+    color: white;
+}
+
+header {
+    background-color: var(--accent-red);
+    color: var(--bg);
+    padding: 1em 2em;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 0px 4px 0 rgba(123, 123, 123, 0.2);
+}
+
+header h1 {
+    font-family: "Alfa Slab One", sans-serif;
+    margin-right: 0.5em;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+header div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #logo,
+header #logo:visited {
+    text-decoration: none;
+}
+
+header #logo:hover {
+    text-decoration: underline;
+}
+
+header #skiptomaincontent {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+header #menu-btn {
+    padding: 0.3em 0.8em;
+    border: 3px solid var(--bg);
+    background-color: rgba(255, 0, 0, 0);
+    color: var(--bg);
+}
+
+header #menu {
+    display: none;
+    padding: 0.75em 0 0 0;
+    justify-content: end;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: column;
+    margin: unset;
+    padding: unset;
+}
+
+header nav li {
+    display: inline;
+    padding: 0.5em 0.25em;
+    text-align: right;
+}
+
+header #menu.show-menu {
+    display: flex;
+}
+
+header nav a:visited,
+#breadcrumb a:visited {
+    color: var(--visited-link-header);
+}
+
+#breadcrumb {
+    color: white;
+}
+
+#breadcrumb {
+    font-size: 1em;
+    background-color: #c42727;
+    color: var(--bg);
+    padding: 0.5em;
+    width: 100%;
+}
+
+#breadcrumb ol {
+    margin-left: 1em;
+}
+
+#breadcrumb li {
+    display: inline;
+    padding: unset;
+    margin-left: 0.5em;
+    color: white;
+}
+
+#breadcrumb li a {
+    color: white;
+}
+
+#breadcrumb li::before {
+    content: "/ ";
+}
+
+main {
+    flex-grow: 1;
+}
+
+section {
+    width: 100%;
+}
+
+label {
+    margin-bottom: 0.25em;
+    margin-top: 1em;
+}
+
+.errorMessage {
+    /* errori client-side sugli input */
+    background-color: var(--error-warning);
+    padding: 0.5em;
+    border-left: 2px solid red;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: var(--accent-red);
+    color: var(--bg);
+    padding: 1em;
+    text-align: center;
+
+    margin-top: auto;
+    width: 100%;
+}
+
+footer p {
+    font-family: "Alfa Slab One", sans-serif;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:visited {
+    color: var(--visited-link-header);
+}
+
+/* HOME */
+
+#home main {
+    background-image: url("../assets/imgs/home_mobile_background.webp");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding: 0 1.1em 1.5em 1.1em;
+    /* Altezza = 93% dell'altezza del viewport
+    Prima riga -> fallback per browser che non supportano le misure custom con JavaScript
+    Seconda riga -> applicate misure custom con JavaScript */
+    height: 93vh;
+    height: calc(var(--vh, 1vh) * 93);
+}
+
+#home h2 {
+    background-color: rgba(205, 69, 59, 0.95);
+    padding: 0.5em 0.5em;
+    border-radius: 15px;
+    display: block;
+    width: 100%;
+    color: var(--bg);
+    margin: unset;
+    text-align: center;
+    font-size: 2em;
+    line-height: 1.25;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* SEARCH FORM */
+#search-form {
+    background-color: rgba(205, 69, 59, 0.95);
+    width: 100%;
+}
+
+#home #search-form {
+    padding: 1.25em 1em;
+    border-radius: 15px;
+    margin-top: 1em;
+}
+
+#home #search-form label {
+    margin: unset;
+}
+
+#search-results #search-form {
+    padding: 1em 0.75em;
+    margin-bottom: 1em;
+}
+
+/* label presente per screen readers ma nascosta */
+#home #search-form label,
+#search-results #search-form label {
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+#home #search-form label {
+    display: block;
+}
+
+#search-results #search-form label {
+    display: inline-block;
+}
+
+#search-form input {
+    border-radius: 30px;
+    width: 100%;
+    border: none;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+#home #search-form input {
+    padding: 1em;
+}
+
+#search-results #search-form input {
+    padding: 0.35em 1em;
+}
+
+#search-form select,
+#search-form button {
+    display: inline;
+}
+
+#home #search-form select,
+#home #search-form button {
+    padding: 0.75em;
+}
+
+#search-results #search-form select,
+#search-results #search-form button {
+    padding: 0.35em 0.75em;
+}
+
+#search-form select {
+    border-radius: 30px;
+    padding-left: 1em;
+    border: none;
+    font-size: 1em;
+}
+
+#home #search-form select {
+    width: 70%;
+}
+
+#search-results #search-form select {
+    width: 35%;
+}
+
+#search-form button {
+    float: right;
+}
+
+#home #search-form button {
+    width: 27%;
+}
+
+#search-results #search-form button {
+    width: 23%;
+}
+
+/* INFO */
+#info main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    background-image: url("../assets/imgs/info_background.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+#info section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: unset;
+    padding-bottom: unset;
+    background-color: rgba(230, 230, 230, 0.85);
+    flex-grow: 1;
+}
+
+#info h2 {
+    margin-bottom: 1em;
+}
+
+#info #description-image {
+    display: block;
+    background-image: url("../assets/imgs/info_content.webp");
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    margin-top: 2em;
+}
+
+#info #description {
+    padding-top: 1.5em;
+}
+
+#info #disclaimer {
+    padding-bottom: 1.5em;
+}
+
+#info #disclaimer h2 {
+    margin-top: 1em;
+}
+
+/* RISULTATI */
+#search-results main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: unset;
+}
+
+#search-results h2 {
+    margin-left: 1em;
+}
+
+.listings-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5em;
+}
+
+.listing {
+    margin-top: 1.25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: var(--bg-alt);
+    border-radius: 10px;
+    width: 80%;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+
+.listing-descr {
+    padding: 1em;
+    text-align: center;
+}
+
+.listing-title,
+.listing-author {
+    padding-left: 1em;
+    padding-right: unset;
+}
+
+.listing-title {
+    padding: 0.75em;
+    font-weight: 600;
+    font-size: 1.2em;
+    color: var(--accent-red);
+}
+
+.listing-author {
+    padding-bottom: 0.75em;
+    font-weight: normal;
+    font-size: 1.1em;
+    color: black;
+}
+
+.listing-img {
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.placeholder {
+    object-fit: contain;
+}
+
+.listing-user {
+    padding: 0.75em 0 0.75em 1em;
+    font-weight: normal;
+    font-size: 1em;
+    color: var(--fg);
+}
+
+.listing-price {
+    padding: 0 0 0.5em 1em;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.listing a {
+    padding: 0.25em;
+    margin: 0.5em 0.5em 0.75em 0.5em;
+    color: white;
+    text-decoration: none;
+    background-color: var(--accent-red-2);
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    font-size: 1em;
+}
+
+.listing a:visited {
+    background-color: var(--visited-link);
+}
+
+#orderForm {
+    margin-left: 10%;
+}
+
+#scelteOrdinamento {
+    padding: 0.2em;
+}
+
+/* SINGOLO ANNUNCIO */
+
+#listing-content main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+}
+
+#listing-content h2 {
+    color: var(--accent-red);
+    font-size: 2em;
+    line-height: 1.25em;
+    margin-bottom: 0.25em;
+    text-align: center;
+}
+
+#listing-content img {
+    width: auto;
+    height: auto;
+    max-height: 50vh;
+    max-width: 100%;
+    object-fit: contain;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 20px;
+}
+
+#listing-content #listing-price {
+    font-weight: bold;
+    font-size: 2em;
+    color: var(--accent-red);
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+#listing-content #listing-descr {
+    width: 100%;
+    margin-top: 2em;
+}
+
+#listing-content #listing-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5em;
+}
+
+#listing-content dl {
+    text-align: center;
+    border: 2px solid var(--accent-red-2);
+    border-radius: 20px;
+    padding: 1.5em 0;
+    margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#listing-content dt {
+    display: block;
+    margin-top: 0.5em;
+}
+
+#listing-content dd {
+    text-align: center;
+}
+
+#listing-content .listing-btn {
+    background-color: var(--accent-red);
+    padding: 0.5em;
+    border-radius: 10px;
+    width: 49%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+#listing-content .single-listing-user {
+    text-align: center;
+}
+
+/* NUOVO ANNUNCIO */
+#new-listing,
+#edit-listing,
+#edit-account {
+    align-items: center;
+}
+
+#new-listing .backend-error,
+#edit-listing .backend-error,
+#edit-account .backend-error {
+    margin-bottom: 1em;
+}
+
+#new-listing main,
+#edit-listing main,
+#edit-account main {
+    width: 90%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+#new-listing h2,
+#edit-listing h2,
+#edit-account h2 {
+    margin-bottom: 0.5em;
+}
+
+/* FORMS */
+.multiple-fields-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.multiple-fields-form select {
+    padding: 1em;
+    border: 2px solid var(--fg-alt);
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.multiple-fields-form input {
+    padding: 1em;
+    border: 2px solid var(--fg-alt);
+    border-radius: 10px;
+}
+
+.multiple-fields-form p {
+    margin-top: 0.5em;
+}
+
+.multiple-fields-form button {
+    margin: unset;
+    margin-top: 1em;
+    background-color: var(--accent-red-2);
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.5em;
+}
+
+.multiple-fields-form .input-hint {
+    font-size: 0.8em;
+    color: rgb(50, 50, 50);
+}
+
+.multiple-fields-form .error {
+    font-size: 0.8em;
+    color: red;
+}
+
+/* LOGIN E REGISTRAZIONE */
+#registration main,
+#login main {
+    padding: 2em;
+    background-color: var(--bg);
+    height: 100%;
+}
+
+#login main {
+    width: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#login .multiple-fields-form {
+    height: auto;
+}
+
+#registration h2,
+#login h2 {
+    margin-top: unset;
+    margin-bottom: 0.25em;
+    font-weight: 500;
+    font-size: 2em;
+    color: var(--accent-red);
+}
+
+#registration .backend-error,
+#login .backend-error {
+    margin-top: 1.25em;
+}
+
+#registration-perks {
+    display: none;
+}
+
+/* AREA RISERVATA */
+#area-riservata main {
+    padding: 1.5em;
+}
+
+#area-riservata #user-header {
+    display: flex;
+    align-items: center;
+}
+
+#area-riservata #user-header h2 {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+#area-riservata #user-info dl {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+#area-riservata #user-info,
+#area-riservata #links {
+    width: fit-content;
+}
+
+#area-riservata .no-listings {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#area-riservata .icon {
+    width: 2em;
+    height: 2em;
+    margin-right: 1em;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    background-image: url("../assets/imgs/user-solid.svg");
+}
+
+#area-riservata #user-info dt::after {
+    content: ":";
+}
+
+#area-riservata #user-info dd {
+    text-align: start;
+}
+
+#area-riservata #user-info dt {
+    margin-right: 1em;
+}
+
+#area-riservata #user-info .definition {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 1.75em;
+}
+
+#area-riservata .custom-link {
+    color: var(--accent-red);
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+#area-riservata h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: var(--accent-red);
+    font-size: 1.5em;
+}
+
+#area-riservata h4 {
+    font-size: 1.2em;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+/* PAGINE ERRORI 404 E 500 */
+.error main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../assets/imgs/404.webp);
+    background-size: cover;
+    background-position: center;
+    padding: 1.5em;
+}
+
+.error main div {
+    background-color: rgba(230, 230, 230, 0.8);
+    border-radius: 25px;
+    padding: 1.5em 1.5em 0 1.5em;
+    text-align: center;
+}
+
+.error main div h2 {
+    color: var(--accent-red);
+    font-size: 1.6em;
+    margin-bottom: 1em;
+    line-height: 1.25em;
+}
+
+.error main div p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+.error main div a {
+    color: var(--accent-red);
+}
+
+@media only screen and (min-width: 500px) {
+    /* RISULTATI */
+    #search_results {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: unset;
+        /* background-color:red; */
+    }
+
+    .listing {
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+        width: 47%;
+    }
+
+    .listing-title {
+        font-size: 1.2em;
+    }
+
+    .listing-author {
+        font-size: 1.1em;
+    }
+
+    .listing-price {
+        font-size: 1.2em;
+    }
+
+    .listing a {
+        padding: 0.5em;
+        margin: 0.5em 0.5em 0.75em 0.5em;
+        color: white;
+        text-decoration: none;
+        background-color: var(--accent-red-2);
+        border-radius: 10px;
+        text-align: center;
+        display: block;
+    }
+
+    /* SINGOLO ANNUNCIO */
+
+    #listing-content #listing-descr,
+    #listing-content dt,
+    #listing-content dd {
+        font-size: 1.15em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main,
+    #edit-listing main,
+    #edit-account main {
+        width: 75%;
+    }
+
+    #listing-content #listing-descr {
+        width: 80%;
+    }
+
+    /* RISULTATI */
+    #results-search #search-form {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* HOME */
+    #home main {
+        align-items: center;
+        padding: unset;
+        padding-bottom: 3em;
+    }
+
+    #home h2,
+    #home #search-form {
+        width: 80%;
+    }
+
+    /* INFO */
+    #info section {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #info #description-image {
+        height: 300px;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    #info #description {
+        padding-top: 2em;
+    }
+
+    #info #disclaimer {
+        padding-bottom: 2em;
+    }
+
+    /* SINGOLO ANNUNCIO */
+
+    #listing-content #listing-buttons {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    }
+
+    #listing-content #img-def {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1em;
+    }
+
+    #listing-content img,
+    #listing-content dl {
+        width: 49%;
+        margin: unset;
+    }
+
+    #listing-content #listing-descr {
+        width: 60%;
+    }
+
+    /* REGISTRAZIONE */
+    #registration main {
+        width: 85%;
+        align-self: center;
+    }
+
+    #login main {
+        width: 85%;
+    }
+
+    /* LISTA ANNUNCI */
+    .listing {
+        width: 47%;
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata h3 {
+        font-size: 1.8em;
+    }
+
+    #area-riservata h4 {
+        font-size: 1.5em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main,
+    #edit-listing main,
+    #edit-account main {
+        width: 60%;
+    }
+
+    /* RISULTATI */
+    #results-search #search-form {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+
+    #results-search #search-input {
+        display: inline;
+        width: 30%;
+        margin-bottom: unset;
+    }
+
+    #results-search #search-form select {
+        width: 20%;
+    }
+
+    #results-search #search-form button {
+        float: none;
+        width: 15%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    header #menu-btn {
+        display: none;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
+
+    header #menu {
+        padding: unset;
+        display: flex;
+    }
+
+    header nav ul {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    header nav li {
+        display: inline;
+        padding: unset;
+        margin-left: 1.25em;
+    }
+
+    /* HOME */
+    #home main {
+        align-items: center;
+        background-image: url("../assets/imgs/home_desktop_background.webp");
+        justify-content: center;
+        padding: unset;
+    }
+
+    #home h2,
+    #home #search-form {
+        width: 60%;
+    }
+
+    /* INFO */
+    #info section p {
+        width: 50%;
+        font-size: 1.2em;
+    }
+
+    #info #description-image {
+        height: 300px;
+        width: 50%;
+    }
+
+    /* RISULTATI */
+    .listing {
+        width: 30%;
+    }
+
+    #results-search #search-form {
+        padding-left: 10em;
+        padding-right: 10em;
+    }
+
+    #home main > div {
+        width: 70%;
+    }
+
+    /* LOGIN E REGISTRAZIONE */
+    #registration,
+    #login {
+        background-image: url(../assets/imgs/login.webp);
+        background-size: cover;
+        background-position: center;
+    }
+
+    #login main {
+        width: 60%;
+        height: 100%;
+    }
+
+    #registration .multiple-fields-form {
+        width: 50%;
+        float: left;
+    }
+
+    #registration .backend-error {
+        width: 45%;
+        float: right;
+        margin-bottom: 1.5em;
+    }
+
+    #registration-perks {
+        background-color: var(--bg-alt);
+        list-style: none;
+        display: block;
+        float: right;
+        border-radius: 30px;
+        padding: 2em;
+        width: 45%;
+    }
+
+    #registration-perks h2 {
+        display: block;
+    }
+
+    #registration-perks li {
+        padding: 1em 0 0.5em 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        /* background-color:red;  */
+    }
+
+    #registration-perks .icon {
+        width: 4.5em;
+        height: 4.5em;
+        padding: 0.5em;
+        margin-right: 1em;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #registration-perks p {
+        width: 80%;
+    }
+
+    #addAnnuncioImg {
+        background-image: url("../assets/imgs/vantaggiAddItem.png");
+    }
+
+    #salvaAnnuncioImg {
+        background-image: url("../assets/imgs/vantaggiSaveItem.png");
+    }
+
+    #mailVendImg {
+        background-image: url("../assets/imgs/vantaggiEmailVend.png");
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata main {
+        padding: 2em 3em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main,
+    #edit-listing main,
+    #edit-account main {
+        width: 45%;
+    }
+
+    /* SINGOLO ANNUNCIO */
+    #listing-content main {
+        padding: 3em;
+        align-items: center;
+    }
+
+    #listing-content #listing-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    #listing-content .listing-btn {
+        background-color: rgba(255, 255, 255, 0);
+        text-decoration: underline;
+        color: var(--accent-red);
+        width: auto;
+        padding: unset;
+        margin-bottom: 1em;
+        font-weight: 600;
+    }
+
+    #listing-content #listing-descr {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        padding: 1.75em 3em;
+    }
+
+    #breadcrumb ol {
+        margin-left: 2em;
+    }
+
+    /* HOME */
+    #home h2 {
+        font-size: 2.5em;
+    }
+
+    #home h2,
+    #home #search-form {
+        width: 50%;
+    }
+
+    /* INFO */
+    #info main {
+        background-image: none;
+    }
+
+    /* LOGIN E REGISTRAZIONE */
+
+    #login main {
+        width: 50%;
+    }
+
+    #registration main {
+        width: 80%;
+    }
+
+    #registration .multiple-fields-form {
+        max-width: 40%;
+    }
+
+    #registration #registration-perks,
+    #registration .backend-error {
+        width: 55%;
+    }
+
+    #registration #registration-perks li {
+        font-size: 1.15em;
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata main {
+        padding: 3em 4em;
+    }
+
+    #area-riservata #user-info dl {
+        font-size: 1.2em;
+    }
+
+    .listings-list {
+        justify-content: flex-start;
+    }
+
+    .listing-title {
+        font-size: 1.3em;
+        padding-top: 0.75em;
+    }
+
+    .listing-author {
+        padding-bottom: 0.75em;
+    }
+
+    /* NUOVO ANNUNCIO */
+    #new-listing main,
+    #edit-listing main,
+    #edit-account main {
+        width: 30%;
+    }
+
+    /* RISULTATI */
+    #search-results #results-listings {
+        padding: 2em;
+    }
+
+    #search-results h2 {
+        margin-bottom: 1em;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    nav {
+        font-size: 1.25em;
+    }
+
+    /* HOME */
+    #home main {
+        padding: 5em;
+        height: 100vh;
+        /* Fallback for browsers that do not support Custom Properties */
+        height: calc(var(--vh, 1vh) * 100);
+        max-height: none;
+        align-items: center;
+    }
+
+    #home h2 {
+        font-size: 3em;
+    }
+
+    #home h2,
+    #home #search-form {
+        width: 40%;
+    }
+
+    /* RISULTATI */
+    .listing {
+        width: 21%;
+        margin-left: 0.75em;
+        margin-right: 0.75em;
+    }
+
+    #search-results #results-listings {
+        padding: 3em 5em;
+    }
+
+    #search-results #search-form {
+        padding-left: 20em;
+        padding-right: 20em;
+    }
+
+    /* INFO */
+    #disclaimer,
+    #description {
+        padding: 1.5em 10em;
+        margin: auto;
+    }
+
+    /* REGISTRAZIONE E LOGIN */
+    #login main {
+        width: 30%;
+    }
+
+    #registration main {
+        width: 60%;
+    }
+
+    /* AREA RISERVATA */
+    #area-riservata main {
+        padding: 4em 5em;
+    }
+
+    /* SINGOLO ANNUNCIO */
+    #listing-content main {
+        align-self: center;
+    }
+
+    #listing-content img {
+        float: left;
+    }
+
+    #listing-content #listing-descr {
+        width: 60%;
+    }
+}

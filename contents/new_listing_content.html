@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Inserisci un nuovo annuncio su BTN e lascia che gli interessati ti contattino facilmente."
+        />
+        <meta
+            name="keywords"
+            content="BTN, nuovo, annuncio, libro, appunti, ripetizioni, vendi, inserisci"
+        />
+        <title>Nuovo annuncio - BTN</title>
+        <script src="./scripts/listing_insert_form_manager.js" async></script>
+    </head>
+
+    <body id="new-listing" class="no_print">
+        <php-header />
+        <main id="main">
+            <h2>Nuovo annuncio php-type</h2>
+            <php-errore />
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <label id="labelTitoloAnnuncio" for="new-listing-title"
+                    >Titolo</label
+                >
+                <input
+                    type="text"
+                    placeholder="Inserisci titolo"
+                    maxlength="60"
+                    name="titolo"
+                    id="new-listing-title"
+                    required
+                />
+                <p id="titolo-errore" class="input-hint"></p>
+
+                <label id="labelDescrAnnuncio" for="new-listing-descr"
+                    >Descrizione</label
+                >
+                <input
+                    type="text"
+                    placeholder="Inserisci descrizione"
+                    maxlength="300"
+                    name="descrizione"
+                    id="new-listing-descr"
+                    required
+                />
+                <p id="descr-errore" class="input-hint">
+                    Descrivi il tuo annuncio specificando tutti i dettagli
+                    utili.
+                </p>
+
+                <label id="labelPriceAnnuncio" for="new-listing-price"
+                    >Prezzo</label
+                >
+                <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Inserisci prezzo"
+                    maxlength="6"
+                    name="prezzo"
+                    id="new-listing-price"
+                    required
+                />
+                <p id="prezzo-errore" class="input-hint">Prezzo in euro.</p>
+
+                <label id="labeSubjectAnnuncio" for="new-listing-subject"
+                    >Materia</label
+                >
+                <input
+                    type="text"
+                    placeholder="Inserisci materia"
+                    maxlength="60"
+                    name="materia"
+                    id="new-listing-subject"
+                    required
+                />
+                <p id="materia-errore" class="input-hint">
+                    Specifica una o più materie di riferimento.
+                </p>
+
+                <!-- <php-categoria /> -->
+
+                <!-- <php-file /> -->
+
+                <!-- <php-author /> -->
+
+                <!-- <php-edition /> -->
+
+                <!-- <php-isbn /> -->
+
+                <button type="submit" name="new_listing" id="new_listing">
+                    Carica
+                </button>
+            </form>
+        </main>
+        <php-footer />
+    </body>
+</html>

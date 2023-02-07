@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta name="robots" content="noindex" />
+        <script src="./scripts/account_form_manager.js" async></script>
+        <title>Modifica dati account - BTN</title>
+    </head>
+
+    <body id="edit-account" class="no_print">
+        <php-header />
+        <main id="main">
+            <h2>Modifica Dati Account</h2>
+            <php-errore />
+            <form
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+            >
+                <label id="labelNome" for="inputNome">Modifica nome</label>
+                <input
+                    type="text"
+                    placeholder="Vecchio nome: php-old-name"
+                    maxlength="40"
+                    name="nome"
+                    php-value-nome
+                    id="inputNome"
+                    required
+                />
+                <p id="nome-errore" class="input-hint">Usa il tuo nome reale.</p>
+
+                <label id="labelCognome" for="inputCognome"
+                    >Modifica cognome</label
+                >
+                <input
+                    type="text"
+                    placeholder="Vecchio cognome: php-old-surname"
+                    maxlength="40"
+                    name="cognome"
+                    php-value-cognome
+                    id="inputCognome"
+                    required
+                />
+                <p id="cognome-errore" class="input-hint">Usa il tuo cognome reale.</p>
+
+                <label id="labelUsername" lang="en" for="inputUsername"
+                    >Modifica username</label
+                >
+                <input
+                    type="text"
+                    placeholder="Vecchio username: php-old-username"
+                    maxlength="25"
+                    name="username"
+                    php-value-username
+                    id="inputUsername"
+                    required
+                />
+                <p id="username-errore" class="input-hint">Username con cui ti vedranno gli altri utenti.</p>
+
+                <label id="labelPassword" lang="en" for="inputPassword"
+                    >Modifica password</label
+                >
+                <input
+                    type="password"
+                    placeholder="Inserisci nuova password"
+                    maxlength="40"
+                    name="password"
+                    php-value-password
+                    id="inputPassword"
+                />
+                <p id="password-errore" class="input-hint">Almeno 8 caratteri, una lettera maiuscola, un numero e un carattere speciale.</p>
+
+                <label id="labelConfPassword" for="inputConfPassword"
+                    >Conferma nuova <span lang="en">Password</span></label
+                >
+                <input
+                    type="password"
+                    placeholder="Conferma nuova password"
+                    maxlength="40"
+                    name="confPassword"
+                    php-value-confPassword
+                    id="inputConfPassword"
+                />
+                <p id="conferma-errore" class="input-hint"></p>
+
+                <label id="labelDataNascita" for="inputDataNascita">Modifica data di nascita</label>
+                <input
+                    type="date"
+                    name="dataNascita"
+                    php-value-data
+                    id="inputDataNascita"
+                    required
+                />
+                <p id="nascita-errore" class="input-hint"></p>
+
+                <label id="labelEmail" for="inputEmail"
+                    >Modifica <span lang="en">email</span></label
+                >
+                <input
+                    type="email"
+                    placeholder="Vecchia e-mail: php-old-email"
+                    maxlength="60"
+                    name="email"
+                    php-value-email
+                    id="inputEmail"
+                    required
+                />
+                <p id="email-errore" class="input-hint"></p>
+
+                <button type="submit" name="modifica" php-value-oldusername>
+                    Modifica
+                </button>
+            </form>
+        </main>
+
+        <php-footer />
+    </body>
+</html>

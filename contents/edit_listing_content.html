@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta name="robots" content="noindex" />
+        <title>Modifica annuncio - BTN</title>
+        <script src="./scripts/listing_edit_form_manager.js" async></script>
+    </head>
+
+    <body id="edit-listing" class="no_print">
+        <php-header />
+        <main id="main">
+            <h2>Modifica annuncio php-type</h2>
+            <php-errore />
+            <php-img />
+            <form
+                id="modAnnuncioForm"
+                action="php-action"
+                class="multiple-fields-form"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+                <label id="labelTitoloAnnuncio" for="edit-listing-title"
+                    >Modifica titolo</label
+                >
+                <input
+                    type="text"
+                    placeholder="Vecchio titolo: php-old-title"
+                    maxlength="60"
+                    name="titolo"
+                    id="edit-listing-title"
+                    value="php-listing-title"
+                    required
+                />
+                <p id="titolo-errore" class="input-hint"></p>
+
+                <label id="labelDescrAnnuncio" for="edit-listing-descr"
+                    >Modifica descrizione</label
+                >
+                <input
+                    type="text"
+                    placeholder="Vecchia descrizione: php-old-descr"
+                    maxlength="300"
+                    name="descrizione"
+                    id="edit-listing-descr"
+                    value="php-listing-descr"
+                    required
+                />
+                <p id="descr-errore" class="input-hint">
+                    Descrivi il tuo annuncio specificando tutti i dettagli
+                    utili.
+                </p>
+
+                <label id="labelPriceAnnuncio" for="edit-listing-price"
+                    >Modifica prezzo</label
+                >
+                <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Vecchio prezzo: php-old-price"
+                    maxlength="6"
+                    name="prezzo"
+                    id="edit-listing-price"
+                    value="php-listing-price"
+                    required
+                />
+                <p id="prezzo-errore" class="input-hint">Prezzo in euro.</p>
+
+                <label id="labelSubjectAnnuncio" for="edit-listing-subject"
+                    >Modifica materia</label
+                >
+                <input
+                    type="text"
+                    placeholder="Vecchia materia: php-old-subject"
+                    maxlength="60"
+                    name="materia"
+                    id="edit-listing-subject"
+                    value="php-listing-subject"
+                    required
+                />
+                <p id="materia-errore" class="input-hint">
+                    Specifica una o più materie di riferimento.
+                </p>
+
+                <!-- <php-categoria /> -->
+
+                <!-- <php-file /> -->
+
+                <!-- <php-author /> -->
+
+                <!-- <php-edition /> -->
+
+                <!-- <php-isbn /> -->
+
+                <button
+                    type="submit"
+                    name="edit_listing"
+                    php-annuncio-id
+                    id="edit_listing"
+                >
+                    Modifica
+                </button>
+            </form>
+        </main>
+        <php-footer />
+    </body>
+</html>

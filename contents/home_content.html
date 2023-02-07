@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <php-imports />
+        <meta
+            name="description"
+            content="Cerca libri, appunti e ripetizioni e mettiti in contatto con i venditori. Cerca ora su BTN!"
+        />
+        <meta
+            name="keywords"
+            content="BTN, libri, appunti, ripetizioni, università, books, tutoring, notes"
+        />
+        <title>BTN - Cerca libri, appunti, ripetizioni</title>
+    </head>
+
+    <body id="home" class="no_print">
+        <php-header />
+
+        <main id="main">
+            <h2>Cerca libri, appunti e ripetizioni</h2>
+            <form
+                action="./search_results.php"
+                method="GET"
+                id="search-form"
+            >
+                <label for="search-input">Ricerca per titolo o materia</label>
+                <input
+                    type="text"
+                    placeholder="Titolo, materia..."
+                    name="search"
+                    id="search-input"
+                    required
+                />
+                <label for="search-cat">Scegli la categoria</label>
+                <select name="categoria" id="search-cat">
+                    <option value="libri">Libri</option>
+                    <option value="ripetizioni">Ripetizioni</option>
+                    <option value="appunti">Appunti</option>
+                </select>
+
+                <button type="submit">Cerca</button>
+            </form>
+        </main>
+
+        <php-footer />
+    </body>
+</html>
